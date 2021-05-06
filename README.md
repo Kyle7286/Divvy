@@ -3,7 +3,7 @@
 ## General 📖
 ---    
 - Github:    https://github.com/Kyle7286/project-3
-- Deployed Site: 
+- Deployed Site: https://infinite-journey-89318.herokuapp.com/
 - Presentation: 
 - Video: 
 

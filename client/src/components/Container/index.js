@@ -2,38 +2,24 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-  import React from 'react';
-  import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-  import Navbar from "./components/Navbar";
-  import Wrapper from "./components/Wrapper";
-  import Home from "./pages/Home";
-  
+import React from "react";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-function App() {
+/*
+    Here I specify a container and give it some basic bootstrap classes, 
+    Then I pass props within that div (which is defined on my directory page
+    as the row component)
+*/
 
-  return (
-    <Router>
-      <div data-component="DivInRouter">
-        <Navbar data-component="Navbar"/>
-        <Wrapper data-component="Wrapper">
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="" component={Home}/>
-          </Switch>  
-        </Wrapper>
-      </div>
-    </Router>
-  );
-
+function Container(props) {
+  return <div className="container" data-component="Container" {...props} />;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default App;
+export default Container;

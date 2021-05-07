@@ -8,6 +8,7 @@
     import Col from "../components/Column";
     import TicketTable from "../components/TicketTable";
     import SectionHeader from "../components/SectionHeader";
+    import StatCard from "../components/StatCard";
 
    
 /* -------------------------------------------------------------------------- */
@@ -23,8 +24,11 @@
     function Home(){
          return (
             <Container>
-                <Row className="mb-4">
-                    This is the row we drop the summary stats
+                <Row className="mb-4 d-flex flex-row justify-content-center">
+                    <StatCard/>
+                    <StatCard/>
+                    <StatCard/>
+                    <StatCard/>
                 </Row>
                 <Row>
                     <Col className="col-8 mx-0 p-0">

@@ -92,7 +92,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div>
+      <div className="mx-1">
         <div>
             <GlobalFilter
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -105,7 +105,7 @@
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
               // Apply the header row props
-              <tr className="table-primary" {...headerGroup.getHeaderGroupProps()}>
+              <tr className="table-info" {...headerGroup.getHeaderGroupProps()}>
                 {// Loop over the headers in each row
                 headerGroup.headers.map(column => (
                   // Apply the header cell props and ad in props to control sorting

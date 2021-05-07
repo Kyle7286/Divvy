@@ -6,6 +6,7 @@
     import Container from "../components/Container";
     import Row from "../components/Row";
     import Col from "../components/Column";
+    import TicketTable from "../components/TicketTable";
 
    
 /* -------------------------------------------------------------------------- */
@@ -21,9 +22,15 @@
     function Home(){
          return (
             <Container>
+                <Row className="mb-4">
+                    This is the row we drop the summary stats
+                </Row>
                 <Row>
-                    <Col>
-                        This is where we put all components within each page component
+                    <Col className="col-8 mx-0 p-0">
+                        <TicketTable/>
+                    </Col>
+                    <Col className="col-md-4">
+                        This is the col we render employee cards sorted by capacity
                     </Col>
                 </Row>
             </Container>

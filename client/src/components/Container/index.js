@@ -15,7 +15,7 @@ import React from "react";
 */
 
 function Container(props) {
-  return <div className="container" data-component="Container" {...props} />;
+  return <div className="container my-3" data-component="Container" {...props} />;
 }
 
 /* -------------------------------------------------------------------------- */

@@ -12,13 +12,18 @@
 /*                            Define Page Component                           */
 /* -------------------------------------------------------------------------- */
 
+    /*
+        This page component will render all our stuff below it within the bs container
+        class for spacing. This is our whitespace for making the UI alongside
+        the navbar. 
+    */
+
     function Home(){
-        
          return (
             <Container>
-                 <Row>
+                <Row>
                     <Col>
-                      Insert page content and sub rows and cols here (Home Component on home.js) 
+                        This is where we put all components within each page component
                     </Col>
                 </Row>
             </Container>

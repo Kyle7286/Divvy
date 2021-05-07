@@ -9,6 +9,8 @@
     import TicketTable from "../components/TicketTable";
     import SectionHeader from "../components/SectionHeader";
     import StatCard from "../components/StatCard";
+    import EmployeeCardContainer from "../components/EmployeeCardContainer";
+    import EmployeeCard from "../components/EmployeeCard";
 
    
 /* -------------------------------------------------------------------------- */
@@ -37,11 +39,12 @@
                         </SectionHeader>
                         <TicketTable/>
                     </Col>
-                    <Col className="col-md-4">
+                    <Col className="col-md-4 align-items-center">
                         <SectionHeader>
                             Availible Employees
                         </SectionHeader>
-                        This is the col we render employee cards sorted by capacity
+                        <br/><br/>
+                        <EmployeeCardContainer/>
                     </Col>
                 </Row>
             </Container>

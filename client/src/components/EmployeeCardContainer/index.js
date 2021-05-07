@@ -3,19 +3,21 @@
 /* -------------------------------------------------------------------------- */
 
     import React from "react";
+    import EmployeeCard from "../EmployeeCard";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-    function StartCard (props) {
+    function EmployeeCardContainer () {
         return (
-            <div className="card shadow-sm col-2 mx-3 text-center" data-component="statcard">
-                <div className="card-body">
-                    <h5 className="card-title">Stat Card Title</h5>
-                    <p className="card-text">Stat Card Value</p>
-                    <a href="#" className="btn btn-sm btn-info">Manage</a>
-                </div>
+            <div className="d-flex flex-wrap justify-content-center">
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
             </div>
         );
     }
@@ -24,4 +26,4 @@
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-    export default StartCard;
+    export default EmployeeCardContainer;

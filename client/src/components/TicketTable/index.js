@@ -10,7 +10,7 @@
 /*                     Define Employee Table SubComponents                    */
 /* -------------------------------------------------------------------------- */
 
-/* ------------------- Global Filter (Search) Subcomponent ------------------ */
+/* ------------------- Global Filter (Search Bar) Subcomponent ------------------ */
 
   // Define a default UI for filtering
   function GlobalFilter({
@@ -91,11 +91,11 @@
       {
         columns,
         data,
-        defaultColumn, // Be sure to pass the defaultColumn option
+        defaultColumn, 
         filterTypes,
       },
-      useFilters, // useFilters!
-      useGlobalFilter, // useGlobalFilter!
+      useFilters, 
+      useGlobalFilter,
       useSortBy
     )
 
@@ -165,10 +165,15 @@
 /* -------------------------------------------------------------------------- */
 
   /*
-    I pass this props from Directory.js , that includes my results from my api call
-  */
+    Eventually, I need to get tickets back as an array of objects
+    from the db here, and map through like my example below to set
+    data to pass the table to render
 
-  function EmployeeTable(props) {
+    firstly, I need to update the ticket table function to pass in props (right now
+    I just left it blank for testing)
+
+    Then use the below example as a guidline from my hw19 and create the array
+    from props.
 
     // Check props
     console.log('props received from directory.js within EmployeeTable', props.results);
@@ -187,44 +192,63 @@
       )
     );
 
-    console.log('Updated array I create to populate my table', users); // checking my object array in the console for testing
+  */
+
+  function TicketTable() {
 
     // Define columns for table
     const columns = React.useMemo(
       () => [
         {
-          Header: 'Image',
-          accessor: 'image', // accessor is the "key" in the data
+          Header: 'Title',
+          accessor: 'title', // accessor is the "key" in the data to use below
         },
         {
-          Header: 'Name',
-          accessor: 'name',
+          Header: 'ID',
+          accessor: 'id',
         },
         {
-          Header: 'Phone Number',
-          accessor: 'phone',
+          Header: 'Firm',
+          accessor: 'firm',
         },
         {
-          Header: 'Email',
-          accessor: 'email',
+          Header: 'Contact Name',
+          accessor: 'contact_name',
         },
         {
-          Header: 'DOB',
-          accessor: 'dob',
+          Header: 'Contact Phone',
+          accessor: 'contact_phone',
+        },
+        {
+          Header: 'Priority',
+          accessor:'priority',
+        },
+        {
+          Header: 'Status',
+          accessor: 'status',
+        },
+        {
+          Header: 'Assignee',
+          accessor: 'assignee',
         },
       ],
       []
     )
 
     // Define data for table
+
       /*
-        Here is what it looks like if passing an array of objects in- just match to headers)
+
+        Here is what it looks like if passing an array of objects in- just match to headers. 
+        When ready, need to use this with data passed in from DB for tickets
+
         //eslint-disable-next-line
         //const data = React.useMemo(() => users)
+
       */
   
           
-      // Testing view with some seeded data
+      // Testing view with some seeded data based on latest model
       const data = React.useMemo(
         () => [
             {

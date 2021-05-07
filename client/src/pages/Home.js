@@ -7,6 +7,7 @@
     import Row from "../components/Row";
     import Col from "../components/Column";
     import TicketTable from "../components/TicketTable";
+    import SectionHeader from "../components/SectionHeader";
 
    
 /* -------------------------------------------------------------------------- */
@@ -27,9 +28,15 @@
                 </Row>
                 <Row>
                     <Col className="col-8 mx-0 p-0">
+                        <SectionHeader>
+                            Open Tickets
+                        </SectionHeader>
                         <TicketTable/>
                     </Col>
                     <Col className="col-md-4">
+                        <SectionHeader>
+                            Availible Employees
+                        </SectionHeader>
                         This is the col we render employee cards sorted by capacity
                     </Col>
                 </Row>

@@ -92,7 +92,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <>
+      <div>
         <div>
             <GlobalFilter
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -100,7 +100,7 @@
                 setGlobalFilter={setGlobalFilter}
             />
         </div>
-        <table {...getTableProps()} className="table align-middle">
+        <table {...getTableProps()} className="table align-middle shadow-sm">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
@@ -146,7 +146,7 @@
             })}
           </tbody>
         </table>
-      </>
+      </div>
       )
   }
 

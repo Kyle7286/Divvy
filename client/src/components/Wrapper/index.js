@@ -3,26 +3,35 @@
 /* -------------------------------------------------------------------------- */
 
     import React from "react";
+    import Row from "../Row";
+    import Col from "../Column"
+    import Nav from "../Navbar"
+
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
     /*
-        Props for this component comes from App.js. Within the wrapper component,
-        I am passing it the directory page. 
-
-        What I say here is I define a wrapper component which I pass props as an 
-        argument. 
-
-        Then, I return a main (div) with contents of all the elements (whic I 
-        identify using spread operator) included within my props jsx, which is
-        being passed in to this component as an argument from App.js as Directory
-        compoenent, assuming the path matches what I specify in the route.
+        Props.children for this component comes from App.js. Within the wrapper component,
+        The props here are other components we pass it, which will always
+        be one of the page components as detrmined by the router and switch 
+        setup on app.js
     */
 
     function Wrapper(props) {
-        return <main className="wrapper mb-4 pb-5" {...props} />;
+        return (
+            <main className="wrapper mb-4 pb-5" data-component="Wrapper">
+                <Row>
+                    <Col className="col-md-1">
+                        <Nav></Nav>
+                    </Col>
+                    <Col>
+                        {props.children}
+                    </Col>
+                </Row>
+            </main>
+        );
     }
 
 /* -------------------------------------------------------------------------- */

@@ -2,24 +2,34 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+    import React from "react";
+    import EmployeeCard from "../EmployeeCard";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-/*
-    Here I specify a container and give it some basic bootstrap classes, 
-    Then I pass props within that div (which is defined on my directory page
-    as the row component)
-*/
+    /*
+        Idea having this container component that wraps them in center can make
+        it easy to map through an employee array and create the cards. 
+        I put a few in just to see how the wrap woudl look
+    */
 
-function Container(props) {
-  return <div className="container my-3 p-0" data-component="Container" {...props} />;
-}
+    function EmployeeCardContainer () {
+        return (
+            <div className="d-flex flex-wrap justify-content-center">
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+                <EmployeeCard/>
+            </div>
+        );
+    }
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default Container;
+    export default EmployeeCardContainer;

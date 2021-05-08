@@ -2,24 +2,26 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+    import React from "react";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-/*
-    Here I specify a container and give it some basic bootstrap classes, 
-    Then I pass props within that div (which is defined on my directory page
-    as the row component)
-*/
-
-function Container(props) {
-  return <div className="container my-3 p-0" data-component="Container" {...props} />;
-}
+    function StartCard (props) {
+        return (
+            <div className="card shadow-sm col-2 mx-3 text-center" data-component="statcard">
+                <div className="card-body">
+                    <h5 className="card-title">Stat Card Title</h5>
+                    <p className="card-text">Stat Card Value</p>
+                    <a href="#" className="btn btn-sm btn-info">Manage</a>
+                </div>
+            </div>
+        );
+    }
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default Container;
+    export default StartCard;

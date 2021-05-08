@@ -2,24 +2,22 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+    import React from "react";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-/*
-    Here I specify a container and give it some basic bootstrap classes, 
-    Then I pass props within that div (which is defined on my directory page
-    as the row component)
-*/
-
-function Container(props) {
-  return <div className="container my-3 p-0" data-component="Container" {...props} />;
+function SectionHeader(props) {
+    return (
+        <div className="text-center text-info fw-bold fs-3" data-component="SectionHeader">
+            {props.children}
+        </div>
+    );
 }
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default Container;
+    export default SectionHeader;

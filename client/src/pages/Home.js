@@ -6,6 +6,11 @@
     import Container from "../components/Container";
     import Row from "../components/Row";
     import Col from "../components/Column";
+    import TicketTable from "../components/TicketTable";
+    import SectionHeader from "../components/SectionHeader";
+    import StatCard from "../components/StatCard";
+    import EmployeeCardContainer from "../components/EmployeeCardContainer";
+
 
    
 /* -------------------------------------------------------------------------- */
@@ -21,9 +26,25 @@
     function Home(){
          return (
             <Container>
+                <Row className="mb-4 d-flex flex-row justify-content-center">
+                    <StatCard/>
+                    <StatCard/>
+                    <StatCard/>
+                    <StatCard/>
+                </Row>
                 <Row>
-                    <Col>
-                        This is where we put all components within each page component
+                    <Col className="col-8 mx-0 p-0">
+                        <SectionHeader>
+                            Open Tickets
+                        </SectionHeader>
+                        <TicketTable/>
+                    </Col>
+                    <Col className="col-md-4 align-items-center">
+                        <SectionHeader>
+                            Availible Employees
+                        </SectionHeader>
+                        <br/><br/>
+                        <EmployeeCardContainer/>
                     </Col>
                 </Row>
             </Container>

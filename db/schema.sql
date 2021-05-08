@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS divvy_db;
+CREATE DATABASE divvy_db;

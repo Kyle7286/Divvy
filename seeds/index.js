@@ -36,15 +36,16 @@
 
         await seedOrg();
         console.log('\n----- ORG SEEDED -----\n');
-
-        // await seedTeam();
-        // console.log('\n----- TEAMS SEEDED -----\n');
+        
+        await seedUser();
+        console.log('\n----- USERS SEEDED -----\n');
+        
+        await seedTeam();
+        console.log('\n----- TEAMS SEEDED -----\n');
 
         // await seedTicket();
         // console.log('\n----- TICKETS SEEDED -----\n');
 
-        await seedUser();
-        console.log('\n----- USERS SEEDED -----\n');
 
         process.exit(0);
 

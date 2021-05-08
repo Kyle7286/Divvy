@@ -12,21 +12,21 @@ Team.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        company_id: {
+        org_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'company',
+                model: 'org',
                 key: 'id',
             },
         },
-        user_id_manager: {
+        manager_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'user',
-            //     key: 'id',
-            // },
+            references: {
+                model: 'user',
+                key: 'id',
+            },
         },
         name: {
             type: DataTypes.STRING,

@@ -1,6 +1,6 @@
 const User = require('./user');
 const Org = require('./org');
-// const Team = require('./team');
+const Team = require('./team');
 // const Ticket = require('./ticket');
 // const Comments = require('./comments');
 // const Client = require('./client');
@@ -13,8 +13,20 @@ User.belongsTo(Org, {
   foreignKey: 'org_id',
 });
 
-// Company.hasMany(Team, {
-//   foreignKey: 'company_id',
+Org.hasMany(Team, {
+  foreignKey: 'org_id',
+});
+
+Team.belongsTo(Org, {
+  foreignKey: 'org_id',
+});
+
+// Team.hasMany(User, {
+//   foreignKey: 'team_id',
+// });
+
+// User.belongsTo(Team, {
+//   foreignKey: 'user_id',
 // });
 
 // Company.hasMany(Client, {
@@ -67,8 +79,8 @@ User.belongsTo(Org, {
 
 module.exports = {
   User,
-  Org
-  // Team,
+  Org,
+  Team
   // Ticket,
   // Comments,
   // Client

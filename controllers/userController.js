@@ -1,4 +1,4 @@
-const { User, Org } = require("../models");
+const { User, Org, Team } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
@@ -19,6 +19,10 @@ module.exports = {
         include: [
           {
             model: Org,
+            attributes: ['name'],
+          },
+          {
+            model: Team,
             attributes: ['name'],
           },
         ],

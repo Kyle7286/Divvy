@@ -1,4 +1,4 @@
-const db = require("../models");
+const { User, Org } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
@@ -11,10 +11,19 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  findById: function (req, res) {
+  findById: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const userData = await User.findOne({ 
+        where: { id: req.params.id},
+        include: [
+          {
+            model: Org,
+            attributes: ['name'],
+          },
+        ],
+        });
+      res.status(200).json(userData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

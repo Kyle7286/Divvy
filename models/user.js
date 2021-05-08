@@ -16,11 +16,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        company_id: {
+        org_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             // references: {
-            //     model: 'company',
+            //     model: 'org',
             //     key: 'id',
             // },
         },
@@ -65,15 +65,20 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              isIn: [['0', '1', '2']],
-              max: 2,
-              isNumeric: true,
-              len:[1],
+                isIn: [['0', '1', '2']],
+                max: 2,
+                isNumeric: true,
+                len: [1],
             },
-          },
+        },
         is_manager: {
-          type: DataTypes.BOOLEAN,
-          allowNull: false,
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+        phone_number: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
         },
         profile_icon: {
             type: DataTypes.STRING,

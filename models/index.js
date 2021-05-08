@@ -1,16 +1,16 @@
 const User = require('./user');
-const Company = require('./company');
+const Org = require('./org');
 // const Team = require('./team');
 // const Ticket = require('./ticket');
 // const Comments = require('./comments');
 // const Client = require('./client');
 
-Company.hasMany(User, {
-  foreignKey: 'company_id',
+Org.hasMany(User, {
+  foreignKey: 'org_id',
 });
 
-User.belongsTo(Company, {
-  foreignKey: 'company_id',
+User.belongsTo(Org, {
+  foreignKey: 'org_id',
 });
 
 // Company.hasMany(Team, {
@@ -67,7 +67,7 @@ User.belongsTo(Company, {
 
 module.exports = {
   User,
-  Company
+  Org
   // Team,
   // Ticket,
   // Comments,

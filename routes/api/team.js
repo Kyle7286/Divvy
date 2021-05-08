@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const tagController = require("../../controllers/tagController");
+const teamController = require("../../controllers/teamController");
 
-// Matches with "/api/tag"
+// Matches with "/api/team"
 router.route("/")
-  .get(tagController.findAll)
-  .post(tagController.create);
+  .get(teamController.findAll)
+  .post(teamController.create);
 
-// Matches with "/api/tag/:id"
+// Matches with "/api/team/:id"
 router
   .route("/:id")
-  .get(tagController.findById)
-  .put(tagController.update)
-  .delete(tagController.remove);
+  .get(teamController.findById)
+  .put(teamController.update)
+  .delete(teamController.remove);
 
 module.exports = router;

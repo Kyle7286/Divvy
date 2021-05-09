@@ -4,12 +4,7 @@
 
   import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
   import React from "react";
-  import {useMediaQuery} from 'react-responsive';
-
-/* -------------------------------------------------------------------------- */
-/*                     Define Employee Table SubComponents                    */
-/* -------------------------------------------------------------------------- */
-
+  
 /* ------------------- Global Filter (Search Bar) Subcomponent ------------------ */
 
   // Define a default UI for filtering
@@ -25,7 +20,7 @@
       // This is the UI Component to Return for the search
       return (
             <form>
-                <div className="col-5 mx-auto mt-2 mb-1">
+                <div className="col-10 mx-auto mt-2 mb-1">
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">
                         <span className="me-3 align-middle d-flex align-items-center text-primary"> 
@@ -92,7 +87,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-1">
+      <div className="mx-4">
         <div>
             <GlobalFilter
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -184,7 +179,7 @@
 
   */
 
-  function TicketTable() {
+  function TicketTableMobile() {
 
     // Define columns for table
     const columns = React.useMemo(
@@ -196,30 +191,6 @@
         {
           Header: 'Title',
           accessor: 'title', // accessor is the "key" in the data to use below
-        },
-        {
-          Header: 'Firm',
-          accessor: 'firm',
-        },
-        {
-          Header: 'Contact Name',
-          accessor: 'contact_name',
-        },
-        {
-          Header: 'Contact Phone',
-          accessor: 'contact_phone',
-        },
-        {
-          Header: 'Priority',
-          accessor:'priority',
-        },
-        {
-          Header: 'Status',
-          accessor: 'status',
-        },
-        {
-          Header: 'Assignee',
-          accessor: 'assignee',
         },
       ],
       []
@@ -243,33 +214,16 @@
         () => [
             {
               id:'id1',
-              title: 'Ticket 1',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
+              title: 'Get pumped about this mobile table!',
             },
             {
               id:'id2',
-              title: 'Ticket 2',
-              firm:'firm2',
-              contact_name: 'firm contact name 2',
-              contact_phone: 'firm contact phone 2',
-              priority: 'priority2',
-              status: 'status2',
-              assignee: 'assignee2'
+              title: 'Get more laptops for my boyz',
+             
             },
             {
               id:'id3',
-              title: 'Ticket 3',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
+              title: 'Fix the printer asap',
             }
           ]
       )
@@ -288,4 +242,4 @@
   /*                              Export Component                              */
   /* -------------------------------------------------------------------------- */
 
-      export default TicketTable;
+      export default TicketTableMobile;

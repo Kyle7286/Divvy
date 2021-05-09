@@ -2,37 +2,26 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-  import React from 'react';
-  import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-  import Wrapper from "./components/Wrapper";
-  import Home from "./pages/Home";
-  import './index.css';
-  
+    import React from "react";
+    import StatCard from "../StatCard";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-function App() {
 
-  return (
-    <Router>
-      <div data-component="DivInRouter">
-        <Wrapper data-component="Wrapper">
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="" component={Home}/>
-          </Switch>  
-        </Wrapper>
-      </div>
-    </Router>
-  );
-
-}
-
+    function StatCardContainer () {
+        return (
+            <div className="d-flex flex-wrap justify-content-center" data-component="StatCardContainer">
+                <StatCard/>
+                <StatCard/>
+                <StatCard/>
+            </div>
+        );
+    }
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default App;
+    export default StatCardContainer;

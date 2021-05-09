@@ -3,6 +3,7 @@
 /* -------------------------------------------------------------------------- */
 
     import React from "react";
+    
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -10,13 +11,12 @@
 
     function StartCard (props) {
         return (
-            <div className="card shadow-sm col-2 mx-3 text-center" data-component="statcard">
-                <div className="card-body">
-                    <h5 className="card-title">Stat Card Title</h5>
-                    <p className="card-text">Stat Card Value</p>
-                    <a href="#" className="btn btn-sm btn-info">Manage</a>
-                </div>
+            <div className="card col-3 m-2 text-center float-left px-0" data-component="employeecard">
+            <div className="card-body p-1">
+                <h4 className="card-text">Stat</h4>
+                <p className="card-text">#Tickets</p>
             </div>
+        </div>
         );
     }
 

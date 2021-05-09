@@ -21,9 +21,9 @@
 
     function Wrapper(props) {
         return (
-            <main className="wrapper mb-4 pb-5" data-component="Wrapper">
+            <main className="wrapper" data-component="Wrapper">
                 <Row>
-                    <Col className="col-md-1">
+                    <Col className="col-lg-1">
                         <Nav></Nav>
                     </Col>
                     <Col>

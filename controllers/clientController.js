@@ -38,6 +38,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       console.log(req.body);
+      const clientData = await Client.create(req.body);
       res.status(200).json(clientData);
     } catch (err) {
       console.log(err);

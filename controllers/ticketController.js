@@ -1,4 +1,4 @@
-const { Ticket, Client, User, Org, Team } = require("../models");
+const { Ticket, Comment, Client, User, Org, Team } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
@@ -36,6 +36,15 @@ module.exports = {
                 as: 'contact'
               }
             ],
+          },
+          {
+            model: Comment,
+            include: [
+              {
+                model: User,
+                attributes: ['first_name', 'last_name'],
+              }
+            ],            
           },
         ],
       });

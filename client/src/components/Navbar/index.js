@@ -13,7 +13,7 @@
 /* ----Define Queries For Rendering Mobile Nav or Non-Mobile(default) Nav---- */
 
 
-    // Will render mobile friend nav, horizontal with diff layout
+    // Will render mobile friendly nav, horizontal with diff layout
     const Mobile = ({ children }) => {
         const isMobile = useMediaQuery({ maxWidth: 1025 })
         return isMobile ? children : null
@@ -55,7 +55,7 @@
                                         </Link>
                                     </li>
                                     <li className=" nav-item my-2 text-cente mr-2">
-                                        <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
+                                        <Link to="/team" className={location.pathname==="/team" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                 <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
@@ -67,7 +67,7 @@
                                         </Link>
                                     </li>
                                     <li  className=" nav-item my-2 text-center mr-2">
-                                        <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
+                                        <Link to="/profile" className={location.pathname==="/profile" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -90,10 +90,10 @@
                             <button className="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            <a className="navbar-brand mx-auto" href="/">Divvy</a>
+                            <a className="navbar-brand mx-auto px-2" href="/">Divvy</a>
                             <div className="collapse navbar-collapse flex-column" id="navbarNav">
                                 <ul className="navbar-nav flex-column">
-                                    <li className="nav-item px-0 border-left my-2 text-center" href="/">
+                                    <li className="nav-item px-0 my-2 text-center" href="/">
                                         <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -104,8 +104,8 @@
                                             </div>
                                         </Link>
                                     </li>
-                                    <li className=" nav-item border-left my-2 text-center">
-                                        <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
+                                    <li className=" nav-item my-2 text-center">
+                                        <Link to="/team" className={location.pathname==="/team" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                 <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
@@ -116,8 +116,8 @@
                                             </div>
                                         </Link>
                                     </li>
-                                    <li  className=" nav-item border-left my-2 text-center">
-                                        <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
+                                    <li  className=" nav-item my-2 text-center">
+                                        <Link to="/profile" className={location.pathname==="/profile" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>

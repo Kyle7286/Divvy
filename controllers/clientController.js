@@ -48,6 +48,12 @@ module.exports = {
   update: async function (req, res) {
     try {
       console.log(req.body);
+      console.log(`req.params.id: ${req.params.id}`);
+      const clientData = await Client.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      });
       res.status(200).json(clientData);
     } catch (err) {
       console.log(err);

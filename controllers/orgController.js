@@ -44,6 +44,12 @@ module.exports = {
   update: async function (req, res) {
     try {
       console.log(req.body);
+      console.log(`req.params.id: ${req.params.id}`);
+      const orgData = await Org.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      });
       res.status(200).json(orgData);
     } catch (err) {
       console.log(err);

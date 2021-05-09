@@ -15,26 +15,13 @@ Ticket.init(
         client_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'client',
-            //     key: 'id',
-            // },
         },
         team_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'team',
-            //     key: 'id',
-            // },
         },
-        user_id_assigned: {
+        assigned_to: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            // references: {
-            //     model: 'user',
-            //     key: 'id',
-            // },
         },
         title: {
             type: DataTypes.STRING,
@@ -52,7 +39,7 @@ Ticket.init(
                 max: 3,
                 isNumeric: true,
                 len:[1],
-              },
+            },
         },
         priority: {
             type: DataTypes.STRING,
@@ -64,14 +51,6 @@ Ticket.init(
                 len:[1],
               },
         },
-        user_id_created: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            // references: {
-            //     model: 'user',
-            //     key: 'id',
-            // },
-        },
         date_created: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -79,16 +58,8 @@ Ticket.init(
                 isDate: true
             },
         },
-        date_due: {
+        date_completed: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isDate: true
-            },
-        },
-        date_closed: {
-            type: DataTypes.STRING,
-            allowNull: false,
             validate: {
                 isDate: true
             },

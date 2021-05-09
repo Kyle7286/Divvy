@@ -24,7 +24,6 @@ module.exports = {
           },
         ],
         });
-      console.log(orgData);
       res.status(200).json(orgData);
     } catch (err) {
       console.log(err);

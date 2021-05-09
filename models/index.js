@@ -1,87 +1,107 @@
 const User = require('./user');
 const Org = require('./org');
 const Team = require('./team');
-// const Ticket = require('./ticket');
+const Client = require('./client');
+const Ticket = require('./ticket');
 // const Comments = require('./comments');
-// const Client = require('./client');
+
+// ORG ASSOCATIONS
 
 Org.hasMany(User, {
   foreignKey: 'org_id',
+  onDelete: 'CASCADE'
 });
 
 User.belongsTo(Org, {
   foreignKey: 'org_id',
+  onDelete: 'CASCADE'
 });
+
+// TEAM ASSOCATIONS
 
 Org.hasMany(Team, {
   foreignKey: 'org_id',
+  onDelete: 'CASCADE'
 });
 
 Team.belongsTo(Org, {
   foreignKey: 'org_id',
+  onDelete: 'CASCADE'
 });
 
-// Team.hasMany(User, {
-//   foreignKey: 'team_id',
-// });
+Team.hasMany(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// User.belongsTo(Team, {
-//   foreignKey: 'user_id',
-// });
+User.belongsTo(Team, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// Company.hasMany(Client, {
-//   foreignKey: 'company_id',
-// });
+// CLIENT ASSOCATIONS
 
+Org.hasMany(Client, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
 
-// User.belongsTo(Team, {
-//   foreignKey: 'team_id',
-// });
+Client.belongsTo(Org, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
 
-// User.hasMany(Ticket, {
-//   foreignKey: 'team_id',
-// });
+Client.hasMany(User, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+  as: 'contact'
+});
 
-// Ticket.hasMany(User, {
-//   foreignKey: 'user_id',
-// });
+User.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+  as: 'contact'
+});
 
-// Client.hasMany(Ticket, {
-//   foreignKey: 'client_id',
-// });
+// TICKET ASSOCATIONS
 
-// Location.belongsToMany(Traveller, {
-//   // Define the third table needed to store the foreign keys
-//   through: {
-//     model: Trip,
-//     unique: false
-//   },
-//   // Define an alias for when data is retrieved
-//   as: 'location_travellers'
-// });
+Ticket.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+});
 
-// Team.hasMany(Ticket, {
-//   foreignKey: 'team_id',
-// });
+Client.hasMany(Ticket, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+});
 
-// User.hasMany(Comments, {
-//   foreignKey: 'user_id',
-// });
+Ticket.belongsTo(User, {
+  foreignKey: 'assigned_to',
+  onDelete: 'CASCADE',
+  as: 'assigned_user'
+});
 
-// Comments.belongsTo(User, {
-//   foreignKey: 'user_id',
-// });
+User.hasMany(Ticket, {
+  foreignKey: 'assigned_to',
+  onDelete: 'CASCADE',
+  as: 'assigned_user'
+});
 
-// Comments.belongsTo(Ticket, {
-//   foreignKey: 'ticket_id',
-// });
+Ticket.belongsTo(Team, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE',
+});
 
+Team.hasMany(Ticket, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE',
+});
 
 module.exports = {
   User,
   Org,
-  Team
-  // Ticket,
+  Team,
+  Client,
+  Ticket,
   // Comments,
-  // Client
 };

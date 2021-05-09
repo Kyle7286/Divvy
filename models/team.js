@@ -15,18 +15,18 @@ Team.init(
         org_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'org',
-                key: 'id',
-            },
+            // references: {
+            //     model: 'org',
+            //     key: 'id',
+            // },
         },
         manager_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
+            // references: {
+            //     model: 'user',
+            //     key: 'id',
+            // },
         },
         name: {
             type: DataTypes.STRING,

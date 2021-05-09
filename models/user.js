@@ -19,24 +19,12 @@ User.init(
         org_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'org',
-            //     key: 'id',
-            // },
         },
         client_id: {
             type: DataTypes.INTEGER,
-            // references: {
-            //     model: 'client',
-            //     key: 'id',
-            // },
         },
         team_id: {
             type: DataTypes.INTEGER,
-            // references: {
-            //     model: 'team',
-            //     key: 'id',
-            // },
         },
         first_name: {
             type: DataTypes.STRING,

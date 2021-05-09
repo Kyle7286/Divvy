@@ -12,19 +12,23 @@ Client.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        company_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        addrLine1: {
+        org_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        contact_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        address_1: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        addrLine2: {
+        address_2: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -36,7 +40,7 @@ Client.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        zipCode: {
+        zip: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -44,31 +48,6 @@ Client.init(
                 len: [5],
             },
         },
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
-            },
-        },
-        phoneNumber: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-              isNumeric: true,
-              len:[10],
-            },
-          },
     },
     {
         sequelize,

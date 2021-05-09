@@ -1,4 +1,4 @@
-const db = require("../models");
+const { Ticket, Client, User, Org, Team } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
@@ -11,10 +11,35 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  findById: function (req, res) {
+  findById: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const ticketData = await Ticket.findOne({
+        where: { id: req.params.id },
+        include: [
+          {
+            model: User,
+            attributes: ['first_name', 'last_name'],
+            as: 'assigned_user'
+          },
+          {
+            model: Team,
+            attributes: ['name'],
+          },
+          {
+            model: Client,
+            attributes: ['name'],
+            include: [
+              {
+                model: User,
+                attributes: ['first_name', 'last_name'],
+                as: 'contact'
+              }
+            ],
+          },
+        ],
+      });
+      res.status(200).json(ticketData)
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

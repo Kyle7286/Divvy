@@ -23,7 +23,7 @@
         return (
             <main className="wrapper" data-component="Wrapper">
                 <Row>
-                    <Col className="col-sm-1">
+                    <Col className="col-lg-1">
                         <Nav></Nav>
                     </Col>
                     <Col>

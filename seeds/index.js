@@ -8,7 +8,7 @@ const seedUser = require('./user-seeds');
 const seedTeam = require('./team-seeds');
 const seedClient = require('./client-seeds');
 const seedTicket = require('./ticket-seeds');
-// const seedComment = require('./comment-seeds');
+const seedComment = require('./comment-seeds');
 
 
 // Import the database connection instance from connection / config
@@ -27,7 +27,7 @@ const seedAll = async () => {
     await sequelize.sync({ force: true }); // Force true adds a drop table if exists- so it will override any existing data we have in there. 
 
     console.log('\n----- DATABASE SYNCED -----\n');
-    
+
     await seedOrg();
     console.log('\n----- ORG SEEDED -----\n');
 
@@ -39,13 +39,12 @@ const seedAll = async () => {
 
     await seedTeam();
     console.log('\n----- TEAMS SEEDED -----\n');
-    
 
     await seedTicket();
     console.log('\n----- TICKETS SEEDED -----\n');
 
-        // await seedComment();
-    // console.log('\n----- COMMENTS SEEDED -----\n');
+    await seedComment();
+    console.log('\n----- COMMENTS SEEDED -----\n');
 
     process.exit(0);
 

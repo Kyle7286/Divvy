@@ -3,7 +3,7 @@ const Org = require('./org');
 const Team = require('./team');
 const Client = require('./client');
 const Ticket = require('./ticket');
-// const Comments = require('./comments');
+const Comment = require('./comment');
 
 // ORG ASSOCATIONS
 
@@ -97,11 +97,34 @@ Team.hasMany(Ticket, {
   onDelete: 'CASCADE',
 });
 
+// COMMENT ASSOCATIONS
+
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+})
+
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
+Ticket.hasMany(Comment, {
+  foreignKey: 'ticket_id',
+  onDelete: 'CASCADE',
+})
+
+Comment.belongsTo(Ticket, {
+  foreignKey: 'ticket_id',
+  onDelete: 'CASCADE',
+});
+
+
 module.exports = {
   User,
   Org,
   Team,
   Client,
   Ticket,
-  // Comments,
+  Comment,
 };

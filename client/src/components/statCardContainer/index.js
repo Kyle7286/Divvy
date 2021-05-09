@@ -3,20 +3,20 @@
 /* -------------------------------------------------------------------------- */
 
     import React from "react";
-    
+    import StatCard from "../StatCard";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-    function StartCard (props) {
+
+    function StatCardContainer () {
         return (
-            <div className="card col-3 m-2 text-center float-left px-0" data-component="employeecard">
-            <div className="card-body p-1">
-                <h4 className="card-text">Stat</h4>
-                <p className="card-text">#Tickets</p>
+            <div className="d-flex flex-wrap justify-content-center" data-component="StatCardContainer">
+                <StatCard/>
+                <StatCard/>
+                <StatCard/>
             </div>
-        </div>
         );
     }
 
@@ -24,4 +24,4 @@
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-    export default StartCard;
+    export default StatCardContainer;

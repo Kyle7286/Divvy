@@ -43,7 +43,7 @@
                             <a className="navbar-brand mx-auto" href="/">Divvy</a>
                             <div className="collapse navbar-collapse text-center justify-content-center" id="navbarNav">
                                 <ul className="navbar-nav flex-row justify-content-center">
-                                    <li className="nav-item px-0 my-2 text-center mr-2" href="/">
+                                    <li className="nav-item px-0 my-2 text-center mr-4" href="/">
                                         <Link to="/" className={location.pathname==="/" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -54,7 +54,7 @@
                                             </div>
                                         </Link>
                                     </li>
-                                    <li className=" nav-item my-2 text-cente mr-2">
+                                    <li className=" nav-item my-2 text-cente mr-4">
                                         <Link to="/team" className={location.pathname==="/team" || location.pathname==="" ? "nav-link active ps-2" : "nav-link ps-2"}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>

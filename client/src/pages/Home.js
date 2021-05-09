@@ -8,8 +8,8 @@
     import Col from "../components/Column";
     import TicketTable from "../components/TicketTable";
     import SectionHeader from "../components/SectionHeader";
-    import StatCard from "../components/StatCard";
     import EmployeeCardContainer from "../components/EmployeeCardContainer";
+    import StatCardContainer from "../components/statCardContainer";
 
 
    
@@ -27,22 +27,17 @@
          return (
             <Container>
                 <Row className="mb-4 d-flex flex-row justify-content-center">
-                    <StatCard/>
-                    <StatCard/>
-                    <StatCard/>
-                    <StatCard/>
+                   <Col>
+                        <StatCardContainer/>
+                   </Col>
                 </Row>
                 <Row>
                     <Col className="col-lg-8 mx-0 p-0">
-                        <SectionHeader>
-                            Open Tickets
-                        </SectionHeader>
+                        <SectionHeader>Open Tickets</SectionHeader>
                         <TicketTable/>
                     </Col>
                     <Col className="col-lg-4 align-items-center">
-                        <SectionHeader>
-                            Availible Employees
-                        </SectionHeader>
+                        <SectionHeader>Availible Employees</SectionHeader>
                         <EmployeeCardContainer/>
                     </Col>
                 </Row>

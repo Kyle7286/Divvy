@@ -1,3 +1,107 @@
+const User = require('./user');
+const Org = require('./org');
+const Team = require('./team');
+const Client = require('./client');
+const Ticket = require('./ticket');
+// const Comments = require('./comments');
+
+// ORG ASSOCATIONS
+
+Org.hasMany(User, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+User.belongsTo(Org, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+// TEAM ASSOCATIONS
+
+Org.hasMany(Team, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+Team.belongsTo(Org, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+Team.hasMany(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+User.belongsTo(Team, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+// CLIENT ASSOCATIONS
+
+Org.hasMany(Client, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+Client.belongsTo(Org, {
+  foreignKey: 'org_id',
+  onDelete: 'CASCADE'
+});
+
+Client.hasMany(User, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+  as: 'contact'
+});
+
+User.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+  as: 'contact'
+});
+
+// TICKET ASSOCATIONS
+
+Ticket.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+});
+
+Client.hasMany(Ticket, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE',
+});
+
+Ticket.belongsTo(User, {
+  foreignKey: 'assigned_to',
+  onDelete: 'CASCADE',
+  as: 'assigned_user'
+});
+
+User.hasMany(Ticket, {
+  foreignKey: 'assigned_to',
+  onDelete: 'CASCADE',
+  as: 'assigned_user'
+});
+
+Ticket.belongsTo(Team, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE',
+});
+
+Team.hasMany(Ticket, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE',
+});
+
 module.exports = {
-  Book: require("./book")
+  User,
+  Org,
+  Team,
+  Client,
+  Ticket,
+  // Comments,
 };

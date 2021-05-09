@@ -33,13 +33,13 @@
                     <StatCard/>
                 </Row>
                 <Row>
-                    <Col className="col-8 mx-0 p-0">
+                    <Col className="col-sm-8 mx-0 p-0">
                         <SectionHeader>
                             Open Tickets
                         </SectionHeader>
                         <TicketTable/>
                     </Col>
-                    <Col className="col-md-4 align-items-center">
+                    <Col className="col-sm-4 align-items-center">
                         <SectionHeader>
                             Availible Employees
                         </SectionHeader>

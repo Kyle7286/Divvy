@@ -6,6 +6,7 @@
   import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
   import Wrapper from "./components/Wrapper";
   import Home from "./pages/Home";
+  import './index.css';
   
 
 /* -------------------------------------------------------------------------- */

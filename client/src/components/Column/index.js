@@ -15,7 +15,7 @@ import React from "react";
 */
 
 function Col (props) {
-  return <div className="col-md" data-component="Col" {...props} />;
+  return <div className="col-sm" data-component="Col" {...props} />;
 }
 
 /* -------------------------------------------------------------------------- */

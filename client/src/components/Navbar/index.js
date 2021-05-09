@@ -4,6 +4,7 @@
 
     import React from "react";
     import { Link, useLocation } from "react-router-dom";
+    import "./index.css"
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -14,12 +15,13 @@
         const location=useLocation();
 
         return (
-            <nav className="navbar flex-column bg-dark navbar-expand-lg navbar-dark vh-100" data-component="Navbar">
+            <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark" data-component="Navbar">
                 <div>
-                    <a className="navbar-brand mx-auto" href="/">Divvy</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                   
+                    <button className="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
+                    <a className="navbar-brand mx-auto" href="/">Divvy</a>
                     <div className="collapse navbar-collapse flex-column" id="navbarNav">
                         <ul className="navbar-nav flex-column">
                             <li className="nav-item px-0 border-left my-2 text-center" href="/">

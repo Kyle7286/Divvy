@@ -1,0 +1,11 @@
+/* 
+    max height to hieght of responsive col at viewports below 600px
+*/
+
+@media screen and (max-width:768px) {
+    .navbar {
+        max-height: 100%; 
+     }
+}
+
+

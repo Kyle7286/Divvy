@@ -34,6 +34,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       console.log(req.body);
+      const orgData = await Org.create(req.body);
       res.status(200).json(orgData);
     } catch (err) {
       console.log(err);

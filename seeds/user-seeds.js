@@ -68,7 +68,7 @@ const userData = [
     // USER 5 - Client
     {
         org_id: 1,
-        client_id: 2,
+        client_id: null,
         first_name: "Maximus",
         last_name: "Aurellias",
         role: 2,

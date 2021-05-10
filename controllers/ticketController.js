@@ -1,11 +1,14 @@
 const { Ticket, Comment, Client, User, Org, Team } = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the ticketsController
 module.exports = {
-  findAll: function (req, res) {
+  // returns all tickets in the db as an array of objects
+  findAll: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const ticketData = await Ticket.findAll();
+      res.status(200).json(ticketData);
+      
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

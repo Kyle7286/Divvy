@@ -3,8 +3,8 @@
 /* -------------------------------------------------------------------------- */
 
   import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
-  import React from "react";
-  import {useMediaQuery} from 'react-responsive';
+  import React, { useState, useEffect } from "react";
+  
 
 /* -------------------------------------------------------------------------- */
 /*                     Define Employee Table SubComponents                    */
@@ -184,7 +184,27 @@
 
   */
 
-  function TicketTable() {
+  function TicketTable(props) {
+
+    // Check props
+    console.log("TicketTable props is" , props);
+    console.log("allTickets is set to" , props.allTickets);
+
+    // Create new array matching accessor order
+    let ticket = props.allTickets.map (ticket => 
+      (
+        {
+          id:ticket.id,
+          title: ticket.title,
+          firm: ticket.client_id, // have to update the get all to include clients
+          contact_name: 'Update API Call',
+          contact_phone: 'Update API Call',
+          priority: ticket.priority,
+          status: ticket.status,
+          assignee: ticket.assigned_to
+        }
+      )
+    );
 
     // Define columns for table
     const columns = React.useMemo(
@@ -226,53 +246,46 @@
     )
 
     // Define data for table
+      // //eslint-disable-next-line
+      const data = React.useMemo(() => ticket);
+        console.log('api data for tickets is', data);
 
-      /*
-
-        Here is what it looks like if passing an array of objects in- just match to headers. 
-        When ready, need to use this with data passed in from DB for tickets
-
-        //eslint-disable-next-line
-        //const data = React.useMemo(() => users)
-
-      */
-  
-          
+      
       // Testing view with some seeded data based on latest model
-      const data = React.useMemo(
-        () => [
-            {
-              id:'id1',
-              title: 'Ticket 1',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
-            },
-            {
-              id:'id2',
-              title: 'Ticket 2',
-              firm:'firm2',
-              contact_name: 'firm contact name 2',
-              contact_phone: 'firm contact phone 2',
-              priority: 'priority2',
-              status: 'status2',
-              assignee: 'assignee2'
-            },
-            {
-              id:'id3',
-              title: 'Ticket 3',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
-            }
-          ]
-      )
+      // const data = React.useMemo(
+      //   () => [
+      //       {
+      //         id:'id1',
+      //         title: 'Ticket 1',
+      //         firm:'firm1',
+      //         contact_name: 'firm contact name 1',
+      //         contact_phone: 'firm contact phone 1',
+      //         priority: 'priority1',
+      //         status: 'status1',
+      //         assignee: 'assignee1'
+      //       },
+      //       {
+      //         id:'id2',
+      //         title: 'Ticket 2',
+      //         firm:'firm2',
+      //         contact_name: 'firm contact name 2',
+      //         contact_phone: 'firm contact phone 2',
+      //         priority: 'priority2',
+      //         status: 'status2',
+      //         assignee: 'assignee2'
+      //       },
+      //       {
+      //         id:'id3',
+      //         title: 'Ticket 3',
+      //         firm:'firm1',
+      //         contact_name: 'firm contact name 1',
+      //         contact_phone: 'firm contact phone 1',
+      //         priority: 'priority1',
+      //         status: 'status1',
+      //         assignee: 'assignee1'
+      //       }
+      //     ]
+      // )
           
 
     // Return the Table With Data For Rendering and the Search Filter

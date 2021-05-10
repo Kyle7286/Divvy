@@ -2,7 +2,7 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-    import React from "react";  
+    import React, { useEffect, useState } from "react"; 
     import Container from "../components/Container";
     import Row from "../components/Row";
     import Col from "../components/Column";
@@ -12,6 +12,7 @@
     import EmployeeCardContainer from "../components/EmployeeCardContainer";
     import StatCardContainer from "../components/StatCardContainer";
     import {useMediaQuery} from 'react-responsive';
+    import API from "../utils/API";
 
 
 /* -------------------------------------------------------------------------- */
@@ -41,6 +42,32 @@
     */
 
     function Home(){
+
+        // Set the initial state of the component
+        const [tickets, setTickets] = useState({})
+
+        // Load all tickets and store them in tickets
+
+            // Call when components have loaded
+            useEffect(() => {
+                getAllTickets()
+            },[])
+
+            // Load All Tickets and Set Them to state
+            function getAllTickets () {
+                API.getAllTickets()
+                    .then (res =>
+                        setTickets(res.data)
+                    )
+                    .catch(err => console.log(err));
+            };
+
+            // FUTURE: DELETE TICKET
+
+            // FUTURE: CREATE TICKET
+
+
+        // Returning the component for rendering within App.js
          return (
             <Container>
                 <Row className="mb-4 d-flex flex-row justify-content-center">
@@ -52,7 +79,9 @@
                     <Col className="col-lg-8 mx-0 p-0">
                         <SectionHeader>Open Tickets</SectionHeader>
                         <Default>
-                            <TicketTable/>
+                            <TicketTable
+                                allTickets={tickets}
+                            />
                         </Default>
                         <Mobile>
                             <TicketTableMobile/>

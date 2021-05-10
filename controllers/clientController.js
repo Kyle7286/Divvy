@@ -54,6 +54,7 @@ module.exports = {
           id: req.params.id
         }
       });
+
       res.status(200).json(clientData);
     } catch (err) {
       console.log(err);
@@ -63,6 +64,18 @@ module.exports = {
   remove: async function (req, res) {
     try {
       console.log(req.body);
+      const clientData = await Client.destroy({
+        where: {
+          id: req.params.id
+        }
+      });
+
+      // If no data found with that ID then return message
+      if (!clientData) {
+        res.status(404).json({ message: `Delete not possible. No Client with id ${req.params.id} found in the database!` });
+        return;
+      }
+
       res.status(200).json(clientData);
     } catch (err) {
       console.log(err);

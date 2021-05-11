@@ -63,7 +63,19 @@ module.exports = {
   remove: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const teamData = await Team.destroy({
+        where: {
+          id: req.params.id
+        }
+      });
+
+      // If no data found with that ID then return message
+      if (!teamData) {
+        res.status(404).json({ message: `Delete not possible. No Team with id ${req.params.id} found in the database!` });
+        return;
+      }
+
+      res.status(200).json(teamData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

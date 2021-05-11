@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Team extends Model {}
+class Team extends Model { }
 
 Team.init(
     {
@@ -15,22 +15,15 @@ Team.init(
         org_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'org',
-            //     key: 'id',
-            // },
         },
-        manager_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            // references: {
-            //     model: 'user',
-            //     key: 'id',
-            // },
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
         },
     },
     {

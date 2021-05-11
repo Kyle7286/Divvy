@@ -2,10 +2,11 @@ const { Team, Org, User } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
-  findAll: function (req, res) {
+  findAll: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const teamData = await Team.findAll({});
+      res.status(200).json(teamData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -33,28 +34,48 @@ module.exports = {
       res.status(422).json(err);
     }
   },
-  create: function (req, res) {
+  create: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const teamData = await Team.create(req.body);
+      res.status(200).json(teamData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);
     }
   },
-  update: function (req, res) {
+  update: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      console.log(`req.params.id: ${req.params.id}`);
+      const teamData = await Team.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      });
+
+      res.status(200).json(teamData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);
     }
   },
-  remove: function (req, res) {
+  remove: async function (req, res) {
     try {
       console.log(req.body);
-      res.status(200).json(req.body);
+      const teamData = await Team.destroy({
+        where: {
+          id: req.params.id
+        }
+      });
+
+      // If no data found with that ID then return message
+      if (!teamData) {
+        res.status(404).json({ message: `Delete not possible. No Team with id ${req.params.id} found in the database!` });
+        return;
+      }
+
+      res.status(200).json(teamData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

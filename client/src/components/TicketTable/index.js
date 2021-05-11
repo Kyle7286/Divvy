@@ -157,10 +157,6 @@
 
   function TicketTable(props) {
 
-    // Check props
-    console.log("Props.allTickets as passed into Ticket Tables is..." , props.allTickets);
-
-
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
       (

@@ -69,32 +69,36 @@
 
         // Returning the component for rendering within App.js pasing all tickets as props
          return (
-            <Container>
-                <Row className="mb-4 d-flex flex-row justify-content-center">
-                   <Col>
-                        <StatCardContainer/>
-                   </Col>
-                </Row>
-                <Row>
-                    <Col className="col-lg-8 mx-0 p-0">
-                        <SectionHeader>Open Tickets</SectionHeader>
-                        <Default>
-                            <TicketTable
-                                allTickets={tickets.length ? (tickets) : ([])}
-                            />
-                        </Default>
-                        <Mobile>
-                            <TicketTableMobile
-                                allTickets={tickets.length ? (tickets) : ([])}
-                            />
-                        </Mobile>
+            
+                <Container>
+                    <Row className="mb-4 d-flex flex-row justify-content-center">
+                    <Col>
+                        <StatCardContainer
+                            allTickets={tickets.length ? (tickets) : ([])}
+                        />
                     </Col>
-                    <Col className="col-lg-4 align-items-center">
-                        <SectionHeader>Availible Employees</SectionHeader>
-                        <EmployeeCardContainer/>
-                    </Col>
-                </Row>
-            </Container>
+                    </Row>
+                    <Row>
+                        <Col className="col-lg-8 mx-0 p-0">
+                            <SectionHeader>Open Tickets</SectionHeader>
+                            <Default>
+                                <TicketTable
+                                    allTickets={tickets.length ? (tickets) : ([])}
+                                />
+                            </Default>
+                            <Mobile>
+                                <TicketTableMobile
+                                    allTickets={tickets.length ? (tickets) : ([])}
+                                />
+                            </Mobile>
+                        </Col>
+                        <Col className="col-lg-4 align-items-center">
+                            <SectionHeader>Availible Employees</SectionHeader>
+                            <EmployeeCardContainer/>
+                        </Col>
+                    </Row>
+                </Container>
+            
         );
     }
 

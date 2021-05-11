@@ -65,7 +65,7 @@ module.exports = {
 
       // If no data found with that ID then return message
       if (!userData) {
-        res.status(404).json({ message: `Delete not possible. No Team with id ${req.params.id} found in the database!` });
+        res.status(404).json({ message: `Delete not possible. No User with id ${req.params.id} found in the database!` });
         return;
       }
 

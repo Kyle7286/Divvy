@@ -13,7 +13,6 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      console.log(req.body);
       const ticketData = await Ticket.findOne({
         where: { id: req.params.id },
         include: [

@@ -168,12 +168,12 @@
         {
           id:ticket.id,
           title: ticket.title,
-          firm: "", 
-          contact_name: "",
-          contact_phone: "",
+          firm: ticket.client.name, 
+          contact_name: ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name} ` : "" ,
+          contact_phone: ticket.client.contact[0] ? ticket.client.contact[0].phone_number : "" ,
           priority: ticket.priority,
           status: ticket.status,
-          assignee: ticket.assigned_user
+          assignee: ticket.assignedUser ? `${ticket.assignedUser.first_name} ${ticket.assignedUser.last_name} ` : ""
         }
       )
     );

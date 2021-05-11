@@ -13,23 +13,19 @@ module.exports = {
           {
             model: User,
             attributes: ['first_name', 'last_name'],
-            as: 'assigned_user'
+            as: 'assignedUser'
           },
-          // {
-          //   model: Team,
-          //   attributes: ['name'],
-          // },
-          // {
-          //   model: Client,
-          //   attributes: ['name'],
-          //   include: [
-          //     {
-          //       model: User,
-          //       attributes: ['first_name', 'last_name', 'phone_number'],
-          //       as: 'contact'
-          //     }
-          //   ],
-          // },
+          {
+            model: Client,
+            attributes: ['name'],
+            include: [
+              {
+                model: User,
+                attributes: ['first_name', 'last_name', 'phone_number'],
+                as: 'contact'
+              }
+            ],
+          },
         ],
       }
       )

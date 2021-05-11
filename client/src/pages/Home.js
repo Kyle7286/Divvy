@@ -85,7 +85,7 @@
         /* ---------------------------- Component Render ---------------------------- */
          return (
             
-            <Container className="mx-2">
+            <Container className="mx-2 mt-3">
                 <Row className="mb-4 d-flex flex-row justify-content-center">
                     <Col>
                         <StatCardContainer

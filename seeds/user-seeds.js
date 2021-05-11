@@ -84,7 +84,10 @@ const userData = [
 ];
 
 // create function that bulk creates data using the array I created
-const seedUser = () => User.bulkCreate(userData);
+const seedUser = () => User.bulkCreate(userData, {
+    individualHooks: true,
+    returning: true,
+  });
 
 /* -------------------------------------------------------------------------- */
 /*                              Export the Module                             */

@@ -78,13 +78,13 @@ Client.hasMany(Ticket, {
 Ticket.belongsTo(User, {
   foreignKey: 'assigned_to',
   onDelete: 'CASCADE',
-  as: 'assignedUser'
+  as: 'ticketuser'
 });
 
 User.hasMany(Ticket, {
   foreignKey: 'assigned_to',
   onDelete: 'CASCADE',
-  as: 'assignedUser'
+  as: 'ticketuser'
 });
 
 Ticket.belongsTo(Team, {

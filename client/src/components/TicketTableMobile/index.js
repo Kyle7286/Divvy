@@ -24,7 +24,7 @@
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">
                         <span className="me-3 align-middle d-flex align-items-center text-primary"> 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                           </svg>
                         </span>
@@ -149,37 +149,23 @@
 /*                 Define Main Component For Exporting Default                */
 /* -------------------------------------------------------------------------- */
 
-  /*
-    Eventually, I need to get tickets back as an array of objects
-    from the db here, and map through like my example below to set
-    data to pass the table to render
+ 
 
-    firstly, I need to update the ticket table function to pass in props (right now
-    I just left it blank for testing)
-
-    Then use the below example as a guidline from my hw19 and create the array
-    from props.
+  function TicketTableMobile(props) {
 
     // Check props
-    console.log('props received from directory.js within EmployeeTable', props.results);
+    console.log("Props.allTickets as passed into Ticket Tables is..." , props.allTickets);
 
 
-    // Define a new array of user objects to pass to my table
-    let users = props.results.map (user => 
+    // Map through tickets and create a new object array matching my table accessors order and names
+    let ticket = props.allTickets.map (ticket => 
       (
         {
-          image:<img src={user.picture.thumbnail} alt="employee profile"/>, 
-          name: `${user.name.first} ${user.name.last}`,
-          phone: user.phone,
-          email: user.email,
-          dob: user.dob.date
+          id:ticket.id,
+          title: ticket.title,
         }
       )
     );
-
-  */
-
-  function TicketTableMobile() {
 
     // Define columns for table
     const columns = React.useMemo(
@@ -197,37 +183,9 @@
     )
 
     // Define data for table
-
-      /*
-
-        Here is what it looks like if passing an array of objects in- just match to headers. 
-        When ready, need to use this with data passed in from DB for tickets
-
         //eslint-disable-next-line
-        //const data = React.useMemo(() => users)
+        const data = React.useMemo(() => ticket)
 
-      */
-  
-          
-      // Testing view with some seeded data based on latest model
-      const data = React.useMemo(
-        () => [
-            {
-              id:'id1',
-              title: 'Get pumped about this mobile table!',
-            },
-            {
-              id:'id2',
-              title: 'Get more laptops for my boyz',
-             
-            },
-            {
-              id:'id3',
-              title: 'Fix the printer asap',
-            }
-          ]
-      )
-          
 
     // Return the Table With Data For Rendering and the Search Filter
       return (

@@ -61,4 +61,4 @@ const seedAll = async () => {
   seeds directory and trying to node index.js)
   */
 
-seedAll();
+  seedAll();

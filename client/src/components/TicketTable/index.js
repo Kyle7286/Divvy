@@ -3,8 +3,8 @@
 /* -------------------------------------------------------------------------- */
 
   import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
-  import React from "react";
-  import {useMediaQuery} from 'react-responsive';
+  import React, { useState, useEffect } from "react";
+  
 
 /* -------------------------------------------------------------------------- */
 /*                     Define Employee Table SubComponents                    */
@@ -29,7 +29,7 @@
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">
                         <span className="me-3 align-middle d-flex align-items-center text-primary"> 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                           </svg>
                         </span>
@@ -154,48 +154,39 @@
 /*                 Define Main Component For Exporting Default                */
 /* -------------------------------------------------------------------------- */
 
-  /*
-    Eventually, I need to get tickets back as an array of objects
-    from the db here, and map through like my example below to set
-    data to pass the table to render
 
-    firstly, I need to update the ticket table function to pass in props (right now
-    I just left it blank for testing)
-
-    Then use the below example as a guidline from my hw19 and create the array
-    from props.
+  function TicketTable(props) {
 
     // Check props
-    console.log('props received from directory.js within EmployeeTable', props.results);
+    console.log("Props.allTickets as passed into Ticket Tables is..." , props.allTickets);
 
 
-    // Define a new array of user objects to pass to my table
-    let users = props.results.map (user => 
+    // Map through tickets and create a new object array matching my table accessors order and names
+    let ticket = props.allTickets.map (ticket => 
       (
         {
-          image:<img src={user.picture.thumbnail} alt="employee profile"/>, 
-          name: `${user.name.first} ${user.name.last}`,
-          phone: user.phone,
-          email: user.email,
-          dob: user.dob.date
+          id:ticket.id,
+          title: ticket.title,
+          firm: ticket.client.name, 
+          contact_name: ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name} ` : "" ,
+          contact_phone: ticket.client.contact[0] ? ticket.client.contact[0].phone_number : "" ,
+          priority: ticket.priority,
+          status: ticket.status,
+          assignee: ticket.assignedUser ? `${ticket.assignedUser.first_name} ${ticket.assignedUser.last_name} ` : ""
         }
       )
     );
-
-  */
-
-  function TicketTable() {
 
     // Define columns for table
     const columns = React.useMemo(
       () => [
         {
           Header: 'ID',
-          accessor: 'id',
+          accessor: 'id', // accessor is the "key" in the data to use below
         },
         {
           Header: 'Title',
-          accessor: 'title', // accessor is the "key" in the data to use below
+          accessor: 'title', 
         },
         {
           Header: 'Firm',
@@ -226,55 +217,10 @@
     )
 
     // Define data for table
+      // //eslint-disable-next-line
+      const data = React.useMemo(() => ticket);
 
-      /*
-
-        Here is what it looks like if passing an array of objects in- just match to headers. 
-        When ready, need to use this with data passed in from DB for tickets
-
-        //eslint-disable-next-line
-        //const data = React.useMemo(() => users)
-
-      */
-  
-          
-      // Testing view with some seeded data based on latest model
-      const data = React.useMemo(
-        () => [
-            {
-              id:'id1',
-              title: 'Ticket 1',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
-            },
-            {
-              id:'id2',
-              title: 'Ticket 2',
-              firm:'firm2',
-              contact_name: 'firm contact name 2',
-              contact_phone: 'firm contact phone 2',
-              priority: 'priority2',
-              status: 'status2',
-              assignee: 'assignee2'
-            },
-            {
-              id:'id3',
-              title: 'Ticket 3',
-              firm:'firm1',
-              contact_name: 'firm contact name 1',
-              contact_phone: 'firm contact phone 1',
-              priority: 'priority1',
-              status: 'status1',
-              assignee: 'assignee1'
-            }
-          ]
-      )
-          
-
+     
     // Return the Table With Data For Rendering and the Search Filter
       return (
         <div>

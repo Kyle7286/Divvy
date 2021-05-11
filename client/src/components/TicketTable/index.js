@@ -158,7 +158,6 @@
   function TicketTable(props) {
 
     // Check props
-    console.log("Props as passed into Ticket Tables is..." , props);
     console.log("Props.allTickets as passed into Ticket Tables is..." , props.allTickets);
 
 

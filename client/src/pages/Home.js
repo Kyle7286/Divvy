@@ -85,7 +85,9 @@
                             />
                         </Default>
                         <Mobile>
-                            <TicketTableMobile/>
+                            <TicketTableMobile
+                                allTickets={tickets.length ? (tickets) : ([])}
+                            />
                         </Mobile>
                     </Col>
                     <Col className="col-lg-4 align-items-center">

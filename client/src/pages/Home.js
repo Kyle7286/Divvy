@@ -50,24 +50,25 @@
 
             // Call when components have loaded
             useEffect(() => {
-                getAllTickets()
+                getTickets()
             },[])
 
             // Load All Tickets and Set Them to state
-            function getAllTickets () {
+            function getTickets () {
                 API.getAllTickets()
                     .then (res =>
                         setTickets(res.data)
                     )
                     .catch(err => console.log(err));
             };
+            console.log(tickets);
 
             // FUTURE: DELETE TICKET
 
             // FUTURE: CREATE TICKET
 
 
-        // Returning the component for rendering within App.js
+        // Returning the component for rendering within App.js pasing all tickets as props
          return (
             <Container>
                 <Row className="mb-4 d-flex flex-row justify-content-center">
@@ -80,7 +81,7 @@
                         <SectionHeader>Open Tickets</SectionHeader>
                         <Default>
                             <TicketTable
-                                allTickets={tickets}
+                                allTickets={tickets.length ? (tickets) : ([])}
                             />
                         </Default>
                         <Mobile>

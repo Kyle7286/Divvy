@@ -154,54 +154,26 @@
 /*                 Define Main Component For Exporting Default                */
 /* -------------------------------------------------------------------------- */
 
-  /*
-    Eventually, I need to get tickets back as an array of objects
-    from the db here, and map through like my example below to set
-    data to pass the table to render
-
-    firstly, I need to update the ticket table function to pass in props (right now
-    I just left it blank for testing)
-
-    Then use the below example as a guidline from my hw19 and create the array
-    from props.
-
-    // Check props
-    console.log('props received from directory.js within EmployeeTable', props.results);
-
-
-    // Define a new array of user objects to pass to my table
-    let users = props.results.map (user => 
-      (
-        {
-          image:<img src={user.picture.thumbnail} alt="employee profile"/>, 
-          name: `${user.name.first} ${user.name.last}`,
-          phone: user.phone,
-          email: user.email,
-          dob: user.dob.date
-        }
-      )
-    );
-
-  */
 
   function TicketTable(props) {
 
     // Check props
-    console.log("TicketTable props is" , props);
-    console.log("allTickets is set to" , props.allTickets);
+    console.log("Props as passed into Ticket Tables is..." , props);
+    console.log("Props.allTickets as passed into Ticket Tables is..." , props.allTickets);
 
-    // Create new array matching accessor order
+
+    // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
       (
         {
           id:ticket.id,
           title: ticket.title,
-          firm: ticket.client_id, // have to update the get all to include clients
-          contact_name: 'Update API Call',
-          contact_phone: 'Update API Call',
+          firm: "", 
+          contact_name: "",
+          contact_phone: "",
           priority: ticket.priority,
           status: ticket.status,
-          assignee: ticket.assigned_to
+          assignee: ticket.assigned_user
         }
       )
     );
@@ -211,11 +183,11 @@
       () => [
         {
           Header: 'ID',
-          accessor: 'id',
+          accessor: 'id', // accessor is the "key" in the data to use below
         },
         {
           Header: 'Title',
-          accessor: 'title', // accessor is the "key" in the data to use below
+          accessor: 'title', 
         },
         {
           Header: 'Firm',
@@ -248,44 +220,45 @@
     // Define data for table
       // //eslint-disable-next-line
       const data = React.useMemo(() => ticket);
-        console.log('api data for tickets is', data);
 
-      
-      // Testing view with some seeded data based on latest model
-      // const data = React.useMemo(
-      //   () => [
-      //       {
-      //         id:'id1',
-      //         title: 'Ticket 1',
-      //         firm:'firm1',
-      //         contact_name: 'firm contact name 1',
-      //         contact_phone: 'firm contact phone 1',
-      //         priority: 'priority1',
-      //         status: 'status1',
-      //         assignee: 'assignee1'
-      //       },
-      //       {
-      //         id:'id2',
-      //         title: 'Ticket 2',
-      //         firm:'firm2',
-      //         contact_name: 'firm contact name 2',
-      //         contact_phone: 'firm contact phone 2',
-      //         priority: 'priority2',
-      //         status: 'status2',
-      //         assignee: 'assignee2'
-      //       },
-      //       {
-      //         id:'id3',
-      //         title: 'Ticket 3',
-      //         firm:'firm1',
-      //         contact_name: 'firm contact name 1',
-      //         contact_phone: 'firm contact phone 1',
-      //         priority: 'priority1',
-      //         status: 'status1',
-      //         assignee: 'assignee1'
-      //       }
-      //     ]
-      // )
+      /*
+        // OLD SEED DATA FOR TABLE IF REQUIRED
+        
+        // const data = React.useMemo(
+        //   () => [
+        //       {
+        //         id:'id1',
+        //         title: 'Ticket 1',
+        //         firm:'firm1',
+        //         contact_name: 'firm contact name 1',
+        //         contact_phone: 'firm contact phone 1',
+        //         priority: 'priority1',
+        //         status: 'status1',
+        //         assignee: 'assignee1'
+        //       },
+        //       {
+        //         id:'id2',
+        //         title: 'Ticket 2',
+        //         firm:'firm2',
+        //         contact_name: 'firm contact name 2',
+        //         contact_phone: 'firm contact phone 2',
+        //         priority: 'priority2',
+        //         status: 'status2',
+        //         assignee: 'assignee2'
+        //       },
+        //       {
+        //         id:'id3',
+        //         title: 'Ticket 3',
+        //         firm:'firm1',
+        //         contact_name: 'firm contact name 1',
+        //         contact_phone: 'firm contact phone 1',
+        //         priority: 'priority1',
+        //         status: 'status1',
+        //         assignee: 'assignee1'
+        //       }
+        //     ]
+        // )
+      */
           
 
     // Return the Table With Data For Rendering and the Search Filter

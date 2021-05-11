@@ -43,7 +43,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log(`req.params.id: ${req.params.id}`);
       const teamData = await Team.update(req.body, {
         where: {
           id: req.params.id

@@ -15,15 +15,24 @@
         I put a few in just to see how the wrap woudl look
     */
 
-    function EmployeeCardContainer () {
+    function EmployeeCardContainer (props) {
+        // check props
+        console.log('props.allUsers for employee card container', props.allUsers);
+
+        // Take all users and filter it to employees
+        const allEmployees = props.allUsers.filter(user=> user.role=="0" ||user.role=="1");
+            console.log('filterd list of employees is', allEmployees);
+ 
+        // Render the Component by mapping employees and rending sub compoennt in container
         return (
+           
             <div className="d-flex flex-wrap justify-content-center">
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
+                 {allEmployees.map(employee => (
+                     <EmployeeCard
+                        employeeName={`${employee.first_name} ${employee.last_name}`}
+                        employeeTickets="#Tickets"
+                     />
+                ))}
             </div>
         );
     }

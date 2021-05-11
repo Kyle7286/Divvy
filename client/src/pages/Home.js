@@ -43,31 +43,56 @@
 
     function Home(){
 
-        // Set the initial state of the component
-        const [tickets, setTickets] = useState({})
+        /* ---------------------------------- State --------------------------------- */
+            // Set tickets
+            const [tickets, setTickets] = useState({})
+            // Set users
+            const [users, setUsers] = useState({})
 
-        // Load all tickets and store them in tickets
+        /* --------------------------------- Tickets -------------------------------- */
 
-            // Call when components have loaded
-            useEffect(() => {
-                getTickets()
-            },[])
+            // Load all tickets and store them in tickets
 
-            // Load All Tickets and Set Them to state
-            function getTickets () {
-                API.getAllTickets()
-                    .then (res =>
-                        setTickets(res.data)
-                    )
-                    .catch(err => console.log(err));
-            };
+                // Call when components have loaded
+                useEffect(() => {
+                    getTickets()
+                },[])
 
-            // FUTURE: DELETE TICKET
+                // Load All Tickets and Set Them to state
+                function getTickets () {
+                    API.getAllTickets()
+                        .then (res =>
+                            setTickets(res.data)
+                        )
+                        .catch(err => console.log(err));
+                };
 
-            // FUTURE: CREATE TICKET
+                // FUTURE: DELETE TICKET
+
+                // FUTURE: CREATE TICKET
+        
+        /* -------------------------------- Users---------------------------------- */
+        
+            // Load all employees and store them in employees
+
+                // Call when components have loaded
+                useEffect(() => {
+                    getUsers()
+                },[])
+
+                // Load all USERS
+                function getUsers () {
+                    API.getAllUsers()
+                        .then(res=>
+                            setUsers(res.data)
+                        )
+                        .catch(err => console.log(err));
+                }
+
+                console.log('users state is', users);
 
 
-        // Returning the component for rendering within App.js pasing all tickets as props
+        /* ---------------------------- Component Render ---------------------------- */
          return (
             
                 <Container>
@@ -94,7 +119,9 @@
                         </Col>
                         <Col className="col-lg-4 align-items-center">
                             <SectionHeader>Availible Employees</SectionHeader>
-                            <EmployeeCardContainer/>
+                            <EmployeeCardContainer
+                                allUsers={users.length ? (users) : ([])}
+                            />
                         </Col>
                     </Row>
                 </Container>

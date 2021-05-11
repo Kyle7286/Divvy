@@ -1,6 +1,6 @@
 const { User, Org, Team } = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the user
 module.exports = {
   findAll: async function (req, res) {
     try {

@@ -35,12 +35,6 @@
 /*                            Define Page Component                           */
 /* -------------------------------------------------------------------------- */
 
-    /*
-        This page component will render all our stuff below it within the bs container
-        class for spacing. This is our whitespace for making the UI alongside
-        the navbar. 
-    */
-
     function Home(){
 
         /* ---------------------------------- State --------------------------------- */
@@ -67,10 +61,6 @@
                         .catch(err => console.log(err));
                 };
 
-                // FUTURE: DELETE TICKET
-
-                // FUTURE: CREATE TICKET
-        
         /* -------------------------------- Users---------------------------------- */
         
             // Load all employees and store them in employees
@@ -95,37 +85,36 @@
         /* ---------------------------- Component Render ---------------------------- */
          return (
             
-                <Container>
-                    <Row className="mb-4 d-flex flex-row justify-content-center">
+            <Container className="mx-2">
+                <Row className="mb-4 d-flex flex-row justify-content-center">
                     <Col>
                         <StatCardContainer
                             allTickets={tickets.length ? (tickets) : ([])}
                         />
                     </Col>
-                    </Row>
-                    <Row>
-                        <Col className="col-lg-8 mx-0 p-0">
-                            <SectionHeader>Open Tickets</SectionHeader>
-                            <Default>
-                                <TicketTable
-                                    allTickets={tickets.length ? (tickets) : ([])}
-                                />
-                            </Default>
-                            <Mobile>
-                                <TicketTableMobile
-                                    allTickets={tickets.length ? (tickets) : ([])}
-                                />
-                            </Mobile>
-                        </Col>
-                        <Col className="col-lg-4 align-items-center">
+                </Row>
+                <Row>
+                    <Col className="col-lg-8 mx-0 px-0">
+                        <SectionHeader>Open Tickets</SectionHeader>
+                        <Default>
+                            <TicketTable
+                                allTickets={tickets.length ? (tickets) : ([])}
+                            />
+                        </Default>
+                        <Mobile>
+                            <TicketTableMobile
+                                allTickets={tickets.length ? (tickets) : ([])}
+                            />
+                        </Mobile>
+                    </Col>
+                    <Col className="col-lg-4 align-items-center">
                             <SectionHeader>Availible Employees</SectionHeader>
                             <EmployeeCardContainer
                                 allUsers={users.length ? (users) : ([])}
                             />
-                        </Col>
-                    </Row>
-                </Container>
-            
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 

@@ -61,7 +61,6 @@
                     )
                     .catch(err => console.log(err));
             };
-            console.log(tickets);
 
             // FUTURE: DELETE TICKET
 

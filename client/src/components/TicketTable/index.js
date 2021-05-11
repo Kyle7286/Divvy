@@ -29,7 +29,7 @@
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">
                         <span className="me-3 align-middle d-flex align-items-center text-primary"> 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                           </svg>
                         </span>
@@ -220,46 +220,7 @@
       // //eslint-disable-next-line
       const data = React.useMemo(() => ticket);
 
-      /*
-        // OLD SEED DATA FOR TABLE IF REQUIRED
-        
-        // const data = React.useMemo(
-        //   () => [
-        //       {
-        //         id:'id1',
-        //         title: 'Ticket 1',
-        //         firm:'firm1',
-        //         contact_name: 'firm contact name 1',
-        //         contact_phone: 'firm contact phone 1',
-        //         priority: 'priority1',
-        //         status: 'status1',
-        //         assignee: 'assignee1'
-        //       },
-        //       {
-        //         id:'id2',
-        //         title: 'Ticket 2',
-        //         firm:'firm2',
-        //         contact_name: 'firm contact name 2',
-        //         contact_phone: 'firm contact phone 2',
-        //         priority: 'priority2',
-        //         status: 'status2',
-        //         assignee: 'assignee2'
-        //       },
-        //       {
-        //         id:'id3',
-        //         title: 'Ticket 3',
-        //         firm:'firm1',
-        //         contact_name: 'firm contact name 1',
-        //         contact_phone: 'firm contact phone 1',
-        //         priority: 'priority1',
-        //         status: 'status1',
-        //         assignee: 'assignee1'
-        //       }
-        //     ]
-        // )
-      */
-          
-
+     
     // Return the Table With Data For Rendering and the Search Filter
       return (
         <div>

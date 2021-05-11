@@ -20,7 +20,7 @@ module.exports = {
           {
             model: User,
             attributes: ['first_name', 'last_name'],
-            as: 'assigned_user'
+            as: 'assignedUser'
           },
           {
             model: Team,

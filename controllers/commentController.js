@@ -4,7 +4,6 @@ const { Comment, Ticket, Team, Org, User } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      console.log(req.body);
       res.status(200).json(req.body);
     } catch (err) {
       console.log(err);
@@ -13,7 +12,6 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      console.log(req.body);
       const commentData = await Comment.findOne({
         where: { id: req.params.id },
         include: [
@@ -35,7 +33,6 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      console.log(req.body);
       res.status(200).json(req.body);
     } catch (err) {
       console.log(err);
@@ -44,7 +41,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log(req.body);
       res.status(200).json(req.body);
     } catch (err) {
       console.log(err);
@@ -53,7 +49,6 @@ module.exports = {
   },
   remove: async function (req, res) {
     try {
-      console.log(req.body);
       res.status(200).json(req.body);
     } catch (err) {
       console.log(err);

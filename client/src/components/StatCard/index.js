@@ -13,7 +13,7 @@
         return (
             <div className="card col-3 m-2 text-center float-left px-0" data-component="employeecard">
             <div className="card-body p-1">
-                <h5 className="card-text">{props.title}</h5>
+                <h6 className="card-text fw-bold">{props.title}</h6>
                 <p className="card-text">{props.amount}</p>
             </div>
         </div>

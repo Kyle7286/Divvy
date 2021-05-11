@@ -30,7 +30,7 @@
                  {allEmployees.map(employee => (
                      <EmployeeCard
                         employeeName={`${employee.first_name} ${employee.last_name}`}
-                        employeeTickets="#Tickets"
+                        employeeTickets="#Tks"
                      />
                 ))}
             </div>

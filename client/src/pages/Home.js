@@ -95,7 +95,7 @@
                 </Row>
                 <Row>
                     <Col className="col-lg-8 mx-0 px-0">
-                        <SectionHeader>Open Tickets</SectionHeader>
+                        <SectionHeader>Tickets</SectionHeader>
                         <Default>
                             <TicketTable
                                 allTickets={tickets.length ? (tickets) : ([])}

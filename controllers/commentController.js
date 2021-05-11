@@ -4,7 +4,8 @@ const { Comment, Ticket, Team, Org, User } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      res.status(200).json(req.body);
+      const commentData = await Comment.findAll({});
+      res.status(200).json(commentData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

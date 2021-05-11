@@ -4,7 +4,8 @@ const { User, Org, Team } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      res.status(200).json(req.body);
+      const userData = await User.findAll({});
+      res.status(200).json(userData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -12,8 +13,8 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      const userData = await User.findOne({ 
-        where: { id: req.params.id},
+      const userData = await User.findOne({
+        where: { id: req.params.id },
         include: [
           {
             model: Org,
@@ -24,7 +25,7 @@ module.exports = {
             attributes: ['name'],
           },
         ],
-        });
+      });
       res.status(200).json(userData);
     } catch (err) {
       console.log(err);

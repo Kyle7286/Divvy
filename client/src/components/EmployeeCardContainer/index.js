@@ -29,6 +29,7 @@
             <div className="d-flex flex-wrap justify-content-center">
                  {allEmployees.map(employee => (
                      <EmployeeCard
+                        key = {employee.id}
                         employeeName={`${employee.first_name} ${employee.last_name}`}
                         employeeTickets="#Tks"
                      />

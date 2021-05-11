@@ -170,7 +170,7 @@
           contact_phone: ticket.client.contact[0] ? ticket.client.contact[0].phone_number : "" ,
           priority: ticket.priority,
           status: ticket.status,
-          assignee: ticket.assignedUser ? `${ticket.assignedUser.first_name} ${ticket.assignedUser.last_name} ` : ""
+          assignee: ticket.ticketuser ? `${ticket.ticketuser.first_name} ${ticket.ticketuser.last_name} ` : ""
         }
       )
     );

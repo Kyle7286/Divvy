@@ -13,7 +13,7 @@ module.exports = {
           {
             model: User,
             attributes: ['first_name', 'last_name'],
-            as: 'assignedUser'
+            as: 'ticketuser'
           },
           {
             model: Client,
@@ -45,7 +45,7 @@ module.exports = {
           {
             model: User,
             attributes: ['first_name', 'last_name'],
-            as: 'assignedUser'
+            as: 'ticketuser'
           },
           {
             model: Team,

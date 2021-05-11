@@ -2,10 +2,10 @@ const { Ticket, Comment, Client, User, Org, Team } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
-  findAll: function (req, res) {
+  findAll: async function (req, res) {
     try {
-      console.log(req.body);
-      res.status(200).json(req.body);
+      const ticketData = await Ticket.findAll({});
+      res.status(200).json(ticketData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -54,7 +54,7 @@ module.exports = {
       res.status(422).json(err);
     }
   },
-  create: function (req, res) {
+  create: async function (req, res) {
     try {
       console.log(req.body);
       res.status(200).json(req.body);
@@ -63,7 +63,7 @@ module.exports = {
       res.status(422).json(err);
     }
   },
-  update: function (req, res) {
+  update: async function (req, res) {
     try {
       console.log(req.body);
       res.status(200).json(req.body);
@@ -72,7 +72,7 @@ module.exports = {
       res.status(422).json(err);
     }
   },
-  remove: function (req, res) {
+  remove: async function (req, res) {
     try {
       console.log(req.body);
       res.status(200).json(req.body);

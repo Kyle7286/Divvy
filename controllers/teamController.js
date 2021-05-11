@@ -4,7 +4,6 @@ const { Team, Org, User } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      console.log(req.body);
       const teamData = await Team.findAll({});
       res.status(200).json(teamData);
     } catch (err) {
@@ -14,7 +13,6 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      console.log(req.body);
       const teamData = await Team.findOne({
         where: { id: req.params.id },
         include: [
@@ -36,7 +34,6 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      console.log(req.body);
       const teamData = await Team.create(req.body);
       res.status(200).json(teamData);
     } catch (err) {
@@ -46,7 +43,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log(req.body);
       console.log(`req.params.id: ${req.params.id}`);
       const teamData = await Team.update(req.body, {
         where: {
@@ -62,7 +58,6 @@ module.exports = {
   },
   remove: async function (req, res) {
     try {
-      console.log(req.body);
       const teamData = await Team.destroy({
         where: {
           id: req.params.id

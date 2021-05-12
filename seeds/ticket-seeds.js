@@ -17,7 +17,7 @@ const ticketData = [
         date_created: "2021-05-01T16:36:12+0000",
         assigned_to: 3,
         date_completed: null,
-        status: 3,
+        status: "In Progress",
         priority: 0,
         points: 10
     },
@@ -29,7 +29,7 @@ const ticketData = [
         date_created: "2021-05-02T16:36:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 3,
+        status: "Open",
         priority: 0,
         points: 10
     },
@@ -41,7 +41,7 @@ const ticketData = [
         date_created: "2021-05-03T12:36:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 0,
+        status: "Open",
         priority: 2,
         points: 10
     },
@@ -53,7 +53,7 @@ const ticketData = [
         date_created: "2021-05-04T10:01:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 0,
+        status: "Open",
         priority: 2,
         points: 10
     },
@@ -65,7 +65,7 @@ const ticketData = [
         date_created: "2021-05-05T11:01:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 0,
+        status: "Open",
         priority: 2,
         points: 10
     },
@@ -77,7 +77,7 @@ const ticketData = [
         date_created: "2021-05-06T11:01:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 0,
+        status: "Completed",
         priority: 2,
         points: 10
     },
@@ -89,7 +89,7 @@ const ticketData = [
         date_created: "2021-05-07T11:01:12+0000",
         assigned_to: null,
         date_completed: null,
-        status: 0,
+        status: "Open",
         priority: 1,
         points: 10
     },

@@ -1,10 +1,17 @@
 const { User, Org, Team, Ticket } = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the user
 module.exports = {
   findAll: async function (req, res) {
     try {
-      const userData = await User.findAll({});
+      const userData = await User.findAll({
+        include: [
+          {
+            model: Ticket,
+            as: 'ticketuser',
+          },
+        ],
+      });;
       res.status(200).json(userData);
     } catch (err) {
       console.log(err);

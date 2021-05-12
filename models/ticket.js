@@ -35,10 +35,7 @@ Ticket.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isIn: [['0', '1', '2', '3']],
-                max: 3,
-                isNumeric: true,
-                len:[1],
+                isIn: [['Open', 'Assigned', 'In Progress', 'Completed']],
             },
         },
         priority: {

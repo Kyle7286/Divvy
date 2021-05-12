@@ -35,49 +35,67 @@
 /*                            Define Page Component                           */
 /* -------------------------------------------------------------------------- */
 
-    /*
-        This page component will render all our stuff below it within the bs container
-        class for spacing. This is our whitespace for making the UI alongside
-        the navbar. 
-    */
-
     function Home(){
 
-        // Set the initial state of the component
-        const [tickets, setTickets] = useState({})
+        /* ---------------------------------- State --------------------------------- */
+            // Set tickets
+            const [tickets, setTickets] = useState({})
+            // Set users
+            const [users, setUsers] = useState({})
 
-        // Load all tickets and store them in tickets
+        /* --------------------------------- Tickets -------------------------------- */
 
-            // Call when components have loaded
-            useEffect(() => {
-                getTickets()
-            },[])
+            // Load all tickets and store them in tickets
 
-            // Load All Tickets and Set Them to state
-            function getTickets () {
-                API.getAllTickets()
-                    .then (res =>
-                        setTickets(res.data)
-                    )
-                    .catch(err => console.log(err));
-            };
+                // Call when components have loaded
+                useEffect(() => {
+                    getTickets()
+                },[])
 
-            // FUTURE: DELETE TICKET
+                // Load All Tickets and Set Them to state
+                function getTickets () {
+                    API.getAllTickets()
+                        .then (res =>
+                            setTickets(res.data)
+                        )
+                        .catch(err => console.log(err));
+                };
 
-            // FUTURE: CREATE TICKET
+        /* -------------------------------- Users---------------------------------- */
+        
+            // Load all employees and store them in employees
+
+                // Call when components have loaded
+                useEffect(() => {
+                    getUsers()
+                },[])
+
+                // Load all USERS
+                function getUsers () {
+                    API.getAllUsers()
+                        .then(res=>
+                            setUsers(res.data)
+                        )
+                        .catch(err => console.log(err));
+                }
+
+                console.log('users state is', users);
 
 
-        // Returning the component for rendering within App.js pasing all tickets as props
+        /* ---------------------------- Component Render ---------------------------- */
          return (
-            <Container>
+            
+            <Container className="mx-3 mt-3">
                 <Row className="mb-4 d-flex flex-row justify-content-center">
-                   <Col>
-                        <StatCardContainer/>
-                   </Col>
+                    <Col>
+                        <StatCardContainer
+                            allTickets={tickets.length ? (tickets) : ([])}
+                        />
+                    </Col>
                 </Row>
                 <Row>
-                    <Col className="col-lg-8 mx-0 p-0">
-                        <SectionHeader>Open Tickets</SectionHeader>
+                    <Col className="col-lg-8 mx-0 px-0">
+                        <SectionHeader>Tickets</SectionHeader>
                         <Default>
                             <TicketTable
                                 allTickets={tickets.length ? (tickets) : ([])}
@@ -90,8 +108,10 @@
                         </Mobile>
                     </Col>
                     <Col className="col-lg-4 align-items-center">
-                        <SectionHeader>Availible Employees</SectionHeader>
-                        <EmployeeCardContainer/>
+                            <SectionHeader>Availible Employees</SectionHeader>
+                            <EmployeeCardContainer
+                                allUsers={users.length ? (users) : ([])}
+                            />
                     </Col>
                 </Row>
             </Container>

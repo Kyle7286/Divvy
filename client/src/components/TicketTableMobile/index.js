@@ -20,7 +20,7 @@
       // This is the UI Component to Return for the search
       return (
             <form>
-                <div className="col-10 mx-auto mt-2 mb-1">
+                <div className="col mx-auto mt-2 mb-1">
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">
                         <span className="me-3 align-middle d-flex align-items-center text-primary"> 

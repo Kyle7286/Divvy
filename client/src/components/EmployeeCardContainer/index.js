@@ -9,21 +9,22 @@
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-    /*
-        Idea having this container component that wraps them in center can make
-        it easy to map through an employee array and create the cards. 
-        I put a few in just to see how the wrap woudl look
-    */
-
-    function EmployeeCardContainer () {
+    function EmployeeCardContainer (props) {
+        
+        // Take all users and filter it to employees
+        const allEmployees = props.allUsers.filter(user=> user.role!="Client");
+            
+        // Render the Component by mapping employees and rending sub compoennt in container
         return (
+           
             <div className="d-flex flex-wrap justify-content-center">
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
-                <EmployeeCard/>
+                 {allEmployees.map(employee => (
+                     <EmployeeCard
+                        key = {employee.id}
+                        employeeName={`${employee.first_name} ${employee.last_name}`}
+                        employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+                     />
+                ))}
             </div>
         );
     }

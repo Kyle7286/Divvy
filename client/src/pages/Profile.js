@@ -29,55 +29,27 @@
     function Profile(){
 
         /* ---------------------------------- State --------------------------------- */
-            // Set tickets
-            const [tickets, setTickets] = useState({})
-            // Set users
-            const [users, setUsers] = useState({})
 
-        /* --------------------------------- Tickets -------------------------------- */
+    const [user, setUser] = useState({})
 
-            // Load all tickets and store them in tickets
+    // Call when components have loaded
+    useEffect(() => {
+        getUser();
+    }, [])
 
-                // // Call when components have loaded
-                // useEffect(() => {
-                //     getTickets()
-                // },[])
 
-                // // Load All Tickets and Set Them to state
-                // function getTickets () {
-                //     API.getAllTickets()
-                //         .then (res =>
-                //             setTickets(res.data)
-                //         )
-                //         .catch(err => console.log(err));
-                // };
-
-        /* -------------------------------- Users---------------------------------- */
-        
-            // Load all employees and store them in employees
-
-                // // Call when components have loaded
-                // useEffect(() => {
-                //     getUsers()
-                // },[])
-
-                // // Load all USERS
-                // function getUsers () {
-                //     API.getAllUsers()
-                //         .then(res=>
-                //             setUsers(res.data)
-                //         )
-                //         .catch(err => console.log(err));
-                // }
-
-                // console.log('users state is', users);
-
+    function getUser() {
+        API.getSingleUser()
+        .then(res => {
+            setUser(res.data);
+            console.log(res.data);
+        })
+        .catch(err => console.log(err));
+    };
 
         /* ---------------------------- Component Render ---------------------------- */
          return (
-            
             <p>Hi! I'm Profile Page. Nice to meet you.</p>
-            
         );
     }
 

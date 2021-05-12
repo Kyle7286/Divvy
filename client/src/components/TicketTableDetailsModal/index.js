@@ -49,8 +49,7 @@ import EmployeeCard from "../EmployeeCard";
                             <h5 className= "text-center">Manage</h5>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Priority</span>
-                                    <select className="form-select" aria-label="Default select example">
-                                        <option defaultValue>{props.ticketPriority}</option>
+                                    <select className="form-select" defaultValue={props.ticketPriority} aria-label="Default select example">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>

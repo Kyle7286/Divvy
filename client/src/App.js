@@ -7,6 +7,7 @@
   import Wrapper from "./components/Wrapper";
   import Home from "./pages/Home";
   import Profile from "./pages/Profile";
+  import Team from "./pages/Team";
 
   import './index.css';
   
@@ -23,6 +24,8 @@ function App() {
         <Wrapper data-component="Wrapper">
           <Switch>
             <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/team" component={Team}/>
+
             <Route exact path="/" component={Home}/>
             <Route path="" component={Home}/>
           </Switch>  

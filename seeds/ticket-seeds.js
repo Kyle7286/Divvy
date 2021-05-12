@@ -18,7 +18,7 @@ const ticketData = [
         assigned_to: 3,
         date_completed: null,
         status: "In Progress",
-        priority: 0,
+        priority: 1,
         points: 10
     },
     {
@@ -30,7 +30,7 @@ const ticketData = [
         assigned_to: null,
         date_completed: null,
         status: "Open",
-        priority: 0,
+        priority: 1,
         points: 10
     },
     {

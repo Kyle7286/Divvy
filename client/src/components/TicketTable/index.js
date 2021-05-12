@@ -164,7 +164,8 @@
     let ticket = props.allTickets.map (ticket => 
       (
         {
-          button:<TicketTableDetailsModal 
+          button:<TicketTableDetailsModal
+                    allUsers={props.allUsers} 
                     ticketTitle={ticket.title} 
                     ticketPriority={ticket.priority}
                     ticketStatus={ticket.status}

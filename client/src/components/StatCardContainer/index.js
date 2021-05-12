@@ -17,7 +17,7 @@
         const totalTicketsNumber = props.allTickets.length;
         
         // Handle Getting Open Tickets (confirm status is 0)
-        let openTickets = totalTickets.filter(ticket=> ticket.status=="0");
+        let openTickets = totalTickets.filter(ticket=> ticket.status=="Open");
 
         // Handle Getting Unassigned (and open) tickets
         /*
@@ -25,7 +25,7 @@
             its closed it doesnt matter, and the numbers look weird if you have
             "15 unassigned" but only "5" open
         */
-        let unassignedTickets = totalTickets.filter(ticket=> ticket.assigned_to===null && ticket.status=="0");
+        let unassignedTickets = totalTickets.filter(ticket=> ticket.assigned_to===null && ticket.status!="Completed");
            
                 
         // Return the three primary status card components

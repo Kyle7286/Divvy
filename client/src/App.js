@@ -6,6 +6,8 @@
   import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
   import Wrapper from "./components/Wrapper";
   import Home from "./pages/Home";
+  import Profile from "./pages/Profile";
+
   import './index.css';
   
 
@@ -20,6 +22,7 @@ function App() {
       <div data-component="DivInRouter">
         <Wrapper data-component="Wrapper">
           <Switch>
+            <Route exact path="/profile" component={Profile}/>
             <Route exact path="/" component={Home}/>
             <Route path="" component={Home}/>
           </Switch>  

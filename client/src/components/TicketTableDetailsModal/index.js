@@ -42,36 +42,53 @@
                             <h5 className= "text-center">Manage</h5>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Priority</span>
-                                    <input type="text" className="form-control" placeholder="Select Priority" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>{props.ticketPriority}</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select> 
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Status</span>
-                                    <input type="text" className="form-control" placeholder="Select Status" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>{props.ticketStatus}</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Assignee</span>
-                                    <input type="text" className="form-control" placeholder="Select Status" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>{props.ticketAssignee}</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                                 <div className="input-group">
                                     <span className="input-group-text col-3">Description</span>
-                                    <textarea className="form-control" placeholder="Enter Description..." aria-label="With textarea"></textarea>
+                                    <textarea className="form-control" placeholder="Enter Description..." aria-label="With textarea">
+                                        {props.ticketDescription}
+                                    </textarea>
                                 </div>
                             <h5 className= "text-center mt-3">Additional Details</h5>
                                 <div className="input-group mb-3">
-                                    <span className="input-group-text col-3" id="priorityinput">Task ID</span>
-                                    <input readOnly={true} type="text" className="form-control" placeholder="Task ID" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <span className="input-group-text col-3" id="priorityinput">Ticket ID</span>
+                                    <input readOnly={true} value={props.ticketID} type="text" className="form-control" placeholder="Task ID" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Firm</span>
-                                    <input readOnly={true} type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <input readOnly={true} value={props.ticketFirm}type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Firm Contact</span>
-                                    <input readOnly={true} type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <input readOnly={true} value={props.ticketFirmContact}type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3" id="priorityinput">Firm Phone</span>
-                                    <input readOnly={true} type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
+                                    <input readOnly={true} value={props.ticketFirmPhone}type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
 
                            

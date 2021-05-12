@@ -22,6 +22,9 @@
         // Take all users and filter it to employees
         const allEmployees = props.allUsers.filter(user=> user.role=="0" ||user.role=="1");
             console.log('filterd list of employees is', allEmployees);
+            console.log('ticket for employee 2 jb', allEmployees[1].ticketuser);
+
+        //
  
         // Render the Component by mapping employees and rending sub compoennt in container
         return (
@@ -31,7 +34,7 @@
                      <EmployeeCard
                         key = {employee.id}
                         employeeName={`${employee.first_name} ${employee.last_name}`}
-                        employeeTickets="#Tks"
+                        employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
                      />
                 ))}
             </div>

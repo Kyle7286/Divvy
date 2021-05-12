@@ -25,7 +25,7 @@
             its closed it doesnt matter, and the numbers look weird if you have
             "15 unassigned" but only "5" open
         */
-        let unassignedTickets = totalTickets.filter(ticket=> ticket.assignedUser===null && ticket.status=="0");
+        let unassignedTickets = totalTickets.filter(ticket=> ticket.assigned_to===null && ticket.status=="0");
            
                 
         // Return the three primary status card components

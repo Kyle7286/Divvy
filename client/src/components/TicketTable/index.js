@@ -25,7 +25,7 @@
       // This is the UI Component to Return for the search
       return (
             <form>
-                <div id="searchHelp" class="form-text text-center">Type to search, or select a column header to sort</div> 
+                <div id="searchHelp" className="form-text text-center">Type to search, or select a column header to sort</div> 
                 <div className="col-5 mx-auto mt-2 mb-1">
                     <label className="visually-hidden">Search</label>
                     <div className="input-group input-group-sm">

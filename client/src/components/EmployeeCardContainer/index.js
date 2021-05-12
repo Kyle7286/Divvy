@@ -12,7 +12,7 @@
     function EmployeeCardContainer (props) {
         
         // Take all users and filter it to employees
-        const allEmployees = props.allUsers.filter(user=> user.role=="0" ||user.role=="1");
+        const allEmployees = props.allUsers.filter(user=> user.role!="Client");
             
         // Render the Component by mapping employees and rending sub compoennt in container
         return (

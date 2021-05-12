@@ -2,8 +2,9 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-  import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
+  import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
   import React, { useState, useEffect } from "react";
+  import TicketTableDetailsModal from "../TicketTableDetailsModal";
   
 
 /* -------------------------------------------------------------------------- */
@@ -163,6 +164,9 @@
     let ticket = props.allTickets.map (ticket => 
       (
         {
+          button:<TicketTableDetailsModal 
+                    ticketTitle={ticket.title} 
+                  />,
           id:ticket.id,
           title: ticket.title,
           firm: ticket.client.name, 
@@ -178,6 +182,10 @@
     // Define columns for table
     const columns = React.useMemo(
       () => [
+        {
+          Header:"",
+          accessor:"button"
+        },
         {
           Header: 'ID',
           accessor: 'id', // accessor is the "key" in the data to use below

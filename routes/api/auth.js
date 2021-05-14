@@ -10,11 +10,8 @@ router.route("/login")
 router.route("/logout")
   .post(authController.logout);
 
-// Matches with "/api/org/:id"
-// router
-//   .route("/:id")
-//   .get(orgController.findById)
-//   .put(orgController.update)
-//   .delete(orgController.remove);
+// Matches with "/api/auth/signup"
+router.route("/signup")
+  .post(authController.signup);
 
 module.exports = router;

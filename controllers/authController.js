@@ -2,6 +2,23 @@ const { User } = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
+    signup: async function (req, res) {
+        try {
+            console.log(req.body);
+            const userData = await User.create(req.body);
+
+            req.session.save(() => {
+                req.session.user_id = userData.id;
+                req.session.logged_in = true;
+
+                res.status(200).json({ user: userData, message: 'Welcome, you are now logged in!' });
+            });
+        } catch (err) {
+            console.log(err);
+            res.status(422).json(err);
+        }
+    },
+
     login: async function (req, res) {
         try {
             console.log(req.body);

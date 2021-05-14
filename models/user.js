@@ -53,10 +53,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isIn: [['0', '1', '2']],
-                max: 2,
-                isNumeric: true,
-                len: [1],
+                isIn: [['Admin', 'Employee', 'Client']],
             },
         },
         is_manager: {

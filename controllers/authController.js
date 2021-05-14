@@ -71,4 +71,15 @@ module.exports = {
             res.status(422).json(err);
         }
     },
+    authcheck: async function (req, res) {
+        try {
+            console.log(req.session);
+            req.session = ""
+            res.json(req.session.logged_in)
+        }
+        catch (err) {
+            console.log(err);
+            res.status(422).json(err);
+        }
+    },
 }

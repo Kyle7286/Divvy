@@ -6,6 +6,7 @@ const clientRoutes = require("./client");
 const ticketRoutes = require("./ticket");
 const commentRoutes = require("./comment");
 const tagRoutes = require("./tag");
+const authRoutes = require("./auth");
 
 
 // All routes
@@ -16,6 +17,7 @@ router.use("/client", clientRoutes);
 router.use("/ticket", ticketRoutes);
 router.use("/comment", commentRoutes);
 router.use("/tag", tagRoutes);
+router.use("/auth", authRoutes);
 
 
 module.exports = router;

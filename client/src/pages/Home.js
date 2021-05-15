@@ -53,7 +53,7 @@
                 },[])
 
                 // Load All Tickets and Set Them to state
-                function getTickets () {
+                 function getTickets () { 
                     API.getAllTickets()
                         .then (res =>
                             setTickets(res.data)
@@ -71,7 +71,7 @@
                 },[])
 
                 // Load all USERS
-                function getUsers () {
+                function getUsers () { 
                     API.getAllUsers()
                         .then(res=>
                             setUsers(res.data)

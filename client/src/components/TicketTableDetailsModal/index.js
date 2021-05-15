@@ -5,6 +5,7 @@
     import React, { useEffect, useState } from "react"; 
     import {Modal,Button} from "react-bootstrap";
     import API from "../../utils/API";
+    import Home from "../../pages/Home";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -28,10 +29,6 @@
         function closeModal () {
             setVisablity(false)
         };
-
-        function handleUpdate () {
-            setVisablity(false);
-        }
 
     /* ------------------------------ Props Filters ----------------------------- */
 

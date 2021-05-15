@@ -16,6 +16,11 @@
             return axios.get("/api/ticket");
         },
 
+        // Update Tickets
+        updateTicket: function(id,updatedTicket) {
+            return axios.put("/api/ticket"+id, updatedTicket);
+        },
+
     /* ---------------------------------- users --------------------------------- */
         // Get all USERS
         getAllUsers: function () {

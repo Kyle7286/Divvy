@@ -170,6 +170,7 @@
                     ticketPriority={ticket.priority}
                     ticketStatus={ticket.status}
                     ticketAssignee={ ticket.ticketuser ? `${ticket.ticketuser.first_name} ${ticket.ticketuser.last_name} ` :""}
+                    ticketAssigneeId={ ticket.ticketuser ? ticket.ticketuser.id:""}
                     ticketDescription={ticket.description}
                     ticketID={ticket.id}
                     ticketFirm={ticket.client.name}

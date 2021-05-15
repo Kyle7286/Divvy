@@ -12,7 +12,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T1 - Printer issues",
+        title: "Printer issues",
         description: "Printer is down and wont connect to the network, need assistance asap. Thanks",
         date_created: "2021-05-01T16:36:12+0000",
         assigned_to: 3,
@@ -24,7 +24,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T2 - Scanning issues",
+        title: "Scanning issues",
         description: "Scanner is down and wont connect to the network, need assistance asap. Thanks",
         date_created: "2021-05-02T16:36:12+0000",
         assigned_to: null,
@@ -36,7 +36,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T3 - Update Acrobat",
+        title: "Update Acrobat",
         description: "Need help updating Adobe Acrobat Continuous Track for all users",
         date_created: "2021-05-03T12:36:12+0000",
         assigned_to: null,
@@ -48,7 +48,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T4 - Install QuickBooks 2021 Pro",
+        title: "Install QuickBooks 2021 Pro",
         description: "The latest is released and I need it installed by tomorrow if possible",
         date_created: "2021-05-04T10:01:12+0000",
         assigned_to: null,
@@ -60,7 +60,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T5 - Setup laptop/workstation",
+        title: "Setup laptop/workstation",
         description: "We purchased a new laptop for Sarah and needs it setup to connect to the cloud",
         date_created: "2021-05-05T11:01:12+0000",
         assigned_to: null,
@@ -72,7 +72,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T6 - User cannot launch app in the cloud",
+        title: "User cannot launch app in the cloud",
         description: "All users cannot launch Winzip in the cloud",
         date_created: "2021-05-06T11:01:12+0000",
         assigned_to: null,
@@ -84,7 +84,7 @@ const ticketData = [
     {
         client_id: 1,
         team_id: 1,
-        title: "T7 - Acrobat crashed after running report",
+        title: "Acrobat crashed after running report",
         description: "Ran a report in Acrobat and it keeps crashing immediately",
         date_created: "2021-05-07T11:01:12+0000",
         assigned_to: null,

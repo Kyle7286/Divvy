@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
 import './index.css';
@@ -41,6 +42,7 @@ function App() {
       <div data-component="DivInRouter">
         <Wrapper data-component="Wrapper">
           <Switch>
+          <Route exact path="/login" component={Login}></Route>
             <Route exact path="/" component={Home}>
               {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
             </Route>

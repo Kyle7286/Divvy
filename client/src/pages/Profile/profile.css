@@ -2,14 +2,15 @@
 img {
     position: relative;
 }
-
-
-
 .icon-button {
     position: absolute;
-    left: 50%;
+    left: 35%;
     top: 50%;
     color: white;
-    outline: green;
-    outline-style: solid;
+    /* display: none; */
 }
+img:hover .icon-button {
+    display: block;
+    width: auto;
+}
+

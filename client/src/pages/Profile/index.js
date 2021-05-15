@@ -1,13 +1,12 @@
 /* -------------------------------------------------------------------------- */
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
-
-import { STATES } from "mongoose";
 import React, { useEffect, useState } from "react";
-import API from "../utils/API";
-import Col from "../components/Column"
-import Row from "../components/Row"
-import Container from "../components/Container"
+import API from "../../utils/API"
+import Col from "../../components/Column";
+import Row from "../../components/Row";
+import Container from "../../components/Container";
+
 
 // Styling Imports
 import './profile.css';

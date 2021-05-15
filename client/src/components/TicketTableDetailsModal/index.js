@@ -29,6 +29,10 @@
             setVisablity(false)
         };
 
+        function handleUpdate () {
+            setVisablity(false);
+        }
+
     /* ------------------------------ Props Filters ----------------------------- */
 
         // Take all users and filter it to employees for rendering list
@@ -61,6 +65,7 @@
             API.updateTicket(props.ticketID, updatedTicket)
                 .then(res=> console.log('axio put response', res))
                 .then(closeModal)
+                .then(window.location.reload())
                 .catch(err=>console.log(err));
 
         };

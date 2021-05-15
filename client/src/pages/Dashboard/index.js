@@ -3,16 +3,16 @@
 /* -------------------------------------------------------------------------- */
 
 import React, { useEffect, useState } from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Column";
-import TicketTable from "../components/TicketTable";
-import TicketTableMobile from "../components/TicketTableMobile";
-import SectionHeader from "../components/SectionHeader";
-import EmployeeCardContainer from "../components/EmployeeCardContainer";
-import StatCardContainer from "../components/StatCardContainer";
+import Container from "../../components/Container";
+import Row from "../../components/Row";
+import Col from "../../components/Column";
+import TicketTable from "../../components/TicketTable";
+import TicketTableMobile from "../../components/TicketTableMobile";
+import SectionHeader from "../../components/SectionHeader";
+import EmployeeCardContainer from "../../components/EmployeeCardContainer";
+import StatCardContainer from "../../components/StatCardContainer";
 import { useMediaQuery } from 'react-responsive';
-import API from "../utils/API";
+import API from "../../utils/API";
 
 
 /* -------------------------------------------------------------------------- */

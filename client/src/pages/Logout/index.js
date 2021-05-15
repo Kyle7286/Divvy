@@ -2,11 +2,7 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React, { Component } from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Column";
-import LoginCard from "../components/LoginCard";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive';
 import API from "../utils/API";
 
@@ -37,47 +33,36 @@ const Default = ({ children }) => {
     the navbar. 
 */
 
-class Login extends Component {
 
-    handleFormSubmit = event => {
-        event.preventDefault();
+function Logout() {
 
-        // Collect values from the login form
-        const email = document.querySelector('#email-login').value.trim();
-        const password = document.querySelector('#password-login').value.trim();
+    // Set login status
+    const [loggedIn, setloggedIn] = useState({})
 
-        if (email && password) {
-            // Send a POST request to the API endpoint
-            API.login({ email, password })
-                .then(res => {
-                    window.location = '/profile';
-                }
-                )
-                .catch(err => {
-                    console.log(err);
-                    document.getElementById("message").innerHTML = err.response.data.message;
-                }
-                )
-        }
+    // Call when components have loaded
+    useEffect(() => {
+        logout()
+    }, [])
+
+    // Load All Tickets and Set Them to state
+    function logout() {
+        API.logout()
+            .then(res => {
+                console.log("Logged Out!");
+                // console.log(loggedIn)
+                // setloggedIn(false);
+
+            }
+            )
+            .catch(err => console.log(err));
     };
 
-    render() {
-
-        return (
-            <div>
-
-                <Container>
-                    <Row className="mb-4 d-flex flex-row justify-content-center">
-                        <Col>
-                            <LoginCard
-                                handleFormSubmit={this.handleFormSubmit}
-                            />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
-    }
+    /* ---------------------------- Component Render ---------------------------- */
+    return (
+        <>
+            <h1>You are now logged out!</h1>
+        </>
+    );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -88,4 +73,4 @@ class Login extends Component {
     Exported for import within app.js
 */
 
-export default Login;
+export default Logout;

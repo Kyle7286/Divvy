@@ -29,8 +29,6 @@
             setVisablity(false)
         };
 
-        
-
     /* ------------------------------ Props Filters ----------------------------- */
 
         // Take all users and filter it to employees for rendering list
@@ -47,22 +45,23 @@
         // Declare update handler function
         function updateTicket () {
 
-            console.log('current selected assignee on update', latestAssignee.current[latestAssignee.current.selectedIndex]);
-            
-
-                // QUESTION - how to access the data-attribute for the seleceted option element within a select elemenet...
-
             // update an object to put back to the server
             const updatedTicket = 
                 {
                     priority: latestPriority.current.value,
                     status: latestStatus.current.value,
-                    assigneeId: latestAssignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), // this is how you get data-attr of selected option for select element
+                    assigned_to: latestAssignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), // this is how you get data-attr of selected option for select element
                     description: latestDescription.current.value
                 }
             
             // Make the API call to update the ticket
+
             console.log('updated ticket information is', updatedTicket);
+
+            API.updateTicket(props.ticketID, updatedTicket)
+                .then(res=> console.log('axio put response', res))
+                .then(closeModal)
+                .catch(err=>console.log(err));
 
         };
 

@@ -18,8 +18,11 @@
 
         // Update Tickets
         updateTicket: function(id,updatedTicket) {
-            return axios.put("/api/ticket"+id, updatedTicket);
+            console.log('update ticket axios called with body', updatedTicket);
+            console.log('updated ticket api called with url-- /api/ticket'+id );
+            return axios.put("/api/ticket/"+id, updatedTicket);
         },
+       
 
     /* ---------------------------------- users --------------------------------- */
         // Get all USERS

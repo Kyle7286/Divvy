@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Test from "./pages/Test";
+import Dashboard from "./pages/Dashboard";
+import Team from "./pages/Team";
+import Profile from "./pages/Profile";
 import './index.css';
 import API from "./utils/API";
 
@@ -43,13 +45,14 @@ function App() {
         <Wrapper data-component="Wrapper">
           <Switch>
           <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/dashboard" component={Dashboard}></Route>
             <Route exact path="/" component={Home}>
               {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
             </Route>
-            <Route exact path="/team" component={Test}>
+            <Route exact path="/team" component={Team}>
               {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
             </Route>
-            <Route exact path="/profile" component={Test} />
+            <Route exact path="/profile" component={Profile} />
             <Route path="" component={Home} />
           </Switch>
         </Wrapper>

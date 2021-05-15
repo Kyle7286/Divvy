@@ -2,8 +2,9 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-  import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
+  import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
   import React, { useState, useEffect } from "react";
+  import TicketTableDetailsModal from "../TicketTableDetailsModal";
   
 
 /* -------------------------------------------------------------------------- */
@@ -163,6 +164,19 @@
     let ticket = props.allTickets.map (ticket => 
       (
         {
+          button:<TicketTableDetailsModal
+                    allUsers={props.allUsers} 
+                    ticketTitle={ticket.title} 
+                    ticketPriority={ticket.priority}
+                    ticketStatus={ticket.status}
+                    ticketAssignee={ticket.ticketuser ? `${ticket.ticketuser.first_name} ${ticket.ticketuser.last_name}`:""}
+                    ticketAssigneeId={ticket.ticketuser ? ticket.ticketuser.id:""}
+                    ticketDescription={ticket.description}
+                    ticketID={ticket.id}
+                    ticketFirm={ticket.client.name}
+                    ticketFirmContact={ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name}`:""}
+                    ticketFirmPhone={ticket.client.contact[0] ? ticket.client.contact[0].phone_number:"" }
+                  />,
           id:ticket.id,
           title: ticket.title,
           firm: ticket.client.name, 
@@ -178,6 +192,10 @@
     // Define columns for table
     const columns = React.useMemo(
       () => [
+        {
+          Header:"",
+          accessor:"button"
+        },
         {
           Header: 'ID',
           accessor: 'id', // accessor is the "key" in the data to use below

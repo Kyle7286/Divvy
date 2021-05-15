@@ -80,9 +80,7 @@ function Dashboard() {
             .catch(err => console.log(err));
     }
 
-    console.log('users state is', users);
-
-
+  
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
@@ -100,11 +98,13 @@ function Dashboard() {
                     <Default>
                         <TicketTable
                             allTickets={tickets.length ? (tickets) : ([])}
+                            allUsers={users.length ? (users) : ([])}
                         />
                     </Default>
                     <Mobile>
                         <TicketTableMobile
                             allTickets={tickets.length ? (tickets) : ([])}
+                            allUsers={users.length ? (users) : ([])}
                         />
                     </Mobile>
                 </Col>

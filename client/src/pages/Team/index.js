@@ -2,17 +2,8 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React, { useEffect, useState } from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Column";
-import TicketTable from "../components/TicketTable";
-import TicketTableMobile from "../components/TicketTableMobile";
-import SectionHeader from "../components/SectionHeader";
-import EmployeeCardContainer from "../components/EmployeeCardContainer";
-import StatCardContainer from "../components/StatCardContainer";
+import React from "react";
 import { useMediaQuery } from 'react-responsive';
-import API from "../utils/API";
 
 
 /* -------------------------------------------------------------------------- */
@@ -35,12 +26,19 @@ const Default = ({ children }) => {
 /*                            Define Page Component                           */
 /* -------------------------------------------------------------------------- */
 
-function Test() {
+/*
+    This page component will render all our stuff below it within the bs container
+    class for spacing. This is our whitespace for making the UI alongside
+    the navbar. 
+*/
+
+
+function Team() {
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
-            <h1>I"M A TEST PAGE</h1>
+            <h1>Team Page</h1>
         </>
     );
 }
@@ -53,4 +51,4 @@ function Test() {
     Exported for import within app.js
 */
 
-export default Test;
+export default Team;

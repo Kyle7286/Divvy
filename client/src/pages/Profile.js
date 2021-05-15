@@ -7,6 +7,11 @@ import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 import Col from "../components/Column"
 import Row from "../components/Row"
+import Container from "../components/Container"
+
+// Styling Imports
+import './profile.css';
+import { FaBeer } from 'react-icons/fa';
 
 
 /* -------------------------------------------------------------------------- */
@@ -55,18 +60,29 @@ function Profile() {
         <>
 
             <h1 className="mb-4">Profile</h1>
-            <p>Hi! I'm Profile Page. Nice to meet you.</p>,
-            
-            <Col className="m-auto">
-                <img src="https://randomuser.me/api/portraits/men/49.jpg" alt="profile picture" className="rounded-pill"></img>
-            </Col>
-            <Col>
-                <div>
-                    <input value={user.first_name} type="text" minLength="1" minWidth="50"></input>
-                    <input value={user.last_name} type="text" minLength="1" minWidth="50"></input>
-                </div>
-            </Col>
-            <input value={user.email} type="text" minLength="1" minWidth="50" length="10000"></input>
+            <p>Hi! I'm Profile Page. Nice to meet you.</p>
+
+            <Container>
+                <Row>
+                    <Col />
+                    <Col>
+                        <div>
+                            <img src="https://randomuser.me/api/portraits/men/49.jpg" width="250px" alt="profile picture" className="rounded-pill"></img>
+                            <FaBeer className="icon-button"/>
+                        </div>
+                    </Col>
+                    <Col />
+                </Row>
+                <Row>
+                    <Col>
+                        <div>
+                            <input className="d-inline" value={user.first_name} type="text"></input>
+                            <input value={user.last_name} type="text"></input>
+                        </div>
+                    </Col>
+                </Row>
+                {/* <input value={user.email} type="text" minLength="1" minWidth="50" length="10000"></input> */}
+            </Container>
         </>
     );
 }

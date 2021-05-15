@@ -2,25 +2,14 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-<<<<<<< HEAD
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Wrapper from "./components/Wrapper";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Team from "./pages/Team";
-
-import './index.css';
-
-=======
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
+import Profile from "./pages/Profile"
 import './index.css';
 import API from "./utils/API";
->>>>>>> ac1b6e4b3e96f530ece2b99cb1c31bff37252e2e
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -59,7 +48,7 @@ function App() {
             <Route exact path="/team" component={Test}>
               {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
             </Route>
-            <Route exact path="/profile" component={Test} />
+            <Route exact path="/profile" component={Profile} />
             <Route path="" component={Home} />
           </Switch>
         </Wrapper>

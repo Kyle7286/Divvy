@@ -23,6 +23,11 @@ export default {
     },
 
     /* ---------------------------------- users --------------------------------- */
+    // Get single USER
+    getSingleUser: function () {
+        return axios.get("/api/user/1");
+    },
+    
     checkAuth: function () {
         return axios.get("/api/auth/authcheck");
     }

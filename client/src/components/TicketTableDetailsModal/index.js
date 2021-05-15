@@ -5,8 +5,7 @@
     import React, { useEffect, useState } from "react"; 
     import {Modal,Button} from "react-bootstrap";
     import API from "../../utils/API";
-    import Home from "../../pages/Home";
-
+    
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
@@ -46,28 +45,23 @@
         // Declare update handler function
         function updateTicket () {
 
-            // update an object to put back to the server
+            // Create an updated ticket object that pulls latest info from possible edits
             const updatedTicket = 
                 {
                     priority: latestPriority.current.value,
                     status: latestStatus.current.value,
-                    assigned_to: latestAssignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), // this is how you get data-attr of selected option for select element
+                    assigned_to: latestAssignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), 
                     description: latestDescription.current.value
                 }
             
             // Make the API call to update the ticket
-
-            console.log('updated ticket information is', updatedTicket);
-
             API.updateTicket(props.ticketID, updatedTicket)
                 .then(res=> console.log('axio put response', res))
                 .then(closeModal)
                 .then(window.location.reload())
                 .catch(err=>console.log(err));
-
         };
 
-       
     /* -------------------- Modal Button and Modal Component -------------------- */
 
         return (

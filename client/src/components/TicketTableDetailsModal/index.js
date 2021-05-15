@@ -63,12 +63,8 @@
             
             // Make the API call to update the ticket
             console.log('updated object is', updatedTicket);
-            //API.updateTicket(props.ticketID, updatedTicket);
 
         };
-
-        console.log('props all tickets', props.allTickets);
-        console.log('allEmployees is', allEmployees);
 
        
     /* -------------------- Modal Button and Modal Component -------------------- */
@@ -122,10 +118,6 @@
                                     <textarea ref={latestDescription} className="form-control" defaultValue={props.ticketDescription} placeholder="Enter Description..." aria-label="With textarea"></textarea>
                                 </div>
                             <h5 className= "text-center mt-3">Additional Details</h5>
-                                <div className="input-group mb-3">
-                                    <span className="input-group-text col-3">Ticket ID</span>
-                                    <input readOnly={true} value={props.ticketID} type="text" className="form-control" placeholder="Task ID" aria-label="Priority" aria-describedby="priorityinput"/> 
-                                </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Firm</span>
                                     <input readOnly={true} value={props.ticketFirm}type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 

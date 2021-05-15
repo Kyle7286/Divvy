@@ -169,13 +169,13 @@
                     ticketTitle={ticket.title} 
                     ticketPriority={ticket.priority}
                     ticketStatus={ticket.status}
-                    ticketAssignee={ ticket.ticketuser ? `${ticket.ticketuser.first_name} ${ticket.ticketuser.last_name} ` :""}
-                    ticketAssigneeId={ ticket.ticketuser ? ticket.ticketuser.id:""}
+                    ticketAssignee={ticket.ticketuser ? `${ticket.ticketuser.first_name} ${ticket.ticketuser.last_name}`:""}
+                    ticketAssigneeId={ticket.ticketuser ? ticket.ticketuser.id:""}
                     ticketDescription={ticket.description}
                     ticketID={ticket.id}
                     ticketFirm={ticket.client.name}
-                    ticketFirmContact={ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name} ` : ""}
-                    ticketFirmPhone={ticket.client.contact[0] ? ticket.client.contact[0].phone_number : "" }
+                    ticketFirmContact={ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name}`:""}
+                    ticketFirmPhone={ticket.client.contact[0] ? ticket.client.contact[0].phone_number:"" }
                   />,
           id:ticket.id,
           title: ticket.title,

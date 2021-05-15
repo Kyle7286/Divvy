@@ -46,11 +46,11 @@
         function updateTicket () {
 
             
-            console.log(latestPriority.current.value);
-            console.log(latestStatus.current.value);
-            console.log(latestAssignee.current.value);
-            console.log(latestDescription.current.value);
-            console.log(latestAssignee.current);
+            // console.log(latestPriority.current.value);
+            // console.log(latestStatus.current.value);
+            // console.log(latestAssignee.current.value);
+            // console.log(latestDescription.current.value);
+            // console.log(latestAssignee.current);
 
             // update an object to put back to the server
             const updatedTicket = 
@@ -67,7 +67,8 @@
 
         };
 
-        console.log(props.ticketAssignee);
+        console.log('props all tickets', props.allTickets);
+        console.log('allEmployees is', allEmployees);
 
        
     /* -------------------- Modal Button and Modal Component -------------------- */
@@ -109,7 +110,7 @@
                                     <select ref={latestAssignee} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
                                         {
                                         allEmployees.map(employee => (
-                                            <option value={employee.first_name} data-userid={employee.id} key={employee.id}>
+                                            <option value={`${employee.first_name} ${employee.last_name}`} data-userid={employee.id} key={employee.id}>
                                                 {`${employee.first_name} ${employee.last_name}`}
                                             </option>
                                         ))

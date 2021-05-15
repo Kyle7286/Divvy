@@ -29,6 +29,8 @@
             setVisablity(false)
         };
 
+        
+
     /* ------------------------------ Props Filters ----------------------------- */
 
         // Take all users and filter it to employees for rendering list
@@ -36,41 +38,36 @@
 
     /* -------------------------- Handle Ticket Update -------------------------- */
 
-        // get event 
-        // Define references for values on update
+        // Define references and general variables for values on update
         let latestPriority = React.createRef();
         let latestStatus = React.createRef();
         let latestAssignee = React.createRef();
         let latestDescription = React.createRef();
-
+       
         // Declare update handler function
         function updateTicket () {
 
+            console.log('current selected assignee on update', latestAssignee.current[latestAssignee.current.selectedIndex]);
             
-            // console.log(latestPriority.current.value);
-            // console.log(latestStatus.current.value);
-            // console.log(latestAssignee.current.value);
-            // console.log(latestDescription.current.value);
-            // console.log(latestAssignee.current);
+
+                // QUESTION - how to access the data-attribute for the seleceted option element within a select elemenet...
 
             // update an object to put back to the server
             const updatedTicket = 
                 {
                     priority: latestPriority.current.value,
                     status: latestStatus.current.value,
-                    assignee: "placeholderassigneeid2",
+                    assigneeId: latestAssignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), // this is how you get data-attr of selected option for select element
                     description: latestDescription.current.value
                 }
             
             // Make the API call to update the ticket
-            console.log('updated object is', updatedTicket);
+            console.log('updated ticket information is', updatedTicket);
 
         };
 
        
     /* -------------------- Modal Button and Modal Component -------------------- */
-
-       
 
         return (
             <>
@@ -104,11 +101,11 @@
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Assignee</span>
-                                    <select ref={latestAssignee} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
+                                    <select ref={latestAssignee} data-user-id={props.ticketAssignee.id} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
                                         <option value=""></option>
                                         {
                                         allEmployees.map(employee => (
-                                            <option value={`${employee.first_name} ${employee.last_name}`} data-userid={employee.id} key={employee.id}>
+                                            <option value={`${employee.first_name} ${employee.last_name}`} data-user-id={employee.id} key={employee.id}>
                                                 {`${employee.first_name} ${employee.last_name}`}
                                             </option>
                                         ))

@@ -30,6 +30,11 @@ export default {
     /* ---------------------------------- login --------------------------------- */
     login: function ({email, password}) {
         return axios.post("/api/auth/login", {email, password});
+    },
+
+    /* ---------------------------------- logout --------------------------------- */
+    logout: function () {
+        return axios.post("/api/auth/logout");
     }
 
 };

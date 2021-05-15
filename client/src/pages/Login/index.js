@@ -50,7 +50,7 @@ class Login extends Component {
             // Send a POST request to the API endpoint
             API.login({ email, password })
                 .then(res => {
-                    window.location = '/profile';
+                    window.location = '/dashboard';
                 }
                 )
                 .catch(err => {

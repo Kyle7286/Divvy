@@ -105,6 +105,7 @@ function Dashboard() {
                     <Mobile>
                         <TicketTableMobile
                             allTickets={tickets.length ? (tickets) : ([])}
+                            allUsers={users.length ? (users) : ([])}
                         />
                     </Mobile>
                 </Col>

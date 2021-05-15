@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive';
-import API from "../utils/API";
+import API from "../../utils/API";
 
 
 /* -------------------------------------------------------------------------- */
@@ -36,9 +36,6 @@ const Default = ({ children }) => {
 
 function Logout() {
 
-    // Set login status
-    const [loggedIn, setloggedIn] = useState({})
-
     // Call when components have loaded
     useEffect(() => {
         logout()
@@ -49,9 +46,6 @@ function Logout() {
         API.logout()
             .then(res => {
                 console.log("Logged Out!");
-                // console.log(loggedIn)
-                // setloggedIn(false);
-
             }
             )
             .catch(err => console.log(err));

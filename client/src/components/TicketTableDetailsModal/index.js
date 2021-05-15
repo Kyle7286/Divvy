@@ -104,6 +104,7 @@
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Assignee</span>
                                     <select ref={latestAssignee} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
+                                        <option value=""></option>
                                         {
                                         allEmployees.map(employee => (
                                             <option value={`${employee.first_name} ${employee.last_name}`} data-userid={employee.id} key={employee.id}>

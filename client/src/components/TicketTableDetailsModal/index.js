@@ -36,6 +36,7 @@
 
     /* -------------------------- Handle Ticket Update -------------------------- */
 
+        // get event 
         // Define references for values on update
         let latestPriority = React.createRef();
         let latestStatus = React.createRef();
@@ -56,7 +57,7 @@
             const updatedTicket = 
                 {
                     priority: latestPriority.current.value,
-                    status: latestPriority.current.value,
+                    status: latestStatus.current.value,
                     assignee: "placeholderassigneeid2",
                     description: latestDescription.current.value
                 }
@@ -118,7 +119,7 @@
                                     <span className="input-group-text col-3">Description</span>
                                     <textarea ref={latestDescription} className="form-control" defaultValue={props.ticketDescription} placeholder="Enter Description..." aria-label="With textarea"></textarea>
                                 </div>
-                            <h5 className= "text-center mt-3">Additional Details</h5>
+                            <h5 className= "text-center mt-3">Reporting Firm</h5>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Firm</span>
                                     <input readOnly={true} value={props.ticketFirm}type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 

@@ -14,4 +14,8 @@ router.route("/logout")
 router.route("/signup")
   .post(authController.signup);
 
+// Matches with "/api/auth/authcheck"
+router.route("/authcheck")
+  .get(authController.authcheck);
+
 module.exports = router;

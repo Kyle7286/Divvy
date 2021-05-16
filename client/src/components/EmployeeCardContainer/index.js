@@ -13,12 +13,10 @@
         
         // Take all users and filter it to employees
         const allEmployees = props.allUsers.filter(user=> user.role!="Client");
-            console.log('all employees is', allEmployees);
 
         // Soort employees by their ticket count (due to mounting, make sure its not blank first)
         if (allEmployees.length!=0) {
             allEmployees.sort((a,b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
-            console.log('sorted employees', allEmployees)
         };
             
         // Render the Component by mapping employees and rending sub compoennt in container

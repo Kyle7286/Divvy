@@ -101,9 +101,7 @@ function Dashboard() {
                     .catch(err => console.log(err));
             }
 
-            console.log('clients api results in dashboardpage', clients);
-
-  
+            
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
@@ -122,12 +120,14 @@ function Dashboard() {
                         <TicketTable
                             allTickets={tickets.length ? (tickets) : ([])}
                             allUsers={users.length ? (users) : ([])}
+                            allClients={clients.length ? (clients) : ([])}
                         />
                     </Default>
                     <Mobile>
                         <TicketTableMobile
                             allTickets={tickets.length ? (tickets) : ([])}
                             allUsers={users.length ? (users) : ([])}
+                            allClients={clients.length ? (clients) : ([])}
                         />
                     </Mobile>
                 </Col>

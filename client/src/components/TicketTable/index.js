@@ -46,7 +46,7 @@
 
   /* --------------------------- Table Subcomponent --------------------------- */
 
-  function Table({columns,data,allUsers}) {
+  function Table({columns,data,allUsers,allClients}) {
 
       // Setup the filtertypes
       const filterTypes = React.useMemo(
@@ -105,6 +105,7 @@
             />
             <CreateTicketModal
               allUsers={allUsers}
+              allClients={allClients}
             />
         </div>
         <table {...getTableProps()} className="table align-middle shadow-sm mt-2">
@@ -248,6 +249,7 @@
             columns={columns} 
             data={data}
             allUsers={props.allUsers}
+            allClients={props.allClients}
             />
         </div>
       )

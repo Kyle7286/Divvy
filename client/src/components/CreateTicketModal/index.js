@@ -12,13 +12,23 @@ import {Modal,Button} from "react-bootstrap";
 function CreateTicketModal (props) {
 
     //console.log('props.allusers in create ticket modal is', props.allUsers);
+    //console.log('props.allClients in created ticket modal is', props.allClients);
 
 /* ------------------------------ Props Filters ----------------------------- */
 
     // Take all users and filter it to employees for rendering list
     const allEmployees = props.allUsers.filter(user=> user.role!="Client");
-        //console.log(allEmployees);
-
+       
+    // Take all clients and filter to only name and id
+    const allClients = props.allClients.map(client => 
+        (
+            {
+               name: client.name,
+               id: client.id 
+            }
+        )
+    );
+   
 /* ---------------------------------- State --------------------------------- */
 
     // Set modal visability state to false by default
@@ -43,6 +53,7 @@ function CreateTicketModal (props) {
     let Status = React.createRef();
     let Assignee = React.createRef();
     let Description = React.createRef();
+    let Client = React.createRef();
    
     // Declare update handler function
     function createTicket () {
@@ -52,9 +63,16 @@ function CreateTicketModal (props) {
             {
                 priority: Priority.current.value,
                 status: Status.current.value,
-                assigned_to: Assignee.current[latestAssignee.current.selectedIndex].getAttribute("data-user-id"), 
-                description: Description.current.value
+                assigned_to: Assignee.current[Assignee.current.selectedIndex].getAttribute("data-user-id"), 
+                description: Description.current.value,
+                client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id")
             }
+
+            console.log ('new ticket object is', newTicket)
+
+        // Validate Client Selection
+
+        
         
         // // Make the API call to update the ticket
         // API.updateTicket(props.ticketID, updatedTicket)
@@ -119,12 +137,12 @@ function CreateTicketModal (props) {
                             </div>
                             <div className="input-group mb-3">
                                 <span className="input-group-text col-3">Firm</span>
-                                <select ref={Assignee} className="form-select" aria-label="Default select example">
+                                <select ref={Client} className="form-select" aria-label="Default select example">
                                     <option value=""></option>
                                     {
-                                    allEmployees.map(employee => (
-                                        <option value={`${employee.first_name} ${employee.last_name}`} data-user-id={employee.id} key={employee.id}>
-                                            {`${employee.first_name} ${employee.last_name}`}
+                                    allClients.map(client => (
+                                        <option value={client.name} data-client-id={client.id} key={client.id}>
+                                            {client.name}
                                         </option>
                                     ))
                                     }
@@ -145,4 +163,4 @@ function CreateTicketModal (props) {
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default CreateTicketModal;
+    export default CreateTicketModal;

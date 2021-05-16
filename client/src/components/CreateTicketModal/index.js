@@ -4,7 +4,6 @@
    
 import React, { useEffect, useState } from "react"; 
 import {Modal,Button} from "react-bootstrap";
-import API from "../../utils/API";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -12,13 +11,13 @@ import API from "../../utils/API";
 
 function CreateTicketModal (props) {
 
-    console.log('props.allusers in create ticket modal is', props.allUsers);
+    //console.log('props.allusers in create ticket modal is', props.allUsers);
 
 /* ------------------------------ Props Filters ----------------------------- */
 
     // Take all users and filter it to employees for rendering list
     const allEmployees = props.allUsers.filter(user=> user.role!="Client");
-        console.log(allEmployees);
+        //console.log(allEmployees);
 
 /* ---------------------------------- State --------------------------------- */
 

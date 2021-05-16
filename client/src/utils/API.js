@@ -23,6 +23,12 @@ export default {
         getAllUsers: function () {
             return axios.get("/api/user");
         },
+
+     /* ---------------------------------- clients ------------------------------ */
+        // Get all clients
+        getAllClients: function () {
+            return axios.get("/api/client");
+        },
     /* -------------------------------- authcheck ------------------------------- */
         checkAuth: function () {
             return axios.get("/api/auth/authcheck");

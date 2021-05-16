@@ -46,7 +46,7 @@
 
   /* --------------------------- Table Subcomponent --------------------------- */
 
-  function Table({columns,data,allUsers,allClients}) {
+  function Table({columns,data}) {
 
       // Setup the filtertypes
       const filterTypes = React.useMemo(
@@ -161,6 +161,8 @@
 
   function TicketTable(props) {
 
+    console.log('tickettable props', props);
+
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
       (
@@ -241,7 +243,6 @@
       // //eslint-disable-next-line
       const data = React.useMemo(() => ticket);
 
-     
     // Return the Table With Data For Rendering and the Search Filter
       return (
         <div>

@@ -6,7 +6,8 @@ const UserContext = createContext();
 const reducer = (state, action) => {
     switch (action.type) {
         case "login":
-            return { user: 1 };
+        console.log("REDUCER HIT");    
+        return { user: 1 };
         case "logout":
             return { user: null };
         default:

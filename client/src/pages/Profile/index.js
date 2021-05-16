@@ -37,11 +37,7 @@ const Default = ({ children }) => {
 
 function Profile(props) {
 
-    const [state, dispatch] = useUserContext();
-
-    // function x() {
-    //     return dispatch({ type: "login" })
-    // }
+    const [state] = useUserContext();
 
 
     /* ---------------------------- Component Render ---------------------------- */

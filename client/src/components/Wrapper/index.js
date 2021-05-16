@@ -6,6 +6,7 @@ import React from "react";
 import Row from "../Row";
 import Col from "../Column"
 import Nav from "../Navbar"
+import { useUserContext } from "../../utils/GlobalState";
 
 
 /* -------------------------------------------------------------------------- */
@@ -21,8 +22,10 @@ import Nav from "../Navbar"
 
 function Wrapper(props) {
 
-    const { loggedIn } = props.loggedInStatus;
-    const tempLine = `Logged In: ` + loggedIn;
+    const [state] = useUserContext();
+
+    const { user } = state;
+    const tempLine = `Logged In: ` + user;
     const RELine = React.createElement('div',[], tempLine)
     return (
         <main className="wrapper" data-component="Wrapper">

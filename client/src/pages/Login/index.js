@@ -42,7 +42,7 @@ const Default = ({ children }) => {
 
 function Login() {
 
-
+    const [state, dispatch] = useUserContext();
 
 
     function handleFormSubmit(event) {
@@ -56,10 +56,9 @@ function Login() {
             // Send a POST request to the API endpoint
             API.login({ email, password })
                 .then(res => {
-
+                    loginDispatch();
                     window.location = '/dashboard';
-                }
-                )
+                })
                 .catch(err => {
                     console.log(err);
                     document.getElementById("message").innerHTML = err.response.data.message;
@@ -70,6 +69,11 @@ function Login() {
 
     }
 
+    const loginDispatch = () => {
+
+        dispatch({ type: "login" })
+
+    }
 
     return (
         <div>

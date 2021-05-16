@@ -2,7 +2,7 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
@@ -19,102 +19,55 @@ import { makeRenderer } from 'react-table';
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      loggedInStatus: "NOT_LOGGED_IN"
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-  }
-
-  componentDidMount() {
-    this.withAuth();
-  }
-
-  handleLogout() {
-    this.setState({
-      loggedInStatus: "NOT_LOGGED_IN"
-    });
-  }
-
-  handleLogin() {
-    this.setState({
-      loggedInStatus: "LOGGED_IN"
-    });
-  }
+function App() {
 
   // Set login status
-  // const [loggedIn, setloggedIn] = useState()
+  const [loggedIn, setloggedIn] = useState( {loggedIn : false});
+
+  function handleLogout() {
+    setloggedIn({ loggedIn: false });
+  }
 
   // Call when components have loaded
-  //   useEffect(() => {
-  //     // withAuth();
-  //     withAuth();
-  // console.log("After");
-  // document.title = 'You are ' + loggedIn + ' !'
-  //   }, [])
+  useEffect(() => {
+    withAuth();
+  }, [false])
 
-  withAuth() {
+  function withAuth() {
     API.checkAuth()
-      // .then(res => {
-      // If there's data, the user has a session and is logged in
-      // console.log(res.data);
-      // if (res.data) {
-      //   setloggedIn({loggedIn: res.data});
-      // }
       .then(response => {
         console.log("front-end", response.data);
-
-        if (
-          response.data &&
-          this.state.loggedInStatus === "NOT_LOGGED_IN"
-        ) {
-          this.setState({
-            loggedInStatus: "LOGGED_IN"
-          });
-        } else if (
-          !response.data &
-          (this.state.loggedInStatus === "LOGGED_IN")
-        ) {
-          this.setState({
-            loggedInStatus: "NOT_LOGGED_IN"
-          });
-        }
+        if (response.data) {
+          setloggedIn({ loggedIn: response.data });
+        };
       })
       .catch(error => {
         console.log("check login error", error);
       });
   }
 
-  render() {
-    return (
-      <Router>
-        <div data-component="DivInRouter">
-          <Wrapper data-component="Wrapper"
-            handleLogout={this.handleLogout}
-            loggedInStatus={this.state.loggedInStatus}>
-            <Switch>
-              <Route exact path="/login" component={Login}></Route>
-              <Route exact path="/logout" component={Logout}></Route>
-              <Route exact path="/dashboard" component={Dashboard}></Route>
-              <Route exact path="/" component={Home}>
-                {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
-              </Route>
-              <Route exact path="/team" component={Team}>
-                {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
-              </Route>
-              <Route exact path="/profile" component={Profile} />
-              <Route path="" component={Home} />
-            </Switch>
-          </Wrapper>
-        </div>
-      </Router >
-    );
-  }
+  return (
+    <Router>
+      <div data-component="DivInRouter">
+        <Wrapper data-component="Wrapper"
+          handleLogout={handleLogout}
+          loggedInStatus={loggedIn}
+        >
+          <Switch>
+            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/logout" component={Logout}></Route>
+            <Route exact path="/dashboard" component={Dashboard}></Route>
+            <Route exact path="/" component={Home}>
+            </Route>
+            <Route exact path="/team" component={Team}>
+            </Route>
+            <Route exact path="/profile" component={Profile} />
+            <Route path="" component={Home} />
+          </Switch>
+        </Wrapper>
+      </div>
+    </Router >
+  );
 }
 
 

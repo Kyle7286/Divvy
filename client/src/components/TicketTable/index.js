@@ -103,10 +103,6 @@
                 globalFilter={state.globalFilter}
                 setGlobalFilter={setGlobalFilter}
             />
-            <CreateTicketModal
-              allUsers={allUsers}
-              allClients={allClients}
-            />
         </div>
         <table {...getTableProps()} className="table align-middle shadow-sm mt-2">
           <thead>
@@ -198,8 +194,12 @@
     const columns = React.useMemo(
       () => [
         {
-          Header:"",
-          accessor:"button"
+          Header: <CreateTicketModal
+                    allUsers={props.allUsers}
+                    allClients={props.allClients}
+                  />,
+          accessor:"button",
+          disableSortBy: true
         },
         {
           Header: 'ID',
@@ -248,9 +248,7 @@
           <Table 
             columns={columns} 
             data={data}
-            allUsers={props.allUsers}
-            allClients={props.allClients}
-            />
+          />
         </div>
       )
 

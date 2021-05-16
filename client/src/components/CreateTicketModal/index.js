@@ -89,8 +89,8 @@ function CreateTicketModal (props) {
 
     return (
         <>
-            <button  className="btn btn-sm btn-outline-success" variant="primary" onClick={openModal}>
-                New Ticket
+            <button  className="btn btn-sm btn-primary" variant="primary" onClick={openModal}>
+                + Ticket
             </button>
             <Modal show={visability} onHide={closeModal}>
                 <Modal.Header closeButton>

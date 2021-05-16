@@ -177,7 +177,6 @@ function Navbar(props) {
                                             </div>
                                     </NavLink>
                                 </li>
-                                <hr></hr>
                                 {!loggedIn ?
                                     <>
                                         <li className=" nav-item my-2 text-center">

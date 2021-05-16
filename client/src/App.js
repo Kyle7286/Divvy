@@ -22,7 +22,7 @@ import { makeRenderer } from 'react-table';
 function App() {
 
   // Set login status
-  const [loggedIn, setloggedIn] = useState( {loggedIn : false});
+  const [loggedIn, setloggedIn] = useState({ loggedIn: false });
 
   function handleLogout() {
     setloggedIn({ loggedIn: false });
@@ -45,6 +45,8 @@ function App() {
         console.log("check login error", error);
       });
   }
+  const { loggedIn: logStatus } = loggedIn;
+  console.log("App.js: ", logStatus);
 
   return (
     <Router>
@@ -54,15 +56,17 @@ function App() {
           loggedInStatus={loggedIn}
         >
           <Switch>
+            <Route exact path="/" component={Home}></Route>
             <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/logout" component={Logout}></Route>
-            <Route exact path="/dashboard" component={Dashboard}></Route>
-            <Route exact path="/" component={Home}>
-            </Route>
-            <Route exact path="/team" component={Team}>
-            </Route>
-            <Route exact path="/profile" component={Profile} />
-            <Route path="" component={Home} />
+            {logStatus ?
+              <>
+                <Route exact path="/logout" component={Logout}></Route>
+                <Route exact path="/dashboard" component={Dashboard}></Route>
+                <Route exact path="/team" component={Team}></Route>
+                <Route exact path="/profile" component={Profile} ></Route>
+              </> :
+              <Route path="" component={Home} ></Route>
+            }
           </Switch>
         </Wrapper>
       </div>

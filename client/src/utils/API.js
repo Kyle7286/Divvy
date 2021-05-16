@@ -13,11 +13,17 @@ export default {
             return axios.get("/api/ticket");
         },
 
+        // New Tickets
+        newTicket: function(newTicket) {
+            return axios.post("/api/ticket", newTicket);
+        },
+
         // Update Tickets
         updateTicket: function(id,updatedTicket) {
             return axios.put("/api/ticket/"+id, updatedTicket);
         },
-       
+
+
     /* ---------------------------------- users --------------------------------- */
         // Get all USERS
         getAllUsers: function () {

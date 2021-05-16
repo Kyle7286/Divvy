@@ -10,7 +10,7 @@
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-    function TicketTableDetailsModal(props) {
+    function ManageTicketModal (props) {
 
     /* ---------------------------------- State --------------------------------- */
 
@@ -111,9 +111,9 @@
                                     <span className="input-group-text col-3">Description</span>
                                     <textarea ref={latestDescription} className="form-control" defaultValue={props.ticketDescription} placeholder="Enter Description..." aria-label="With textarea"></textarea>
                                 </div>
-                            <h5 className= "text-center mt-3">Reporting Firm</h5>
+                            <h5 className= "text-center mt-3">Client Details</h5>
                                 <div className="input-group mb-3">
-                                    <span className="input-group-text col-3">Firm</span>
+                                    <span className="input-group-text col-3">Firm Name</span>
                                     <input readOnly={true} value={props.ticketFirm}type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
                                 <div className="input-group mb-3">
@@ -139,4 +139,4 @@
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-    export default TicketTableDetailsModal;
+    export default ManageTicketModal;

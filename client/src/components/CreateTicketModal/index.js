@@ -4,15 +4,13 @@
    
 import React, { useEffect, useState } from "react"; 
 import {Modal,Button} from "react-bootstrap";
+import API from "../../utils/API";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
 function CreateTicketModal (props) {
-
-    //console.log('props.allusers in create ticket modal is', props.allUsers);
-    //console.log('props.allClients in created ticket modal is', props.allClients);
 
 /* ------------------------------ Props Filters ----------------------------- */
 
@@ -49,6 +47,7 @@ function CreateTicketModal (props) {
 /* ------------------------ Handle Creation of Ticket ----------------------- */
 
     // Define references and general variables for values on update
+    let Title = React.createRef();
     let Priority = React.createRef();
     let Status = React.createRef();
     let Assignee = React.createRef();
@@ -61,32 +60,29 @@ function CreateTicketModal (props) {
         // Create an updated ticket object that pulls latest info from possible edits
         const newTicket = 
             {
+                title: Title.current.value,
                 priority: Priority.current.value,
                 status: Status.current.value,
                 assigned_to: Assignee.current[Assignee.current.selectedIndex].getAttribute("data-user-id"), 
                 description: Description.current.value,
-                client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id")
+                client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id"),
+                team_id:"1", // hard coded for MVP since not sure how or where we use this
+                points:"10" // hard coded for MVP since not sure how or where we use this
             }
-
-            console.log ('new ticket object is', newTicket)
 
         // Validate inputs and make API Call
         if (newTicket.client_id !=null) {
-
-            console.log('api call initated for new ticket')
-            // // Make the API call to update the ticket if clietn selected
-            // API.updateTicket(props.ticketID, updatedTicket)
-            //     .then(res=> console.log('axio put response', res))
-            //     .then(closeModal)
-            //     .then(window.location.reload())
-            //     .catch(err=>console.log(err));
+            // Make the API call to update the ticket if clietn selected
+            API.newTicket(newTicket)
+                .then(res=> console.log('axio post response', res))
+                .then(closeModal)
+                .then(window.location.reload())
+                .catch(err=>console.log(err));
         }
         else {
-
             // If no client, alert them and do not make API call
-            alert("Please make sure you select a client for this ticket")
+            alert("Please make sure you have selected a client for this new ticket!")
         };
-
     };
 
 /* -------------------- Modal Button and Modal Component -------------------- */
@@ -105,7 +101,7 @@ function CreateTicketModal (props) {
                         <h5 className= "text-center">Ticket Details</h5>
                             <div className="input-group mb-3">
                                 <span className="input-group-text col-3">Ticket Title</span>
-                                <input type="text" className="form-control" placeholder="Enter Ticket Title..." aria-label="Title" aria-describedby="titleinput"/> 
+                                <input type="text" ref={Title} className="form-control" placeholder="Enter Ticket Title..." aria-label="Title" aria-describedby="titleinput"/> 
                             </div>
                             <div className="input-group mb-3">
                                 <span className="input-group-text col-3">Description</span>
@@ -143,7 +139,7 @@ function CreateTicketModal (props) {
                                 </select>
                             </div>
                             <div className="input-group mb-3">
-                                <span className="input-group-text col-3">Firm</span>
+                                <span className="input-group-text col-3">Client</span>
                                 <select ref={Client} className="form-select" aria-label="Default select example">
                                     <option value=""></option>
                                     {

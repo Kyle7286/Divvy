@@ -36,7 +36,7 @@ export default {
 
     // Get single USER
     getSingleUser: function () {
-        return axios.get("/api/user/1");
+        return axios.get("/api/user/");
     },
 
     /* ---------------------------------- clients ------------------------------ */

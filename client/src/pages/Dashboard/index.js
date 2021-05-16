@@ -37,50 +37,71 @@ const Default = ({ children }) => {
 
 function Dashboard() {
 
-    /* ---------------------------------- State --------------------------------- */
-    // Set tickets
-    const [tickets, setTickets] = useState({})
-    // Set users
-    const [users, setUsers] = useState({})
+    /* ---------------------------------- Set State --------------------------------- */
+        // Set tickets
+        const [tickets, setTickets] = useState({})
+        // Set users
+        const [users, setUsers] = useState({})
+        // Set users
+        const [clients, setClients] = useState({})
 
-    /* --------------------------------- Tickets -------------------------------- */
+    /* --------------------------------- Get Tickets -------------------------------- */
 
-    // Load all tickets and store them in tickets
+        // Load all tickets and store them in tickets
 
-    // Call when components have loaded
-    useEffect(() => {
-        getTickets()
-    }, [])
+            // Call when components have loaded
+            useEffect(() => {
+                getTickets()
+            }, [])
 
-    // Load All Tickets and Set Them to state
-    function getTickets() {
-        API.getAllTickets()
-            .then(res =>
-                setTickets(res.data)
-            )
-            .catch(err => console.log(err));
-    };
+            // Load All Tickets and Set Them to state
+            function getTickets() {
+                API.getAllTickets()
+                    .then(res =>
+                        setTickets(res.data)
+                    )
+                    .catch(err => console.log(err));
+            };
 
-    /* -------------------------------- Users---------------------------------- */
+    /* -------------------------------- Get Users---------------------------------- */
 
-    // Load all employees and store them in employees
+        // Load all employees and store them in employees
 
-    // Call when components have loaded
-    useEffect(() => {
-        getUsers();
-    }, [])
+            // Call when components have loaded
+            useEffect(() => {
+                getUsers();
+            }, [])
 
-    
-    // Load all USERS
-    function getUsers() {
-        API.getAllUsers()
-            .then(res =>
-                setUsers(res.data)
-            )
-            .catch(err => console.log(err));
-    }
+            
+            // Load all USERS
+            function getUsers() {
+                API.getAllUsers()
+                    .then(res =>
+                        setUsers(res.data)
+                    )
+                    .catch(err => console.log(err));
+            }
 
-  
+    /* -------------------------------- Get Clients ---------------------------------- */
+
+        // Load all clients and store them in clients
+
+            // Call when components have loaded
+            useEffect(() => {
+                getClients();
+            }, [])
+
+            
+            // Load all USERS
+            function getClients() {
+                API.getAllClients()
+                    .then(res =>
+                        setClients(res.data)
+                    )
+                    .catch(err => console.log(err));
+            }
+
+            
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
@@ -99,12 +120,14 @@ function Dashboard() {
                         <TicketTable
                             allTickets={tickets.length ? (tickets) : ([])}
                             allUsers={users.length ? (users) : ([])}
+                            allClients={clients.length ? (clients) : ([])}
                         />
                     </Default>
                     <Mobile>
                         <TicketTableMobile
                             allTickets={tickets.length ? (tickets) : ([])}
                             allUsers={users.length ? (users) : ([])}
+                            allClients={clients.length ? (clients) : ([])}
                         />
                     </Mobile>
                 </Col>

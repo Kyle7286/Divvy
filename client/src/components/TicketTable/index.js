@@ -4,7 +4,9 @@
 
   import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
   import React, { useState, useEffect } from "react";
-  import TicketTableDetailsModal from "../TicketTableDetailsModal";
+  import ManageTicketModal from "../ManageTicketModal";
+  import CreateTicketModal from '../CreateTicketModal';
+  
   
 
 /* -------------------------------------------------------------------------- */
@@ -27,17 +29,16 @@
       return (
             <form>
                 <div id="searchHelp" className="form-text text-center">Type to search, or select a column header to sort</div> 
-                <div className="col-5 mx-auto mt-2 mb-1">
-                    <label className="visually-hidden">Search</label>
-                    <div className="input-group input-group-sm">
-                        <span className="me-3 align-middle d-flex align-items-center text-primary"> 
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                          </svg>
-                        </span>
-                        <input className="form-control" value={value || ""} onChange={e => {setValue(e.target.value); onChange(e.target.value); }} placeholder={`Search`}/> 
-                    </div>
-                    
+                <div className=" mt-2 mb-1 col-5 mx-auto">
+                      <label className="visually-hidden">Search</label>
+                      <div className="input-group input-group-sm d-flex justify-content-center">
+                          <span className="me-3 align-middle d-flex align-items-center text-primary"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                          </span>
+                          <input className="form-control" value={value || ""} onChange={e => {setValue(e.target.value); onChange(e.target.value); }} placeholder={`Search`}/> 
+                      </div>
                 </div>
             </form>
       )
@@ -45,7 +46,7 @@
 
   /* --------------------------- Table Subcomponent --------------------------- */
 
-  function Table({columns,data}) {
+  function Table({columns,data,allUsers,allClients}) {
 
       // Setup the filtertypes
       const filterTypes = React.useMemo(
@@ -97,13 +98,17 @@
     return (
       <div className="mx-1">
         <div>
-            <GlobalFilter
+            <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
                 globalFilter={state.globalFilter}
                 setGlobalFilter={setGlobalFilter}
             />
+            <CreateTicketModal
+              allUsers={allUsers}
+              allClients={allClients}
+            />
         </div>
-        <table {...getTableProps()} className="table align-middle shadow-sm">
+        <table {...getTableProps()} className="table align-middle shadow-sm mt-2">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
@@ -164,7 +169,7 @@
     let ticket = props.allTickets.map (ticket => 
       (
         {
-          button:<TicketTableDetailsModal
+          button:<ManageTicketModal
                     allUsers={props.allUsers} 
                     ticketTitle={ticket.title} 
                     ticketPriority={ticket.priority}
@@ -240,7 +245,12 @@
     // Return the Table With Data For Rendering and the Search Filter
       return (
         <div>
-          <Table columns={columns} data={data} />
+          <Table 
+            columns={columns} 
+            data={data}
+            allUsers={props.allUsers}
+            allClients={props.allClients}
+            />
         </div>
       )
 

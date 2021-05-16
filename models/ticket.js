@@ -49,12 +49,11 @@ Ticket.init(
               },
         },
         date_created: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isDate: true
-            },
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue:DataTypes.NOW
         },
+        
         date_completed: {
             type: DataTypes.STRING,
             validate: {

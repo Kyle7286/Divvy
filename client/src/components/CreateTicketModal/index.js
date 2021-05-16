@@ -155,7 +155,6 @@ function CreateTicketModal (props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button  className="text-center btn-success" onClick={createTicket}>Create Ticket</Button>
-                    <Button  className="text-center" variant="secondary" onClick={closeModal}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>

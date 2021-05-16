@@ -12,7 +12,7 @@ import API from "../../utils/API";
 
 function CreateTicketModal (props) {
 
-    console.log('props on all tickets', props);
+    console.log('create ticket modal props', props);
 
 /* ------------------------------ Props Filters ----------------------------- */
 

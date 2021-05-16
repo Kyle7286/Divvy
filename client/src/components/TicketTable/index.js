@@ -161,7 +161,9 @@
 
   function TicketTable(props) {
 
-    console.log('tickettable props', props);
+    console.log('ticket table props', props);
+
+    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients}/>;
 
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
@@ -196,10 +198,7 @@
     const columns = React.useMemo(
       () => [
         {
-          Header: <CreateTicketModal
-                    allUsers={props.allUsers}
-                    allClients={props.allClients}
-                  />,
+          Header: createTicketModal,
           accessor:"button",
           disableSortBy: true
         },
@@ -236,7 +235,7 @@
           accessor: 'assignee',
         },
       ],
-      []
+      
     )
 
     // Define data for table

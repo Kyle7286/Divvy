@@ -23,13 +23,22 @@
         return (
            
             <div className="d-flex flex-wrap justify-content-center">
-                 {allEmployees.map(employee => (
-                     <EmployeeCard
-                        key = {employee.id}
-                        employeeName={`${employee.first_name} ${employee.last_name}`}
-                        employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
-                     />
-                ))}
+                {allEmployees.map((employee,index)=>{
+                    return index < 2 ? (
+                        <EmployeeCard
+                            key = {employee.id}
+                            employeeName={`${employee.first_name} ${employee.last_name}`}
+                            employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+                            className="card-body p-1 text-success"
+                        /> 
+                    ): 
+                        <EmployeeCard
+                            key = {employee.id}
+                            employeeName={`${employee.first_name} ${employee.last_name}`}
+                            employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+                            className="card-body p-1"
+                        /> 
+                })}
             </div>
         );
     }
@@ -39,3 +48,11 @@
 /* -------------------------------------------------------------------------- */
 
     export default EmployeeCardContainer;
+
+//     {allEmployees.map(employee => (
+//         <EmployeeCard
+//            key = {employee.id}
+//            employeeName={`${employee.first_name} ${employee.last_name}`}
+//            employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+//         />
+//    ))}

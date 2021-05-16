@@ -70,16 +70,23 @@ function CreateTicketModal (props) {
 
             console.log ('new ticket object is', newTicket)
 
-        // Validate Client Selection
+        // Validate inputs and make API Call
+        if (newTicket.client_id !=null) {
 
-        
-        
-        // // Make the API call to update the ticket
-        // API.updateTicket(props.ticketID, updatedTicket)
-        //     .then(res=> console.log('axio put response', res))
-        //     .then(closeModal)
-        //     .then(window.location.reload())
-        //     .catch(err=>console.log(err));
+            console.log('api call initated for new ticket')
+            // // Make the API call to update the ticket if clietn selected
+            // API.updateTicket(props.ticketID, updatedTicket)
+            //     .then(res=> console.log('axio put response', res))
+            //     .then(closeModal)
+            //     .then(window.location.reload())
+            //     .catch(err=>console.log(err));
+        }
+        else {
+
+            // If no client, alert them and do not make API call
+            alert("Please make sure you select a client for this ticket")
+        };
+
     };
 
 /* -------------------- Modal Button and Modal Component -------------------- */

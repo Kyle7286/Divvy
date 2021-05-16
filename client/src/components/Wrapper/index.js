@@ -20,11 +20,13 @@ import Nav from "../Navbar"
 */
 
 function Wrapper(props) {
-    console.log("props: ", props);
-    console.log(props.loggedInStatus);
+
+    const { loggedIn } = props.loggedInStatus;
+    const tempLine = `Logged In: ` + loggedIn;
+    const RELine = React.createElement('div',[], tempLine)
     return (
         <main className="wrapper" data-component="Wrapper">
-            <h5>{props.loggedInStatus}</h5>
+            {RELine}
             <Row>
                 <Col className="col-lg-1">
                     <Nav

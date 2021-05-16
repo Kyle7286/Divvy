@@ -62,6 +62,25 @@
                 .catch(err=>console.log(err));
         };
 
+        /* -------------------------- Handle Ticket Delete -------------------------- */
+
+        // Declare update handler function
+        function deleteTicket () {
+
+            
+            // Confirm intent to delete
+            const confirmDelete = prompt('Deleting this ticket will permentenly remove all of its data. If you with to delete, please type "DELETE" below to confirm');
+            confirmDelete;
+
+            // If confirmed, delete
+            if (confirmDelete === "DELETE") {
+                API.deleteTicket(props.ticketID)
+                    .then(closeModal)
+                    .then(window.location.reload())
+                    .catch(err=>console.log(err));
+            };
+            
+        };
     /* -------------------- Modal Button and Modal Component -------------------- */
 
         return (
@@ -128,6 +147,7 @@
                     </Modal.Body>
                     <Modal.Footer>
                         <Button  className="text-center btn-success" onClick={updateTicket}>Update</Button>
+                        <Button  className="text-center btn-danger" onClick={deleteTicket}>Delete</Button>
                         <Button  className="text-center" variant="secondary" onClick={closeModal}>Close</Button>
                     </Modal.Footer>
                 </Modal>

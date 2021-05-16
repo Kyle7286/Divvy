@@ -23,6 +23,10 @@ export default {
             return axios.put("/api/ticket/"+id, updatedTicket);
         },
 
+        // Delete Tickets
+        deleteTicket: function(id) {
+            return axios.delete("api/ticket/"+id);
+        },
 
     /* ---------------------------------- users --------------------------------- */
         // Get all USERS

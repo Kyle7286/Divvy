@@ -5,7 +5,19 @@ module.exports = {
   findAll: async function (req, res) {
     try {
       console.log(req.body);
-      const clientData = await Client.findAll({});
+      const clientData = await Client.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ['first_name', 'last_name'],
+            as: 'contact'
+          },
+          {
+            model: Org,
+            attributes: ['name'],
+          },
+        ],
+      });
       res.status(200).json(clientData);
     } catch (err) {
       console.log(err);

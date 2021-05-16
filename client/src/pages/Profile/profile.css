@@ -4,13 +4,16 @@ img {
 }
 .icon-button {
     position: absolute;
-    left: 35%;
+    left: 33%;
     top: 50%;
+    font-size: 35px;
     color: white;
-    /* display: none; */
+    display: none;
 }
-img:hover .icon-button {
+.test:hover .icon-button {
     display: block;
-    width: auto;
+    /* color: green; */
 }
-
+.test:hover img {
+    width: 10%;
+}

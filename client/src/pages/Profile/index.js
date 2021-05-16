@@ -10,7 +10,7 @@ import Container from "../../components/Container";
 
 // Styling Imports
 import './profile.css';
-import { FaBeer } from 'react-icons/fa';
+import { FaLink } from 'react-icons/fa';
 
 
 /* -------------------------------------------------------------------------- */
@@ -65,9 +65,9 @@ function Profile() {
                 <Row>
                     <Col />
                     <Col>
-                        <div>
+                        <div className="test">
                             <img src="https://randomuser.me/api/portraits/men/49.jpg" width="250px" alt="profile picture" className="rounded-pill"></img>
-                            <FaBeer className="icon-button"/>
+                            <FaLink className="icon-button"/>
                         </div>
                     </Col>
                     <Col />

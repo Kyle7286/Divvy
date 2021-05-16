@@ -74,7 +74,6 @@ module.exports = {
     authcheck: async function (req, res) {
         try {
             console.log(req.session);
-            req.session = ""
             res.json(req.session.logged_in)
         }
         catch (err) {

@@ -1,42 +1,55 @@
-/* -------------------------------------------------------------------------- */
-/*                             Import Dependencies                            */
-/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                             Import Dependencies                            */
+/* -------------------------------------------------------------------------- */
 import axios from "axios";
-
-/* -------------------------------------------------------------------------- */
-/*                        Define Client Side API Calls                        */
-/* -------------------------------------------------------------------------- */
-
+/* -------------------------------------------------------------------------- */
+/*                        Define Client Side API Calls                        */
+/* -------------------------------------------------------------------------- */
 export default {
+    /* --------------------------------- tickets -------------------------------- */
 
-    /* --------------------------------- tickets -------------------------------- */
-
-    // Get all tickets
+    // Get all tickets
     getAllTickets: function () {
         return axios.get("/api/ticket");
     },
 
-    /* ---------------------------------- user --------------------------------- */
-    // Get all USERS
+    // New Tickets
+    newTicket: function (newTicket) {
+        return axios.post("/api/ticket", newTicket);
+    },
+
+    // Update Tickets
+    updateTicket: function (id, updatedTicket) {
+        return axios.put("/api/ticket/" + id, updatedTicket);
+    },
+
+
+    /* ---------------------------------- users --------------------------------- */
+    // Get all USERS
     getAllUsers: function () {
         return axios.get("/api/user");
     },
 
-    /* ---------------------------------- users --------------------------------- */
     // Get single USER
     getSingleUser: function () {
         return axios.get("/api/user/1");
     },
 
-    /* -------------------------------- authcheck ------------------------------- */
+    /* ---------------------------------- clients ------------------------------ */
+    // Get all clients
+    getAllClients: function () {
+        return axios.get("/api/client");
+    },
+    /* -------------------------------- authcheck ------------------------------- */
     checkAuth: function () {
         return axios.get("/api/auth/authcheck");
     },
-
-    /* ---------------------------------- login --------------------------------- */
+    /* ---------------------------------- login --------------------------------- */
     login: function ({ email, password }) {
         return axios.post("/api/auth/login", { email, password });
+    },
+    /* ---------------------------------- logout --------------------------------- */
+    logout: function () {
+        return axios.post("/api/auth/logout");
     }
-
 };
-

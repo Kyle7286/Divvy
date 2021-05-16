@@ -6,12 +6,14 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile"
 import Dashboard from "./pages/Dashboard";
 import Team from "./pages/Team";
 import './index.css';
 import API from "./utils/API";
+import { makeRenderer } from 'react-table';
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -19,47 +21,57 @@ import API from "./utils/API";
 
 function App() {
 
-
   // Set login status
-  const [loggedIn, setloggedIn] = useState({})
+  const [loggedIn, setloggedIn] = useState({ loggedIn: false });
+
+  function handleLogout() {
+    setloggedIn({ loggedIn: false });
+  }
 
   // Call when components have loaded
   useEffect(() => {
     withAuth();
-  }, [])
+  }, [false])
 
   function withAuth() {
     API.checkAuth()
-      .then(res => {
-        // If there's data, the user has a session and is logged in
-        if (res.data) {
-          setloggedIn(res.data);
-        }
+      .then(response => {
+        console.log("front-end", response.data);
+        if (response.data) {
+          setloggedIn({ loggedIn: response.data });
+        };
       })
+      .catch(error => {
+        console.log("check login error", error);
+      });
   }
-
+  const { loggedIn: logStatus } = loggedIn;
+  console.log("App.js: ", logStatus);
 
   return (
     <Router>
       <div data-component="DivInRouter">
-        <Wrapper data-component="Wrapper">
+        <Wrapper data-component="Wrapper"
+          handleLogout={handleLogout}
+          loggedInStatus={loggedIn}
+        >
           <Switch>
+            <Route exact path="/" component={Home}></Route>
             <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/dashboard" component={Dashboard}></Route>
-            <Route exact path="/" component={Home}>
-              {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
-            </Route>
-            <Route exact path="/team" component={Team}>
-              {/* {loggedIn ? <Redirect to="/" /> : <Test />} */}
-            </Route>
-            <Route exact path="/profile" component={Profile} />
-            <Route path="" component={Home} />
+            {logStatus ?
+              <>
+                <Route exact path="/logout" component={Logout}></Route>
+                <Route exact path="/dashboard" component={Dashboard}></Route>
+                <Route exact path="/team" component={Team}></Route>
+                <Route exact path="/profile" component={Profile} ></Route>
+              </> :
+              <Route path="" component={Home} ></Route>
+            }
           </Switch>
         </Wrapper>
       </div>
-    </Router>
+    </Router >
   );
-
 }
 
 

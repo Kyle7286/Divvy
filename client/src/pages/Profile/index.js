@@ -3,7 +3,9 @@
 /* -------------------------------------------------------------------------- */
 
 import React from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
 import { useMediaQuery } from 'react-responsive';
+import { useUserContext } from "../../utils/GlobalState";
 
 
 /* -------------------------------------------------------------------------- */
@@ -33,12 +35,24 @@ const Default = ({ children }) => {
 */
 
 
-function Profile() {
+function Profile(props) {
+
+    const [state, dispatch] = useUserContext();
+
+    // function x() {
+    //     return dispatch({ type: "login" })
+    // }
+
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
+
         <>
             <h1>Profile Page</h1>
+            <h1>{console.log(state)}</h1>
+            <button className="btn btn-success mt-5 mb-5" onClick={() => dispatch({ type: "login" })}>
+                Add
+      </button>
         </>
     );
 }

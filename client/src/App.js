@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import './index.css';
 import API from "./utils/API";
 import { makeRenderer } from 'react-table';
+import { UserProvider } from "./utils/GlobalState";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -50,26 +51,28 @@ function App() {
 
   return (
     <Router>
-      <div data-component="DivInRouter">
-        <Wrapper data-component="Wrapper"
-          handleLogout={handleLogout}
-          loggedInStatus={loggedIn}
-        >
-          <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/login" component={Login}></Route>
-            {logStatus ?
-              <>
-                <Route exact path="/logout" component={Logout}></Route>
-                <Route exact path="/dashboard" component={Dashboard}></Route>
-                <Route exact path="/team" component={Team}></Route>
-                <Route exact path="/profile" component={Profile} ></Route>
-              </> :
-              <Route path="" component={Home} ></Route>
-            }
-          </Switch>
-        </Wrapper>
-      </div>
+      <UserProvider>
+        <div data-component="DivInRouter">
+          <Wrapper data-component="Wrapper"
+            handleLogout={handleLogout}
+            loggedInStatus={loggedIn}
+          >
+            <Switch>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/login" component={Login}></Route>
+              {logStatus ?
+                <>
+                  <Route exact path="/logout" component={Logout}></Route>
+                  <Route exact path="/dashboard" component={Dashboard}></Route>
+                  <Route exact path="/team" component={Team}></Route>
+                  <Route exact path="/profile" component={Profile} ></Route>
+                </> :
+                <Route path="" component={Home} ></Route>
+              }
+            </Switch>
+          </Wrapper>
+        </div>
+      </UserProvider>
     </Router >
   );
 }

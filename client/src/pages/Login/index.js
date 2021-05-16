@@ -9,6 +9,7 @@ import Col from "../../components/Column";
 import LoginCard from "../../components/LoginCard";
 import { useMediaQuery } from 'react-responsive';
 import API from "../../utils/API";
+import { useUserContext } from "../../utils/GlobalState";
 
 
 /* -------------------------------------------------------------------------- */
@@ -37,9 +38,14 @@ const Default = ({ children }) => {
     the navbar. 
 */
 
-class Login extends Component {
 
-    handleFormSubmit = event => {
+
+function Login() {
+
+
+
+
+    function handleFormSubmit(event) {
         event.preventDefault();
 
         // Collect values from the login form
@@ -50,6 +56,7 @@ class Login extends Component {
             // Send a POST request to the API endpoint
             API.login({ email, password })
                 .then(res => {
+
                     window.location = '/dashboard';
                 }
                 )
@@ -59,26 +66,28 @@ class Login extends Component {
                 }
                 )
         }
-    };
 
-    render() {
 
-        return (
-            <div>
-
-                <Container>
-                    <Row className="mb-4 d-flex flex-row justify-content-center">
-                        <Col>
-                            <LoginCard
-                                handleFormSubmit={this.handleFormSubmit}
-                            />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
     }
+
+
+    return (
+        <div>
+
+            <Container>
+                <Row className="mb-4 d-flex flex-row justify-content-center">
+                    <Col>
+                        <LoginCard
+                            handleFormSubmit={handleFormSubmit}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 }
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                            Export Page Component                           */

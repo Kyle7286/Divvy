@@ -10,10 +10,11 @@ img {
     color: white;
     display: none;
 }
-.test:hover .icon-button {
+.profile-img:hover .icon-button {
     display: block;
-    /* color: green; */
 }
-.test:hover img {
-    width: 10%;
+
+.profile-img:active .icon-button {
+    transform: translateY(4px);
 }
+

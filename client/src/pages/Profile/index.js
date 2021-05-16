@@ -7,11 +7,9 @@ import Col from "../../components/Column";
 import Row from "../../components/Row";
 import Container from "../../components/Container";
 
-
 // Styling Imports
 import './profile.css';
 import { FaLink } from 'react-icons/fa';
-
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -54,6 +52,11 @@ function Profile() {
             .catch(err => console.log(err));
     };
 
+    function updateProfileImg() {
+
+
+    }
+
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
@@ -65,9 +68,10 @@ function Profile() {
                 <Row>
                     <Col />
                     <Col>
-                        <div className="test">
-                            <img src="https://randomuser.me/api/portraits/men/49.jpg" width="250px" alt="profile picture" className="rounded-pill"></img>
-                            <FaLink className="icon-button"/>
+                        <div className="profile-img">
+                            {/* src="https://randomuser.me/api/portraits/men/49.jpg" */}
+                            <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="250px" alt="profile picture" className="rounded-pill"></img>
+                            <FaLink className="icon-button" />
                         </div>
                     </Col>
                     <Col />

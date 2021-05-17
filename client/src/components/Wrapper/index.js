@@ -23,12 +23,12 @@ function Wrapper(props) {
 
     const { loggedIn } = props.loggedInStatus;
     const tempLine = `Logged In: ` + loggedIn;
-    const RELine = React.createElement('div',[], tempLine)
+    //const RELine = React.createElement('div',[], tempLine)
     return (
         <main className="wrapper" data-component="Wrapper">
-            {RELine}
+            {/* {RELine} */}
             <Row>
-                <Col className="col-lg-1">
+                <Col className="col-lg-1 bg-dark">
                     <Nav
                         loggedInStatus={props.loggedInStatus}
                         handleLogout={props.handleLogout}>

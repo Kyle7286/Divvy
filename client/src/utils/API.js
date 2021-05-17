@@ -23,10 +23,10 @@ export default {
         return axios.put("/api/ticket/" + id, updatedTicket);
     },
 
-        // Delete Tickets
-        deleteTicket: function(id) {
-            return axios.delete("api/ticket/"+id);
-        },
+    // Delete Tickets
+    deleteTicket: function (id) {
+        return axios.delete("api/ticket/" + id);
+    },
 
     /* ---------------------------------- users --------------------------------- */
     // Get all USERS
@@ -35,8 +35,12 @@ export default {
     },
 
     // Get single USER
+    getCurrentUser: function () {
+        return axios.get("/api/user/current");
+    },
+    // Get single USER by ID
     getSingleUser: function () {
-        return axios.get("/api/user/");
+        return axios.get("/api/user/2");
     },
 
     /* ---------------------------------- clients ------------------------------ */

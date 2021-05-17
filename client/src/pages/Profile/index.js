@@ -44,10 +44,11 @@ function Profile() {
 
 
     function getUser() {
-        API.getSingleUser()
+        API.getCurrentUser()
             .then(res => {
-                setUser(res.data);
+                console.log(`RESPONSE BACK`);
                 console.log(res.data);
+                setUser(res.data);
             })
             .catch(err => console.log(err));
     };

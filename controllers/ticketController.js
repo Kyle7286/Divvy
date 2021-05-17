@@ -82,6 +82,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       const ticketData = await Ticket.create(req.body);
+      console.log('client req received with req body', req.body)
       res.status(200).json(ticketData);
     } catch (err) {
       console.log(err);

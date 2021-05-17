@@ -145,10 +145,9 @@
                                 </div>
                         </form>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button  className="text-center btn-success" onClick={updateTicket}>Update</Button>
-                        <Button  className="text-center btn-danger" onClick={deleteTicket}>Delete</Button>
-                        <Button  className="text-center" variant="secondary" onClick={closeModal}>Close</Button>
+                    <Modal.Footer className="container-fluid">
+                            <Button  className="btn-danger" onClick={deleteTicket}>Delete</Button>
+                            <Button  className="btn-success" onClick={updateTicket}>Update</Button>
                     </Modal.Footer>
                 </Modal>
             </>

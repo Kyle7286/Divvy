@@ -81,7 +81,7 @@ function ProfileForm(props) {
                         <Col></Col>
                         {/* Submit Changes */}
                         <Col className="text-center">
-                            <button type="submit" className="btn btn-success">Submit</button>
+                            <button onClick={props.handleFormSubmit} type="submit" className="btn btn-success">Submit</button>
                         </Col>
                         <Col></Col>
                     </Row>

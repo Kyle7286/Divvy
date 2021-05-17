@@ -54,8 +54,9 @@ function Profile() {
             .catch(err => console.log(err));
     };
 
-    function updateProfileImg() {
-
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        console.log("Clicked!");
 
     }
 
@@ -82,6 +83,7 @@ function Profile() {
                                 <Col>
                                     <ProfileForm
                                         singleuser={user}
+                                        handleFormSubmit={handleFormSubmit}
                                     />
                                 </Col>
                             </Row>

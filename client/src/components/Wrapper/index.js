@@ -28,7 +28,7 @@ function Wrapper(props) {
         <main className="wrapper" data-component="Wrapper">
             {/* {RELine} */}
             <Row>
-                <Col className="col-lg-1">
+                <Col className="col-lg-1 bg-dark">
                     <Nav
                         loggedInStatus={props.loggedInStatus}
                         handleLogout={props.handleLogout}>

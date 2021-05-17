@@ -6,9 +6,8 @@
   import React, { useState, useEffect } from "react";
   import ManageTicketModal from "../ManageTicketModal";
   import CreateTicketModal from '../CreateTicketModal';
+  import './index.css';
   
-  
-
 /* -------------------------------------------------------------------------- */
 /*                     Define Employee Table SubComponents                    */
 /* -------------------------------------------------------------------------- */
@@ -96,7 +95,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-1">
+      <div className="mx-1 ">
         <div>
             <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -104,12 +103,12 @@
                 setGlobalFilter={setGlobalFilter}
             />
         </div>
-        <table {...getTableProps()} className="table align-middle shadow-sm mt-2">
+        <table {...getTableProps()} className="table align-middle shadow-sm mt-2 ">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
               // Apply the header row props
-              <tr className="table-info" {...headerGroup.getHeaderGroupProps()}>
+              <tr {...headerGroup.getHeaderGroupProps()}>
                 {// Loop over the headers in each row
                 headerGroup.headers.map(column => (
                   // Apply the header cell props and ad in props to control sorting
@@ -248,6 +247,10 @@
           <Table 
             columns={columns} 
             data={data}
+            defaultPageSize={20}
+            style={{
+              height:"400px"
+            }}
           />
         </div>
       )

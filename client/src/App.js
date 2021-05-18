@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
+import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Team from "./pages/Team";
@@ -25,7 +25,15 @@ function App() {
   const [loggedIn, setloggedIn] = useState({ loggedIn: false });
 
   function handleLogout() {
-    setloggedIn({ loggedIn: false });
+    console.log("App.js (handleLogout: ");
+    API.logout()
+      .then(response => {
+        console.log("logout API: ", response.data);
+          setloggedIn({ loggedIn: false });
+      })
+      .catch(error => {
+        console.log("check login error", error);
+      });
   }
 
   // Call when components have loaded
@@ -58,6 +66,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/signup" component={Signup}></Route>
             {logStatus ?
               <>
                 <Route exact path="/logout" component={Logout}></Route>

@@ -8,7 +8,7 @@ const seedClient = require('./client-seeds');
 const seedUserClient = require('./user-client-org-1');
 const seedTeam1 = require('./user-seed-org-1-team-1');
 const seedTeam2 = require('./user-seed-org-1-team-2');
-const seedTeam = require('./team-org-1'); 
+const seedTeam = require('./team-org-1');
 const seedTicketOrg1Team1 = require('./ticket-org-1-team-1');
 const seedComment = require('./comment-seeds');
 

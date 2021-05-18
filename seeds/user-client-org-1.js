@@ -22,10 +22,9 @@ const userClientData = [
         password: 'pass1234',
         phone_number: '404-245-6912',
         email: 'client1@email.com',
-        team_id: null,
         profile_icon: "https://randomuser.me/api/portraits/men/47.jpg"
     },
-    // Client - 2
+    // Client 2
     {
         org_id: 1,
         client_id: 2,
@@ -34,10 +33,10 @@ const userClientData = [
         role: "Client",
         is_manager: false,
         password: 'pass1234',
-        phone_number: '404-955-3455',
-        email: 'manager@email.com',
-        team_id: 1,
-        profile_icon: "https://randomuser.me/api/portraits/men/49.jpg"
+        phone_number: '404-312-6742',
+        email: 'client2@email.com',
+        team_id: null,
+        profile_icon: "https://randomuser.me/api/portraits/men/52.jpg"
     },
     // Client - 3
     {
@@ -48,10 +47,10 @@ const userClientData = [
         role: "Client",
         is_manager: false,
         password: 'pass1234',
-        phone_number: '404-245-6911',
-        email: 'employee@email.com',
-        team_id: 1,
-        profile_icon: "https://randomuser.me/api/portraits/men/44.jpg"
+        phone_number: '404-212-6132',
+        email: 'client3@email.com',
+        team_id: null,
+        profile_icon: "https://randomuser.me/api/portraits/men/53.jpg"
     },
     // Client - 4
     {
@@ -65,7 +64,7 @@ const userClientData = [
         phone_number: '404-123-5321',
         email: 'client4@email.com',
         team_id: null,
-        profile_icon: "https://randomuser.me/api/portraits/men/43.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/women/54.jpg"
     },
     // Client - 5
     {
@@ -79,7 +78,7 @@ const userClientData = [
         phone_number: '404-212-1234',
         email: 'client5@email.com',
         team_id: null,
-        profile_icon: "https://randomuser.me/api/portraits/men/42.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/men/55.jpg"
     },
 ];
 

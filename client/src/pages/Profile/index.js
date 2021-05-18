@@ -46,18 +46,35 @@ function Profile() {
 
     function getUser() {
         API.getCurrentUser()
-            .then(res => {
-                console.log(`RESPONSE BACK`);
-                console.log(res.data.org.name);
-                setUser(res.data);
-            })
+            .then(res => setUser(res.data))
             .catch(err => console.log(err));
     };
 
+
+    // Define references and general variables for values on update
+    let latestFirstName = React.createRef();
+    let latestLastName = React.createRef();
+    let latestEmail = React.createRef();
+    let latestPhone = React.createRef();
+
+
     function handleFormSubmit(e) {
         e.preventDefault();
-        console.log("Clicked!");
 
+        const updatedProfile = {
+            first_name: latestFirstName.current.value,
+            last_name: latestLastName.current.value,
+            email: latestEmail.current.value,
+            phone_number: latestPhone.current.value,
+            last_name: latestLastName.current.value,
+        }
+
+
+        // Make the API call to update the ticket
+        API.updateUser(user.id, updatedProfile)
+            .then(res => console.log('axio put response', res))
+            .then(getUser())
+            .catch(err => console.log(err));
     }
 
     /* ---------------------------- Component Render ---------------------------- */
@@ -84,14 +101,16 @@ function Profile() {
                                     <ProfileForm
                                         singleuser={user}
                                         handleFormSubmit={handleFormSubmit}
+                                        latestFirstName={latestFirstName}
+                                        latestLastName={latestLastName}
+                                        latestEmail={latestEmail}
+                                        latestPhone={latestPhone}
                                     />
                                 </Col>
                             </Row>
-
                         </Container>
                     </Col>
                 </Row>
-                {/* <input value={user.email} type="text" minLength="1" minWidth="50" length="10000"></input> */}
             </Container>
         </>
     );

@@ -29,6 +29,7 @@ export default {
     },
 
     /* ---------------------------------- users --------------------------------- */
+
     // Get all USERS
     getAllUsers: function () {
         return axios.get("/api/user");
@@ -38,10 +39,17 @@ export default {
     getCurrentUser: function () {
         return axios.get("/api/user/current");
     },
+
     // Get single USER by ID
     getSingleUser: function () {
         return axios.get("/api/user/2");
     },
+
+    // Update User
+    updateUser: function (id, updatedTicket) {
+        return axios.put("/api/user/" + id, updatedTicket);
+    },
+
 
     /* ---------------------------------- clients ------------------------------ */
     // Get all clients

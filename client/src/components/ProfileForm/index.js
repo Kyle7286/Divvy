@@ -43,26 +43,26 @@ function ProfileForm(props) {
                         <Col>
                             {/* First Name */}
                             <div className="mb-3">
-                                <label for="InputFirstName" className="form-label">First Name</label>
-                                <input placeholder={props.singleuser.first_name} type="text" className="form-control" id="InputFirstName" aria-describedby="firstName" />
+                                <label htmlFor="InputFirstName" className="form-label">First Name</label>
+                                <input ref={props.latestFirstName} defaultValue={props.singleuser.first_name} type="text" className="form-control" id="InputFirstName" aria-describedby="firstName" />
                             </div>
 
                             {/* Last Name */}
                             <div className="mb-3">
-                                <label for="InputLastName" className="form-label">Last Name</label>
-                                <input placeholder={props.singleuser.last_name} type="text" className="form-control" id="InputLastName" aria-describedby="lastName" />
+                                <label htmlFor="InputLastName" className="form-label">Last Name</label>
+                                <input ref={props.latestLastName} defaultValue={props.singleuser.last_name} type="text" className="form-control" id="InputLastName" aria-describedby="lastName" />
                             </div>
 
                             {/* Email */}
                             <div className="mb-3">
-                                <label for="InputEmail" className="form-label">Email</label>
-                                <input placeholder={props.singleuser.email} type="text" className="form-control" id="InputEmail" aria-describedby="email" />
+                                <label htmlFor="InputEmail" className="form-label">Email</label>
+                                <input ref={props.latestEmail} defaultValue={props.singleuser.email} type="text" className="form-control" id="InputEmail" aria-describedby="email" />
                             </div>
 
                             {/* Phone Number */}
                             <div className="mb-3">
-                                <label for="InputPhone" className="form-label">Phone</label>
-                                <input placeholder={props.singleuser.phone_number} type="text" className="form-control" id="InputPhone" aria-describedby="email" />
+                                <label htmlFor="InputPhone" className="form-label">Phone</label>
+                                <input ref={props.latestPhone} defaultValue={props.singleuser.phone_number} type="text" className="form-control" id="InputPhone" aria-describedby="email" />
                             </div>
                         </Col>
                         <Col></Col>
@@ -70,8 +70,8 @@ function ProfileForm(props) {
                             {/* Role */}
                             <fieldset disabled>
                                 <div className="mb-3">
-                                    <label for="disabledSelect" className="form-label">Role</label>
-                                    <input placeholder={props.singleuser.role} type="text" className="form-control" id="disabledSelect" aria-describedby="firstName" />
+                                    <label htmlFor="disabledSelect" className="form-label">Role</label>
+                                    <input defaultValue={props.singleuser.role} type="text" className="form-control" id="disabledSelect" aria-describedby="firstName" />
                                 </div>
                             </fieldset>
                         </Col>

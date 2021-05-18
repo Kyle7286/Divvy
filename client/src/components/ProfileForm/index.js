@@ -77,6 +77,7 @@ function ProfileForm(props) {
                         </Col>
                         <Col></Col>
                     </Row>
+                    {props.error.visible ? <div className="mb-2 text-center text-danger">{props.error.type}</div> : <div className="mb-2 text-center"></div>}
                     <Row className="mt-5">
                         <Col></Col>
                         {/* Submit Changes */}

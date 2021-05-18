@@ -37,10 +37,13 @@ function Profile() {
     /* ---------------------------------- State --------------------------------- */
 
     const [user, setUser] = useState({})
+    const [error, setError] = useState({})
+
 
     // Call when components have loaded
     useEffect(() => {
         getUser();
+        updateError(false, null);
     }, [])
 
 
@@ -50,6 +53,16 @@ function Profile() {
             .catch(err => console.log(err));
     };
 
+    function updateError(visible, type) {
+        if (type === "unique violation") {
+            type = "Email already in use! Please enter a different email."
+        }
+
+        setError({
+            visible: visible,
+            type: type
+        })
+    }
 
     // Define references and general variables for values on update
     let latestFirstName = React.createRef();
@@ -59,7 +72,11 @@ function Profile() {
 
 
     function handleFormSubmit(e) {
-        e.preventDefault();
+        // Allow page refresh if no error on save
+        if (!error.visible) {
+            console.log("Refreshing page");
+            e.preventDefault();
+        }
 
         const updatedProfile = {
             first_name: latestFirstName.current.value,
@@ -73,8 +90,22 @@ function Profile() {
         // Make the API call to update the ticket
         API.updateUser(user.id, updatedProfile)
             .then(res => console.log('axio put response', res))
-            .then(getUser())
-            .catch(err => console.log(err));
+            .then(() => {
+                getUser();
+                updateError(false, null);
+            })
+            .catch(err => {
+                console.log(`=============================`);
+                console.log(JSON.parse(err.response.request.response))
+                console.log(JSON.parse(err.response.request.response).errors[0].type)
+
+                let errorType = JSON.parse(err.response.request.response).errors[0].type;
+
+                // Set the error state for displaying
+                updateError(true, errorType);
+
+
+            });
     }
 
     /* ---------------------------- Component Render ---------------------------- */
@@ -95,20 +126,19 @@ function Profile() {
                 </Row>
                 <Row>
                     <Col>
-                        <Container>
-                            <Row>
-                                <Col>
-                                    <ProfileForm
-                                        singleuser={user}
-                                        handleFormSubmit={handleFormSubmit}
-                                        latestFirstName={latestFirstName}
-                                        latestLastName={latestLastName}
-                                        latestEmail={latestEmail}
-                                        latestPhone={latestPhone}
-                                    />
-                                </Col>
-                            </Row>
-                        </Container>
+                        <Row>
+                            <Col>
+                                <ProfileForm
+                                    singleuser={user}
+                                    handleFormSubmit={handleFormSubmit}
+                                    latestFirstName={latestFirstName}
+                                    latestLastName={latestLastName}
+                                    latestEmail={latestEmail}
+                                    latestPhone={latestPhone}
+                                    error={error}
+                                />
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>

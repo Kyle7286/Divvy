@@ -95,8 +95,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log("Hit route");
-      console.log(req.body);
       const userData = await User.update(req.body, {
         where: {
           id: req.params.id

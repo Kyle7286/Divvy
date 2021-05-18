@@ -36,20 +36,20 @@ const Default = ({ children }) => {
 
 function Logout() {
 
-    // Call when components have loaded
-    useEffect(() => {
-        logout()
-    }, [])
+    // // Call when components have loaded
+    // useEffect(() => {
+    //     logout()
+    // }, [])
 
-    // Load All Tickets and Set Them to state
-    function logout() {
-        API.logout()
-            .then(res => {
-                console.log("Logged Out!");
-            }
-            )
-            .catch(err => console.log(err));
-    };
+    // // Load All Tickets and Set Them to state
+    // function logout() {
+    //     API.logout()
+    //         .then(res => {
+    //             console.log("Logged Out!");
+    //         }
+    //         )
+    //         .catch(err => console.log(err));
+    // };
 
     /* ---------------------------- Component Render ---------------------------- */
     return (

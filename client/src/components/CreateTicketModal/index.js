@@ -12,6 +12,8 @@ import API from "../../utils/API";
 
 function CreateTicketModal (props) {
 
+    console.log('create ticket modal props', props);
+
 /* ------------------------------ Props Filters ----------------------------- */
 
     // Take all users and filter it to employees for rendering list
@@ -89,8 +91,8 @@ function CreateTicketModal (props) {
 
     return (
         <>
-            <button  className="btn btn-sm btn-outline-success" variant="primary" onClick={openModal}>
-                New Ticket
+            <button  className="btn btn-sm btn-info" variant="primary" onClick={openModal}>
+                + Ticket
             </button>
             <Modal show={visability} onHide={closeModal}>
                 <Modal.Header closeButton>
@@ -155,7 +157,6 @@ function CreateTicketModal (props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button  className="text-center btn-success" onClick={createTicket}>Create Ticket</Button>
-                    <Button  className="text-center" variant="secondary" onClick={closeModal}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -37,6 +37,23 @@ export default {
         return axios.post("/api/user", newUser);
     },
 
+
+    // Get single USER
+    getCurrentUser: function () {
+        return axios.get("/api/user/current");
+    },
+
+    // Get single USER by ID
+    getSingleUser: function () {
+        return axios.get("/api/user/2");
+    },
+
+    // Update User
+    updateUser: function (id, updatedTicket) {
+        return axios.put("/api/user/" + id, updatedTicket);
+    },
+
+
     /* ---------------------------------- clients ------------------------------ */
     // Get all clients
     getAllClients: function () {

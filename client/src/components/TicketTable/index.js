@@ -6,9 +6,8 @@
   import React, { useState, useEffect } from "react";
   import ManageTicketModal from "../ManageTicketModal";
   import CreateTicketModal from '../CreateTicketModal';
+  import './index.css';
   
-  
-
 /* -------------------------------------------------------------------------- */
 /*                     Define Employee Table SubComponents                    */
 /* -------------------------------------------------------------------------- */
@@ -46,7 +45,7 @@
 
   /* --------------------------- Table Subcomponent --------------------------- */
 
-  function Table({columns,data,allUsers,allClients}) {
+  function Table({columns,data}) {
 
       // Setup the filtertypes
       const filterTypes = React.useMemo(
@@ -96,24 +95,20 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-1">
+      <div className="mx-1 ">
         <div>
             <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
                 globalFilter={state.globalFilter}
                 setGlobalFilter={setGlobalFilter}
             />
-            <CreateTicketModal
-              allUsers={allUsers}
-              allClients={allClients}
-            />
         </div>
-        <table {...getTableProps()} className="table align-middle shadow-sm mt-2">
+        <table {...getTableProps()} className="table align-middle shadow-sm mt-2 ">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
               // Apply the header row props
-              <tr className="table-info" {...headerGroup.getHeaderGroupProps()}>
+              <tr {...headerGroup.getHeaderGroupProps()}>
                 {// Loop over the headers in each row
                 headerGroup.headers.map(column => (
                   // Apply the header cell props and ad in props to control sorting
@@ -165,6 +160,10 @@
 
   function TicketTable(props) {
 
+    console.log('ticket table props', props);
+
+    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients}/>;
+
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
       (
@@ -198,8 +197,9 @@
     const columns = React.useMemo(
       () => [
         {
-          Header:"",
-          accessor:"button"
+          Header: createTicketModal,
+          accessor:"button",
+          disableSortBy: true
         },
         {
           Header: 'ID',
@@ -234,23 +234,24 @@
           accessor: 'assignee',
         },
       ],
-      []
+      
     )
 
     // Define data for table
       // //eslint-disable-next-line
       const data = React.useMemo(() => ticket);
 
-     
     // Return the Table With Data For Rendering and the Search Filter
       return (
         <div>
           <Table 
             columns={columns} 
             data={data}
-            allUsers={props.allUsers}
-            allClients={props.allClients}
-            />
+            defaultPageSize={20}
+            style={{
+              height:"400px"
+            }}
+          />
         </div>
       )
 

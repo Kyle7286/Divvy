@@ -8,9 +8,9 @@ import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile"
 import Dashboard from "./pages/Dashboard";
 import Team from "./pages/Team";
-import Profile from "./pages/Profile";
 import './index.css';
 import API from "./utils/API";
 import { makeRenderer } from 'react-table';
@@ -69,7 +69,7 @@ function App() {
             <Route exact path="/signup" component={Signup}></Route>
             {logStatus ?
               <>
-                <Route exact path="/logout" component={Logout}></Route>
+                {/* <Route exact path="/logout" component={Logout}></Route> */}
                 <Route exact path="/dashboard" component={Dashboard}></Route>
                 <Route exact path="/team" component={Team}></Route>
                 <Route exact path="/profile" component={Profile} ></Route>

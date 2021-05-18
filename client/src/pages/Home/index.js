@@ -9,7 +9,6 @@ import Col from "../../components/Column";
 import HomePageCard from "../../components/HomePageCard";
 import { useMediaQuery } from 'react-responsive';
 
-
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
 /* -------------------------------------------------------------------------- */

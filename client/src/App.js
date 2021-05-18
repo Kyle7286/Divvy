@@ -8,9 +8,9 @@ import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile"
 import Dashboard from "./pages/Dashboard";
 import Team from "./pages/Team";
-import Profile from "./pages/Profile";
 import './index.css';
 import API from "./utils/API";
 import { makeRenderer } from 'react-table';

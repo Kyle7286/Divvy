@@ -8,6 +8,7 @@ const commentRoutes = require("./comment");
 const tagRoutes = require("./tag");
 const authRoutes = require("./auth");
 
+
 // All routes
 router.use("/org", orgRoutes);
 router.use("/team", teamRoutes);
@@ -17,5 +18,6 @@ router.use("/ticket", ticketRoutes);
 router.use("/comment", commentRoutes);
 router.use("/tag", tagRoutes);
 router.use("/auth", authRoutes);
+
 
 module.exports = router;

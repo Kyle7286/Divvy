@@ -21,7 +21,7 @@ const userData = [
         phone_number: '313-355-5881',
         email: 'admin@email.com',
         team_id: null,
-        profile_icon: ""
+        profile_icon: "https://randomuser.me/api/portraits/men/47.jpg"
     },
     // USER 2 - Manager
     {
@@ -35,7 +35,7 @@ const userData = [
         phone_number: '404-955-3455',
         email: 'manager@email.com',
         team_id: 1,
-        profile_icon: ""
+        profile_icon: "https://randomuser.me/api/portraits/men/49.jpg"
     },
     // USER 3 - Employee
     {
@@ -49,7 +49,7 @@ const userData = [
         phone_number: '404-245-6911',
         email: 'employee@email.com',
         team_id: 1,
-        profile_icon: ""
+        profile_icon: "https://randomuser.me/api/portraits/men/44.jpg"
     },
     // USER 4 - Client
     {
@@ -63,7 +63,7 @@ const userData = [
         phone_number: '404-245-6912',
         email: 'client1@email.com',
         team_id: null,
-        profile_icon: ""
+        profile_icon: "https://randomuser.me/api/portraits/men/43.jpg"
     },
     // USER 5 - Client
     {
@@ -77,7 +77,7 @@ const userData = [
         phone_number: '404-312-6742',
         email: 'client2@email.com',
         team_id: null,
-        profile_icon: ""
+        profile_icon: "https://randomuser.me/api/portraits/men/42.jpg"
     },
 
 

@@ -30,6 +30,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "mysql2": "^2.2.5",
+    "react-icons": "^4.2.0",
     "react-bootstrap": "^1.6.0",
     "react-responsive": "^8.2.0",
     "sequelize": "^6.6.2"

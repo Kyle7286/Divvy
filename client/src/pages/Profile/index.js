@@ -1,10 +1,17 @@
 /* -------------------------------------------------------------------------- */
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
+import React, { useEffect, useState } from "react";
+import API from "../../utils/API"
+import Col from "../../components/Column";
+import Row from "../../components/Row";
+import Container from "../../components/Container";
+import ProfileForm from "../../components/ProfileForm"
 
-import React from "react";
-import { useMediaQuery } from 'react-responsive';
-
+// Styling Imports
+import './profile.css';
+import { FaLink, FaUpload } from 'react-icons/fa';
+import { GiCancel } from 'react-icons/gi';
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -26,19 +33,165 @@ const Default = ({ children }) => {
 /*                            Define Page Component                           */
 /* -------------------------------------------------------------------------- */
 
-/*
-    This page component will render all our stuff below it within the bs container
-    class for spacing. This is our whitespace for making the UI alongside
-    the navbar. 
-*/
-
-
 function Profile() {
+
+    /* ---------------------------------- State --------------------------------- */
+
+    const [user, setUser] = useState({});
+    const [error, setError] = useState({});
+    const [picture, setPicture] = useState({});
+
+
+    // Call when components have loaded
+    useEffect(() => {
+        getUser();
+        updateError(false, null);
+        updatePicture(false);
+    }, [])
+
+
+    // Set the user state
+    function getUser() {
+        API.getCurrentUser()
+            .then(res => setUser(res.data))
+            .catch(err => console.log(err));
+    };
+
+    // Set the error state
+    function updateError(visible, type) {
+        if (type === "unique violation") {
+            type = "Email already in use! Please enter a different email."
+        }
+
+        setError({
+            visible: visible,
+            type: type
+        })
+    }
+
+    // Show the url element when picture is clicked
+    function updatePicture(visible) {
+        setPicture({
+            visible: visible
+        })
+    }
+
+    // Define references and general variables for values on update
+    let latestFirstName = React.createRef();
+    let latestLastName = React.createRef();
+    let latestEmail = React.createRef();
+    let latestPhone = React.createRef();
+
+    // Update the user with the form values
+    function handleFormSubmit(e) {
+        // Allow page refresh if no error on save
+        if (!error.visible) {
+            console.log("Refreshing page");
+            e.preventDefault();
+        }
+
+        const updatedProfile = {
+            first_name: latestFirstName.current.value,
+            last_name: latestLastName.current.value,
+            email: latestEmail.current.value,
+            phone_number: latestPhone.current.value,
+            last_name: latestLastName.current.value,
+        }
+
+        callUpdateUser(updatedProfile);
+    }
+
+    
+    // Make the API call to update the user details
+    function callUpdateUser(obj) {
+        API.updateUser(user.id, obj)
+            .then(res => console.log('axio put response', res))
+            .then(() => {
+                getUser();
+                updateError(false, null);
+            })
+            .catch(err => {
+                let errorType = JSON.parse(err.response.request.response).errors[0].type;
+
+                // Set the error state for displaying
+                updateError(true, errorType);
+            });
+    }
+
+    // Show the update profile picture element when you click the profile picture.
+    function handleImageClick(e) {
+        e.preventDefault();
+        console.log("clicked");
+
+        setPicture({
+            visible: true
+        });
+    }
+
+
+    let latestURL = React.createRef();
+    // Update the Profile Picture when you press upload button
+    function handleUpdateURLClick(e) {
+        e.preventDefault();
+
+        console.log(latestURL.current.value);
+
+        let obj = {
+            profile_icon: latestURL.current.value
+        }
+
+        callUpdateUser(obj);
+        updatePicture(false);
+    }
+
+    // Hide the div when you press the cancle button
+    function handleCancleClick(e) {
+        e.preventDefault();
+        updatePicture(false);
+    }
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
-            <h1>Profile Page</h1>
+
+            <h1 className="mb-4">Profile</h1>
+            <Container>
+                <Row>
+                    <Col />
+                    <Col>
+                        <div onClick={handleImageClick} className="profile-img mb-5 text-center">
+                            <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="250px" alt="profile picture" className="rounded-pill"></img>
+                            <FaLink className="icon-button" />
+                        </div>
+                        <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                            <div>
+                                <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
+                                <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
+                                <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                            </div>
+                        </form>
+                    </Col>
+                    <Col />
+                </Row>
+                <Row>
+                    <Col>
+                        <Row>
+                            <Col>
+                                <ProfileForm
+                                    singleuser={user}
+                                    handleFormSubmit={handleFormSubmit}
+                                    latestFirstName={latestFirstName}
+                                    latestLastName={latestLastName}
+                                    latestEmail={latestEmail}
+                                    latestPhone={latestPhone}
+                                    error={error}
+                                />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 }

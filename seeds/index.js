@@ -4,11 +4,14 @@
 
 // Import all the seed data functions created in this directory
 const seedOrg = require('./org-seeds');
-const seedUser = require('./user-seeds');
-const seedTeam = require('./team-seeds');
 const seedClient = require('./client-seeds');
-const seedTicket = require('./ticket-seeds');
+const seedUserClient = require('./user-client-org-1');
+const seedTeam1 = require('./user-seed-org-1-team-1');
+const seedTeam2 = require('./user-seed-org-1-team-2');
+const seedTeam = require('./team-org-1'); 
+const seedTicketOrg1Team1 = require('./ticket-org-1-team-1');
 const seedComment = require('./comment-seeds');
+
 
 
 // Import the database connection instance from connection / config
@@ -34,13 +37,19 @@ const seedAll = async () => {
     await seedClient();
     console.log('\n----- CLIENTS SEEDED -----\n');
 
-    await seedUser();
-    console.log('\n----- USERS SEEDED -----\n');
+    await seedUserClient();
+    console.log('\n----- USERCLIENT SEEDED -----\n');
+
+    await seedTeam1();
+    console.log('\n----- USERS ORG1 TEAM1 SEEDED -----\n');
+
+    await seedTeam2();
+    console.log('\n----- USERS ORG1 TEAM2 SEEDED -----\n');
 
     await seedTeam();
     console.log('\n----- TEAMS SEEDED -----\n');
 
-    await seedTicket();
+    await seedTicketOrg1Team1();
     console.log('\n----- TICKETS SEEDED -----\n');
 
     await seedComment();
@@ -61,4 +70,4 @@ const seedAll = async () => {
   seeds directory and trying to node index.js)
   */
 
-  seedAll();
+seedAll();

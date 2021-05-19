@@ -39,6 +39,7 @@
                 <>
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
+                            {props.children}
                             {comments.map(comment => {
                                 return (
                                     <CommentDiv

@@ -16,13 +16,19 @@
 
         console.log('props in manage ticket modal is', props);
 
+    /* ------------------------------ Props Filters ----------------------------- */
+
+        // Take all users and filter it to employees for rendering list
+        const allEmployees = props.allUsers.filter(user=> user.role!="Client");
+
     /* ---------------------------------- State --------------------------------- */
 
-        // Set modal visability state to false by default
+        // Set visibility of key elements on the page (visability = overall modal)
         const [visability, setVisablity] = useState(false)
         const [isTicketShowing, setisTicketShowing] = useState(true)
         const [isClientShowing, setisClientShowing] = useState(false)
         const [isCommentShowing, setisCommentShowing] = useState(false)
+        const [isNewCommentShowing, setisNewCommentShowing] = useState(false)
 
     /* ------------------------ Modal Visability Handlers ----------------------- */
 
@@ -61,11 +67,6 @@
             setisClientShowing(false);
             setisCommentShowing(true);
         }
-
-    /* ------------------------------ Props Filters ----------------------------- */
-
-        // Take all users and filter it to employees for rendering list
-        const allEmployees = props.allUsers.filter(user=> user.role!="Client");
 
     /* -------------------------- Handle Ticket Update -------------------------- */
 
@@ -113,7 +114,30 @@
             };
             
         };
-    /* -------------------- Modal Button and Modal Component -------------------- */
+
+        /* --------------------------- Handle New Comment --------------------------- */
+        
+        // Define references
+        let newCommentTextArea = React.createRef();
+        
+        // On click of + comment button, show the text-area and allow for entry
+            function readyNewComment () {
+                console.log(' ready new comment initial trigger')
+                // Set state to render new comment div
+                setisNewCommentShowing(true);
+            };
+
+            // Cancel new comment if needed
+            function cancelNewComment (e) {
+                //avoid refresh
+                e.preventDefault();
+                // set state to hide new comment div again
+                setisNewCommentShowing(false);
+                // Clear the value of anything that had been typed in
+                newCommentTextArea.current.value="";
+            };
+
+        /* -------------------- Modal Button and Modal Component -------------------- */
 
         return (
             <>
@@ -207,7 +231,19 @@
                                     <CommentsContantainer
                                         comments={props.ticketComments}
                                         currentUser={props.currentUser}
-                                    />
+                                    >
+                                        <form className={isNewCommentShowing ? "mb-2" : "d-none"}>
+                                            <div class="form-group mb-1">
+                                                <textarea ref={newCommentTextArea} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+                                            <div className="text-right mb-2">
+                                                <button className="btn btn-outline-primary btn-sm py-0 mx-1">Post</button>
+                                                <button className="btn btn-outline-secondary btn-sm py-0 mx-1" onClick={cancelNewComment}>Cancel</button>
+                                            </div>
+                                        </form>
+                                        
+                                    </CommentsContantainer>
+
                            </div>
                         </form>
                     </Modal.Body>
@@ -217,7 +253,7 @@
                                 <Button  className="btn-success mx-2" onClick={updateTicket}>Update</Button>
                             </div>
                             <div className={isCommentShowing ? "" : "d-none"} >
-                                <button className="btn btn-primary">+ Comment</button>
+                                <button className="btn btn-primary" onClick={readyNewComment}>+ Comment</button>
                             </div>
                     </Modal.Footer>
                 </Modal>

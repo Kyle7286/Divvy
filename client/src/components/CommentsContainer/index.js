@@ -18,14 +18,15 @@
             console.log ('props in Comments Container are', props)
 
             // Organize comments into array of objects
-            const rawComments = props.comments;
+            const rawComments = [...props.comments];
                 console.log('rawComments variable is', rawComments);
             
             // Reverse array order so that last posted shows highest in comment div
             const comments = rawComments.reverse();
                 console.log('reversed comments are', comments);
         
-            // Get the user whom is logged in
+            // Get the user whom is logged in (get current user api route)
+
 
         /* --------------------------- Handle New Comment --------------------------- */
 
@@ -36,14 +37,13 @@
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
                             {comments.map(comment => {
-                                console.log('comment in map is', comment.comment);
                                 return (
-                                <CommentDiv
-                                    user={comment.user_id}
-                                    comment={comment.comment}
-                                    date="dateplaceholder"
-                                    key={comment.user_id}
-                                /> 
+                                    <CommentDiv
+                                        user={comment.user_id}
+                                        comment={comment.comment}
+                                        date={comment.date_created}
+                                        key={comment.user_id}
+                                    /> 
                                 )
                             })}                                
                         </div>

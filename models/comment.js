@@ -33,11 +33,9 @@ Comment.init(
             // },
         },
         date_created: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isDate: true
-            },
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue:DataTypes.NOW
         },
         date_modified: {
             type: DataTypes.STRING,

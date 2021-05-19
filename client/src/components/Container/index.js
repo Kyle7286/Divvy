@@ -2,7 +2,7 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+  import React from "react";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -14,12 +14,12 @@ import React from "react";
     as the row component)
 */
 
-function Container(props) {
-  return <div className="container my-3 p-0" data-component="Container" {...props} />;
-}
+  function Container(props) {
+    return <div className="container my-3 p-0" data-component="Container" {...props} />;
+  }
 
 /* -------------------------------------------------------------------------- */
 /*                              Export Component                              */
 /* -------------------------------------------------------------------------- */
 
-export default Container;
+  export default Container;

@@ -11,6 +11,10 @@ module.exports = {
       {
         include: [
           {
+            model: Comment,
+            attributes: ["comment", "user_id"]
+          },
+          {
             model: User,
             attributes: ['first_name', 'last_name'],
             as: 'ticketuser'

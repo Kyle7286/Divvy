@@ -180,6 +180,7 @@
                     ticketFirm={ticket.client.name}
                     ticketFirmContact={ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name}`:""}
                     ticketFirmPhone={ticket.client.contact[0] ? ticket.client.contact[0].phone_number:"" }
+                    ticketComments="holdingforcomments"
                   />,
           id:ticket.id,
           title: ticket.title,

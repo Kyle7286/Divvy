@@ -144,7 +144,7 @@
                                <button 
                                     className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowCommentDetails}>
-                                        Comments {props.ticketComments.length ? `(${props.ticketComments.length})` : ""}
+                                        Comments {(props.ticketComments != undefined) ? `(${props.ticketComments.length})` : ""} 
                                 </button>
                            </div>
                        </div>

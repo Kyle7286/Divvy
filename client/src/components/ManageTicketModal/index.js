@@ -20,6 +20,9 @@
 
         // Set modal visability state to false by default
         const [visability, setVisablity] = useState(false)
+        const [isTicketShowing, setisTicketShowing] = useState(true)
+        const [isClientShowing, setisClientShowing] = useState(false)
+        const [isCommentShowing, setisCommentShowing] = useState(false)
 
     /* ------------------------ Modal Visability Handlers ----------------------- */
 
@@ -32,6 +35,32 @@
         function closeModal () {
             setVisablity(false)
         };
+
+    /* --------------------- Details Visability Handlers  ------------------------ */
+        
+        // Show Ticket Details
+        function handleShowTicketDetails () {
+            // Set this showing state to true and others false
+            setisTicketShowing(true);
+            setisClientShowing(false);
+            setisCommentShowing(false);
+        }
+
+        // Show Client Details
+        function handleShowClientDetails () {
+            // Set this state true and others false
+            setisTicketShowing(false);
+            setisClientShowing(true);
+            setisCommentShowing(false);
+        }
+
+        // Show Client Details
+        function handleShowCommentDetails () {
+            // Set this state true and others false
+            setisTicketShowing(false);
+            setisClientShowing(false);
+            setisCommentShowing(true);
+        }
 
     /* ------------------------------ Props Filters ----------------------------- */
 
@@ -70,7 +99,6 @@
 
         // Declare update handler function
         function deleteTicket () {
-
             
             // Confirm intent to delete
             const confirmDelete = prompt('Deleting this ticket will permentenly remove all of its data. If you with to delete, please type "DELETE" below to confirm');
@@ -97,8 +125,20 @@
                         <Modal.Title>{props.ticketID} - {props.ticketTitle}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                       <div className="row mb-3 justify-content-center">
+                           <div className="col text-center">
+                               <button className={isTicketShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowTicketDetails}>Ticket Details</button>
+                           </div>
+                           <div className="col text-center">
+                               <button className={isClientShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowClientDetails}>Client Details</button>
+                           </div>
+                           <div className="col text-center">
+                               <button className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowCommentDetails}>Comments</button>
+                           </div>
+                       </div>
                         <form>
-                            <h5 className= "text-center">Manage</h5>
+                            <div className={isTicketShowing ? "" : "d-none"}>
+                                <h5 className= "text-center">Manage</h5>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Priority</span>
                                     <select ref={latestPriority} className="form-select" defaultValue={props.ticketPriority} aria-label="Default select example">
@@ -134,7 +174,9 @@
                                     <span className="input-group-text col-3">Description</span>
                                     <textarea ref={latestDescription} className="form-control" defaultValue={props.ticketDescription} placeholder="Enter Description..." aria-label="With textarea"></textarea>
                                 </div>
-                            <h5 className= "text-center mt-3">Client Details</h5>
+                            </div>
+                            <div className={isClientShowing ? "" : "d-none"}>
+                                <h5 className= "text-center mt-3">Client Details</h5>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Firm Name</span>
                                     <input readOnly={true} value={props.ticketFirm}type="text" className="form-control" placeholder="Firm" aria-label="Priority" aria-describedby="priorityinput"/> 
@@ -147,16 +189,21 @@
                                     <span className="input-group-text col-3">Firm Phone</span>
                                     <input readOnly={true} value={props.ticketFirmPhone}type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
+                            </div>
+                           <div className={isCommentShowing ? "" : "d-none"}>
                             <h5 className= "text-center mt-3">Comments</h5>
-                                <CommentsContantainer
-                                    comments={props.ticketComments}
-                                    currentUser={props.currentUser}
-                                />
+                                    <CommentsContantainer
+                                        comments={props.ticketComments}
+                                        currentUser={props.currentUser}
+                                    />
+                           </div>
                         </form>
                     </Modal.Body>
                     <Modal.Footer className="container-fluid">
-                            <Button  className="btn-danger" onClick={deleteTicket}>Delete</Button>
-                            <Button  className="btn-success" onClick={updateTicket}>Update</Button>
+                            <div className={isTicketShowing ? "" : "d-none"} >
+                                <Button  className="btn-danger mx-2" onClick={deleteTicket}>Delete</Button>
+                                <Button  className="btn-success mx-2" onClick={updateTicket}>Update</Button>
+                            </div>
                     </Modal.Footer>
                 </Modal>
             </>

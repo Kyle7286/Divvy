@@ -3,8 +3,11 @@
 /* -------------------------------------------------------------------------- */
 
 import React from "react";
+import Container from "../../components/Container";
+import Row from "../../components/Row";
+import Col from "../../components/Column";
+import HomePageCard from "../../components/HomePageCard";
 import { useMediaQuery } from 'react-responsive';
-
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -37,9 +40,13 @@ function Home() {
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
-        <>
-            <h1>Home Page</h1>
-        </>
+        <Container>
+            <Row>
+                <Col className="col-lg-12 align-items-center">
+                    <HomePageCard />
+                </Col>
+            </Row >
+        </Container >
     );
 }
 

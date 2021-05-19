@@ -2,24 +2,11 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React, { useEffect, useState } from "react";
-import { useMediaQuery } from 'react-responsive';
-
-/* -------------------------------------------------------------------------- */
-/*                           Set Mobile BreakPoints                           */
-/* -------------------------------------------------------------------------- */
-
-// Will render mobile friendly nav, horizontal with diff layout
-const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 1025 })
-    return isMobile ? children : null
-}
-
-// Will render desktop friendly nav, vertical nav
-const Default = ({ children }) => {
-    const isNotMobile = useMediaQuery({ minWidth: 1026 })
-    return isNotMobile ? children : null
-}
+import React from "react";
+import Container from "../../components/Container";
+import Row from "../../components/Row";
+import Col from "../../components/Column";
+import SignupCard from "../../components/SignupCard";
 
 /* -------------------------------------------------------------------------- */
 /*                            Define Page Component                           */
@@ -30,16 +17,19 @@ const Default = ({ children }) => {
     class for spacing. This is our whitespace for making the UI alongside
     the navbar. 
 */
+function Signup() {
 
-
-function Logout() {
-
-    /* ---------------------------- Component Render ---------------------------- */
-    return (
-        <>
-            <h1>You are now logged out!</h1>
-        </>
-    );
+        return (
+            <div>
+                <Container>
+                    <Row className="mb-4 d-flex flex-row justify-content-center">
+                        <Col>
+                            <SignupCard />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -50,4 +40,4 @@ function Logout() {
     Exported for import within app.js
 */
 
-export default Logout;
+export default Signup;

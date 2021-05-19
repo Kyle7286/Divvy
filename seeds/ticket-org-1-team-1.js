@@ -15,7 +15,7 @@ const ticketData = [
         title: "Printer issues",
         description: "Printer is down and wont connect to the network, need assistance asap. Thanks",
         date_created: "2021-05-01T16:36:12+0000",
-        assigned_to: 3,
+        assigned_to: 7,
         date_completed: null,
         status: "In Progress",
         priority: 1,

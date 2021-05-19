@@ -46,7 +46,6 @@ function Org() {
     // Call when components have loaded
     useEffect(() => {
         getOrg();
-
     }, [])
 
 

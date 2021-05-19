@@ -57,7 +57,6 @@ module.exports = {
 
     logout: async function (req, res) {
         try {
-            console.log(req.session);
             if (req.session.logged_in) {
                 req.session.destroy(() => {
                     res.status(204).end();

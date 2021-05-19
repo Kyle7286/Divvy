@@ -29,11 +29,14 @@ export default {
     },
 
     /* ---------------------------------- users --------------------------------- */
-
     // Get all USERS
     getAllUsers: function () {
         return axios.get("/api/user");
     },
+    newUser: function (newUser) {
+        return axios.post("/api/user", newUser);
+    },
+
 
     // Get single USER
     getCurrentUser: function () {
@@ -67,5 +70,9 @@ export default {
     /* ---------------------------------- logout --------------------------------- */
     logout: function () {
         return axios.post("/api/auth/logout");
+    },
+    /* ----------------------------------- orgs ---------------------------------- */
+    newOrg: function (newOrg) {
+        return axios.post("/api/org", newOrg);
     }
 };

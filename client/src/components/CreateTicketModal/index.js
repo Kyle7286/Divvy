@@ -12,8 +12,6 @@ import API from "../../utils/API";
 
 function CreateTicketModal (props) {
 
-    console.log('create ticket modal props', props);
-
 /* ------------------------------ Props Filters ----------------------------- */
 
     // Take all users and filter it to employees for rendering list

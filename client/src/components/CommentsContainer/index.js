@@ -9,22 +9,48 @@
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
-    // Get the user whom is logged in
+    
+    function CommentsContantainer(props) {
 
-    // Get all the comments from the ticket
+        /* -------------------------- Organize Information -------------------------- */
 
-    // Render the Component with comment Divs (map through and render comment div)
-    function CommentsContantainer() {
-    return (
-        <>
-            <div className="card comments-section overflow-auto">
-                <div className="card-body">
-                    <CommentDiv/>                                 
-                </div>
-            </div>
-            <button className="btn btn-sm btn-primary btn-outline m-1 btn-rounded px-2 py-0">+</button>
-        </>
-    )
+            // Check the props (this includes all comments associated with the ticket)
+            console.log ('props in Comments Container are', props)
+
+            // Organize comments into array of objects
+            const rawComments = props.comments;
+                console.log('rawComments variable is', rawComments);
+            
+            // Reverse array order so that last posted shows highest in comment div
+            const comments = rawComments.reverse();
+                console.log('reversed comments are', comments);
+        
+            // Get the user whom is logged in
+
+        /* --------------------------- Handle New Comment --------------------------- */
+
+        
+        /* ---------------------------- Return Component ---------------------------- */
+            return (
+                <>
+                    <div className="card comments-section overflow-auto">
+                        <div className="card-body">
+                            {comments.map(comment => {
+                                console.log('comment in map is', comment.comment);
+                                return (
+                                <CommentDiv
+                                    user={comment.user_id}
+                                    comment={comment.comment}
+                                    date="dateplaceholder"
+                                    key={comment.user_id}
+                                /> 
+                                )
+                            })}                                
+                        </div>
+                    </div>
+                    <button className="btn btn-sm btn-primary btn-outline m-1 btn-rounded px-2 py-0">+</button>
+                </>
+            )
     }
 
 /* -------------------------------------------------------------------------- */

@@ -6,12 +6,15 @@
     import {Modal,Button} from "react-bootstrap";
     import API from "../../utils/API";
     import "./index.css";
+    import CommentsContantainer from "../CommentsContainer";
     
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
     function ManageTicketModal (props) {
+
+        console.log('props in manage ticket modal is', props);
 
     /* ---------------------------------- State --------------------------------- */
 
@@ -145,15 +148,9 @@
                                     <input readOnly={true} value={props.ticketFirmPhone}type="text" className="form-control" placeholder="Firm Contact" aria-label="Priority" aria-describedby="priorityinput"/> 
                                 </div>
                             <h5 className= "text-center mt-3">Comments</h5>
-                                <div class="card comments-section overflow-auto">
-                                    <div class="card-body">
-                                        <div className="bg-light p-1 my-1">
-                                            <div className="fw-bold text-primary">User Name</div>
-                                            <div>This is a comment</div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                                <button className="btn btn-sm btn-primary btn-outline m-1 btn-rounded px-2 py-0">+</button>
+                                <CommentsContantainer
+                                    comments={props.ticketComments}
+                                />
                         </form>
                     </Modal.Body>
                     <Modal.Footer className="container-fluid">

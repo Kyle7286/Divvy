@@ -46,7 +46,10 @@ function Dashboard() {
                 }
             }
         ])
-        
+
+        // set current user
+        const [currentUser, setCurrentUser] = useState({})
+
         // Set users
         const [users, setUsers] = useState([{}])
 
@@ -73,6 +76,24 @@ function Dashboard() {
                 .catch(err => console.log(err));
         };
 
+    /* ---------------------------- Get Current User ---------------------------- */
+
+        // Call when components have loaded
+         useEffect(() => {
+            getCurrentUser();
+        }, [])
+
+        // Set current User State
+        function getCurrentUser() {
+            API.getCurrentUser()
+                .then (res => {
+                    console.log("CURRENT USER", res.data);
+                    setCurrentUser(res.data);
+                } 
+                )
+        }
+
+
     /* -------------------------------- Get Users---------------------------------- */
 
     // Load all employees and store them in employees
@@ -80,7 +101,6 @@ function Dashboard() {
         // Call when components have loaded
         useEffect(() => {
             getUsers();
-
         }, [])
 
 
@@ -98,8 +118,8 @@ function Dashboard() {
         function getUserTeamid(x) {
             API.getCurrentUser()
                 .then(res => {
-                    console.log("CURRENT USER", res.data);
-                    console.log("X", x);
+                    // console.log("CURRENT USER", res.data);
+                    // console.log("X", x);
 
                     const teamEmployees = x.filter(user => {
                         // console.log("FILTERING");
@@ -130,61 +150,63 @@ function Dashboard() {
 
     // Load all clients and store them in clients
 
-    // Call when components have loaded
-    useEffect(() => {
-        getClients();
+        // Call when components have loaded
+        useEffect(() => {
+            getClients();
 
-    }, [])
+        }, [])
 
 
-    // Load all USERS
-    function getClients() {
-        API.getAllClients()
-            .then(res =>
-                setClients(res.data)
-            )
-            .catch(err => console.log(err));
-    }
+        // Load all USERS
+        function getClients() {
+            API.getAllClients()
+                .then(res =>
+                    setClients(res.data)
+                )
+                .catch(err => console.log(err));
+        }
 
     /* ---------------------------- Component Render ---------------------------- */
-    return (
+        return (
 
 
-        <Container className="mx-3 mt-3">
-            <Row className="mb-4 d-flex flex-row justify-content-center">
-                <Col>
-                    <StatCardContainer
-                        allTickets={tickets}
-                    />
-                </Col>
-            </Row>
-            { <Row>
-                <Col className="col-lg-8 mx-0 px-0">
-                    <SectionHeader>Tickets</SectionHeader>
-                    <Default>
-                        <TicketTable
+            <Container className="mx-3 mt-3">
+                <Row className="mb-4 d-flex flex-row justify-content-center">
+                    <Col>
+                        <StatCardContainer
                             allTickets={tickets}
-                            allUsers={users}
-                            allClients={clients}
                         />
-                    </Default>
-                    <Mobile>
-                        <TicketTableMobile
-                            allTickets={tickets}
+                    </Col>
+                </Row>
+                { <Row>
+                    <Col className="col-lg-8 mx-0 px-0">
+                        <SectionHeader>Tickets</SectionHeader>
+                        <Default>
+                            <TicketTable
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                        </Default>
+                        <Mobile>
+                            <TicketTableMobile
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                        </Mobile>
+                    </Col>
+                    <Col className="col-lg-4 align-items-center">
+                        <SectionHeader>Availible Employees</SectionHeader>
+                        <EmployeeCardContainer
                             allUsers={users}
-                            allClients={clients}
                         />
-                    </Mobile>
-                </Col>
-                <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Availible Employees</SectionHeader>
-                    <EmployeeCardContainer
-                        allUsers={users}
-                    />
-                </Col>
-            </Row>}
-        </Container>
-    );
+                    </Col>
+                </Row>}
+            </Container>
+        );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -195,4 +217,4 @@ function Dashboard() {
     Exported for import within app.js
 */
 
-export default Dashboard;
+    export default Dashboard;

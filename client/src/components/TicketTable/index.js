@@ -169,6 +169,7 @@
       (
         {
           button:<ManageTicketModal
+                    currentUser={props.currentUser}
                     allUsers={props.allUsers} 
                     ticketTitle={ticket.title} 
                     ticketPriority={ticket.priority}

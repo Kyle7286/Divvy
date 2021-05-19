@@ -150,6 +150,7 @@
                             <h5 className= "text-center mt-3">Comments</h5>
                                 <CommentsContantainer
                                     comments={props.ticketComments}
+                                    currentUser={props.currentUser}
                                 />
                         </form>
                     </Modal.Body>

@@ -19,15 +19,12 @@
             console.log ('props in Comments Container are', props)
 
             // Organize comments into array of objects
-            const rawComments = [...props.comments];
-                console.log('rawComments variable is', rawComments);
+            const comments = props.comments;
             
-            // Reverse array order so that last posted shows highest in comment div
-            const comments = rawComments.reverse();
-                console.log('reversed comments are', comments);
-        
             // Get the user whom is logged in (get current user api route)
-
+            const currentUserName=`${props.currentUser.first_name} ${props.currentUser.last_name}`;
+            const currentUserId=props.currentUser.id;
+              
         /* -------------------------- Define Data Formatter ------------------------- */
            
             function convertDate(date) {

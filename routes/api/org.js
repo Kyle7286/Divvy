@@ -6,6 +6,11 @@ router.route("/")
   .get(orgController.findAll)
   .post(orgController.create);
 
+// Matches with "/api/org/current
+router
+  .route("/current")
+  .get(orgController.findById);
+
 // Matches with "/api/org/:id"
 router
   .route("/:id")

@@ -36,7 +36,11 @@ function Org() {
 
     /* ---------------------------------- State --------------------------------- */
 
-    const [org, setOrg] = useState({});
+    const [org, setOrg] = useState(
+        {
+            org: {}
+        }
+    );
 
 
     // Call when components have loaded
@@ -48,9 +52,12 @@ function Org() {
 
     // Set the user state
     function getOrg() {
-        // API.getCurrentUser()
-        //     .then(res => setUser(res.data))
-        //     .catch(err => console.log(err));
+        API.getOrg()
+            .then(res => {
+                console.log(res.data);
+                setOrg(res.data)
+            })
+            .catch(err => console.log(err));
     };
 
     // Set the error state
@@ -120,7 +127,7 @@ function Org() {
                 <Row>
                     <Col />
                     <Col>
-
+                        <h1>{org.org.name}</h1>
                     </Col>
                     <Col />
                 </Row>

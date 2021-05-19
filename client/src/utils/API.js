@@ -71,8 +71,12 @@ export default {
     logout: function () {
         return axios.post("/api/auth/logout");
     },
+    
     /* ----------------------------------- orgs ---------------------------------- */
     newOrg: function (newOrg) {
         return axios.post("/api/org", newOrg);
+    },
+    getOrg: function () {
+        return axios.get("/api/org/current")
     }
 };

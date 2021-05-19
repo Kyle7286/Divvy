@@ -19,17 +19,17 @@ import API from "../../utils/API";
 /*                           Set Mobile BreakPoints                           */
 /* -------------------------------------------------------------------------- */
 
-// Will render mobile friendly nav, horizontal with diff layout
-const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 1025 })
-    return isMobile ? children : null
-}
+    // Will render mobile friendly nav, horizontal with diff layout
+    const Mobile = ({ children }) => {
+        const isMobile = useMediaQuery({ maxWidth: 1025 })
+        return isMobile ? children : null
+    }
 
-// Will render desktop friendly nav, vertical nav
-const Default = ({ children }) => {
-    const isNotMobile = useMediaQuery({ minWidth: 1026 })
-    return isNotMobile ? children : null
-}
+    // Will render desktop friendly nav, vertical nav
+    const Default = ({ children }) => {
+        const isNotMobile = useMediaQuery({ minWidth: 1026 })
+        return isNotMobile ? children : null
+    }
 
 /* -------------------------------------------------------------------------- */
 /*                            Define Page Component                           */
@@ -38,91 +38,93 @@ const Default = ({ children }) => {
 function Dashboard() {
 
     /* ---------------------------------- Set State --------------------------------- */
-    // Set tickets
-    const [tickets, setTickets] = useState([
-        {
-            client: {
-                contact: []
+        // Set tickets
+        const [tickets, setTickets] = useState([
+            {
+                client: {
+                    contact: []
+                }
             }
-        }
-    ])
-    // Set users
-    const [users, setUsers] = useState([{}])
-    // Set users
-    const [clients, setClients] = useState([{}])
+        ])
+        
+        // Set users
+        const [users, setUsers] = useState([{}])
+
+        // Set clients
+        const [clients, setClients] = useState([{}])
 
     /* --------------------------------- Get Tickets -------------------------------- */
 
     // Load all tickets and store them in tickets
 
-    // Call when components have loaded
-    useEffect(() => {
-        getTickets()
-    }, [])
+        // Call when components have loaded
+        useEffect(() => {
+            getTickets()
+        }, [])
 
-    // Load All Tickets and Set Them to state
-    function getTickets() {
-        API.getAllTickets()
-            .then(res => {
-                console.log("TICKETS", res.data);
-                setTickets(res.data)
-            }
-            )
-            .catch(err => console.log(err));
-    };
+        // Load All Tickets and Set Them to state
+        function getTickets() {
+            API.getAllTickets()
+                .then(res => {
+                    console.log("TICKETS", res.data);
+                    setTickets(res.data)
+                }
+                )
+                .catch(err => console.log(err));
+        };
 
     /* -------------------------------- Get Users---------------------------------- */
 
     // Load all employees and store them in employees
 
-    // Call when components have loaded
-    useEffect(() => {
-        getUsers();
+        // Call when components have loaded
+        useEffect(() => {
+            getUsers();
 
-    }, [])
+        }, [])
 
 
-    // Load all USERS
-    function getUsers() {
-        API.getAllUsers()
-            .then(res => {
-                console.log("RES.DATA", res.data);
-                getUserTeamid(res.data)
-            })
-            .catch(err => console.log(err));
-    }
+        // Load all USERS
+        function getUsers() {
+            API.getAllUsers()
+                .then(res => {
+                    console.log("RES.DATA", res.data);
+                    getUserTeamid(res.data)
+                })
+                .catch(err => console.log(err));
+        }
 
-    // Set the user state
-    function getUserTeamid(x) {
-        API.getCurrentUser()
-            .then(res => {
-                console.log("CURRENT USER", res.data);
-                console.log("X", x);
+        // Set the user state
+        function getUserTeamid(x) {
+            API.getCurrentUser()
+                .then(res => {
+                    console.log("CURRENT USER", res.data);
+                    console.log("X", x);
 
-                const teamEmployees = x.filter(user => {
-                    // console.log("FILTERING");
-                    return user.team_id === res.data.team_id
-                });
+                    const teamEmployees = x.filter(user => {
+                        // console.log("FILTERING");
+                        return user.team_id === res.data.team_id
+                    });
 
-                console.log("TEAM EMPLOYEES", teamEmployees);
+                    console.log("TEAM EMPLOYEES", teamEmployees);
 
-                setUsers(teamEmployees);
-            })
-            .catch(err => console.log(err));
-    };
-
-    function sortEmployeesByTickets() {
-
-        // Take all users and filter it to employees
-        const allEmployees = props.allUsers.filter(user => user.role != "Client");
-
-        // Soort employees by their ticket count (due to mounting, make sure its not blank first)
-        if (allEmployees.length != 0) {
-            allEmployees.sort((a, b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
+                    setUsers(teamEmployees);
+                })
+                .catch(err => console.log(err));
         };
 
-        return allEmployees;
-    }
+        function sortEmployeesByTickets() {
+
+            // Take all users and filter it to employees
+            const allEmployees = props.allUsers.filter(user => user.role != "Client");
+
+            // Soort employees by their ticket count (due to mounting, make sure its not blank first)
+            if (allEmployees.length != 0) {
+                allEmployees.sort((a, b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
+            };
+
+            return allEmployees;
+        }
 
     /* -------------------------------- Get Clients ---------------------------------- */
 

@@ -21,7 +21,7 @@
                         <div className="col">{props.comment}</div> 
                     </div>
                     <div className="row text-right">
-                        <div className=" col fst-italic mt-1 align-self-end">{props.date}</div> 
+                        <div className=" col fst-italic mt-2 mr-1 align-self-end">{props.date}</div> 
                     </div>           
                 </div>
             </>

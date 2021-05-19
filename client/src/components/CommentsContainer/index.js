@@ -5,6 +5,7 @@
     import React from "react";
     import CommentDiv from "../CommentDiv"
     import "./index.css";
+    const dayjs = require('dayjs');
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -27,6 +28,11 @@
         
             // Get the user whom is logged in (get current user api route)
 
+        /* -------------------------- Define Data Formatter ------------------------- */
+           
+            function convertDate(date) {
+                return dayjs(date).format('MMMM-DD-YYYY')
+            };
 
         /* --------------------------- Handle New Comment --------------------------- */
 
@@ -34,6 +40,7 @@
         /* ---------------------------- Return Component ---------------------------- */
             return (
                 <>
+                    <button className="btn btn-sm btn-primary btn-outline mb-2 btn-rounded py-0">+ Comment</button>
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
                             {comments.map(comment => {
@@ -41,14 +48,14 @@
                                     <CommentDiv
                                         user={`${comment.user.first_name} ${comment.user.last_name}`}
                                         comment={comment.comment}
-                                        date={comment.date_created}
+                                        date={convertDate(comment.date_created)}
                                         key={comment.user_id}
                                     /> 
                                 )
                             })}                                
                         </div>
                     </div>
-                    <button className="btn btn-sm btn-primary btn-outline m-1 btn-rounded px-2 py-0">+</button>
+                    
                 </>
             )
     }

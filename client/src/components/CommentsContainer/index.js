@@ -37,7 +37,6 @@
         /* ---------------------------- Return Component ---------------------------- */
             return (
                 <>
-                    <button className="btn btn-sm btn-primary btn-outline mb-2 btn-rounded  pb-1 py-0">+ Comment</button>
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
                             {comments.map(comment => {

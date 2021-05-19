@@ -127,13 +127,25 @@
                     <Modal.Body>
                        <div className="row mb-3 justify-content-center">
                            <div className="col text-center">
-                               <button className={isTicketShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowTicketDetails}>Ticket Details</button>
+                               <button 
+                                    className={isTicketShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    onClick={handleShowTicketDetails}>
+                                        Ticket Details
+                                </button>
                            </div>
                            <div className="col text-center">
-                               <button className={isClientShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowClientDetails}>Client Details</button>
+                               <button 
+                                    className={isClientShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    onClick={handleShowClientDetails}>
+                                        Client Details
+                                </button>
                            </div>
                            <div className="col text-center">
-                               <button className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} onClick={handleShowCommentDetails}>Comments</button>
+                               <button 
+                                    className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    onClick={handleShowCommentDetails}>
+                                        Comments {props.ticketComments.length ? `(${props.ticketComments.length})` : ""}
+                                </button>
                            </div>
                        </div>
                         <form>
@@ -203,6 +215,9 @@
                             <div className={isTicketShowing ? "" : "d-none"} >
                                 <Button  className="btn-danger mx-2" onClick={deleteTicket}>Delete</Button>
                                 <Button  className="btn-success mx-2" onClick={updateTicket}>Update</Button>
+                            </div>
+                            <div className={isCommentShowing ? "" : "d-none"} >
+                                <button className="btn btn-primary">+ Comment</button>
                             </div>
                     </Modal.Footer>
                 </Modal>

@@ -39,7 +39,7 @@
                             {comments.map(comment => {
                                 return (
                                     <CommentDiv
-                                        user={comment.user_id}
+                                        user={`${comment.user.first_name} ${comment.user.last_name}`}
                                         comment={comment.comment}
                                         date={comment.date_created}
                                         key={comment.user_id}

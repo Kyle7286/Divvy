@@ -12,7 +12,14 @@ module.exports = {
         include: [
           {
             model: Comment,
-            attributes: ["comment", "user_id", "date_created"]
+            attributes: ['comment', 'user_id', 'date_created'],
+            include: [
+              {
+                model: User,
+                attributes: ['first_name', 'last_name'],
+               
+              }
+            ],
           },
           {
             model: User,

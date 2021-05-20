@@ -13,9 +13,9 @@
         console.log('props on comment div are', props)
         return (
             <>
-                <div className="bg-light p-1 my-1 container">
+                <div className={props.divClassName}>
                     <div className="row">
-                        <div className="fw-bold text-primary col">{props.user}</div> 
+                        <div className={props.nameClassName}>{props.user}</div> 
                     </div>
                     <div className="row">
                         <div className="col">{props.comment}</div> 

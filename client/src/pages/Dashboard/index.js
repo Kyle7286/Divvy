@@ -70,25 +70,16 @@ function Dashboard() {
     // Load All Tickets and Set Them to state
     function getTickets(filterType, filterValue) {
         API.getAllTickets()
-            // .then(res => {
-            //     console.log("TICKETS", res.data);
-            //     setTickets(res.data)
-            // }
-            // )
             .then(res => {
                 console.log("TICKETS", res.data);
                 let filteredTickets;
-                console.log("filterType: ", filterType);
-                console.log("filterValue: ", filterValue);
                 switch (filterType) {
                     case "ID":
-                        console.log("Pages.Dashboard - filter on ID case logic");
                         filteredTickets = res.data.filter(ticketsData => {
                             return ticketsData.assigned_to === filterValue;
                         });
                         break;
                     case "Status":
-                        console.log("Pages.Dashboard - filter on Status case logic");
                         filteredTickets = res.data.filter(ticketsData => {
                             return ticketsData.status === filterValue;
                         });
@@ -195,6 +186,37 @@ function Dashboard() {
             .catch(err => console.log(err));
     }
 
+    /* -------------------------------- handleClick ---------------------------------- */
+
+    function handleClick(e) {
+        let filterValue = e.target.dataset.vl;
+        let filterType = e.target.dataset.type;
+        switch (filterType) {
+            case "Status":
+                switch (filterValue) {
+                    case "Total":
+                        filterType = "All";
+                        break;
+                    case "Open":
+                        break;
+                    case "Unassigned":
+                        filterType = "ID";
+                        filterValue = null;
+                        break;
+                    default:
+                        break;
+                }
+                getTickets(filterType, filterValue);
+                break;
+                case "ID":
+                    filterValue = parseInt(filterValue);
+                    getTickets(filterType, filterValue);
+                    break;
+            default:
+                break;
+        }
+    }
+
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
@@ -204,6 +226,7 @@ function Dashboard() {
                 <Col className="col-lg-8 mx-0 px-0">
                     <StatCardContainer
                         allTickets={tickets}
+                        handleClick={handleClick}
                     />
                 </Col>
             </Row>
@@ -231,6 +254,7 @@ function Dashboard() {
                     <SectionHeader>Availible Employees</SectionHeader>
                     <EmployeeCardContainer
                         allUsers={users}
+                        handleClick={handleClick}
                     />
                 </Col>
             </Row>}

@@ -169,6 +169,7 @@
       (
         {
           button:<ManageTicketModal
+                    currentUser={props.currentUser}
                     allUsers={props.allUsers} 
                     ticketTitle={ticket.title} 
                     ticketPriority={ticket.priority}
@@ -180,6 +181,7 @@
                     ticketFirm={ticket.client.name}
                     ticketFirmContact={ticket.client.contact[0] ? `${ticket.client.contact[0].first_name} ${ticket.client.contact[0].last_name}`:""}
                     ticketFirmPhone={ticket.client.contact[0] ? ticket.client.contact[0].phone_number:"" }
+                    ticketComments={ticket.comments}
                   />,
           id:ticket.id,
           title: ticket.title,

@@ -11,6 +11,19 @@ module.exports = {
       {
         include: [
           {
+            model: Comment,
+            attributes: ['comment', 'user_id', 'date_created'],
+            include: [
+              {
+                model: User,
+                attributes: ['first_name', 'last_name'],
+              }
+            ],
+            order:[
+              ['date_created', 'DESC']
+            ]
+          },
+          {
             model: User,
             attributes: ['first_name', 'last_name'],
             as: 'ticketuser'
@@ -82,6 +95,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       const ticketData = await Ticket.create(req.body);
+      console.log('client req received with req body', req.body)
       res.status(200).json(ticketData);
     } catch (err) {
       console.log(err);

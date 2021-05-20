@@ -62,17 +62,46 @@ function Dashboard() {
 
     // Call when components have loaded
     useEffect(() => {
-        getTickets()
+        const filterType = "ALL"
+        const filterValue = null
+        getTickets(filterType, filterValue)
     }, [])
 
     // Load All Tickets and Set Them to state
-    function getTickets() {
+    function getTickets(filterType, filterValue) {
         API.getAllTickets()
+            // .then(res => {
+            //     console.log("TICKETS", res.data);
+            //     setTickets(res.data)
+            // }
+            // )
             .then(res => {
                 console.log("TICKETS", res.data);
-                setTickets(res.data)
-            }
-            )
+                let filteredTickets;
+                console.log("filterType: ", filterType);
+                console.log("filterValue: ", filterValue);
+                switch (filterType) {
+                    case "ID":
+                        console.log("Pages.Dashboard - filter on ID case logic");
+                        filteredTickets = res.data.filter(ticketsData => {
+                            return ticketsData.assigned_to === filterValue;
+                        });
+                        break;
+                    case "Status":
+                        console.log("Pages.Dashboard - filter on Status case logic");
+                        filteredTickets = res.data.filter(ticketsData => {
+                            return ticketsData.status === filterValue;
+                        });
+                        break;
+                    default:
+                        filteredTickets = res.data;
+                        break;
+                }
+
+                console.log("filteredTickets: ", filteredTickets);
+
+                setTickets(filteredTickets);
+            })
             .catch(err => console.log(err));
     };
 

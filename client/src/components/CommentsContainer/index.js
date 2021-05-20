@@ -31,9 +31,6 @@
                 return dayjs(date).format('MMMM-DD-YYYY')
             };
 
-        /* --------------------------- Handle New Comment --------------------------- */
-
-        
         /* ---------------------------- Return Component ---------------------------- */
             return (
                 <>
@@ -47,6 +44,18 @@
                                         comment={comment.comment}
                                         date={convertDate(comment.date_created)}
                                         key={comment.user_id}
+                                        divClassName={comment.user_id===currentUserId 
+                                            ?
+                                            "bg-light p-2 my-1 container"
+                                            :
+                                            "bg-light p-2 my-1 ml-2 container"
+                                        }
+                                        nameClassName={comment.user_id===currentUserId 
+                                            ?
+                                            "fw-bold text-primary col"
+                                            :
+                                            "fw-bold text-secondary col"
+                                        }
                                     /> 
                                 )
                             })}                                

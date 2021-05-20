@@ -51,7 +51,7 @@
                                         }
                                         nameClassName={comment.user_id===currentUserId 
                                             ?
-                                            "fw-bold text-primary col"
+                                            "fw-bold text-warning col"
                                             :
                                             "fw-bold text-secondary col"
                                         }

@@ -4,6 +4,7 @@
 
    
     import React from "react";
+import SectionHeader from "../SectionHeader";
     import StatCard from "../StatCard";
 
 /* -------------------------------------------------------------------------- */
@@ -30,23 +31,26 @@
                 
         // Return the three primary status card components
         return (
-            <div className="d-flex flex-wrap justify-content-center" data-component="StatCardContainer">
-                <StatCard
-                    title="Total"
-                    amount={totalTicketsNumber}
-                    handleClick={props.handleClick}
+            <div className="bg-light mb-3">
+                <div className="d-flex flex-wrap justify-content-center py-3" data-component="StatCardContainer">
+                    <StatCard
+                        title="Total"
+                        amount={totalTicketsNumber}
+                        handleClick={props.handleClick}
+                        />
+                    <StatCard
+                        title="Open"
+                        amount={openTickets.length}
+                        handleClick={props.handleClick}
                     />
-                <StatCard
-                     title="Open"
-                     amount={openTickets.length}
-                     handleClick={props.handleClick}
-                />
-                <StatCard
-                    title="Unassigned"
-                    amount={unassignedTickets.length}
-                    handleClick={props.handleClick}
-                />
+                    <StatCard
+                        title="Unassigned"
+                        amount={unassignedTickets.length}
+                        handleClick={props.handleClick}
+                    />
+                </div>
             </div>
+           
         );
     }
 

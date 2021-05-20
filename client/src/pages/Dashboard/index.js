@@ -56,6 +56,30 @@ function Dashboard() {
     // Set clients
     const [clients, setClients] = useState([{}])
 
+    // Set Active States on Filter Cards & Define Functions to Manage Visability
+    const [isActiveTotal, setIsActiveTotal] = useState(true);
+    const [isActiveOpen, setIsActiveOpen] = useState(false);
+    const [isActiveUnassigned, setIsActiveUnassigned] = useState(false);
+
+    function setTotalActive () {
+        setIsActiveTotal(true);
+        setIsActiveOpen(false);
+        setIsActiveUnassigned(false)
+    };
+
+    function setTotalOpen () {
+        setIsActiveTotal(false);
+        setIsActiveOpen(true);
+        setIsActiveUnassigned(false)
+    };
+
+    function setTotalUnassigned () {
+        setIsActiveTotal(false);
+        setIsActiveOpen(false);
+        setIsActiveUnassigned(true);
+    };
+
+
     /* --------------------------------- Get Tickets -------------------------------- */
 
     // Load all tickets and store them in tickets
@@ -220,45 +244,41 @@ function Dashboard() {
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
-
-        <Container className="mx-3 mt-3">
-            <Row >
-                <Col className="col-lg-8 mx-0 px-0">
-                    <StatCardContainer
-                        allTickets={tickets}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            </Row>
-            { <Row>
-                <Col className="col-lg-8 mx-0 px-0">
-                    <SectionHeader>Tickets</SectionHeader>
-                    <Default>
-                        <TicketTable
+        <>
+            <Container className=" mt-3 mx-3">
+                {<Row>
+                    <Col className="col-lg-8 mx-0 px-0">
+                        <StatCardContainer
                             allTickets={tickets}
-                            allUsers={users}
-                            allClients={clients}
-                            currentUser={currentUser}
+                            handleClick={handleClick}
                         />
-                    </Default>
-                    <Mobile>
-                        <TicketTableMobile
-                            allTickets={tickets}
+                        <Default>
+                            <TicketTable
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                        </Default>
+                        <Mobile>
+                            <TicketTableMobile
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                        </Mobile>
+                    </Col>
+                    <Col className="col-lg-4 align-items-center">
+                        <EmployeeCardContainer
                             allUsers={users}
-                            allClients={clients}
-                            currentUser={currentUser}
+                            handleClick={handleClick}
                         />
-                    </Mobile>
-                </Col>
-                <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Availible Employees</SectionHeader>
-                    <EmployeeCardContainer
-                        allUsers={users}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            </Row>}
-        </Container>
+                    </Col>
+                </Row>}
+            </Container>
+        </>
+        
     );
 }
 

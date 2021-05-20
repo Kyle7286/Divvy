@@ -163,9 +163,9 @@
 
                 // update an array value that we will feed to state
                 recentComment = (
-                    <div className="bg-light p-1 my-1 container">
+                    <div className="bg-light p-1 my-1 container" key={recentCommentsCount}>
                         <div className="row">
-                            <div className="fw-bold text-primary col">{currentUserName}</div> 
+                            <div className="fw-bold text-warning col">{currentUserName}</div> 
                         </div>
                         <div className="row">
                             <div className="col">{newCommentTextArea.current.value}</div> 
@@ -181,7 +181,6 @@
 
                 // Update recent comments count
                 setRecentCommentsCount(recentCommentsCount + 1);
-                    console.log('RECENT COMMENTS COUNT', recentCommentsCount)
 
                 // Post the new comment to the server (TODO)
                 API.newComment(newComment)
@@ -196,7 +195,7 @@
 
         return (
             <>
-                <button  className="btn btn-sm btn-outline-info" variant="primary" onClick={openModal}>
+                <button  className="btn btn-sm btn-outline-warning" variant="primary" onClick={openModal}>
                     Manage
                 </button>
                 <Modal show={visability} onHide={closeModal}>
@@ -207,21 +206,21 @@
                        <div className="row mb-3 justify-content-center">
                            <div className="col text-center">
                                <button 
-                                    className={isTicketShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isTicketShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowTicketDetails}>
                                         Ticket Details
                                 </button>
                            </div>
                            <div className="col text-center">
                                <button 
-                                    className={isClientShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isClientShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowClientDetails}>
                                         Client Details
                                 </button>
                            </div>
                            <div className="col text-center">
                                <button 
-                                    className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isCommentShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowCommentDetails}>
                                         Comments {(props.ticketComments != undefined) ? `(${props.ticketComments.length + recentCommentsCount})` : ""}
                                 </button>
@@ -292,7 +291,7 @@
                                                 <textarea ref={newCommentTextArea} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>
                                             <div className="text-right mb-2">
-                                                <button className="btn btn-outline-primary btn-sm py-0 mx-1" onClick={postNewComment}>Post</button>
+                                                <button className="btn btn-outline-warning btn-sm py-0 mx-1" onClick={postNewComment}>Post</button>
                                                 <button className="btn btn-outline-secondary btn-sm py-0 mx-1" onClick={cancelNewComment}>Cancel</button>
                                             </div>
                                         </div>
@@ -304,11 +303,11 @@
                     </Modal.Body>
                     <Modal.Footer className="container-fluid">
                             <div className={isTicketShowing ? "" : "d-none"} >
-                                <Button  className="btn-danger mx-2" onClick={deleteTicket}>Delete</Button>
-                                <Button  className="btn-success mx-2" onClick={updateTicket}>Update</Button>
+                                <Button  className="btn-secondary mx-2" onClick={deleteTicket}>Delete</Button>
+                                <Button  className="btn-warning mx-2" onClick={updateTicket}>Update</Button>
                             </div>
                             <div className={isCommentShowing ? "" : "d-none"} >
-                                <button className="btn btn-primary" onClick={readyNewComment}>+ Comment</button>
+                                <button className="btn btn-warning" onClick={readyNewComment}>+ Comment</button>
                             </div>
                     </Modal.Footer>
                 </Modal>

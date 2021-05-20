@@ -6,6 +6,7 @@ import React from "react";
 import EmployeeCard from "../EmployeeCard";
 import API from "../../utils/API";
 import { useEffect, useState } from "react";
+import SectionHeader from "../SectionHeader";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -60,29 +61,32 @@ function EmployeeCardContainer(props) {
 
     // Render the Component by mapping employees and rending sub compoennt in container
     return (
-
-        <div className="d-flex flex-wrap justify-content-center">
-            {filterTeamEmployees().map((employee, index) => {
-                return index < 2 ? (
-                    <EmployeeCard
-                        key={employee.id}
-                        employeeName={`${employee.first_name} ${employee.last_name}`}
-                        employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
-                        className="card-body p-1 text-success"
-                        employeeID={employee.id}
-                        handleClick={props.handleClick}
-                    />
-                ) :
-                    <EmployeeCard
-                        key={employee.id}
-                        employeeName={`${employee.first_name} ${employee.last_name}`}
-                        employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
-                        className="card-body p-1"
-                        employeeID={employee.id}
-                        handleClick={props.handleClick}
-                    />
-            })}
+        <div className="bg-light">
+            <SectionHeader>Availible Employees</SectionHeader>
+            <div className="d-flex flex-wrap justify-content-center">
+                {filterTeamEmployees().map((employee, index) => {
+                    return index < 3 ? (
+                        <EmployeeCard
+                            key={employee.id}
+                            employeeName={`${employee.first_name} ${employee.last_name}`}
+                            employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+                            className="card-body p-1 alert-success"
+                            employeeID={employee.id}
+                            handleClick={props.handleClick}
+                        />
+                    ) :
+                        <EmployeeCard
+                            key={employee.id}
+                            employeeName={`${employee.first_name} ${employee.last_name}`}
+                            employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
+                            className="card-body p-1"
+                            employeeID={employee.id}
+                            handleClick={props.handleClick}
+                        />
+                })}
+            </div>
         </div>
+        
     );
 }
 

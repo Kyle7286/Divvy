@@ -6,6 +6,7 @@
   import React, { useState, useEffect } from "react";
   import ManageTicketModal from "../ManageTicketModal";
   import CreateTicketModal from '../CreateTicketModal';
+  import SectionHeader from "../SectionHeader";
   import './index.css';
   
 /* -------------------------------------------------------------------------- */
@@ -245,7 +246,8 @@
 
     // Return the Table With Data For Rendering and the Search Filter
       return (
-        <div>
+        <div className="bg-light">
+          <SectionHeader>Tickets</SectionHeader>
           <Table 
             columns={columns} 
             data={data}

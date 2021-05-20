@@ -52,7 +52,7 @@ function EmployeeCardContainer(props) {
         if (allEmployees.length != 0) {
             allEmployees.sort((a, b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
         };
-
+        console.log("allEmployees: ", allEmployees)
         return allEmployees;
     }
 
@@ -69,6 +69,8 @@ function EmployeeCardContainer(props) {
                         employeeName={`${employee.first_name} ${employee.last_name}`}
                         employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
                         className="card-body p-1 text-success"
+                        employeeID={employee.id}
+                        handleClick={props.handleClick}
                     />
                 ) :
                     <EmployeeCard
@@ -76,6 +78,8 @@ function EmployeeCardContainer(props) {
                         employeeName={`${employee.first_name} ${employee.last_name}`}
                         employeeTickets={employee.ticketuser ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
                         className="card-body p-1"
+                        employeeID={employee.id}
+                        handleClick={props.handleClick}
                     />
             })}
         </div>

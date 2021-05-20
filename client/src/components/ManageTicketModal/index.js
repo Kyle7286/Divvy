@@ -184,6 +184,9 @@
                     console.log('RECENT COMMENTS COUNT', recentCommentsCount)
 
                 // Post the new comment to the server (TODO)
+                API.newComment(newComment)
+                    .then(res=> console.log('axio put response', res))
+                    .catch(err=>console.log(err));
 
                 // Hide the new comments div and clear it (re run cancelNewComment)
                 cancelNewComment(e);

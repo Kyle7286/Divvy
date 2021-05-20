@@ -7,6 +7,7 @@
     import API from "../../utils/API";
     import "./index.css";
     import CommentsContantainer from "../CommentsContainer";
+    import dayjs from "dayjs";
     
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -23,12 +24,18 @@
 
     /* ---------------------------------- State --------------------------------- */
 
-        // Set visibility of key elements on the page (visability = overall modal)
-        const [visability, setVisablity] = useState(false)
-        const [isTicketShowing, setisTicketShowing] = useState(true)
-        const [isClientShowing, setisClientShowing] = useState(false)
-        const [isCommentShowing, setisCommentShowing] = useState(false)
-        const [isNewCommentShowing, setisNewCommentShowing] = useState(false)
+        // Set state
+
+            // Modal and Section Visability
+            const [visability, setVisablity] = useState(false)
+            const [isTicketShowing, setisTicketShowing] = useState(true)
+            const [isClientShowing, setisClientShowing] = useState(false)
+            const [isCommentShowing, setisCommentShowing] = useState(false)
+            const [isNewCommentShowing, setisNewCommentShowing] = useState(false)
+
+            // Recent Comments and Count
+            const [recentComments, setRecentComments] = useState([])
+            const [recentCommentsCount, setRecentCommentsCount] = useState(0);
 
     /* ------------------------ Modal Visability Handlers ----------------------- */
 
@@ -67,6 +74,8 @@
             setisClientShowing(false);
             setisCommentShowing(true);
         }
+
+        // Show comments count
 
     /* -------------------------- Handle Ticket Update -------------------------- */
 
@@ -112,30 +121,73 @@
                     .then(window.location.reload())
                     .catch(err=>console.log(err));
             };
-            
         };
 
         /* --------------------------- Handle New Comment --------------------------- */
         
-        // Define references
+        // Define references & global variables
         let newCommentTextArea = React.createRef();
+        let recentComment=[]
+        const currentUserName = `${props.currentUser.first_name} ${props.currentUser.last_name}`;
         
         // On click of + comment button, show the text-area and allow for entry
             function readyNewComment () {
-                console.log(' ready new comment initial trigger')
                 // Set state to render new comment div
                 setisNewCommentShowing(true);
             };
 
             // Cancel new comment if needed
             function cancelNewComment (e) {
-                //avoid refresh
+                // Avoid refresh
                 e.preventDefault();
-                // set state to hide new comment div again
+                // Set state to hide new comment div again
                 setisNewCommentShowing(false);
                 // Clear the value of anything that had been typed in
                 newCommentTextArea.current.value="";
             };
+
+            function postNewComment (e) {
+                // Prevent Default
+                e.preventDefault();
+
+                // Create an object with the info needed for posting a new comment
+                const newComment=
+                    {
+                      ticket_id: props.ticketID,
+                      user_id: props.currentUser.id,
+                      comment: newCommentTextArea.current.value,
+                      date_modified:null
+                      // NOTE that date_created is managed by sql automatically based on model updates
+                    }
+                console.log('new comment object', newComment);
+
+                // update an array value that we will feed to state
+                recentComment = (
+                    <div className="bg-light p-1 my-1 container">
+                        <div className="row">
+                            <div className="fw-bold text-primary col">{currentUserName}</div> 
+                        </div>
+                        <div className="row">
+                            <div className="col">{newCommentTextArea.current.value}</div> 
+                        </div>
+                        <div className="row text-right">
+                            <div className=" col fst-italic mt-2 mr-1 align-self-end">{dayjs().format('MMMM-DD-YYYY')}</div> 
+                        </div>           
+                    </div>
+                );
+
+                // Update state (concat so recent comments show top of list)
+                setRecentComments([recentComment].concat(recentComments));
+
+                // Update recent comments count
+                setRecentCommentsCount(recentCommentsCount + 1);
+                    console.log('RECENT COMMENTS COUNT', recentCommentsCount)
+
+                // Post the new comment to the server (TODO)
+
+                // Hide the new comments div and clear it (re run cancelNewComment)
+                cancelNewComment(e);
+            }
 
         /* -------------------- Modal Button and Modal Component -------------------- */
 
@@ -168,7 +220,7 @@
                                <button 
                                     className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowCommentDetails}>
-                                        Comments {(props.ticketComments != undefined) ? `(${props.ticketComments.length})` : ""} 
+                                        Comments {(props.ticketComments != undefined) ? `(${props.ticketComments.length + recentCommentsCount})` : ""}
                                 </button>
                            </div>
                        </div>
@@ -232,16 +284,16 @@
                                         comments={props.ticketComments}
                                         currentUser={props.currentUser}
                                     >
-                                        <form className={isNewCommentShowing ? "mb-2" : "d-none"}>
-                                            <div class="form-group mb-1">
-                                                <textarea ref={newCommentTextArea} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <div className={isNewCommentShowing ? "mb-2" : "d-none"}>
+                                            <div className="form-group mb-1">
+                                                <textarea ref={newCommentTextArea} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>
                                             <div className="text-right mb-2">
-                                                <button className="btn btn-outline-primary btn-sm py-0 mx-1">Post</button>
+                                                <button className="btn btn-outline-primary btn-sm py-0 mx-1" onClick={postNewComment}>Post</button>
                                                 <button className="btn btn-outline-secondary btn-sm py-0 mx-1" onClick={cancelNewComment}>Cancel</button>
                                             </div>
-                                        </form>
-                                        
+                                        </div>
+                                        {recentComments}
                                     </CommentsContantainer>
 
                            </div>

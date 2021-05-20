@@ -21,8 +21,7 @@
             // Organize comments into array of objects
             const comments = props.comments;
             
-            // Get the user whom is logged in (get current user api route)
-            const currentUserName=`${props.currentUser.first_name} ${props.currentUser.last_name}`;
+            // Get the user whom is logged id so we can check if they are the comment owner
             const currentUserId=props.currentUser.id;
               
         /* -------------------------- Define Data Formatter ------------------------- */

@@ -10,7 +10,6 @@
 
     // User name and comment set by comments container during map
     function CommentsDiv(props) {
-        console.log('props on comment div are', props)
         return (
             <>
                 <div className={props.divClassName}>

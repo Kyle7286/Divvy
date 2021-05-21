@@ -53,7 +53,7 @@ function EmployeeCardContainer(props) {
         if (allEmployees.length != 0) {
             allEmployees.sort((a, b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
         };
-        console.log("allEmployees: ", allEmployees)
+        // console.log("allEmployees: ", allEmployees)
         return allEmployees;
     }
 

@@ -15,7 +15,7 @@
 
     function ManageTicketModal (props) {
 
-        console.log('props in manage ticket modal is', props);
+        // console.log('props in manage ticket modal is', props);
 
     /* ------------------------------ Props Filters ----------------------------- */
 
@@ -129,11 +129,13 @@
         let newCommentTextArea = React.createRef();
         let recentComment=[]
         const currentUserName = `${props.currentUser.first_name} ${props.currentUser.last_name}`;
+
         
         // On click of + comment button, show the text-area and allow for entry
             function readyNewComment () {
                 // Set state to render new comment div
                 setisNewCommentShowing(true);
+                console.log(isNewCommentShowing);
             };
 
             // Cancel new comment if needed
@@ -147,6 +149,7 @@
             };
 
             function postNewComment (e) {
+                console.log('postNewComment called');
                 // Prevent Default
                 e.preventDefault();
 
@@ -163,7 +166,7 @@
 
                 // update an array value that we will feed to state
                 recentComment = (
-                    <div className="bg-light p-1 my-1 container" key={recentCommentsCount}>
+                    <div className="bg-light p-1 my-1 container" data-tester="recentComment">
                         <div className="row">
                             <div className="fw-bold text-warning col">{currentUserName}</div> 
                         </div>
@@ -180,7 +183,7 @@
                 setRecentComments([recentComment].concat(recentComments));
 
                 // Update recent comments count
-                setRecentCommentsCount(recentCommentsCount + 1);
+                setRecentCommentsCount(recentCommentsCount + 1); 
 
                 // Post the new comment to the server (TODO)
                 API.newComment(newComment)
@@ -295,7 +298,10 @@
                                                 <button className="btn btn-outline-secondary btn-sm py-0 mx-1" onClick={cancelNewComment}>Cancel</button>
                                             </div>
                                         </div>
-                                        {recentComments}
+
+                                        {recentComments} {/* each time this renders, it is only having the previous comment. So somehow its stacking it twice or something*/}
+                                        {console.log('recentComments state in the modal return is', recentComments)}
+
                                     </CommentsContantainer>
 
                            </div>

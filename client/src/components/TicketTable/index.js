@@ -161,7 +161,7 @@
 
   function TicketTable(props) {
 
-    console.log('ticket table props', props);
+    //console.log('ticket table props', props);
 
     const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients}/>;
 

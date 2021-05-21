@@ -8,7 +8,6 @@ import Row from "../../components/Row";
 import Col from "../../components/Column";
 import TicketTable from "../../components/TicketTable";
 import TicketTableMobile from "../../components/TicketTableMobile";
-import SectionHeader from "../../components/SectionHeader";
 import EmployeeCardContainer from "../../components/EmployeeCardContainer";
 import StatCardContainer from "../../components/StatCardContainer";
 import { useMediaQuery } from 'react-responsive';
@@ -56,29 +55,28 @@ function Dashboard() {
     // Set clients
     const [clients, setClients] = useState([{}])
 
-    // Set Active States on Filter Cards & Define Functions to Manage Visability
-    const [isActiveTotal, setIsActiveTotal] = useState(true);
-    const [isActiveOpen, setIsActiveOpen] = useState(false);
-    const [isActiveUnassigned, setIsActiveUnassigned] = useState(false);
+    // // Set Active States on Filter Cards & Define Functions to Manage Visability
+    // const [isActiveTotal, setIsActiveTotal] = useState(true);
+    // const [isActiveOpen, setIsActiveOpen] = useState(false);
+    // const [isActiveUnassigned, setIsActiveUnassigned] = useState(false);
 
-    function setTotalActive () {
-        setIsActiveTotal(true);
-        setIsActiveOpen(false);
-        setIsActiveUnassigned(false)
-    };
+    // function setTotalActive () {
+    //     setIsActiveTotal(true);
+    //     setIsActiveOpen(false);
+    //     setIsActiveUnassigned(false)
+    // };
 
-    function setTotalOpen () {
-        setIsActiveTotal(false);
-        setIsActiveOpen(true);
-        setIsActiveUnassigned(false)
-    };
+    // function setTotalOpen () {
+    //     setIsActiveTotal(false);
+    //     setIsActiveOpen(true);
+    //     setIsActiveUnassigned(false)
+    // };
 
-    function setTotalUnassigned () {
-        setIsActiveTotal(false);
-        setIsActiveOpen(false);
-        setIsActiveUnassigned(true);
-    };
-
+    // function setTotalUnassigned () {
+    //     setIsActiveTotal(false);
+    //     setIsActiveOpen(false);
+    //     setIsActiveUnassigned(true);
+    // };
 
     /* --------------------------------- Get Tickets -------------------------------- */
 
@@ -113,7 +111,7 @@ function Dashboard() {
                         break;
                 }
 
-                console.log("filteredTickets: ", filteredTickets);
+                //console.log("filteredTickets: ", filteredTickets);
 
                 setTickets(filteredTickets);
             })
@@ -131,7 +129,7 @@ function Dashboard() {
     function getCurrentUser() {
         API.getCurrentUser()
             .then(res => {
-                console.log("CURRENT USER", res.data);
+                //console.log("CURRENT USER", res.data);
                 setCurrentUser(res.data);
             }
             )
@@ -152,7 +150,7 @@ function Dashboard() {
     function getUsers() {
         API.getAllUsers()
             .then(res => {
-                console.log("RES.DATA", res.data);
+                //console.log("RES.DATA", res.data);
                 getUserTeamid(res.data)
             })
             .catch(err => console.log(err));
@@ -170,7 +168,7 @@ function Dashboard() {
                     return user.team_id === res.data.team_id
                 });
 
-                console.log("TEAM EMPLOYEES", teamEmployees);
+                //console.log("TEAM EMPLOYEES", teamEmployees);
 
                 setUsers(teamEmployees);
             })

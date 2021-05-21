@@ -9,7 +9,7 @@ import React from "react";
 /* -------------------------------------------------------------------------- */
 
 function EmployeeCard(props) {
-    console.log("props: ", props);
+    //console.log("props: ", props);
     return (
         <div tag="a" onClick={props.handleClick} data-vl={props.employeeID} data-type="ID" style={{ cursor: "pointer" }} className="card col-3 m-1 text-center float-left px-0" data-component="employeecard">
             <div className="card-header" data-vl={props.employeeID} data-type="ID">

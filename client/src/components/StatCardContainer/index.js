@@ -2,9 +2,9 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-   
     import React from "react";
     import StatCard from "../StatCard";
+    import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */

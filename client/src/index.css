@@ -2,3 +2,15 @@ html, body{
     overflow-x: hidden;
 }
 
+.divvy-bg {
+    background-image: linear-gradient(to right rgb(255, 193, 7), rgb(108,117,125), rgb(255,193,7)); 
+}
+
+.divvy-font-logo {
+    font-family: Brush Script MT, Brush Script Std, cursive;
+}
+
+
+
+
+

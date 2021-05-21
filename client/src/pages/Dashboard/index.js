@@ -221,7 +221,7 @@ function Dashboard() {
         };
         switch (filterType) {
             case "Status":
-                document.getElementById(filterValue).style.borderColor = "red";
+                document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";
                 switch (filterValue) {
                     case "Total":
                         filterType = "All";
@@ -239,7 +239,7 @@ function Dashboard() {
                 break;
             case "ID":
 
-                document.getElementById(filterValue).style.borderColor = "red";
+                document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";
                 filterValue = parseInt(filterValue);
                 getTickets(filterType, filterValue);
                 break;

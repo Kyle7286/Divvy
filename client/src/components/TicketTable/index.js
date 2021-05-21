@@ -96,7 +96,8 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-1 ">
+      <div className="mx-3 my-4 shadow">
+        <SectionHeader>Tickets</SectionHeader>
         <div>
             <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -104,7 +105,7 @@
                 setGlobalFilter={setGlobalFilter}
             />
         </div>
-        <table {...getTableProps()} className="table align-middle shadow-sm mt-2 ">
+        <table {...getTableProps()} className="table table-hover align-middle shadow-sm mt-2 ">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
@@ -246,8 +247,8 @@
 
     // Return the Table With Data For Rendering and the Search Filter
       return (
-        <div className="bg-light">
-          <SectionHeader>Tickets</SectionHeader>
+        <div className="bg-light table-wrapper overflow-auto">
+          
           <Table 
             columns={columns} 
             data={data}

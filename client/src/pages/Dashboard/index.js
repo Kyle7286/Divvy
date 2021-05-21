@@ -250,15 +250,13 @@ function Dashboard() {
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
-
-        <>
             <Container className=" mt-3 mx-3">
-                {<Row>
+                <Row>
                     <Col className="col-lg-8 mx-0 px-0">
                         <StatCardContainer
                             allTickets={tickets}
                             handleClick={handleClick}
-                        />
+                    />
                         <Default>
                             <TicketTable
                                 allTickets={tickets}
@@ -266,7 +264,7 @@ function Dashboard() {
                                 allClients={clients}
                                 currentUser={currentUser}
                             />
-                        </Default>
+                            </Default>
                         <Mobile>
                             <TicketTableMobile
                                 allTickets={tickets}
@@ -281,25 +279,9 @@ function Dashboard() {
                             allUsers={users}
                             handleClick={handleClick}
                         />
-<<<<<<< HEAD
                     </Col>
-                </Row>}
+                </Row>
             </Container>
-        </>
-        
-=======
-                    </Mobile>
-                </Col>
-                <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Available Employees</SectionHeader>
-                    <EmployeeCardContainer
-                        allUsers={users}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            </Row>}
-        </Container>
->>>>>>> 3b01473d92825a283cbbbc7e718a1b07976d4455
     );
 }
 

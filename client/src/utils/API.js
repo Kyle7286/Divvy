@@ -6,7 +6,7 @@ import axios from "axios";
 /*                        Define Client Side API Calls                        */
 /* -------------------------------------------------------------------------- */
 export default {
-    /* --------------------------------- tickets -------------------------------- */
+    /* --------------------------------- tickets & Comments ------------------ */
 
     // Get all tickets
     getAllTickets: function () {
@@ -26,6 +26,11 @@ export default {
     // Delete Tickets
     deleteTicket: function (id) {
         return axios.delete("api/ticket/" + id);
+    },
+
+    // New Comment
+    newComment: function (newComment) {
+        return axios.post("/api/comment/", newComment)
     },
 
     /* ---------------------------------- users --------------------------------- */

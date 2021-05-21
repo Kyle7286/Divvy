@@ -21,8 +21,7 @@
             // Organize comments into array of objects
             const comments = props.comments;
             
-            // Get the user whom is logged in (get current user api route)
-            const currentUserName=`${props.currentUser.first_name} ${props.currentUser.last_name}`;
+            // Get the user whom is logged id so we can check if they are the comment owner
             const currentUserId=props.currentUser.id;
               
         /* -------------------------- Define Data Formatter ------------------------- */
@@ -31,14 +30,12 @@
                 return dayjs(date).format('MMMM-DD-YYYY')
             };
 
-        /* --------------------------- Handle New Comment --------------------------- */
-
-        
         /* ---------------------------- Return Component ---------------------------- */
             return (
                 <>
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
+                            {props.children}
                             {comments.map(comment => {
                                 return (
                                     <CommentDiv
@@ -46,6 +43,18 @@
                                         comment={comment.comment}
                                         date={convertDate(comment.date_created)}
                                         key={comment.user_id}
+                                        divClassName={comment.user_id===currentUserId 
+                                            ?
+                                            "bg-light p-2 my-1 container"
+                                            :
+                                            "bg-light p-2 my-1 ml-2 container"
+                                        }
+                                        nameClassName={comment.user_id===currentUserId 
+                                            ?
+                                            "fw-bold text-primary col"
+                                            :
+                                            "fw-bold text-secondary col"
+                                        }
                                     /> 
                                 )
                             })}                                

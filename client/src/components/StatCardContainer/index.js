@@ -34,14 +34,17 @@
                 <StatCard
                     title="Total"
                     amount={totalTicketsNumber}
-                />
+                    handleClick={props.handleClick}
+                    />
                 <StatCard
                      title="Open"
                      amount={openTickets.length}
+                     handleClick={props.handleClick}
                 />
                 <StatCard
                     title="Unassigned"
                     amount={unassignedTickets.length}
+                    handleClick={props.handleClick}
                 />
             </div>
         );

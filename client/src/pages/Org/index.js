@@ -6,6 +6,9 @@ import API from "../../utils/API"
 import Col from "../../components/Column";
 import Row from "../../components/Row";
 import Container from "../../components/Container";
+import NewClientForm from "../../components/NewClientForm";
+import NewTeamForm from "../../components/NewTeamForm";
+import _ from "underscore";
 
 // Styling Imports
 import './org.css';
@@ -42,7 +45,6 @@ function Org() {
         }
     );
 
-
     // Call when components have loaded
     useEffect(() => {
         getOrg();
@@ -59,60 +61,45 @@ function Org() {
             .catch(err => console.log(err));
     };
 
-    // Set the error state
-    function updateError(visible, type) {
-        if (type === "unique violation") {
-            type = "Email already in use! Please enter a different email."
+    // Used to help display the proper forms
+    const [visible, setVisible] = useState(
+        {
+            client: false,
+            team: false,
+            emp: false,
+        }
+    );
+
+
+    // Show/hide the form for the respective button clicked
+    const handleCreateClick = (e) => {
+        e.preventDefault();
+
+        let temp = { ...visible }
+
+        if (temp[e.target.id]) {
+            temp = _.mapObject({ ...visible }, () => false)
+        } else {
+            temp = _.mapObject({ ...visible }, () => false)
+            temp[e.target.id] = true
         }
 
-        setError({
-            visible: visible,
-            type: type
-        })
+        setVisible(temp)
     }
 
 
-    // Define references and general variables for values on update
-    let latestFirstName = React.createRef();
-    let latestLastName = React.createRef();
-    let latestEmail = React.createRef();
-    let latestPhone = React.createRef();
 
-    // Update the user with the form values
-    function handleFormSubmit(e) {
-        // Allow page refresh if no error on save
-        if (!error.visible) {
-            console.log("Refreshing page");
-            e.preventDefault();
-        }
-
-        const updatedProfile = {
-            first_name: latestFirstName.current.value,
-            last_name: latestLastName.current.value,
-            email: latestEmail.current.value,
-            phone_number: latestPhone.current.value,
-            last_name: latestLastName.current.value,
-        }
-
-        callUpdateUser(updatedProfile);
-    }
-
-
-    // Make the API call to update the user details
-    function callUpdateUser(obj) {
-        // API.updateUser(user.id, obj)
-        //     .then(res => console.log('axio put response', res))
-        //     .then(() => {
-        //         getUser();
-        //         updateError(false, null);
-        //     })
-        //     .catch(err => {
-        //         let errorType = JSON.parse(err.response.request.response).errors[0].type;
-
-        //         // Set the error state for displaying
-        //         updateError(true, errorType);
-        //     });
-    }
+    // Ref Variables - New Client Form
+    let refFirm = React.createRef();
+    let refFirstName = React.createRef();
+    let refLastName = React.createRef();
+    let refEmail = React.createRef();
+    let refPhone = React.createRef();
+    let refAdd1 = React.createRef();
+    let refAdd2 = React.createRef();
+    let refCity = React.createRef();
+    let refState = React.createRef();
+    let refZip = React.createRef();
 
 
 
@@ -122,10 +109,10 @@ function Org() {
         <>
 
             <h1 className="mb-4">Organization</h1>
-            <Container>
+            <Container className="m-3">
                 <Row>
                     <Col />
-                    <Col>
+                    <Col style={{ marginBottom: "5rem" }}>
                         <h1>{org.org.name}</h1>
                     </Col>
                     <Col />
@@ -133,9 +120,37 @@ function Org() {
                 <Row>
                     <Col>
                         <Row>
+                            <Col></Col>
                             <Col>
-
+                                <div>
+                                    <button id="client" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Client</button>
+                                </div>
                             </Col>
+                            <Col>
+                                <div>
+                                    <button id="team" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Team</button>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div>
+                                    <button id="emp" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Employee</button>
+                                </div>
+                            </Col>
+                            <Col></Col>
+
+                            {visible.client ? <NewClientForm
+                                handleCreateClick={handleCreateClick}
+                            /> : null}
+
+                            {visible.team ? <NewTeamForm
+                                handleCreateClick={handleCreateClick}
+                            /> : null}
+
+                            {visible.emp ? <NewEmpForm
+                                handleCreateClick={handleCreateClick}
+                            /> : null}
+
+
                         </Row>
                     </Col>
                 </Row>

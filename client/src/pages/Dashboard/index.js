@@ -55,31 +55,6 @@ function Dashboard() {
     // Set clients
     const [clients, setClients] = useState([{}])
 
-<<<<<<< HEAD
-    // // Set Active States on Filter Cards & Define Functions to Manage Visability
-    // const [isActiveTotal, setIsActiveTotal] = useState(true);
-    // const [isActiveOpen, setIsActiveOpen] = useState(false);
-    // const [isActiveUnassigned, setIsActiveUnassigned] = useState(false);
-
-    // function setTotalActive () {
-    //     setIsActiveTotal(true);
-    //     setIsActiveOpen(false);
-    //     setIsActiveUnassigned(false)
-    // };
-
-    // function setTotalOpen () {
-    //     setIsActiveTotal(false);
-    //     setIsActiveOpen(true);
-    //     setIsActiveUnassigned(false)
-    // };
-
-    // function setTotalUnassigned () {
-    //     setIsActiveTotal(false);
-    //     setIsActiveOpen(false);
-    //     setIsActiveUnassigned(true);
-    // };
-
-=======
     // set total ticket count
     const [countTicketTotal, setCountTicketTotal] = useState()
 
@@ -88,7 +63,6 @@ function Dashboard() {
 
     // set unassigned ticket count
     const [countTicketUnassigned, setCountTicketUnassigned] = useState()
->>>>>>> 034b512df973c2ff67a92972fa0fe849a3bfacb8
     /* --------------------------------- Get Tickets -------------------------------- */
 
     let unassignedTicketCount = 0;

@@ -154,7 +154,7 @@ function Profile() {
     return (
         <>
 
-            <Container className="bg-light shadow my-3 mx-4">
+            <Container className="bg-light shadow mt-4 mb-4 mx-4">
                 <Row>
                     <Col />
                         <Col>

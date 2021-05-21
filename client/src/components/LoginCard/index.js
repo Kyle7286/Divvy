@@ -36,7 +36,7 @@ function LoginCard(props) {
 
         <div class="col-md-8 mx-auto mt-5">
             <div class="card px-0 shadow">
-                <h5 class="card-header bg-dark text-white">Current User Login</h5>
+                <h5 class="card-header bg-dark text-white text-center">Current User Login</h5>
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">

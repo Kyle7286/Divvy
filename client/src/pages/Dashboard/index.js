@@ -213,8 +213,16 @@ function Dashboard() {
     function handleClick(e) {
         let filterValue = e.target.dataset.vl;
         let filterType = e.target.dataset.type;
+        document.getElementById("Total").style.borderColor = "";
+        document.getElementById("Open").style.borderColor = "";
+        document.getElementById("Unassigned").style.borderColor = "";
+        const employeeCards = document.querySelectorAll(".employeecard");
+        for (let index = 0; index < employeeCards.length; index++) {
+            employeeCards[index].style.borderColor = "";
+        };
         switch (filterType) {
             case "Status":
+                document.getElementById(filterValue).style.borderColor = "red";
                 switch (filterValue) {
                     case "Total":
                         filterType = "All";
@@ -231,6 +239,8 @@ function Dashboard() {
                 getTickets(filterType, filterValue);
                 break;
             case "ID":
+
+                document.getElementById(filterValue).style.borderColor = "red";
                 filterValue = parseInt(filterValue);
                 getTickets(filterType, filterValue);
                 break;
@@ -276,7 +286,7 @@ function Dashboard() {
                     </Mobile>
                 </Col>
                 <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Availible Employees</SectionHeader>
+                    <SectionHeader>Available Employees</SectionHeader>
                     <EmployeeCardContainer
                         allUsers={users}
                         handleClick={handleClick}

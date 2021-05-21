@@ -241,32 +241,11 @@ function Dashboard() {
     /* ---------------------------- Component Render ---------------------------- */
     return (
 
-<<<<<<< HEAD
         <>
             <Container className=" mt-3 mx-3">
                 {<Row>
                     <Col className="col-lg-8 mx-0 px-0">
                         <StatCardContainer
-=======
-
-        <Container className="mx-3 mt-3">
-            <Row >
-                <Col className="col-lg-8 mx-0 px-0">
-                    <StatCardContainer
-                        allTickets={tickets}
-                        totalTicketCount={countTicketTotal}
-                        openTicketCount={countTicketOpen}
-                        unassignedTicketCount={countTicketUnassigned}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            </Row>
-            { <Row>
-                <Col className="col-lg-8 mx-0 px-0">
-                    <SectionHeader>Tickets</SectionHeader>
-                    <Default>
-                        <TicketTable
->>>>>>> 034b512df973c2ff67a92972fa0fe849a3bfacb8
                             allTickets={tickets}
                             handleClick={handleClick}
                         />

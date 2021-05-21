@@ -124,7 +124,7 @@ function Navbar(props) {
 
             {/*This is what will render above mobile breakpoint for navbar*/}
             <Default>
-                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark  vh-100" data-component="Navbar">
+                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark pt-0  vh-100" data-component="Navbar">
                     <div>
                         <button className="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>

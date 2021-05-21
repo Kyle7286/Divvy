@@ -11,7 +11,7 @@
 
 function SectionHeader(props) {
     return (
-        <div className="text-center text-warning fw-bold fs-3 divvy-font" data-component="SectionHeader">
+        <div className="text-center text-warning fw-normal fs-3 divvy-font" data-component="SectionHeader">
             {props.children}
         </div>
     );

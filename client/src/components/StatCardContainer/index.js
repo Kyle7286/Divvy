@@ -2,9 +2,9 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-   
     import React from "react";
     import StatCard from "../StatCard";
+    import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -30,23 +30,26 @@
                 
         // Return the three primary status card components
         return (
-            <div className="d-flex flex-wrap justify-content-center" data-component="StatCardContainer">
-                <StatCard
-                    title="Total"
-                    amount={props.totalTicketCount}
-                    handleClick={props.handleClick}
+            <div className="mb-3 divvy-bg-tile">
+                <div className="d-flex flex-wrap justify-content-center py-3" data-component="StatCardContainer">
+                    <StatCard
+                        title="Total"
+                        amount={props.totalTicketCount}
+                        handleClick={props.handleClick}
+                        />
+                    <StatCard
+                        title="Open"
+                        amount={props.openTicketCount}
+                        handleClick={props.handleClick}
                     />
-                <StatCard
-                     title="Open"
-                     amount={props.openTicketCount}
-                     handleClick={props.handleClick}
-                />
-                <StatCard
-                    title="Unassigned"
-                    amount={props.unassignedTicketCount}
-                    handleClick={props.handleClick}
-                />
+                    <StatCard
+                        title="Unassigned"
+                        amount={props.unassignedTicketCount}
+                        handleClick={props.handleClick}
+                    />
+                </div>
             </div>
+           
         );
     }
 

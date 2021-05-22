@@ -16,7 +16,7 @@
         /* -------------------------- Organize Information -------------------------- */
 
             // Check the props (this includes all comments associated with the ticket)
-            console.log ('props in Comments Container are', props)
+            //console.log ('props in Comments Container are', props)
 
             // Organize comments into array of objects
             const comments = props.comments;
@@ -35,14 +35,14 @@
                 <>
                     <div className="card comments-section overflow-auto">
                         <div className="card-body">
-                            {props.children}
+                           {props.children}
                             {comments.map(comment => {
                                 return (
                                     <CommentDiv
                                         user={`${comment.user.first_name} ${comment.user.last_name}`}
                                         comment={comment.comment}
                                         date={convertDate(comment.date_created)}
-                                        key={comment.user_id}
+                                        key={comment.id}
                                         divClassName={comment.user_id===currentUserId 
                                             ?
                                             "bg-light p-2 my-1 container"
@@ -51,7 +51,7 @@
                                         }
                                         nameClassName={comment.user_id===currentUserId 
                                             ?
-                                            "fw-bold text-primary col"
+                                            "fw-bold text-warning col"
                                             :
                                             "fw-bold text-secondary col"
                                         }

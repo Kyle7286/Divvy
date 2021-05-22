@@ -8,7 +8,6 @@ import Row from "../../components/Row";
 import Col from "../../components/Column";
 import TicketTable from "../../components/TicketTable";
 import TicketTableMobile from "../../components/TicketTableMobile";
-import SectionHeader from "../../components/SectionHeader";
 import EmployeeCardContainer from "../../components/EmployeeCardContainer";
 import StatCardContainer from "../../components/StatCardContainer";
 import { useMediaQuery } from 'react-responsive';
@@ -111,7 +110,7 @@ function Dashboard() {
                         break;
                 }
 
-                console.log("filteredTickets: ", filteredTickets);
+                //console.log("filteredTickets: ", filteredTickets);
 
                 setTickets(filteredTickets);
             })
@@ -129,7 +128,7 @@ function Dashboard() {
     function getCurrentUser() {
         API.getCurrentUser()
             .then(res => {
-                console.log("CURRENT USER", res.data);
+                //console.log("CURRENT USER", res.data);
                 setCurrentUser(res.data);
             }
             )
@@ -150,7 +149,7 @@ function Dashboard() {
     function getUsers() {
         API.getAllUsers()
             .then(res => {
-                console.log("RES.DATA", res.data);
+                //console.log("RES.DATA", res.data);
                 getUserTeamid(res.data)
             })
             .catch(err => console.log(err));
@@ -168,7 +167,7 @@ function Dashboard() {
                     return user.team_id === res.data.team_id
                 });
 
-                console.log("TEAM EMPLOYEES", teamEmployees);
+                //console.log("TEAM EMPLOYEES", teamEmployees);
 
                 setUsers(teamEmployees);
             })
@@ -222,7 +221,7 @@ function Dashboard() {
         };
         switch (filterType) {
             case "Status":
-                document.getElementById(filterValue).style.borderColor = "red";
+                document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";
                 switch (filterValue) {
                     case "Total":
                         filterType = "All";
@@ -240,7 +239,7 @@ function Dashboard() {
                 break;
             case "ID":
 
-                document.getElementById(filterValue).style.borderColor = "red";
+                document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";
                 filterValue = parseInt(filterValue);
                 getTickets(filterType, filterValue);
                 break;
@@ -251,49 +250,46 @@ function Dashboard() {
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
-
-
-        <Container className="mx-3 mt-3">
-            <Row >
-                <Col className="col-lg-8 mx-0 px-0">
-                    <StatCardContainer
-                        allTickets={tickets}
-                        totalTicketCount={countTicketTotal}
-                        openTicketCount={countTicketOpen}
-                        unassignedTicketCount={countTicketUnassigned}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            </Row>
-            { <Row>
-                <Col className="col-lg-8 mx-0 px-0">
-                    <SectionHeader>Tickets</SectionHeader>
-                    <Default>
-                        <TicketTable
+            <Container className=" mt-3 mx-3">
+                <Row>
+                    <Col className="col-lg-8 mx-0 px-0">
+                        <StatCardContainer
                             allTickets={tickets}
-                            allUsers={users}
-                            allClients={clients}
-                            currentUser={currentUser}
-                        />
-                    </Default>
-                    <Mobile>
-                        <TicketTableMobile
-                            allTickets={tickets}
-                            allUsers={users}
-                            allClients={clients}
-                            currentUser={currentUser}
-                        />
-                    </Mobile>
-                </Col>
-                <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Available Employees</SectionHeader>
-                    <EmployeeCardContainer
-                        allUsers={users}
-                        handleClick={handleClick}
+                            totalTicketCount={countTicketTotal}
+                            openTicketCount={countTicketOpen}
+                            unassignedTicketCount={countTicketUnassigned}
+                            handleClick={handleClick}
                     />
-                </Col>
-            </Row>}
-        </Container>
+                        <Default>
+                            <TicketTable
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                            </Default>
+                        <Mobile>
+                            <TicketTableMobile
+                                allTickets={tickets}
+                                allUsers={users}
+                                allClients={clients}
+                                currentUser={currentUser}
+                            />
+                        </Mobile>
+                    </Col>
+                    <Col className="col-lg-4 align-items-center">
+                        <EmployeeCardContainer
+                            allUsers={users}
+                            handleClick={handleClick}
+                        />
+                    </Col>
+                </Row>
+                <Row>
+                    <div className="text-danger text-center divvy-font-logo fs-3 p-3">
+                        Let's Divvy
+                    </div>
+                </Row>
+            </Container>
     );
 }
 

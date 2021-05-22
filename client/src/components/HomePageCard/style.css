@@ -3,18 +3,7 @@ a:hover, a:visited, a:link, a:active
     text-decoration: none;
 }
 
-.forgotPasswordLink{
-    font-size:12px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    float: inline-start;
-}
 
-.signupLink{
-    font-size:12px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    float: inline-start;
+.divvy-link{
+   color:rgb(255, 193, 7);
 }

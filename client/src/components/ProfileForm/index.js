@@ -36,53 +36,47 @@ function ProfileForm(props) {
     return (
         <>
 
-            <Container className="m-3">
+            <Container className="m-3 p-3">
                 <form>
                     <Row>
-                        <Col></Col>
-                        <Col>
+                        <Col className="col-md-5 mx-auto">
                             {/* First Name */}
                             <div className="mb-3">
-                                <label htmlFor="InputFirstName" className="form-label">First Name</label>
+                                <label htmlFor="InputFirstName" className="form-label fw-bold">First Name</label>
                                 <input ref={props.latestFirstName} defaultValue={props.singleuser.first_name} type="text" className="form-control" id="InputFirstName" aria-describedby="firstName" />
                             </div>
-
                             {/* Last Name */}
                             <div className="mb-3">
-                                <label htmlFor="InputLastName" className="form-label">Last Name</label>
+                                <label htmlFor="InputLastName" className="form-label fw-bold">Last Name</label>
                                 <input ref={props.latestLastName} defaultValue={props.singleuser.last_name} type="text" className="form-control" id="InputLastName" aria-describedby="lastName" />
                             </div>
-
+                        
                             {/* Email */}
                             <div className="mb-3">
-                                <label htmlFor="InputEmail" className="form-label">Email</label>
+                                <label htmlFor="InputEmail" className="form-label fw-bold">Email</label>
                                 <input ref={props.latestEmail} defaultValue={props.singleuser.email} type="text" className="form-control" id="InputEmail" aria-describedby="email" />
                             </div>
-
                             {/* Phone Number */}
                             <div className="mb-3">
-                                <label htmlFor="InputPhone" className="form-label">Phone</label>
+                                <label htmlFor="InputPhone" className="form-label fw-bold">Phone</label>
                                 <input ref={props.latestPhone} defaultValue={props.singleuser.phone_number} type="text" className="form-control" id="InputPhone" aria-describedby="email" />
                             </div>
-                        </Col>
-                        <Col></Col>
-                        <Col>
                             {/* Role */}
                             <fieldset disabled>
                                 <div className="mb-3">
-                                    <label htmlFor="disabledSelect" className="form-label">Role</label>
+                                    <label htmlFor="disabledSelect" className="form-label fw-bold">Role</label>
                                     <input defaultValue={props.singleuser.role} type="text" className="form-control" id="disabledSelect" aria-describedby="firstName" />
+                                    <div class="form-text text-center">Roles are only configurable by team managers</div>
                                 </div>
                             </fieldset>
-                        </Col>
-                        <Col></Col>
+                        </Col>  
                     </Row>
                     {props.error.visible ? <div className="mb-2 text-center text-danger">{props.error.type}</div> : <div className="mb-2 text-center"></div>}
-                    <Row className="mt-5">
+                    <Row className="mt-2">
                         <Col></Col>
                         {/* Submit Changes */}
                         <Col className="text-center">
-                            <button onClick={props.handleFormSubmit} type="submit" className="btn btn-success">Submit</button>
+                            <button onClick={props.handleFormSubmit} type="submit" className="btn btn-warning">Update</button>
                         </Col>
                         <Col></Col>
                     </Row>

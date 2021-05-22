@@ -154,24 +154,23 @@ function Profile() {
     return (
         <>
 
-            <h1 className="mb-4">Profile</h1>
-            <Container>
+            <Container className="bg-light shadow mt-4 mb-4 mx-4">
                 <Row>
                     <Col />
-                    <Col>
-                        <div onClick={handleImageClick} className="profile-img mb-5 text-center">
-                            <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="250px" alt="profile picture" className="rounded-pill"></img>
-                            <FaLink className="icon-button" />
-                        </div>
-                        <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
-                            <div>
-                                <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
-                                <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
-                                <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                        <Col>
+                            <div onClick={handleImageClick} className="profile-img my-3 text-center">
+                                <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="250px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
+                                <FaLink className="icon-button" />
                             </div>
-                        </form>
-                    </Col>
+                            <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                                <div>
+                                    <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                    <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
+                                    <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
+                                    <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                                </div>
+                            </form>
+                        </Col>
                     <Col />
                 </Row>
                 <Row>

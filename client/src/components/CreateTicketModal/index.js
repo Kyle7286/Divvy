@@ -89,7 +89,7 @@ function CreateTicketModal (props) {
 
     return (
         <>
-            <button  className="btn btn-sm btn-info" variant="primary" onClick={openModal}>
+            <button  className="btn btn-sm btn-warning" variant="primary" onClick={openModal}>
                 + Ticket
             </button>
             <Modal show={visability} onHide={closeModal}>
@@ -154,7 +154,7 @@ function CreateTicketModal (props) {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button  className="text-center btn-success" onClick={createTicket}>Create Ticket</Button>
+                    <Button  className="text-center btn-warning" onClick={createTicket}>Create Ticket</Button>
                 </Modal.Footer>
             </Modal>
         </>

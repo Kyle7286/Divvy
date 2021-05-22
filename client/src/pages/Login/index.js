@@ -65,7 +65,6 @@ class Login extends Component {
 
         return (
             <div>
-
                 <Container>
                     <Row className="mb-4 d-flex flex-row justify-content-center">
                         <Col>

@@ -1,7 +1,5 @@
 .table-wrapper {
-    max-height: 600px;
-    overflow-y: scroll;
-    display: inline-block;
+    height: 723px;
 }
 
 .sticky {

@@ -13,7 +13,6 @@ import Dashboard from "./pages/Dashboard";
 import Team from "./pages/Team";
 import './index.css';
 import API from "./utils/API";
-import { makeRenderer } from 'react-table';
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -54,7 +53,7 @@ function App() {
       });
   }
   const { loggedIn: logStatus } = loggedIn;
-  console.log("App.js: ", logStatus);
+  //console.log("App.js: ", logStatus);
 
   return (
     <Router>

@@ -56,8 +56,18 @@ function Dashboard() {
     // Set clients
     const [clients, setClients] = useState([{}])
 
+    // set total ticket count
+    const [countTicketTotal, setCountTicketTotal] = useState()
+
+    // set open ticket count
+    const [countTicketOpen, setCountTicketOpen] = useState()
+
+    // set unassigned ticket count
+    const [countTicketUnassigned, setCountTicketUnassigned] = useState()
     /* --------------------------------- Get Tickets -------------------------------- */
 
+    let unassignedTicketCount = 0;
+    let openTicketCount = 0;
     // Load all tickets and store them in tickets
 
     // Call when components have loaded
@@ -72,6 +82,18 @@ function Dashboard() {
         API.getAllTickets()
             .then(res => {
                 console.log("TICKETS", res.data);
+                
+                // Create counters for StatCard
+                const totalTickets = res.data;
+                let totalTicketCount = totalTickets.length;
+                setCountTicketTotal(totalTicketCount);
+                let openTickets = totalTickets.filter(ticket => ticket.status == "Open");
+                openTicketCount = openTickets.length;
+                setCountTicketOpen(openTicketCount);
+                let unassignedTickets = totalTickets.filter(ticket => ticket.assigned_to === null && ticket.status != "Completed");
+                unassignedTicketCount = unassignedTickets.length;
+                setCountTicketUnassigned(unassignedTicketCount);
+
                 let filteredTickets;
                 switch (filterType) {
                     case "ID":
@@ -191,8 +213,16 @@ function Dashboard() {
     function handleClick(e) {
         let filterValue = e.target.dataset.vl;
         let filterType = e.target.dataset.type;
+        document.getElementById("Total").style.borderColor = "";
+        document.getElementById("Open").style.borderColor = "";
+        document.getElementById("Unassigned").style.borderColor = "";
+        const employeeCards = document.querySelectorAll(".employeecard");
+        for (let index = 0; index < employeeCards.length; index++) {
+            employeeCards[index].style.borderColor = "";
+        };
         switch (filterType) {
             case "Status":
+                document.getElementById(filterValue).style.borderColor = "red";
                 switch (filterValue) {
                     case "Total":
                         filterType = "All";
@@ -208,10 +238,12 @@ function Dashboard() {
                 }
                 getTickets(filterType, filterValue);
                 break;
-                case "ID":
-                    filterValue = parseInt(filterValue);
-                    getTickets(filterType, filterValue);
-                    break;
+            case "ID":
+
+                document.getElementById(filterValue).style.borderColor = "red";
+                filterValue = parseInt(filterValue);
+                getTickets(filterType, filterValue);
+                break;
             default:
                 break;
         }
@@ -226,6 +258,9 @@ function Dashboard() {
                 <Col className="col-lg-8 mx-0 px-0">
                     <StatCardContainer
                         allTickets={tickets}
+                        totalTicketCount={countTicketTotal}
+                        openTicketCount={countTicketOpen}
+                        unassignedTicketCount={countTicketUnassigned}
                         handleClick={handleClick}
                     />
                 </Col>
@@ -251,7 +286,7 @@ function Dashboard() {
                     </Mobile>
                 </Col>
                 <Col className="col-lg-4 align-items-center">
-                    <SectionHeader>Availible Employees</SectionHeader>
+                    <SectionHeader>Available Employees</SectionHeader>
                     <EmployeeCardContainer
                         allUsers={users}
                         handleClick={handleClick}

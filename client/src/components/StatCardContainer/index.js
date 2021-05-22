@@ -33,17 +33,17 @@
             <div className="d-flex flex-wrap justify-content-center" data-component="StatCardContainer">
                 <StatCard
                     title="Total"
-                    amount={totalTicketsNumber}
+                    amount={props.totalTicketCount}
                     handleClick={props.handleClick}
                     />
                 <StatCard
                      title="Open"
-                     amount={openTickets.length}
+                     amount={props.openTicketCount}
                      handleClick={props.handleClick}
                 />
                 <StatCard
                     title="Unassigned"
-                    amount={unassignedTickets.length}
+                    amount={props.unassignedTicketCount}
                     handleClick={props.handleClick}
                 />
             </div>

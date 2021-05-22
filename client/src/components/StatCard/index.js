@@ -11,7 +11,7 @@ import React from "react";
 
 function StatCard(props) {
     return (
-        <div tag="a" onClick={props.handleClick} data-vl={props.title} data-type="Status" style={{ cursor: "pointer" }} className="card col-4 mb-3 text-center float-left px-0" data-component="employeecard">
+        <div tag="a" onClick={props.handleClick} data-vl={props.title} id={props.title} data-type="Status" style={{ cursor: "pointer" }} className="card col-4 mb-3 text-center float-left px-0" data-component="employeecard">
             <div className="card-body p-1" data-vl={props.title} data-type="Status">
                 <h6 className="card-text fw-bold" data-vl={props.title} data-type="Status">{props.title}</h6>
                 <p className="card-text" data-vl={props.title} data-type="Status">{props.amount}</p>

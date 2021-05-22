@@ -12,16 +12,13 @@ module.exports = {
         include: [
           {
             model: Comment,
-            attributes: ['comment', 'user_id', 'date_created'],
+            attributes: ['id', 'comment', 'user_id', 'date_created'],
             include: [
               {
                 model: User,
                 attributes: ['first_name', 'last_name'],
               }
             ],
-            order:[
-              ['date_created', 'DESC']
-            ]
           },
           {
             model: User,
@@ -40,6 +37,9 @@ module.exports = {
             ],
           },
         ],
+        order:[
+          [ Comment,  'id', 'DESC']
+        ]
       }
       )
       res.status(200).json(ticketData);

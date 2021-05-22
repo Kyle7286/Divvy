@@ -2,13 +2,22 @@ html, body{
     overflow-x: hidden;
 }
 
-.divvy-bg {
-    background-image: linear-gradient(to right rgb(255, 193, 7), rgb(108,117,125), rgb(255,193,7)); 
-}
-
 .divvy-font-logo {
     font-family: Brush Script MT, Brush Script Std, cursive;
 }
+
+.divvy-bg-tile {
+    background-color: #fdfeffbd;
+}
+
+.divvy-bg {
+    background-image:linear-gradient(rgba(70, 69, 68, 0.179),rgba(255, 193, 7, 0.542),rgba(70, 69, 68, 0.179)); 
+}
+
+.divvy-header {
+    color: #343a40;
+}
+
 
 
 

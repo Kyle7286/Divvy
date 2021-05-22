@@ -255,6 +255,9 @@ function Dashboard() {
                     <Col className="col-lg-8 mx-0 px-0">
                         <StatCardContainer
                             allTickets={tickets}
+                            totalTicketCount={countTicketTotal}
+                            openTicketCount={countTicketOpen}
+                            unassignedTicketCount={countTicketUnassigned}
                             handleClick={handleClick}
                     />
                         <Default>
@@ -280,6 +283,11 @@ function Dashboard() {
                             handleClick={handleClick}
                         />
                     </Col>
+                </Row>
+                <Row>
+                    <div className="text-danger text-center divvy-font-logo fs-3 p-3">
+                        Let's Divvy
+                    </div>
                 </Row>
             </Container>
     );

@@ -7,7 +7,8 @@ import EmployeeCard from "../EmployeeCard";
 import API from "../../utils/API";
 import { useEffect, useState } from "react";
 import SectionHeader from "../SectionHeader";
-import "./index.css";
+import "./index.css"; 
+import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -62,8 +63,8 @@ function EmployeeCardContainer(props) {
 
     // Render the Component by mapping employees and rending sub compoennt in container
     return (
-        <div className="bg-light fix-height overflow-auto">
-            <SectionHeader>Availible Employees</SectionHeader>
+        <div className="divvy-bg-tile fix-height overflow-auto">
+            <SectionHeader>Available Employees</SectionHeader>
             <div className="d-flex flex-wrap justify-content-center">
                 {filterTeamEmployees().map((employee, index) => {
                     return index < 3 ? (

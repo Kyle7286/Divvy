@@ -96,8 +96,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-3 my-4 shadow">
-        <SectionHeader>Tickets</SectionHeader>
+      <div className="mx-3 my-2 p-2 divvy-bg-tile shadow">
         <div>
             <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -247,8 +246,8 @@
 
     // Return the Table With Data For Rendering and the Search Filter
       return (
-        <div className="bg-light table-wrapper overflow-auto">
-          
+        <div className="divvy-bg-tile table-wrapper overflow-auto">
+          <SectionHeader>Tickets</SectionHeader>
           <Table 
             columns={columns} 
             data={data}

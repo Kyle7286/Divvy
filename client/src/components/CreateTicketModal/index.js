@@ -14,6 +14,10 @@ function CreateTicketModal (props) {
 
 /* ------------------------------ Props Filters ----------------------------- */
 
+    // Define Current user into a variable for use in conditional class setting
+    const currentUser = props.currentUser;
+        console.log('CURRENT USER ON CREATE MODAL', currentUser);
+
     // Take all users and filter it to employees for rendering list
     const allEmployees = props.allUsers.filter(user=> user.role!="Client");
        
@@ -26,6 +30,8 @@ function CreateTicketModal (props) {
             }
         )
     );
+
+   
    
 /* ---------------------------------- State --------------------------------- */
 
@@ -85,6 +91,46 @@ function CreateTicketModal (props) {
         };
     };
 
+     /* ------------ Check For Client User Role For Conditional Render ----------- */
+        function checkClient() {
+            if (currentUser.role!="Client") {
+                return (
+                    <>
+                        <div className="input-group mb-3">
+                            <span className="input-group-text col-3">Assignee</span>
+                            <select ref={Assignee} className="form-select" aria-label="Default select example">
+                                <option value=""></option>
+                                {
+                                allEmployees.map(employee => (
+                                    <option value={`${employee.first_name} ${employee.last_name}`} data-user-id={employee.id} key={employee.id}>
+                                        {`${employee.first_name} ${employee.last_name}`}
+                                    </option>
+                                ))
+                                }
+                            </select>
+                        </div>
+                        <div className="input-group mb-3">
+                        <span className="input-group-text col-3">Client</span>
+                        <select ref={Client} className="form-select" aria-label="Default select example">
+                            <option value=""></option>
+                            {
+                            allClients.map(client => (
+                                <option value={client.name} data-client-id={client.id} key={client.id}>
+                                    {client.name}
+                                </option>
+                            ))
+                            }
+                        </select>
+                    </div>
+                  </>
+                )
+            }
+            else {
+                return;
+            }
+        };
+
+
 /* -------------------- Modal Button and Modal Component -------------------- */
 
     return (
@@ -125,32 +171,9 @@ function CreateTicketModal (props) {
                                     <option value="Completed">Completed</option>
                                 </select>
                             </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text col-3">Assignee</span>
-                                <select ref={Assignee} className="form-select" aria-label="Default select example">
-                                    <option value=""></option>
-                                    {
-                                    allEmployees.map(employee => (
-                                        <option value={`${employee.first_name} ${employee.last_name}`} data-user-id={employee.id} key={employee.id}>
-                                            {`${employee.first_name} ${employee.last_name}`}
-                                        </option>
-                                    ))
-                                    }
-                                </select>
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text col-3">Client</span>
-                                <select ref={Client} className="form-select" aria-label="Default select example">
-                                    <option value=""></option>
-                                    {
-                                    allClients.map(client => (
-                                        <option value={client.name} data-client-id={client.id} key={client.id}>
-                                            {client.name}
-                                        </option>
-                                    ))
-                                    }
-                                </select>
-                            </div>
+                            {
+                                checkClient()
+                            }
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

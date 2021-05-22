@@ -22,6 +22,10 @@
         // Take all users and filter it to employees for rendering list
         const allEmployees = props.allUsers.filter(user=> user.role!="Client");
 
+        // Define Current user into a variable for use in conditional class setting
+        const currentUser = props.currentUser;
+            //console.log('CURRENT USER ON MANAGE MODAL', currentUser);
+
     /* ---------------------------------- State --------------------------------- */
 
         // Set state

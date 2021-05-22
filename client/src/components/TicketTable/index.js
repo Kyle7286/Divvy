@@ -163,7 +163,7 @@
 
     //console.log('ticket table props', props);
 
-    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients}/>;
+    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients} currentUser={props.currentUser}/>;
 
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 

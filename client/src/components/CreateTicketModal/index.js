@@ -63,22 +63,49 @@ function CreateTicketModal (props) {
     // Declare update handler function
     function createTicket () {
 
-        // Create an updated ticket object that pulls latest info from possible edits
-        const newTicket = 
-            {
-                title: Title.current.value,
-                priority: Priority.current.value,
-                status: Status.current.value,
-                assigned_to: Assignee.current[Assignee.current.selectedIndex].getAttribute("data-user-id"), 
-                description: Description.current.value,
-                client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id"),
-                team_id:"1", // hard coded for MVP since not sure how or where we use this
-                points:"10" // hard coded for MVP since not sure how or where we use this
+        // Define new ticket vairable to be set in next conditional
+        let newTicket;
+
+        // Check if client or not for ticket auto-populate
+        function checkClientTicketCreate () {
+            
+            if (currentUser.role!="Client") {
+                // If not a client, make new ticket with fields set by manager or employee
+                newTicket = 
+                    {
+                        title: Title.current.value,
+                        priority: Priority.current.value,
+                        status: Status.current.value,
+                        assigned_to: Assignee.current[Assignee.current.selectedIndex].getAttribute("data-user-id"), 
+                        description: Description.current.value,
+                        client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id"),
+                        team_id:"1", // hard coded for MVP since not sure how or where we use this
+                        points:"10" // hard coded for MVP since not sure how or where we use this
+                    }
             }
+            else {
+               // Else if a Client, make assignee null, status to open and auto set client based on the current user (client) firm and firm id and status
+               newTicket = 
+                {
+                    title: Title.current.value,
+                    priority: Priority.current.value,
+                    status: "Open",
+                    assigned_to: null, // has to be assigned by manager later
+                    description: Description.current.value,
+                    client_id: currentUser.org_id,
+                    team_id:"1", // hard coded for MVP since not sure how or where we use this
+                    points:"10" // hard coded for MVP since not sure how or where we use this
+                }
+            }
+        }
+
+        // Run the checkClientTicketCreate function
+        console.log('NEW CLIENT CREATED TICKET OBJECT IS', newTicket);
+        checkClientTicketCreate();
 
         // Validate inputs and make API Call
         if (newTicket.client_id !=null) {
-            // Make the API call to update the ticket if clietn selected
+            // Make the API call to update the ticket if client selected
             API.newTicket(newTicket)
                 .then(res=> console.log('axio post response', res))
                 .then(closeModal)
@@ -92,7 +119,7 @@ function CreateTicketModal (props) {
     };
 
      /* ------------ Check For Client User Role For Conditional Render ----------- */
-        function checkClient() {
+        function checkClientComponentRender() {
             if (currentUser.role!="Client") {
                 return (
                     <>
@@ -110,18 +137,27 @@ function CreateTicketModal (props) {
                             </select>
                         </div>
                         <div className="input-group mb-3">
-                        <span className="input-group-text col-3">Client</span>
-                        <select ref={Client} className="form-select" aria-label="Default select example">
-                            <option value=""></option>
-                            {
-                            allClients.map(client => (
-                                <option value={client.name} data-client-id={client.id} key={client.id}>
-                                    {client.name}
-                                </option>
-                            ))
-                            }
-                        </select>
-                    </div>
+                            <span className="input-group-text col-3">Client</span>
+                            <select ref={Client} className="form-select" aria-label="Default select example">
+                                <option value=""></option>
+                                {
+                                allClients.map(client => (
+                                    <option value={client.name} data-client-id={client.id} key={client.id}>
+                                        {client.name}
+                                    </option>
+                                ))
+                                }
+                            </select>
+                        </div>
+                        <div className="input-group mb-3">
+                            <span className="input-group-text col-3">Status</span>
+                            <select ref={Status} className="form-select"  aria-label="Default select example">
+                                <option value="Open">Open</option>
+                                <option value="Assigned">Assigned</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
                   </>
                 )
             }
@@ -162,17 +198,8 @@ function CreateTicketModal (props) {
                                     <option value="4">4</option>
                                 </select> 
                             </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text col-3">Status</span>
-                                <select ref={Status} className="form-select"  aria-label="Default select example">
-                                    <option value="Open">Open</option>
-                                    <option value="Assigned">Assigned</option>
-                                    <option value="In Progress">In Progress</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
-                            </div>
                             {
-                                checkClient()
+                                checkClientComponentRender()
                             }
                     </form>
                 </Modal.Body>

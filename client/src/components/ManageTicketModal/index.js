@@ -247,7 +247,13 @@
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Status</span>
-                                    <select ref={latestStatus} className="form-select" defaultValue={props.ticketStatus} aria-label="Default select example">
+                                    <select 
+                                        ref={latestStatus} 
+                                        className="form-select" 
+                                        defaultValue={props.ticketStatus} 
+                                        disabled={currentUser.role !="Client" ? false : true}
+                                        aria-label="Default select example"
+                                        >
                                         <option value="Open">Open</option>
                                         <option value="Assigned">Assigned</option>
                                         <option value="In Progress">In Progress</option>
@@ -256,7 +262,14 @@
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Assignee</span>
-                                    <select ref={latestAssignee} data-user-id={props.ticketAssignee.id} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
+                                    <select 
+                                        ref={latestAssignee} 
+                                        data-user-id={props.ticketAssignee.id} 
+                                        className="form-select" 
+                                        defaultValue={props.ticketAssignee} 
+                                        disabled={currentUser.role !="Client" ? false : true}
+                                        aria-label="Default select example"
+                                        >
                                         <option value=""></option>
                                         {
                                         allEmployees.map(employee => (

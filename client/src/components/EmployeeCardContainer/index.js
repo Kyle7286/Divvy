@@ -16,57 +16,30 @@ import "../../index.css";
 
 function EmployeeCardContainer(props) {
 
+    // Declare a global variable for this container all Employees
+    let allEmployees;
 
-
-
-    // const [user, setUser] = useState([]);
-
-    // // Call when components have loaded
-    // useEffect(() => {
-    //     getUserTeamid(props);
-    // }, [])
-
-    // // Set the user state
-    // function getUserTeamid(x) {
-    //     API.getCurrentUser()
-    //         .then(res => {
-    //             console.log("CURRENT USER", res.data);
-    //             console.log("X", x);
-
-
-    //             const teamEmployees = x.allUsers.filter(user => {
-    //                console.log("FILTERING");
-    //                 return user.team_id === res.data.team_id
-    //             });
-
-    //             console.log("TEAM EMPLOYEES",teamEmployees);
-                
-    //             // setUser(teamEmployees);
-    //         })
-    //         .catch(err => console.log(err));
-    // };
-
-
+    // Declare a function to sort all of them
     function filterTeamEmployees() {
         // Take all users and filter it to employees
-        const allEmployees = props.allUsers.filter(user => user.role != "Client");
+        allEmployees = props.allUsers.filter(user => user.role != "Client");
 
         // Soort employees by their ticket count (due to mounting, make sure its not blank first)
         if (allEmployees.length != 0) {
             allEmployees.sort((a, b) => (a.ticketuser.length > b.ticketuser.length ? 1 : -1));
         };
-        // console.log("allEmployees: ", allEmployees)
-        return allEmployees;
+
     }
 
-
+    // Invoke the function to sort and filter employees
+    filterTeamEmployees()
 
     // Render the Component by mapping employees and rending sub compoennt in container
     return (
         <div className="divvy-bg-tile fix-height overflow-auto">
             <SectionHeader>Available Employees</SectionHeader>
             <div className="d-flex flex-wrap justify-content-center">
-                {filterTeamEmployees().map((employee, index) => {
+                {allEmployees.map((employee, index) => {
                     return index < 3 ? (
                         <EmployeeCard
                             key={employee.id}

@@ -45,18 +45,49 @@ function Org() {
             org: {}
         }
     );
+    const [error, setError] = useState({});
 
     // Call when components have loaded
     useEffect(() => {
         getOrg();
+        updateError("info", {});
     }, [])
 
+    // Set the error state
+    function updateError(type, error) {
+        // If error, set error
+        if (type === "error") {
+            let message;
+
+            if (error.type === "unique violation" && error.message.includes("email")) {
+                error.message = "Email already in use!"
+            } else if (error.type === "unique violation" && error.message.includes("phone")) {
+                error.message = "Phone number already in use!"
+            } else if (error.type === "unique violation" && error.message.includes("name")) {
+                error.message = "Firm name already in use!"
+            }
+
+            setError({
+                visible: true,
+                message: error.message,
+                color: "danger"
+            })
+
+        } else if (type === "info") {
+            
+            setError({
+                visible: true,
+                message: error.message,
+                color: "success"
+            })
+        }
+
+    }
 
     // Set the user state
     function getOrg() {
         API.getOrg()
             .then(res => {
-                console.log(res.data);
                 setOrg(res.data)
             })
             .catch(err => console.log(err));
@@ -76,7 +107,6 @@ function Org() {
     const handleCreateClick = (e) => {
         e.preventDefault();
 
-        console.log("What");
         let temp = { ...visible }
 
         if (temp[e.target.id]) {
@@ -106,6 +136,8 @@ function Org() {
     const handleNewClientSubmit = (e) => {
         e.preventDefault();
 
+
+        // Create form input data object
         const newClient = {
             name: refFirm.current.value,
             first_name: refFirstName.current.value,
@@ -119,9 +151,33 @@ function Org() {
             zip: refZip.current.value
         }
 
-        API.createNewClient(newClient)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+        // If you have filled out all the form fields...
+        if (refFirm.current.value
+            && refFirstName.current.value
+            && refLastName.current.value
+            && refEmail.current.value
+            && refPhone.current.value
+            && refAdd1.current.value
+            && refCity.current.value
+            && refState.current.value
+            && refZip.current.value
+        ) {
+            // Send input data to server for creation
+            API.createNewClient(newClient)
+                .then(res => {
+                    console.log(res.data);
+                    updateError("info", {message: "New client successfully created!"})
+
+                })
+                .catch(err => {
+                    console.log(`========= HIT THE CATCH ============`);
+                    updateError("error", JSON.parse(err.response.request.response).errors[0])
+                    console.log(err)
+                });
+        } else {
+            updateError("error", { message: "Please enter info into all fields..." })
+            console.log("Clicked");
+        }
 
     }
 
@@ -180,6 +236,7 @@ function Org() {
 
 
                         </Row>
+                        {error.visible ? <div className={`mb-2 text-center text-${error.color}`} >{error.message}</div> : <div className="mb-2 text-center"></div>}
                     </Col>
                 </Row>
             </Container>

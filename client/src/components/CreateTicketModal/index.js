@@ -86,21 +86,20 @@ function CreateTicketModal (props) {
             else {
                // Else if a Client, make assignee null, status to open and auto set client based on the current user (client) firm and firm id and status
                newTicket = 
-                {
-                    title: Title.current.value,
-                    priority: Priority.current.value,
-                    status: "Open",
-                    assigned_to: null, // has to be assigned by manager later
-                    description: Description.current.value,
-                    client_id: currentUser.org_id,
-                    team_id:"1", // hard coded for MVP since not sure how or where we use this
-                    points:"10" // hard coded for MVP since not sure how or where we use this
-                }
+                    {
+                        title: Title.current.value,
+                        priority: Priority.current.value,
+                        status: "Open",
+                        assigned_to: null, // has to be assigned by manager later
+                        description: Description.current.value,
+                        client_id: currentUser.org_id,
+                        team_id:"1", // hard coded for MVP since not sure how or where we use this
+                        points:"10" // hard coded for MVP since not sure how or where we use this
+                    }
             }
         }
 
         // Run the checkClientTicketCreate function
-        console.log('NEW CLIENT CREATED TICKET OBJECT IS', newTicket);
         checkClientTicketCreate();
 
         // Validate inputs and make API Call

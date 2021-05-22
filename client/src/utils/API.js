@@ -58,6 +58,12 @@ export default {
         return axios.put("/api/user/" + id, updatedTicket);
     },
 
+    // Create employee user
+    creatNewEmployee: function (newEmployee) {
+        console.log(newEmployee);
+        return axios.post("/api/user/newemp", newEmployee)
+    },
+
 
     /* ---------------------------------- clients ------------------------------ */
     // Get all clients
@@ -67,6 +73,11 @@ export default {
     // Create new client
     createNewClient: function (newClient) {
         return axios.post("/api/client", newClient);
+    },
+
+    /* ---------------------------------- team------------------------------ */
+    createNewTeam: function (newTeam) {
+        return axios.post("/api/team", newTeam);
     },
 
 

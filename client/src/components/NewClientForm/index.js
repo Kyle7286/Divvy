@@ -20,6 +20,7 @@ import Container from "../../components/Container";
 function NewTeamForm(props) {
   return (
     <>
+    <h4 className="text-center">New Client Form</h4>
       <form>
         <Row>
           <Col></Col>

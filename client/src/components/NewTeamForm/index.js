@@ -18,8 +18,11 @@ import Container from "../Container";
 */
 
 function NewTeamForm(props) {
+  console.log(props.name);
+  
   return (
     <>
+    <h4 className="text-center">New Team Form</h4>
       <form id="team" onClick={props.handleCreateClick}>
         <Row>
           <Col></Col>
@@ -28,9 +31,9 @@ function NewTeamForm(props) {
             {/* Team */}
             <div className="mb-3">
               <label htmlFor="test" className="form-label">Enter a team name</label>
-              <input type="text" className="form-control" id="test" aria-describedby="teamName" />
+              <input ref={props.refTeamName} type="text" className="form-control" id="test" aria-describedby="teamName" />
             </div>
-            <button type="submit" className="btn btn-success">Submit</button>
+            <button onClick={props.handleNewTeamSubmit} type="submit" className="btn btn-success">Submit</button>
           </Col>
           <Col></Col>
         </Row>

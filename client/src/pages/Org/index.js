@@ -74,7 +74,7 @@ function Org() {
             })
 
         } else if (type === "info") {
-            
+
             setError({
                 visible: true,
                 message: error.message,
@@ -102,7 +102,6 @@ function Org() {
         }
     );
 
-
     // Show/hide the form for the respective button clicked
     const handleCreateClick = (e) => {
         e.preventDefault();
@@ -116,10 +115,12 @@ function Org() {
             temp[e.target.id] = true
         }
 
+        // Clear info div
+        updateError("info", {});
+
+        // Make form visible
         setVisible(temp)
     }
-
-
 
     // Ref Variables - New Client Form
     let refFirm = React.createRef();
@@ -133,9 +134,9 @@ function Org() {
     let refState = React.createRef();
     let refZip = React.createRef();
 
+    // Handle new client button
     const handleNewClientSubmit = (e) => {
         e.preventDefault();
-
 
         // Create form input data object
         const newClient = {
@@ -166,8 +167,7 @@ function Org() {
             API.createNewClient(newClient)
                 .then(res => {
                     console.log(res.data);
-                    updateError("info", {message: "New client successfully created!"})
-
+                    updateError("info", { message: "New client successfully created!" })
                 })
                 .catch(err => {
                     console.log(`========= HIT THE CATCH ============`);
@@ -181,6 +181,64 @@ function Org() {
 
     }
 
+    let refTeamName = React.createRef();
+
+    // Handle new Team button
+    const handleNewTeamSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
+
+        if (refTeamName.current.value) {
+
+            API.createNewTeam({ name: refTeamName.current.value })
+                .then(res => {
+                    updateError("info", { message: "Team successfully created!" });
+                })
+                .catch(err => {
+                    updateError("error", JSON.parse(err.response.request.response).errors[0])
+                })
+        } else {
+            updateError("error", { message: "Please enter a Team Name." })
+        }
+
+    }
+
+    let refEmpFirstName = React.createRef();
+    let refEmpLastName = React.createRef();
+    let refEmpPhone = React.createRef();
+    let refEmpEmail = React.createRef();
+
+    // Handle New Employee Form
+    const handleNewEmpSubmit = (e) => {
+        e.preventDefault();
+
+        const newEmployee = {
+            first_name: refEmpFirstName.current.value,
+            last_name: refEmpLastName.current.value,
+            phone_number: refEmpPhone.current.value,
+            email: refEmpEmail.current.value,
+            role: "Employee",
+        }
+
+        if (refEmpFirstName.current.value
+            && refEmpLastName.current.value
+            && refEmpEmail.current.value
+            && refEmpPhone.current.value
+        ) {
+            API.creatNewEmployee(newEmployee)
+                .then(res => {
+                    // console.log(res.data);
+                    updateError("info", { message: "Employee successfully created!" });
+                })
+                .catch((err) => {
+                    updateError("error", JSON.parse(err.response.request.response).errors[0])
+
+                })
+        } else {
+            updateError("error", { message: "Please fill out all fields." })
+        }
+
+    }
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
@@ -227,11 +285,17 @@ function Org() {
                             /> : null}
 
                             {visible.team ? <NewTeamForm
-                            // handleCreateClick={handleCreateClick}
+                                handleNewTeamSubmit={handleNewTeamSubmit}
+                                refTeamName={refTeamName}
                             /> : null}
 
                             {visible.emp ? <NewEmpForm
-                            // handleCreateClick={handleCreateClick}
+                                handleNewEmpSubmit={handleNewEmpSubmit}
+                                refEmpFirstName={refEmpFirstName}
+                                refEmpLastName={refEmpLastName}
+                                refEmpEmail={refEmpEmail}
+                                refEmpPhone={refEmpPhone}
+
                             /> : null}
 
 

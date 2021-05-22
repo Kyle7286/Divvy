@@ -34,8 +34,23 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      const teamData = await Team.create(req.body);
+      req.body
+
+      // Get the user's infor
+      const userData = await User.findOne({
+        where: {
+          id: req.session.user_id
+        }
+      })
+
+      // Create team with user's org_id
+      const teamData = await Team.create({
+        name: req.body.name,
+        org_id: userData.org_id
+      });
+
       res.status(200).json(teamData);
+
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

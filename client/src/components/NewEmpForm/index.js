@@ -20,82 +20,39 @@ import Container from "../Container";
 function NewEmpForm(props) {
   return (
     <>
-    <h1>EMP FORM</h1>
+      <h4 className="text-center">New Employee Form</h4>
       <form id="team" onClick={props.handleCreateClick}>
         <Row>
           <Col></Col>
           <Col>
-            {/* Firm */}
+
+            {/* Emp First Name */}
             <div className="mb-3">
-              <label htmlFor="InputFirmName" className="form-label">Firm</label>
-              <input type="text" className="form-control" id="InputFirmName" aria-describedby="firmName" />
+              <label htmlFor="InputEmpFirstName" className="form-label">First Name</label>
+              <input ref={props.refEmpFirstName} type="text" className="form-control" id="InputEmpFirstName" aria-describedby="empFirstName" />
             </div>
 
-            {/* Client First Name */}
+            {/* Emp Last Name */}
             <div className="mb-3">
-              <label htmlFor="InputClientFirstName" className="form-label">First Name</label>
-              <input type="text" className="form-control" id="InputClientFirstName" aria-describedby="clientFirstName" />
-            </div>
-
-            {/* Client Last Name */}
-            <div className="mb-3">
-              <label htmlFor="InputClientLastName" className="form-label">Last Name</label>
-              <input type="text" className="form-control" id="InputClientLastName" aria-describedby="clientLastName" />
+              <label htmlFor="InputEmpLastName" className="form-label">Last Name</label>
+              <input ref={props.refEmpLastName} type="text" className="form-control" id="InputEmpLastName" aria-describedby="empLastName" />
             </div>
 
             {/* Email */}
             <div className="mb-3">
               <label htmlFor="InputEmail" className="form-label">Email</label>
-              <input type="text" className="form-control" id="InputEmail" aria-describedby="email" />
+              <input ref={props.refEmpEmail} type="text" className="form-control" id="InputEmail" aria-describedby="email" />
             </div>
 
 
             <div className="mb-3">
               <label htmlFor="InputPhone" className="form-label">Phone</label>
-              <input type="text" className="form-control" id="InputPhone" aria-describedby="email" />
-            </div>
-          </Col>
-
-          <Col>
-            {/* Address 1 */}
-            <div className="mb-3">
-              <label htmlFor="InputAdd1" className="form-label">Address 1</label>
-              <input type="text" className="form-control" id="InputAdd1" aria-describedby="add1" />
+              <input ref={props.refEmpPhone} type="text" className="form-control" id="InputPhone" aria-describedby="email" />
             </div>
 
-            {/* Address 2 */}
-            <div className="mb-3">
-              <label htmlFor="InputAdd2" className="form-label">Address 2</label>
-              <input type="text" className="form-control" id="InputAdd2" aria-describedby="add2" />
-            </div>
-
-            {/* City */}
-            <div className="mb-3">
-              <label htmlFor="InputCity" className="form-label">City</label>
-              <input type="text" className="form-control" id="InputCity" aria-describedby="city" />
-            </div>
-
-            {/* State */}
-            <div className="mb-3">
-              <label htmlFor="InputState" className="form-label">State</label>
-              <input type="text" className="form-control" id="InputState" aria-describedby="state" />
-            </div>
-
-            {/* Zip */}
-            <div className="mb-3">
-              <label htmlFor="InputZip" className="form-label">Zip</label>
-              <input type="text" className="form-control" id="InputZip" aria-describedby="zip" />
-            </div>
+            <button onClick={props.handleNewEmpSubmit} type="submit" className="btn btn-success">Submit</button>
           </Col>
           <Col></Col>
-          <Row>
-            <Col></Col>
-            <Col>
-              <button type="submit" className="btn btn-success">Submit</button>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
         </Row>
       </form>
 

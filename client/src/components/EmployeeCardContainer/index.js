@@ -9,12 +9,15 @@ import { useEffect, useState } from "react";
 import SectionHeader from "../SectionHeader";
 import "./index.css"; 
 import "../../index.css";
+import { Badge } from "react-bootstrap";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
 function EmployeeCardContainer(props) {
+
+    console.log('PROPS in EMPLOYEE CARD CONTAINER', props);
 
     // Declare a global variable for this container all Employees
     let allEmployees;
@@ -33,18 +36,43 @@ function EmployeeCardContainer(props) {
     // Invoke the function to sort and filter employees
     filterTeamEmployees()
 
-    // Declare a functoin for setting ticket colors on the profile cards
-    function setBadgeColor (index) {
-        if (index <3) {
+    
+    // Declare a functoin for setting ticket colors on the profile cards by index of map (position they are in the sort) - SAVING AS BACKUP
+    // function setBadgeColor (index) {
+    //     if (index <3) {
+    //         return "badge alert-success"
+    //     } 
+    //     else if (index > 2 && index < 6) {
+    //        return "badge alert-info"
+    //     }
+    //     else if (index > 5 && index < 9) {
+    //         return "badge alert-warning"
+    //     }
+    //     else if (index > 8) {
+    //         return "badge alert-secondary"
+    //     }
+    //     else {
+    //         return "badge alert-light"
+    //     }
+    // };
+
+    function setBadgeColorByWeight (ticketsNotClosed, employeeTickets ) {
+
+        // Determine weight of total ticket count
+        const weight = employeeTickets/ticketsNotClosed;
+            console.log('weight of tikets is showing as', weight);
+        
+        // Set badge color based on weights
+        if (weight <0.15) {
             return "badge alert-success"
         } 
-        else if (index > 2 && index < 6) {
+        else if (weight> 0.14 && weight < 0.25) {
            return "badge alert-info"
         }
-        else if (index > 5 && index < 10) {
+        else if (weight > 0.24 && weight < 0.50) {
             return "badge alert-warning"
         }
-        else if (index > 9) {
+        else if (weight > 0.49) {
             return "badge alert-danger"
         }
         else {
@@ -63,7 +91,8 @@ function EmployeeCardContainer(props) {
                             key={employee.id}
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
-                            className={setBadgeColor(index)}
+                            className={employee.ticketuser ? (setBadgeColorByWeight(props.ticketsNotClosed.length, employee.ticketuser.length)) : ("badge alert-success")}
+                            //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}
                             handleClick={props.handleClick}
@@ -73,7 +102,8 @@ function EmployeeCardContainer(props) {
                             key={employee.id}
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
-                            className={setBadgeColor(index)}
+                            className={employee.ticketuser ? (setBadgeColorByWeight(props.ticketsNotClosed.length, employee.ticketuser.length)) : ("badge alert-success")}
+                            //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}
                             handleClick={props.handleClick}

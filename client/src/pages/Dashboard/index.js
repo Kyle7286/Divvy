@@ -63,11 +63,15 @@ function Dashboard() {
 
     // set unassigned ticket count
     const [countTicketUnassigned, setCountTicketUnassigned] = useState()
+
+    // set tickets not closed count (so in progress, assigned, open)
+    const [countTicketNotClosed, setCountTicketNotClosed] = useState()
     /* --------------------------------- Get Tickets -------------------------------- */
 
+    // Declare global variables
     let unassignedTicketCount = 0;
     let openTicketCount = 0;
-    // Load all tickets and store them in tickets
+    let ticketsNotClosedCount = 0;
 
     // Call when components have loaded
     useEffect(() => {
@@ -86,6 +90,9 @@ function Dashboard() {
                 const totalTickets = res.data;
                 let totalTicketCount = totalTickets.length;
                 setCountTicketTotal(totalTicketCount);
+                let ticketsNotClosed = totalTickets.filter(ticket=>ticket.status!="Closed");
+                ticketsNotClosedCount = ticketsNotClosed.length;
+                setCountTicketNotClosed(ticketsNotClosed);
                 let openTickets = totalTickets.filter(ticket => ticket.status == "Open");
                 openTicketCount = openTickets.length;
                 setCountTicketOpen(openTicketCount);
@@ -255,6 +262,7 @@ function Dashboard() {
                     <Col className="col-lg-4 align-items-center">
                         <EmployeeCardContainer
                             allUsers={users}
+                            ticketsNotClosed = {countTicketNotClosed}
                             handleClick={handleClick}
                         />
                     </Col>  
@@ -264,8 +272,6 @@ function Dashboard() {
                 return;
             }
         };
-
-        console.log('CURRENT USER ROLE', currentUser.role);
 
     /* ---------------------------- Component Render ---------------------------- */
     return (

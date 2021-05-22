@@ -128,7 +128,7 @@ function Dashboard() {
     function getCurrentUser() {
         API.getCurrentUser()
             .then(res => {
-                //console.log("CURRENT USER", res.data);
+                console.log("CURRENT USER", res.data);
                 setCurrentUser(res.data);
             }
             )
@@ -205,7 +205,7 @@ function Dashboard() {
                 setClients(res.data)
             )
             .catch(err => console.log(err));
-    }
+    };
 
     /* -------------------------------- handleClick ---------------------------------- */
 
@@ -246,13 +246,32 @@ function Dashboard() {
             default:
                 break;
         }
-    }
+    };
+
+    /* ------------ Check For Client User Role For Conditional Render ----------- */
+        function checkClient() {
+            if (currentUser.role!="Client") {
+                return (
+                    <Col className="col-lg-4 align-items-center">
+                        <EmployeeCardContainer
+                            allUsers={users}
+                            handleClick={handleClick}
+                        />
+                    </Col>  
+                )
+            }
+            else {
+                return;
+            }
+        };
+
+        console.log('CURRENT USER ROLE', currentUser.role);
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
             <Container className=" mt-3 mx-3">
                 <Row>
-                    <Col className="col-lg-8 mx-0 px-0">
+                    <Col className={currentUser.role!="Client" ? "col-lg-8 mx-auto px-0" : "col-lg-11 mx-auto px-0" }> 
                         <StatCardContainer
                             allTickets={tickets}
                             totalTicketCount={countTicketTotal}
@@ -277,12 +296,15 @@ function Dashboard() {
                             />
                         </Mobile>
                     </Col>
-                    <Col className="col-lg-4 align-items-center">
+                    {
+                      checkClient()
+                    }
+                    {/* <Col className="col-lg-4 align-items-center">
                         <EmployeeCardContainer
                             allUsers={users}
                             handleClick={handleClick}
                         />
-                    </Col>
+                    </Col> */}
                 </Row>
                 <Row>
                     <div className="text-danger text-center divvy-font-logo fs-3 p-3">

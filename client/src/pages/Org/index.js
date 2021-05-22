@@ -8,6 +8,7 @@ import Row from "../../components/Row";
 import Container from "../../components/Container";
 import NewClientForm from "../../components/NewClientForm";
 import NewTeamForm from "../../components/NewTeamForm";
+import NewEmpForm from "../../components/NewEmpForm";
 import _ from "underscore";
 
 // Styling Imports
@@ -75,6 +76,7 @@ function Org() {
     const handleCreateClick = (e) => {
         e.preventDefault();
 
+        console.log("What");
         let temp = { ...visible }
 
         if (temp[e.target.id]) {
@@ -101,7 +103,27 @@ function Org() {
     let refState = React.createRef();
     let refZip = React.createRef();
 
+    const handleNewClientSubmit = (e) => {
+        e.preventDefault();
 
+        const newClient = {
+            name: refFirm.current.value,
+            first_name: refFirstName.current.value,
+            last_name: refLastName.current.value,
+            email: refEmail.current.value,
+            phone_number: refPhone.current.value,
+            add1: refAdd1.current.value,
+            add2: refAdd2.current.value,
+            city: refCity.current.value,
+            state: refState.current.value,
+            zip: refZip.current.value
+        }
+
+        API.createNewClient(newClient)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+
+    }
 
 
     /* ---------------------------- Component Render ---------------------------- */
@@ -110,13 +132,9 @@ function Org() {
 
             <h1 className="mb-4">Organization</h1>
             <Container className="m-3">
-                <Row>
-                    <Col />
-                    <Col style={{ marginBottom: "5rem" }}>
-                        <h1>{org.org.name}</h1>
-                    </Col>
-                    <Col />
-                </Row>
+
+                <h1 className="text-center" style={{ marginBottom: "5rem" }}>{org.org.name}</h1>
+
                 <Row>
                     <Col>
                         <Row>
@@ -139,15 +157,25 @@ function Org() {
                             <Col></Col>
 
                             {visible.client ? <NewClientForm
-                                handleCreateClick={handleCreateClick}
+                                handleNewClientSubmit={handleNewClientSubmit}
+                                refFirm={refFirm}
+                                refFirstName={refFirstName}
+                                refLastName={refLastName}
+                                refEmail={refEmail}
+                                refPhone={refPhone}
+                                refAdd1={refAdd1}
+                                refAdd2={refAdd2}
+                                refCity={refCity}
+                                refState={refState}
+                                refZip={refZip}
                             /> : null}
 
                             {visible.team ? <NewTeamForm
-                                handleCreateClick={handleCreateClick}
+                            // handleCreateClick={handleCreateClick}
                             /> : null}
 
                             {visible.emp ? <NewEmpForm
-                                handleCreateClick={handleCreateClick}
+                            // handleCreateClick={handleCreateClick}
                             /> : null}
 
 

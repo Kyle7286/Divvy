@@ -64,6 +64,12 @@ export default {
     getAllClients: function () {
         return axios.get("/api/client");
     },
+    // Create new client
+    createNewClient: function (newClient) {
+        return axios.post("/api/client", newClient);
+    },
+
+
     /* -------------------------------- authcheck ------------------------------- */
     checkAuth: function () {
         return axios.get("/api/auth/authcheck");
@@ -76,7 +82,7 @@ export default {
     logout: function () {
         return axios.post("/api/auth/logout");
     },
-    
+
     /* ----------------------------------- orgs ---------------------------------- */
     newOrg: function (newOrg) {
         return axios.post("/api/org", newOrg);

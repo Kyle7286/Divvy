@@ -3,6 +3,7 @@
 /* -------------------------------------------------------------------------- */
 
     import React from "react";
+    import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -10,7 +11,7 @@
 
 function SectionHeader(props) {
     return (
-        <div className="text-center text-info fw-bold fs-3" data-component="SectionHeader">
+        <div className="text-center text-warning fw-normal fs-3 divvy-bg-tile p-3 mb-2" data-component="SectionHeader">
             {props.children}
         </div>
     );

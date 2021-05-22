@@ -15,12 +15,16 @@
 
     function ManageTicketModal (props) {
 
-        console.log('props in manage ticket modal is', props);
+        // console.log('props in manage ticket modal is', props);
 
     /* ------------------------------ Props Filters ----------------------------- */
 
         // Take all users and filter it to employees for rendering list
         const allEmployees = props.allUsers.filter(user=> user.role!="Client");
+
+        // Define Current user into a variable for use in conditional class setting
+        const currentUser = props.currentUser;
+            //console.log('CURRENT USER ON MANAGE MODAL', currentUser);
 
     /* ---------------------------------- State --------------------------------- */
 
@@ -129,11 +133,13 @@
         let newCommentTextArea = React.createRef();
         let recentComment=[]
         const currentUserName = `${props.currentUser.first_name} ${props.currentUser.last_name}`;
+
         
         // On click of + comment button, show the text-area and allow for entry
             function readyNewComment () {
                 // Set state to render new comment div
                 setisNewCommentShowing(true);
+                console.log(isNewCommentShowing);
             };
 
             // Cancel new comment if needed
@@ -147,6 +153,7 @@
             };
 
             function postNewComment (e) {
+                console.log('postNewComment called');
                 // Prevent Default
                 e.preventDefault();
 
@@ -163,9 +170,9 @@
 
                 // update an array value that we will feed to state
                 recentComment = (
-                    <div className="bg-light p-1 my-1 container">
+                    <div className="bg-light p-1 my-1 container" data-tester="recentComment">
                         <div className="row">
-                            <div className="fw-bold text-primary col">{currentUserName}</div> 
+                            <div className="fw-bold text-warning col">{currentUserName}</div> 
                         </div>
                         <div className="row">
                             <div className="col">{newCommentTextArea.current.value}</div> 
@@ -180,8 +187,7 @@
                 setRecentComments([recentComment].concat(recentComments));
 
                 // Update recent comments count
-                setRecentCommentsCount(recentCommentsCount + 1);
-                    console.log('RECENT COMMENTS COUNT', recentCommentsCount)
+                setRecentCommentsCount(recentCommentsCount + 1); 
 
                 // Post the new comment to the server (TODO)
                 API.newComment(newComment)
@@ -196,7 +202,7 @@
 
         return (
             <>
-                <button  className="btn btn-sm btn-outline-info" variant="primary" onClick={openModal}>
+                <button  className="btn btn-sm btn-outline-warning" variant="primary" onClick={openModal}>
                     Manage
                 </button>
                 <Modal show={visability} onHide={closeModal}>
@@ -207,21 +213,21 @@
                        <div className="row mb-3 justify-content-center">
                            <div className="col text-center">
                                <button 
-                                    className={isTicketShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isTicketShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowTicketDetails}>
                                         Ticket Details
                                 </button>
                            </div>
                            <div className="col text-center">
                                <button 
-                                    className={isClientShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isClientShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowClientDetails}>
                                         Client Details
                                 </button>
                            </div>
                            <div className="col text-center">
                                <button 
-                                    className={isCommentShowing ? "btn btn-info btn-sm text-center" : "btn btn-light btn-sm text-center"} 
+                                    className={isCommentShowing ? "btn alert-warning btn-sm text-center" : "btn btn-light btn-sm text-center"} 
                                     onClick={handleShowCommentDetails}>
                                         Comments {(props.ticketComments != undefined) ? `(${props.ticketComments.length + recentCommentsCount})` : ""}
                                 </button>
@@ -241,7 +247,13 @@
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Status</span>
-                                    <select ref={latestStatus} className="form-select" defaultValue={props.ticketStatus} aria-label="Default select example">
+                                    <select 
+                                        ref={latestStatus} 
+                                        className="form-select" 
+                                        defaultValue={props.ticketStatus} 
+                                        disabled={currentUser.role !="Client" ? false : true}
+                                        aria-label="Default select example"
+                                        >
                                         <option value="Open">Open</option>
                                         <option value="Assigned">Assigned</option>
                                         <option value="In Progress">In Progress</option>
@@ -250,7 +262,14 @@
                                 </div>
                                 <div className="input-group mb-3">
                                     <span className="input-group-text col-3">Assignee</span>
-                                    <select ref={latestAssignee} data-user-id={props.ticketAssignee.id} className="form-select" defaultValue={props.ticketAssignee} aria-label="Default select example">
+                                    <select 
+                                        ref={latestAssignee} 
+                                        data-user-id={props.ticketAssignee.id} 
+                                        className="form-select" 
+                                        defaultValue={props.ticketAssignee} 
+                                        disabled={currentUser.role !="Client" ? false : true}
+                                        aria-label="Default select example"
+                                        >
                                         <option value=""></option>
                                         {
                                         allEmployees.map(employee => (
@@ -292,11 +311,14 @@
                                                 <textarea ref={newCommentTextArea} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>
                                             <div className="text-right mb-2">
-                                                <button className="btn btn-outline-primary btn-sm py-0 mx-1" onClick={postNewComment}>Post</button>
+                                                <button className="btn btn-outline-warning btn-sm py-0 mx-1" onClick={postNewComment}>Post</button>
                                                 <button className="btn btn-outline-secondary btn-sm py-0 mx-1" onClick={cancelNewComment}>Cancel</button>
                                             </div>
                                         </div>
-                                        {recentComments}
+
+                                        {recentComments} {/* each time this renders, it is only having the previous comment. So somehow its stacking it twice or something*/}
+                                        {console.log('recentComments state in the modal return is', recentComments)}
+
                                     </CommentsContantainer>
 
                            </div>
@@ -304,11 +326,11 @@
                     </Modal.Body>
                     <Modal.Footer className="container-fluid">
                             <div className={isTicketShowing ? "" : "d-none"} >
-                                <Button  className="btn-danger mx-2" onClick={deleteTicket}>Delete</Button>
-                                <Button  className="btn-success mx-2" onClick={updateTicket}>Update</Button>
+                                <Button  className="btn-secondary mx-2" onClick={deleteTicket}>Delete</Button>
+                                <Button  className="btn-warning mx-2" onClick={updateTicket}>Update</Button>
                             </div>
                             <div className={isCommentShowing ? "" : "d-none"} >
-                                <button className="btn btn-primary" onClick={readyNewComment}>+ Comment</button>
+                                <button className="btn btn-warning" onClick={readyNewComment}>+ Comment</button>
                             </div>
                     </Modal.Footer>
                 </Modal>

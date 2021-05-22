@@ -6,6 +6,7 @@
   import React, { useState, useEffect } from "react";
   import ManageTicketModal from "../ManageTicketModal";
   import CreateTicketModal from '../CreateTicketModal';
+  import SectionHeader from "../SectionHeader";
   import './index.css';
   
 /* -------------------------------------------------------------------------- */
@@ -95,7 +96,7 @@
 
     // Render the UI for the table, using bootstrap classes
     return (
-      <div className="mx-1 ">
+      <div className="mx-3 my-2 p-2 divvy-bg-tile shadow">
         <div>
             <GlobalFilter className="d-inline"
                 preGlobalFilteredRows={preGlobalFilteredRows}
@@ -103,7 +104,7 @@
                 setGlobalFilter={setGlobalFilter}
             />
         </div>
-        <table {...getTableProps()} className="table align-middle shadow-sm mt-2 ">
+        <table {...getTableProps()} className="table table-hover align-middle shadow-sm mt-2 ">
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
@@ -160,9 +161,9 @@
 
   function TicketTable(props) {
 
-    console.log('ticket table props', props);
+    //console.log('ticket table props', props);
 
-    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients}/>;
+    const createTicketModal = <CreateTicketModal allUsers={props.allUsers} allClients={props.allClients} currentUser={props.currentUser}/>;
 
     // Map through tickets and create a new object array matching my table accessors order and names
     let ticket = props.allTickets.map (ticket => 
@@ -245,7 +246,8 @@
 
     // Return the Table With Data For Rendering and the Search Filter
       return (
-        <div>
+        <div className="divvy-bg-tile table-wrapper overflow-auto">
+          <SectionHeader>Tickets</SectionHeader>
           <Table 
             columns={columns} 
             data={data}

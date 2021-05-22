@@ -50,7 +50,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       console.log(req.session.user_id);
-
+      console.log(req.body);
       // Find the user who did the request to get the appropriate details
       const getUser = await User.findOne({
         where: {
@@ -74,13 +74,24 @@ module.exports = {
         profile_icon: ""
       })
 
+        console.log(newUser);
       // Create the Client second
-      const newClient = await Client.create({
-        
-      })
+      if (newUser) {
+        const newClient = await Client.create({
+          name: req.body.name,
+          org_id: getUser.org_id,
+          contact_id: newUser.id,
+          address_1: req.body.add1,
+          address_2: req.body.add2,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip
+
+        })
+        res.status(200).json({ newUser, newClient });
+      }
 
 
-      res.status(200).json(newUser);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

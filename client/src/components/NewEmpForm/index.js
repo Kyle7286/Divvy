@@ -5,7 +5,6 @@
 import React from "react";
 import Col from "../Column";
 import Row from "../Row";
-import Container from "../Container";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -34,7 +33,7 @@ function NewEmpForm(props) {
               <select ref={props.refTeamSelected} name="selectList" id="selectList">
                 {props.teams.map((team) => {
                   return (
-                    <option value={team.id}>{team.name}</option>
+                    <option key={team.id} value={team.id}>{team.name}</option>
                   )
                 })}
               </select>

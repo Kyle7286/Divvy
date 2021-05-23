@@ -56,6 +56,34 @@ function Org() {
         updateError("info", {});
     }, [])
 
+    /* -------------- Button Characteristics and highlight handling ------------- */
+    // Related State
+    const [isClientShowing, setIsClientShowing] = useState(false)
+    const [isTeamShowing, setIsTeamShowing] = useState(false)
+    const [isEmployeeShowing, setIsEmployeeShowing] = useState(false)
+
+     // Show Ticket Details
+     function makeClientActive () {
+        setIsClientShowing(prevCheck => !prevCheck)
+        setIsTeamShowing(false);
+        setIsEmployeeShowing(false);
+    }
+
+    // Show Client Details
+    function makeTeamActive () {
+        setIsTeamShowing(prevCheck => !prevCheck)
+        setIsClientShowing(false);
+        setIsEmployeeShowing(false);
+    }
+
+    // Show Client Details
+    function makeEmployeeActive () {
+        setIsEmployeeShowing(prevCheck => !prevCheck)
+        setIsClientShowing(false);
+        setIsTeamShowing(false);
+    }
+    
+    /* ----------------------------- Component Logic ---------------------------- */
 
     function getTeams() {
         API.getAllOrgTeams()
@@ -122,6 +150,18 @@ function Org() {
     const handleCreateClick = (e) => {
         e.preventDefault();
 
+        // Handle Button Color
+        if (e.target.id==="client") {
+            makeClientActive();
+        }
+        else if (e.target.id==="team") {
+            makeTeamActive()
+        }
+        else if (e.target.id==="emp") {
+            makeEmployeeActive();
+        }
+
+        // Handle Form Display
         let temp = { ...visible }
 
         if (temp[e.target.id]) {
@@ -265,6 +305,7 @@ function Org() {
 
     }
 
+
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
@@ -281,17 +322,17 @@ function Org() {
                         <Row className="mb-3 d-flex justify-content-center">
                             <Col className="text-center col-lg-3">
                                 <div>
-                                    <button id="client" onClick={handleCreateClick} className="btn btn-light">New Client</button>
+                                    <button id="client" onClick={handleCreateClick} className={isClientShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Client</button>
                                 </div>
                             </Col>
                             <Col className="text-center col-lg-3">
                                 <div>
-                                    <button id="team" onClick={handleCreateClick} className="btn btn-light">New Team</button>
+                                    <button id="team" onClick={handleCreateClick} className={isTeamShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Team</button>
                                 </div>
                             </Col>
                             <Col className="text-center col-lg-3">
                                 <div>
-                                    <button id="emp" onClick={handleCreateClick} className="btn btn-light">New Employee</button>
+                                    <button id="emp" onClick={handleCreateClick} className={isEmployeeShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Employee</button>
                                 </div>
                             </Col>
                         </Row>

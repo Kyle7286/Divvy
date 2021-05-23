@@ -103,5 +103,9 @@ export default {
     },
     getOrg: function () {
         return axios.get("/api/org/current")
-    }
+    },
+    /* ---------------------------------- email ---------------------------------- */
+    sendEmail: function (emailOptions) {
+        return axios.post("/api/email", emailOptions)
+    },
 };

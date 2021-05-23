@@ -78,7 +78,16 @@ function SignupCard() {
                 .then(res => {
                     API.login({ email: email.current.value, password: password.current.value })
                         .then(res => console.log('axio login post response', res.data))
-                        .then(res => window.location = '/org')
+                        .then(res => {
+                            const emailOptions = 
+                            {
+                                to: email.current.value,
+                                subject: "Welcome to DIVVY",
+                                message: "You have just signed up - Welcome!"
+                            }
+                            sendWelcomeEmail(emailOptions);
+                        })
+                        // .then(res => window.location = '/org')
                         .catch(err => console.log(err));
                 })
                 .catch(err => console.log(err));
@@ -87,6 +96,13 @@ function SignupCard() {
             // If no org name entered, alert them and do not make API call
             alert("Please make sure you have entered all the required fields!")
         };
+    }
+
+    function sendWelcomeEmail(emailOptions) {
+        API.sendEmail(emailOptions)
+                .then(res => console.log('axio email post response', res.data))
+                .then(res => window.location = '/org')
+                .catch(err => console.log(err));
     }
 
     return (

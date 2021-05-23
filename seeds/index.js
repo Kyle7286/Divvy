@@ -11,6 +11,8 @@ const seedTeam2 = require('./user-seed-org-1-team-2');
 const seedTeam = require('./team-org-1');
 const seedTicketOrg1Team1 = require('./ticket-org-1-team-1');
 const seedComment = require('./comment-seeds');
+const seedReward = require('./reward-seeds');
+
 
 
 
@@ -27,35 +29,38 @@ const sequelize = require('../config/connection');
 
 const seedAll = async () => {
 
-    await sequelize.sync({ force: true }); // Force true adds a drop table if exists- so it will override any existing data we have in there. 
+  await sequelize.sync({ force: true }); // Force true adds a drop table if exists- so it will override any existing data we have in there. 
 
-    console.log('\n----- DATABASE SYNCED -----\n');
+  console.log('\n----- DATABASE SYNCED -----\n');
 
-    await seedOrg();
-    console.log('\n----- ORG SEEDED -----\n');
+  await seedOrg();
+  console.log('\n----- ORG SEEDED -----\n');
 
-    await seedClient();
-    console.log('\n----- CLIENTS SEEDED -----\n');
+  await seedClient();
+  console.log('\n----- CLIENTS SEEDED -----\n');
 
-    await seedUserClient();
-    console.log('\n----- USERCLIENT SEEDED -----\n');
+  await seedUserClient();
+  console.log('\n----- USERCLIENT SEEDED -----\n');
 
-    await seedTeam1();
-    console.log('\n----- USERS ORG1 TEAM1 SEEDED -----\n');
+  await seedTeam1();
+  console.log('\n----- USERS ORG1 TEAM1 SEEDED -----\n');
 
-    await seedTeam2();
-    console.log('\n----- USERS ORG1 TEAM2 SEEDED -----\n');
+  await seedTeam2();
+  console.log('\n----- USERS ORG1 TEAM2 SEEDED -----\n');
 
-    await seedTeam();
-    console.log('\n----- TEAMS SEEDED -----\n');
+  await seedTeam();
+  console.log('\n----- TEAMS SEEDED -----\n');
 
-    await seedTicketOrg1Team1();
-    console.log('\n----- TICKETS SEEDED -----\n');
+  await seedTicketOrg1Team1();
+  console.log('\n----- TICKETS SEEDED -----\n');
 
-    await seedComment();
-    console.log('\n----- COMMENTS SEEDED -----\n');
+  await seedComment();
+  console.log('\n----- COMMENTS SEEDED -----\n');
 
-    process.exit(0);
+  await seedReward();
+  console.log('\n----- REWARDS SEEDED -----\n');
+
+  process.exit(0);
 
 };
 

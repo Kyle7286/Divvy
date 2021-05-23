@@ -103,5 +103,11 @@ export default {
     },
     getOrg: function () {
         return axios.get("/api/org/current")
-    }
+    },
+
+    /* ----------------------------------- Reward System ---------------------------------- */
+    getAllTeamRewards: function () {
+        return axios.get("/api/reward")
+    },
+
 };

@@ -44,6 +44,7 @@ function Profile() {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [picture, setPicture] = useState({});
+    const [rewards, setRewards] = useState({});
 
 
     // Call when components have loaded

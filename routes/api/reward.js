@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const rewardController = require("../../controllers/rewardController");
 
-// Matches with "/api/team"
+// Matches with "/api/reward"
 router.route("/")
   .get(rewardController.findAll)
   // .post(rewardController.create);

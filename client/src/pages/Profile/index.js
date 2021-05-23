@@ -7,6 +7,7 @@ import Col from "../../components/Column";
 import Row from "../../components/Row";
 import Container from "../../components/Container";
 import ProfileForm from "../../components/ProfileForm";
+import ProgressBar from "../../components/Progress-Bar";
 import "../../index.css";
 
 // Styling Imports
@@ -103,7 +104,7 @@ function Profile() {
         callUpdateUser(updatedProfile);
     }
 
-    
+
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
@@ -152,6 +153,13 @@ function Profile() {
         updatePicture(false);
     }
 
+    const testData = [
+        { bgcolor: "#6a1b9a", completed: 60 },
+        { bgcolor: "#00695c", completed: 30 },
+        { bgcolor: "#ef6c00", completed: 53 },
+    ];
+
+
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
@@ -160,21 +168,31 @@ function Profile() {
                 <Row>
                     <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
                         <SectionHeader>My Info</SectionHeader>
-                        <Row>
-                            <Col/>
-                                    <div onClick={handleImageClick} className="profile-img my-3 text-center">
-                                        <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
-                                        <FaLink className="icon-button" />
+                        <Row className="">
+                            
+                            <Col className="col-lg-5" >
+                                <div onClick={handleImageClick} className="profile-img my-3 text-center">
+                                    <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
+                                    <FaLink className="icon-button" />
+                                </div>
+                            </Col>
+
+                            <Col className="col-lg-3">
+                                {testData.map((item, idx) => (
+                                    <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
+                                ))}
+                            </Col>
+
+                            <Col>
+                                <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                                    <div>
+                                        <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                        <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
+                                        <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
+                                        <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
                                     </div>
-                                    <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
-                                        <div>
-                                            <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                            <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
-                                            <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
-                                            <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
-                                        </div>
-                                    </form>
-                            <Col />
+                                </form>
+                            </Col>
                         </Row>
                         <Row>
                             <Col>
@@ -195,7 +213,7 @@ function Profile() {
                         </Row>
                     </Col>
                 </Row>
-               
+
             </Container>
         </>
     );

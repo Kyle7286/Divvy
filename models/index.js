@@ -4,6 +4,7 @@ const Team = require('./team');
 const Client = require('./client');
 const Ticket = require('./ticket');
 const Comment = require('./comment');
+const Reward = require('./reward');
 
 // ORG ASSOCATIONS
 
@@ -119,6 +120,17 @@ Comment.belongsTo(Ticket, {
   onDelete: 'CASCADE',
 });
 
+// REWARD ASSOCIATIONS
+Reward.belongsTo(Team, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE'
+});
+
+Team.hasMany(Reward, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE'
+});
+
 
 module.exports = {
   User,
@@ -127,4 +139,5 @@ module.exports = {
   Client,
   Ticket,
   Comment,
+  Reward
 };

@@ -8,6 +8,8 @@ const commentRoutes = require("./comment");
 const tagRoutes = require("./tag");
 const authRoutes = require("./auth");
 const emailRoutes = require("./email");
+const rewardRoutes = require("./reward");
+
 
 
 // All routes
@@ -20,6 +22,8 @@ router.use("/comment", commentRoutes);
 router.use("/tag", tagRoutes);
 router.use("/auth", authRoutes);
 router.use("/email", emailRoutes);
+router.use("/reward", rewardRoutes);
+
 
 
 module.exports = router;

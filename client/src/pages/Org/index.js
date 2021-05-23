@@ -13,8 +13,6 @@ import _ from "underscore";
 
 // Styling Imports
 import './org.css';
-// import { FaLink, FaUpload } from 'react-icons/fa';
-// import { GiCancel } from 'react-icons/gi';
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -226,6 +224,7 @@ function Org() {
     let refEmpPhone = React.createRef();
     let refEmpEmail = React.createRef();
     let refTeamSelected = React.createRef();
+    let refIsManager = React.createRef();
 
     // Handle New Employee Form
     const handleNewEmpSubmit = (e) => {
@@ -239,7 +238,8 @@ function Org() {
             phone_number: refEmpPhone.current.value,
             email: refEmpEmail.current.value,
             team_id: refTeamSelected.current.value,
-            role: "Employee"
+            role: "Employee",
+            is_manager: refIsManager.current.value
         }
 
         if (refEmpFirstName.current.value
@@ -276,9 +276,11 @@ function Org() {
                         <Row>
                             <Col></Col>
                             <Col>
-                                <div>
-                                    <button id="client" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Client</button>
-                                </div>
+                                <Row>
+                                    <div>
+                                        <button id="client" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Client</button>
+                                    </div>
+                                </Row>
                             </Col>
                             <Col>
                                 <div>
@@ -319,7 +321,7 @@ function Org() {
                                 refEmpPhone={refEmpPhone}
                                 teams={teams}
                                 refTeamSelected={refTeamSelected}
-
+                                refIsManager={refIsManager}
                             /> : null}
 
 

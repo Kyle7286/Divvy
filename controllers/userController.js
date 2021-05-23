@@ -142,7 +142,6 @@ module.exports = {
       req.body["org_id"] = otherData.org_id;
       req.body["role"] = "Employee";
       req.body["password"] = "pass1234";
-      req.body["is_manager"] = false;
       req.body["profile_icon"] = "";
 
       const empData = await User.create(req.body);
@@ -151,9 +150,6 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.status(422).json(err);
-
     }
-
-
   }
 };

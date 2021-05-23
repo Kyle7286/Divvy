@@ -30,14 +30,24 @@ function NewEmpForm(props) {
 
             {/* Team Selection */}
             <div className="mb-3">
-              <label htmlFor="InputEmpFirstName" className="form-label d-block">First Name</label>
-
+              <label htmlFor="SelectTeam" className="form-label d-block">Select Team</label>
               <select ref={props.refTeamSelected} name="selectList" id="selectList">
                 {props.teams.map((team) => {
                   return (
                     <option value={team.id}>{team.name}</option>
                   )
                 })}
+              </select>
+
+            </div>
+
+            {/* Manager Selection */}
+            <div className="mb-3">
+              <label htmlFor="InputEmpFirstName" className="form-label d-block">Is Manager</label>
+
+              <select ref={props.refIsManager} name="selectList" id="selectList">
+                    <option value={false}>No</option>
+                    <option value={true}>Yes</option>
               </select>
 
             </div>

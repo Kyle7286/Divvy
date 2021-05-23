@@ -43,23 +43,25 @@ function EmployeeCardContainer(props) {
 
     
     // Declare a functoin for setting ticket colors on the profile cards by index of map (position they are in the sort) - SAVING AS BACKUP
-    // function setBadgeColor (index) {
-    //     if (index <3) {
-    //         return "badge alert-success"
-    //     } 
-    //     else if (index > 2 && index < 6) {
-    //        return "badge alert-info"
-    //     }
-    //     else if (index > 5 && index < 9) {
-    //         return "badge alert-warning"
-    //     }
-    //     else if (index > 8) {
-    //         return "badge alert-secondary"
-    //     }
-    //     else {
-    //         return "badge alert-light"
-    //     }
-    // };
+        /*
+            function setBadgeColor (index) {
+                if (index <3) {
+                    return "badge alert-success"
+                } 
+                else if (index > 2 && index < 6) {
+                return "badge alert-info"
+                }
+                else if (index > 5 && index < 9) {
+                    return "badge alert-warning"
+                }
+                else if (index > 8) {
+                    return "badge alert-secondary"
+                }
+                else {
+                    return "badge alert-light"
+                }
+            };
+        */
 
     function setBadgeColorByWeight (ticketsNotClosed, employeeTickets ) {
 

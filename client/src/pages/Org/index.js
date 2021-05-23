@@ -11,8 +11,11 @@ import NewTeamForm from "../../components/NewTeamForm";
 import NewEmpForm from "../../components/NewEmpForm";
 import _ from "underscore";
 
+
 // Styling Imports
 import './org.css';
+import SectionHeader from "../../components/SectionHeader";
+import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -53,6 +56,34 @@ function Org() {
         updateError("info", {});
     }, [])
 
+    /* -------------- Button Characteristics and highlight handling ------------- */
+    // Related State
+    const [isClientShowing, setIsClientShowing] = useState(false)
+    const [isTeamShowing, setIsTeamShowing] = useState(false)
+    const [isEmployeeShowing, setIsEmployeeShowing] = useState(false)
+
+     // Show Ticket Details
+     function makeClientActive () {
+        setIsClientShowing(prevCheck => !prevCheck)
+        setIsTeamShowing(false);
+        setIsEmployeeShowing(false);
+    }
+
+    // Show Client Details
+    function makeTeamActive () {
+        setIsTeamShowing(prevCheck => !prevCheck)
+        setIsClientShowing(false);
+        setIsEmployeeShowing(false);
+    }
+
+    // Show Client Details
+    function makeEmployeeActive () {
+        setIsEmployeeShowing(prevCheck => !prevCheck)
+        setIsClientShowing(false);
+        setIsTeamShowing(false);
+    }
+    
+    /* ----------------------------- Component Logic ---------------------------- */
 
     function getTeams() {
         API.getAllOrgTeams()
@@ -119,6 +150,18 @@ function Org() {
     const handleCreateClick = (e) => {
         e.preventDefault();
 
+        // Handle Button Color
+        if (e.target.id==="client") {
+            makeClientActive();
+        }
+        else if (e.target.id==="team") {
+            makeTeamActive()
+        }
+        else if (e.target.id==="emp") {
+            makeEmployeeActive();
+        }
+
+        // Handle Form Display
         let temp = { ...visible }
 
         if (temp[e.target.id]) {
@@ -262,58 +305,59 @@ function Org() {
 
     }
 
+
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
 
-            <h1 className="mb-4">Organization</h1>
-            <Container className="m-3">
-
-                <h1 className="text-center" style={{ marginBottom: "5rem" }}>{org.org.name}</h1>
-
-                <Row>
-                    <Col>
+            <Container className="m-3 mt-3">
+                <Row className="mt-3">
+                    <Col className="col-lg-8 mx-auto divvy-bg-tile shadow p-0">
+                        <Row className="mb-3">
+                            <Col className="p-0">
+                                <SectionHeader>{org.org.name}</SectionHeader>
+                                <div class="form-text text-center">Select an option</div>
+                            </Col>
+                        </Row>
+                        <Row className="mb-3 d-flex justify-content-center">
+                            <Col className="text-center col-lg-3">
+                                <div>
+                                    <button id="client" onClick={handleCreateClick} className={isClientShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Client</button>
+                                </div>
+                            </Col>
+                            <Col className="text-center col-lg-3">
+                                <div>
+                                    <button id="team" onClick={handleCreateClick} className={isTeamShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Team</button>
+                                </div>
+                            </Col>
+                            <Col className="text-center col-lg-3">
+                                <div>
+                                    <button id="emp" onClick={handleCreateClick} className={isEmployeeShowing ? "btn alert-warning btn text-center" : "btn btn-light btn text-center"}>New Employee</button>
+                                </div>
+                            </Col>
+                        </Row>
                         <Row>
-                            <Col></Col>
                             <Col>
-                                <Row>
-                                    <div>
-                                        <button id="client" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Client</button>
-                                    </div>
-                                </Row>
-                            </Col>
-                            <Col>
-                                <div>
-                                    <button id="team" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Team</button>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div>
-                                    <button id="emp" onClick={handleCreateClick} className="btn btn-dark me-5 mb-5">New Employee</button>
-                                </div>
-                            </Col>
-                            <Col></Col>
+                                {visible.client ? <NewClientForm
+                                    handleNewClientSubmit={handleNewClientSubmit}
+                                    refFirm={refFirm}
+                                    refFirstName={refFirstName}
+                                    refLastName={refLastName}
+                                    refEmail={refEmail}
+                                    refPhone={refPhone}
+                                    refAdd1={refAdd1}
+                                    refAdd2={refAdd2}
+                                    refCity={refCity}
+                                    refState={refState}
+                                    refZip={refZip}
+                                /> : null}
 
-                            {visible.client ? <NewClientForm
-                                handleNewClientSubmit={handleNewClientSubmit}
-                                refFirm={refFirm}
-                                refFirstName={refFirstName}
-                                refLastName={refLastName}
-                                refEmail={refEmail}
-                                refPhone={refPhone}
-                                refAdd1={refAdd1}
-                                refAdd2={refAdd2}
-                                refCity={refCity}
-                                refState={refState}
-                                refZip={refZip}
-                            /> : null}
-
-                            {visible.team ? <NewTeamForm
+                                {visible.team ? <NewTeamForm
                                 handleNewTeamSubmit={handleNewTeamSubmit}
                                 refTeamName={refTeamName}
-                            /> : null}
+                                /> : null}
 
-                            {visible.emp ? <NewEmpForm
+                                {visible.emp ? <NewEmpForm
                                 handleNewEmpSubmit={handleNewEmpSubmit}
                                 refEmpFirstName={refEmpFirstName}
                                 refEmpLastName={refEmpLastName}
@@ -322,13 +366,12 @@ function Org() {
                                 teams={teams}
                                 refTeamSelected={refTeamSelected}
                                 refIsManager={refIsManager}
-                            /> : null}
-
-
+                                /> : null}
+                                {error.visible ? <div className={`mb-2 text-center text-${error.color}`} >{error.message}</div> : <div className="mb-2 text-center"></div>}
+                            </Col>
                         </Row>
-                        {error.visible ? <div className={`mb-2 text-center text-${error.color}`} >{error.message}</div> : <div className="mb-2 text-center"></div>}
                     </Col>
-                </Row>
+                </Row>   
             </Container>
         </>
     );

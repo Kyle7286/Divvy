@@ -19,7 +19,7 @@ function RewardsContainer(props) {
     <Container >
       <Row className="row justify-content-center">
         <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+          <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
         </Col>
 
         <Col className="col-1 text-center p-0 m-0">
@@ -45,12 +45,6 @@ function RewardsContainer(props) {
         <Col className="col-1 text-center p-0 m-0">
           <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
         </Col>
-
-
-
-
-
-
 
       </Row>
 

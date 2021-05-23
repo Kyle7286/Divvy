@@ -9,7 +9,7 @@ import React from "react";
 /* -------------------------------------------------------------------------- */
 
 function ProgressBar(props) {
-  const { bgcolor, completed } = props;
+  const { bgcolor, completed, points, nextPoints } = props;
 
 
   const containerStyles = {
@@ -38,11 +38,17 @@ function ProgressBar(props) {
 
 
   return (
-    <div className="" style={containerStyles}>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
+    <>
+      <div>
+        <div className="" style={containerStyles}>
+          <div style={fillerStyles}>
+            <span style={labelStyles}>{`${points}`}</span>
+            <span style={labelStyles}>{`${completed}%`}</span>
+            <span style={labelStyles}>{`${nextPoints}`}</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

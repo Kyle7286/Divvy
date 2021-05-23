@@ -22,8 +22,8 @@ function Signup() {
         return (
             <div>
                 <Container>
-                    <Row className="mb-4 d-flex flex-row justify-content-center">
-                        <Col>
+                    <Row>
+                        <Col className="mx-auto">
                             <SignupCard />
                         </Col>
                     </Row>

@@ -155,9 +155,8 @@ function Profile() {
     }
 
     const testData = [
-        { bgcolor: "#6a1b9a", completed: 60 },
-        { bgcolor: "#00695c", completed: 30 },
-        { bgcolor: "#ef6c00", completed: 53 },
+        { bgcolor: "#6a1b9a", completed: 60, points: 180, nextPoints: 200},
+
     ];
 
 
@@ -169,49 +168,63 @@ function Profile() {
                 <Row>
                     <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
                         <SectionHeader>My Info</SectionHeader>
-                        <Row className="">
-                            
-                            <Col className="col-lg-5" >
-                                <div onClick={handleImageClick} className="profile-img my-3 text-center">
-                                    <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
-                                    <FaLink className="icon-button" />
-                                </div>
-                            </Col>
-
-                            <Col className="col-lg-3">
-                                {testData.map((item, idx) => (
-                                    <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
-                                ))}
-                            </Col>
-
-                            <Col>
-                                <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
-                                    <div>
-                                        <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                        <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
-                                        <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
-                                        <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
-                                    </div>
-                                </form>
-                            </Col>
-                            <RewardsContainer />
-
-                        </Row>
                         <Row>
                             <Col>
                                 <Row>
-                                    <Col>
-                                        <ProfileForm
-                                            singleuser={user}
-                                            handleFormSubmit={handleFormSubmit}
-                                            latestFirstName={latestFirstName}
-                                            latestLastName={latestLastName}
-                                            latestEmail={latestEmail}
-                                            latestPhone={latestPhone}
-                                            error={error}
-                                        />
+                                    <Col className="col-lg-5" >
+                                        <div onClick={handleImageClick} className="profile-img my-3 text-center">
+                                            <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
+                                            <FaLink className="icon-button" />
+                                        </div>
+                                    </Col>
+                                    <Col className="col-lg-6 my-auto">
+                                        <Row className="my-3">
+                                            <Col className="my-auto">
+                                                {/* <div>Holding for Brandon Metrics Container</div> */}
+
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col className="my-auto">
+                                                
+                                                <span>Reward Progress</span>
+                                                <ProgressBar bgcolor={testData[0].bgcolor} completed={testData[0].completed} points={testData[0].points} nextPoints={testData[0].nextPoints}/>
+
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col className="my-auto">
+                                                {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
+                                                <RewardsContainer />
+                                            </Col>
+                                        </Row>
                                     </Col>
                                 </Row>
+                                <Row>
+                                    <Col>
+                                        <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                                            <div>
+                                                <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                                <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
+                                                <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
+                                                <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                                            </div>
+                                        </form>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <ProfileForm
+                                    singleuser={user}
+                                    handleFormSubmit={handleFormSubmit}
+                                    latestFirstName={latestFirstName}
+                                    latestLastName={latestLastName}
+                                    latestEmail={latestEmail}
+                                    latestPhone={latestPhone}
+                                    error={error}
+                                />
                             </Col>
                         </Row>
                     </Col>

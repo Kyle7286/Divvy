@@ -156,11 +156,14 @@ function Navbar(props) {
 
             {/*This is what will render above mobile breakpoint for navbar*/}
             <Default>
-                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark pt-0  vh-100" data-component="Navbar">
+                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark pt-0 vh-100" data-component="Navbar">
                     <div>
                         <button className="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
+
+                        <div className="text-warning text-center fw-bold fst-italic fs-1 mt-2 divvy-font-logo">Divvy</div>
+                        
 
                         <div className="collapse navbar-collapse flex-column" id="navbarNav">
                             <ul className="navbar-nav flex-column">
@@ -258,8 +261,10 @@ function Navbar(props) {
                                 </div> </> :
                             <>
                                 <div>
-                                    <p className="pt-5 logStatusInfo text-center text-white">
-                                        Logged In As: {props.currentUser.first_name} {props.currentUser.last_name}
+                                    <p className="logStatusInfo text-center text-white">
+                                        Hello,
+                                        <br></br>
+                                        {props.currentUser.first_name} {props.currentUser.last_name}
                                     </p>
                                 </div>
                             </>

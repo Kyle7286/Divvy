@@ -76,7 +76,7 @@ function App() {
 
   return (
     <Router>
-      <div data-component="DivInRouter">
+      <div data-component="DivInRouter" className="my-0">
         <Wrapper data-component="Wrapper"
           handleLogout={handleLogout}
           currentUser={currentUser}

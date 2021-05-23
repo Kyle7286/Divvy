@@ -121,7 +121,15 @@ Comment.belongsTo(Ticket, {
 });
 
 // REWARD ASSOCIATIONS
+Reward.belongsTo(Team, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE'
+});
 
+Team.hasMany(Reward, {
+  foreignKey: 'team_id',
+  onDelete: 'CASCADE'
+});
 
 
 module.exports = {

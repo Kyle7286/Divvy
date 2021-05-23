@@ -15,21 +15,28 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 
 function RewardsContainer(props) {
   console.log(`======= PROPS REWARDS ===========`);
-  console.log(`PROPS`, props.rewards);
+  console.log(`PROPS`, props);
   return (
     <Container >
       <Row className="row justify-content-center">
 
-        {props.rewards.map(ele => {
-          return (
+        {props.rewards.map(reward => {
+         console.log(reward);
+         return (
             <>
-
               <Col className="col-1 text-center p-0 m-0">
-                <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                {
+                  props.points.points < reward.req_points
+                    ?
+                    <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                    :
+                    <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                }
+
               </Col>
 
-              {/* Ternary used to ensure an extra carrot (>) is not created */}
-              {ele.id < props.rewards.length ?
+              {/* Ternary used to ensure an extra carrot (>) is not created at the end */}
+              {reward.id < props.rewards.length ?
                 <Col className="col-1 text-center p-0 m-0">
                   <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
                 </Col>
@@ -41,9 +48,11 @@ function RewardsContainer(props) {
         })}
 
 
+        {/* {props.points.ticketData.map(tkt => {
+          console.log(tkt.id);
+        })} */}
 
-
-{/* 
+        {/* 
         <Col className="col-1 text-center p-0 m-0">
           <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
         </Col>

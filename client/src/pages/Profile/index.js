@@ -54,7 +54,9 @@ function Profile() {
     const [rewards, setRewards] = useState([{}]);
 
     // Holds the rewards of the team that the manager created
-    const [points, setPoints] = useState({});
+    const [points, setPoints] = useState({
+        ticketData: [{}]
+    });
 
     // Call when components have loaded
     useEffect(() => {
@@ -157,7 +159,7 @@ function Profile() {
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
-            .then(res => console.log('axio put response', res))
+            .then(res => console.log('axios put response', res))
             .then(() => {
                 getUser();
                 updateError(false, null);
@@ -245,6 +247,7 @@ function Profile() {
                                                 {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
                                                 <RewardsContainer
                                                     rewards={rewards}
+                                                    points={points}
                                                 />
                                             </Col>
                                         </Row>

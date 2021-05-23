@@ -371,12 +371,6 @@ function Dashboard() {
                 {
                     checkClient()
                 }
-                {/* <Col className="col-lg-4 align-items-center">
-                        <EmployeeCardContainer
-                            allUsers={users}
-                            handleClick={handleClick}
-                        />
-                    </Col> */}
             </Row>
             <Row>
                 <div className="text-danger text-center divvy-font-logo fs-3 p-3">

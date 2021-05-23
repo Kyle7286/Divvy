@@ -16,12 +16,10 @@ import "../../index.css";
 
 function Wrapper(props) {
 
-    console.log("Wrapper props: ", props);
     return (
-        <main className="wrapper divvy-bg" data-component="Wrapper">
+        <main className="my-0 divvy-bg" data-component="Wrapper">
             <Row>
-                <Col className="col-lg-1 bg-dark">
-                    <div className="text-warning text-center fw-bold fst-italic fs-1 mt-2 divvy-font-logo">Divvy</div>
+                <Col className="col-lg-1 ">
                     <Nav
                         loggedInStatus={props.loggedInStatus}
                         currentUser={props.currentUser}

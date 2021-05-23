@@ -201,10 +201,17 @@ function Profile() {
                                     <Col>
                                     <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
                                         <div>
-                                            <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                            <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
-                                            <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
-                                            <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                                            <div className="my-1">
+                                                <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                                <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="col-lg-5"></input>
+                                            </div>
+                                           <div className="my-2">
+                                                <div>
+                                                    <button onClick={handleUpdateURLClick} className="btn btn-sm btn-outline-success mx-1">Update</button>
+                                                    <div onClick={handleCancleClick} className="btn btn-sm btn-outline-secondary mx-1">Cancel</div>
+                                                </div>
+                                           </div>
+                                           
                                         </div>
                                     </form>
                                     </Col>

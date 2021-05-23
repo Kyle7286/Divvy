@@ -16,7 +16,7 @@
 */
 
   function Container(props) {
-    return <div className="container my-3 p-0" data-component="Container" {...props} />;
+    return <div className="container m-y0 p-0" data-component="Container" {...props} />;
   }
 
 /* -------------------------------------------------------------------------- */

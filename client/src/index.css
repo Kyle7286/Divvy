@@ -1,5 +1,7 @@
 html, body{
     overflow-x: hidden;
+    height: 100vh;
+    margin: 0;
 }
 
 .divvy-font-logo {
@@ -16,6 +18,10 @@ html, body{
 
 .divvy-header {
     color: #343a40;
+}
+
+.fit {
+    height: 100vh;
 }
 
 

@@ -159,7 +159,7 @@ function Profile() {
             <Container className="mt-4 mb-4 mx-4">
                 <Row>
                     <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
-                        <SectionHeader>Profile</SectionHeader>
+                        <SectionHeader>My Info</SectionHeader>
                         <Row>
                             <Col/>
                                     <div onClick={handleImageClick} className="profile-img my-3 text-center">

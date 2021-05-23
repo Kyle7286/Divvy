@@ -6,6 +6,7 @@
   const session = require('express-session');
   const routes = require('./routes');
   const sequelize = require('./config/connection');
+  const transporter = require('./config/nodemailer');
   const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 /* -------------------------------------------------------------------------- */
@@ -46,6 +47,12 @@
 /* -------------------------------------------------------------------------- */
 /*                         Sync DB and Start Listning                         */
 /* -------------------------------------------------------------------------- */
+
+transporter.verify((err, success) => {
+  err
+    ? console.log(err)
+    : console.log(`=== Server is ready to take messages: ${success} ===`);
+ });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>

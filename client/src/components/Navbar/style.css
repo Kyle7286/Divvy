@@ -1,0 +1,8 @@
+.logStatusInfo {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: small;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+}

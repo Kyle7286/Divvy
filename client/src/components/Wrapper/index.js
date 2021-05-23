@@ -18,6 +18,7 @@ function Wrapper(props) {
 
     const { loggedIn } = props.loggedInStatus;
     const tempLine = `Logged In: ` + loggedIn;
+    console.log("Wrapper props: ", props);
     return (
         <main className="wrapper divvy-bg" data-component="Wrapper">
             <Row>
@@ -25,6 +26,7 @@ function Wrapper(props) {
                     <div className="text-warning text-center fw-bold fst-italic fs-1 mt-2 divvy-font-logo">Divvy</div>
                     <Nav
                         loggedInStatus={props.loggedInStatus}
+                        currentUser={props.currentUser}
                         handleLogout={props.handleLogout}>
                     </Nav>
                 </Col>

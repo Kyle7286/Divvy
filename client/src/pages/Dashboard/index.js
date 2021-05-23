@@ -140,9 +140,13 @@ function Dashboard() {
                         let filteredTicketsFinal;
                         switch (filterType) {
                             case "Initial Load":
-                                filteredTicketsFinal = filteredTickets.filter(ticketsData => {
-                                    return ticketsData.assigned_to === resUser.data.id;
-                                });
+                                if (resUser.data.role === "Client") {
+                                    filteredTicketsFinal = filteredTickets.filter(ticket => ticket.status != "Completed");
+                                } else {
+                                    filteredTicketsFinal = filteredTickets.filter(ticketsData => {
+                                        return ticketsData.assigned_to === resUser.data.id;
+                                    });
+                                }
                                 break;
                             case "ID":
                                 filteredTicketsFinal = filteredTickets.filter(ticketsData => {
@@ -161,7 +165,9 @@ function Dashboard() {
                         }
 
                         //console.log("filteredTickets: ", filteredTickets);
-                        if (filterType === "Initial Load") {
+                        if (filterType === "Initial Load" && resUser.data.role === "Client") {
+                            document.getElementById("Total Active").style.borderColor = "rgb(255,193,7)";
+                        } else if (filterType === "Initial Load") {
                             document.getElementById("Assigned To Me").style.borderColor = "rgb(255,193,7)";
                         }
                         setTickets(filteredTicketsFinal);
@@ -268,15 +274,17 @@ function Dashboard() {
     function handleClick(e) {
         let filterValue = e.target.dataset.vl;
         let filterType = e.target.dataset.type;
-        document.getElementById("Assigned To Me").style.borderColor = "";
-        document.getElementById("Total Active").style.borderColor = "";
-        document.getElementById("Open").style.borderColor = "";
-        document.getElementById("Unassigned").style.borderColor = "";
-        document.getElementById("Completed").style.borderColor = "";
+
+        const statCards = document.querySelectorAll(".statCard");
+        for (let index = 0; index < statCards.length; index++) {
+            statCards[index].style.borderColor = "";
+        };
+
         const employeeCards = document.querySelectorAll(".employeecard");
         for (let index = 0; index < employeeCards.length; index++) {
             employeeCards[index].style.borderColor = "";
         };
+        
         switch (filterType) {
             case "Status":
                 document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";
@@ -311,22 +319,22 @@ function Dashboard() {
     };
 
     /* ------------ Check For Client User Role For Conditional Render ----------- */
-        function checkClient() {
-            if (currentUser.role!="Client") {
-                return (
-                    <Col className="col-lg-4 align-items-center">
-                        <EmployeeCardContainer
-                            allUsers={users}
-                            activeTicketCount={countTicketActive}
-                            handleClick={handleClick}
-                        />
-                    </Col>  
-                )
-            }
-            else {
-                return;
-            }
-        };
+    function checkClient() {
+        if (currentUser.role != "Client") {
+            return (
+                <Col className="col-lg-4 align-items-center">
+                    <EmployeeCardContainer
+                        allUsers={users}
+                        activeTicketCount={countTicketActive}
+                        handleClick={handleClick}
+                    />
+                </Col>
+            )
+        }
+        else {
+            return;
+        }
+    };
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
@@ -341,6 +349,7 @@ function Dashboard() {
                         unassignedTicketCount={countTicketUnassigned}
                         completedTicketCount={countTicketCompleted}
                         handleClick={handleClick}
+                        currentUser={currentUser}
                     />
                     <Default>
                         <TicketTable

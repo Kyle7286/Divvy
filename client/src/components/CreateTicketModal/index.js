@@ -79,7 +79,7 @@ function CreateTicketModal (props) {
                         assigned_to: Assignee.current[Assignee.current.selectedIndex].getAttribute("data-user-id"), 
                         description: Description.current.value,
                         client_id: Client.current[Client.current.selectedIndex].getAttribute("data-client-id"),
-                        team_id:"1", // hard coded for MVP since not sure how or where we use this
+                        team_id: currentUser.team_id, // Doing the team id of the user who is logged in
                         points:"10" // hard coded for MVP since not sure how or where we use this
                     }
             }

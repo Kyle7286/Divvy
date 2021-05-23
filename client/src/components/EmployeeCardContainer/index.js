@@ -25,7 +25,7 @@ function EmployeeCardContainer(props) {
     // Declare a function to sort employees
     function filterTeamEmployees() {
         // Take all users and filter it to employees
-        let allEmployees = props.allUsers.filter(user => user.role != "Client");;
+        allEmployees = props.allUsers.filter(user => user.role != "Client");;
         if (allEmployees.length > 1) {
             allEmployees = allEmployees.map((element) => {
                 return {...element, ticketuser: element.ticketuser.filter((ticketuser) => ticketuser.status != "Completed")}

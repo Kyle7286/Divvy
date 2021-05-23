@@ -27,7 +27,7 @@ function NewTeamForm(props) {
           <Col>
             {/* Firm */}
             <div className="mb-3">
-              <label htmlFor="InputFirmName" className="form-label">Select Team</label>
+              <label htmlFor="InputFirmName" className="form-label">Firm</label>
               <input ref={props.refFirm} type="text" className="form-control" id="InputFirmName" aria-describedby="firmName" />
             </div>
 

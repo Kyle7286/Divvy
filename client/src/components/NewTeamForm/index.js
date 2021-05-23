@@ -5,7 +5,6 @@
 import React from "react";
 import Col from "../Column";
 import Row from "../Row";
-import Container from "../Container";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -33,11 +32,7 @@ function NewTeamForm(props) {
           </Row>
         </form>
     </>
-
-
   )
-
-
 
 }
 

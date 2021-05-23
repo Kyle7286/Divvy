@@ -14,121 +14,48 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 /* -------------------------------------------------------------------------- */
 
 function RewardsContainer(props) {
-
+  console.log(`======= PROPS REWARDS ===========`);
+  console.log(`PROPS`, props.rewards);
   return (
     <Container >
       <Row className="row justify-content-center">
-        <Col className="col-1 text-center p-0 m-0">
-          <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
 
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
+        {props.rewards.map(ele => {
+          return (
+            <>
 
+              <Col className="col-1 text-center p-0 m-0">
+                <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+              </Col>
+
+              {ele.id < props.rewards.length ?
+                <Col className="col-1 text-center p-0 m-0">
+                  <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
+                </Col>
+                : <></>}
+
+
+            </>
+
+
+          )
+        })}
+
+
+
+
+{/* 
         <Col className="col-1 text-center p-0 m-0">
           <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
         </Col>
 
         <Col className="col-1 text-center p-0 m-0">
           <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
+        </Col> */}
 
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
       </Row>
 
-    </Container>
+    </Container >
   )
 }
 

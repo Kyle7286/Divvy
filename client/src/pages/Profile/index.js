@@ -41,18 +41,46 @@ function Profile() {
 
     /* ---------------------------------- State --------------------------------- */
 
+    // Holds the user details/info
     const [user, setUser] = useState({});
-    const [error, setError] = useState({});
-    const [picture, setPicture] = useState({});
-    const [rewards, setRewards] = useState({});
 
+    // Holds the current info/error details
+    const [error, setError] = useState({});
+
+    // Holds the upload div visibility
+    const [picture, setPicture] = useState({});
+
+    // Holds the rewards of the team that the manager created
+    const [rewards, setRewards] = useState([{}]);
 
     // Call when components have loaded
     useEffect(() => {
+        // Fechtes the user info/details
         getUser();
+
+        // Sets initial state of error to hidden so you dont see the div
         updateError(false, null);
+
+        // Sets initial state of pic upload div to hidden so you dont see the div
         updatePicture(false);
+
+        // Fetches the team rewards info/details
+        getRewards();
     }, [])
+
+
+    // Fetches rewards and sets the rewardState
+    function getRewards() {
+
+        // Call to server to get rewards
+        API.getAllTeamRewards()
+            .then(res => {
+                console.log(res.data)
+                setRewards(res.data)
+            })
+            .catch((err) => console.log(err))
+    }
+
 
 
     // Set the user state
@@ -156,7 +184,7 @@ function Profile() {
     }
 
     const testData = [
-        { bgcolor: "#6a1b9a", completed: 60, points: 180, nextPoints: 200},
+        { bgcolor: "#6a1b9a", completed: 60, points: 180, nextPoints: 200 },
 
     ];
 
@@ -187,16 +215,18 @@ function Profile() {
                                         </Row>
                                         <Row className="my-3">
                                             <Col className="my-auto">
-                                                
+
                                                 <span>Reward Progress</span>
-                                                <ProgressBar bgcolor={testData[0].bgcolor} completed={testData[0].completed} points={testData[0].points} nextPoints={testData[0].nextPoints}/>
+                                                <ProgressBar bgcolor={testData[0].bgcolor} completed={testData[0].completed} points={testData[0].points} nextPoints={testData[0].nextPoints} />
 
                                             </Col>
                                         </Row>
                                         <Row className="my-3">
                                             <Col className="my-auto">
                                                 {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
-                                                <RewardsContainer />
+                                                <RewardsContainer
+                                                    rewards={rewards}
+                                                />
                                             </Col>
                                         </Row>
                                     </Col>

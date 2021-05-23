@@ -49,7 +49,12 @@ function EmployeeCardContainer(props) {
 
     function filterTeamEmployees() {
         // Take all users and filter it to employees
-        const allEmployees = props.allUsers.filter(user => user.role != "Client");
+        let allEmployees = props.allUsers.filter(user => user.role != "Client");;
+        if (allEmployees.length > 1) {
+            allEmployees = allEmployees.map((element) => {
+                return {...element, ticketuser: element.ticketuser.filter((ticketuser) => ticketuser.status != "Completed")}
+              })
+        }
 
         // Soort employees by their ticket count (due to mounting, make sure its not blank first)
         if (allEmployees.length != 0) {

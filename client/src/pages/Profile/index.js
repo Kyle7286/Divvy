@@ -178,9 +178,18 @@ function Profile() {
                                         </div>
                                     </Col>
                                     <Col className="col-lg-6 my-auto">
-                                        {testData.map((item, idx) => (
-                                            <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
-                                        ))}
+                                        <Row className="my-3">
+                                            <Col className="my-auto">
+                                                {testData.map((item, idx) => (
+                                                    <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
+                                                ))}
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col>
+                                                <div className="divvy-bg-title">Holding for Brandon icons container</div>
+                                            </Col>
+                                        </Row>
                                     </Col>
                                 </Row>
                                 <Row>

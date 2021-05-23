@@ -28,13 +28,12 @@ function RewardsContainer(props) {
                 <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
               </Col>
 
+              {/* Ternary used to ensure an extra carrot (>) is not created */}
               {ele.id < props.rewards.length ?
                 <Col className="col-1 text-center p-0 m-0">
                   <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
                 </Col>
                 : <></>}
-
-
             </>
 
 

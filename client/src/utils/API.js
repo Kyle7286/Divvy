@@ -108,6 +108,9 @@ export default {
     /* ----------------------------------- Reward System ---------------------------------- */
     getAllTeamRewards: function () {
         return axios.get("/api/reward")
+    },    
+    getTotalUserPoints: function () {
+        return axios.get("/api/reward/points")
     },
 
 };

@@ -53,6 +53,9 @@ function Profile() {
     // Holds the rewards of the team that the manager created
     const [rewards, setRewards] = useState([{}]);
 
+    // Holds the rewards of the team that the manager created
+    const [points, setPoints] = useState({});
+
     // Call when components have loaded
     useEffect(() => {
         // Fechtes the user info/details
@@ -66,16 +69,32 @@ function Profile() {
 
         // Fetches the team rewards info/details
         getRewards();
+
+        // Fetches the team rewards info/details
+        getPoints();
+
     }, [])
 
+
+    // Fetches the users total points and sets the state
+    function getPoints() {
+
+        // Call to server to get user's total points, set the state
+        API.getTotalUserPoints()
+            .then(res => {
+                console.log("POINTS", res.data)
+                setPoints(res.data)
+            })
+            .catch((err) => console.log(err))
+
+    }
 
     // Fetches rewards and sets the rewardState
     function getRewards() {
 
-        // Call to server to get rewards
+        // Call to server to get rewards, set the state
         API.getAllTeamRewards()
             .then(res => {
-                console.log(res.data)
                 setRewards(res.data)
             })
             .catch((err) => console.log(err))

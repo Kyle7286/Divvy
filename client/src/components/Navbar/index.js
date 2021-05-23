@@ -90,7 +90,7 @@ function Navbar(props) {
                                             </div>
                                             </NavLink>
                                         </li>
-                                        <li className=" nav-item my-2 text-cente mr-4">
+                                        {/* <li className=" nav-item my-2 text-cente mr-4">
                                             <NavLink to="/team" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
                                                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -101,7 +101,7 @@ function Navbar(props) {
                                                     Team
                                             </div>
                                             </NavLink>
-                                        </li>
+                                        </li> */}
                                         <li className=" nav-item my-2 text-center mr-2">
                                             <NavLink to="/profile" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -189,7 +189,7 @@ function Navbar(props) {
                                             </div>
                                             </NavLink>
                                         </li>
-                                        <li className=" nav-item my-2 text-center">
+                                        {/* <li className=" nav-item my-2 text-center">
                                             <NavLink to="/team" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
                                                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -200,7 +200,7 @@ function Navbar(props) {
                                                     Team
                                             </div>
                                             </NavLink>
-                                        </li>
+                                        </li> */}
                                         <li className=" nav-item my-2 text-center">
                                             <NavLink to="/profile" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">

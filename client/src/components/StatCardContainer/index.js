@@ -27,16 +27,32 @@ function StatCardContainer(props) {
     */
     let unassignedTickets = totalTickets.filter(ticket => ticket.assigned_to === null && ticket.status != "Completed");
 
-
-    // Return the three primary status card components
-    return (
-        <div className="mb-3 divvy-bg-tile">
-            <div className="d-flex flex-wrap justify-content-center py-3" data-component="StatCardContainer">
-            <StatCard
+    function checkClient() {
+        if (props.currentUser.role != "Client") {
+            return (
+                <StatCard
                     title="Assigned To Me"
                     amount={props.assignedTicketCount}
                     handleClick={props.handleClick}
                 />
+            )
+        }
+        else {
+            return;
+        }
+    };
+
+    console.log("statCard: ", props);
+    // Return the three primary status card components
+    return (
+        <div className="mb-3 divvy-bg-tile">
+            <div className="d-flex flex-wrap justify-content-center py-3" data-component="StatCardContainer">
+                {checkClient()}
+                {/* <StatCard
+                    title="Assigned To Me"
+                    amount={props.assignedTicketCount}
+                    handleClick={props.handleClick}
+                /> */}
                 <StatCard
                     title="Total Active"
                     amount={props.activeTicketCount}

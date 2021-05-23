@@ -4,6 +4,7 @@ const Team = require('./team');
 const Client = require('./client');
 const Ticket = require('./ticket');
 const Comment = require('./comment');
+const Reward = require('./reward');
 
 // ORG ASSOCATIONS
 
@@ -127,4 +128,5 @@ module.exports = {
   Client,
   Ticket,
   Comment,
+  Reward
 };

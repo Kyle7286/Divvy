@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Team extends Model { }
+class Reward extends Model { }
 
 Reward.init(
     {
@@ -20,6 +20,10 @@ Reward.init(
             allowNull: false,
         },
         team_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        round: {
             type: DataTypes.INTEGER,
             allowNull: false,
         }

@@ -120,6 +120,9 @@ Comment.belongsTo(Ticket, {
   onDelete: 'CASCADE',
 });
 
+// REWARD ASSOCIATIONS
+
+
 
 module.exports = {
   User,

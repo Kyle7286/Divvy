@@ -8,20 +8,16 @@ module.exports = {
       // Get Org ID
       const orgData = await User.findOne({
         where: {
-          id: req.session.id
+          id: req.session.user_id
         }
       })
 
-      console.log(`==============`);
-      console.log(orgData.org_id);
-
+      // Find all the teams under the org_id of the user
       const teamData = await Team.findAll({
         where: {
           org_id: orgData.org_id
         }
       });
-
-      console.log(teamData);
 
       res.status(200).json(teamData);
     } catch (err) {

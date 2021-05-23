@@ -5,6 +5,9 @@
 import React from "react";
 import { Form, Button, Col } from 'react-bootstrap';
 import API from "../../utils/API";
+import "../../index.css";
+import SectionHeader from "../SectionHeader";
+import Row from "../Row"
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -90,63 +93,61 @@ function SignupCard() {
     }
 
     return (
-        <Form>
-            <Form.Group controlId="formOrgName">
-                <Form.Row>
-                    <Col xs={6}>
-                        <h3 className="text-center">Signup</h3>
-                        <Form.Control ref={orgName} placeholder="Organization name" />
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicName">
-                <Form.Row>
-                    <Col xs={3}>
-                        <Form.Control ref={firstName} placeholder="First name" />
-                    </Col>
-                    <Col xs={3}>
-                        <Form.Control ref={lastName} placeholder="Last name" />
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPhone">
-                <Form.Row>
-                    <Col xs={6}>
-                        <Form.Control ref={phoneNumber} placeholder="Phone Number" />
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-                <Form.Row>
-                    <Col xs={6}>
-                        <Form.Control ref={email} type="email" placeholder="Enter email" autoComplete="username" />
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Row>
-                    <Col xs={6}>
-                        <Form.Control ref={password} type="password" placeholder="Password" autoComplete="current-password" />
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicSubmit">
-                <Form.Row>
-                    <Col xs={6}>
-                        <center>
-                            <Button variant="primary" type="submit" className="text-center" block onClick={signup}>
-                                Submit
-                                </Button>
-                        </center>
-                    </Col>
-                </Form.Row>
-            </Form.Group>
-        </Form>
+        <Row>
+            <Form className="text-center">
+                <Form.Group controlId="formOrgName">
+                    <Form.Row>
+                        <Col xs={6}>
+                            <SectionHeader>Signup</SectionHeader>
+                            <Form.Control ref={orgName} placeholder="Organization name" />
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+                <Form.Group controlId="formBasicName">
+                    <Form.Row>
+                        <Col xs={3}>
+                            <Form.Control ref={firstName} placeholder="First name" />
+                        </Col>
+                        <Col xs={3}>
+                            <Form.Control ref={lastName} placeholder="Last name" />
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+                <Form.Group controlId="formBasicPhone">
+                    <Form.Row>
+                        <Col xs={6}>
+                            <Form.Control ref={phoneNumber} placeholder="Phone Number" />
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Row>
+                        <Col xs={6}>
+                            <Form.Control ref={email} type="email" placeholder="Enter email" autoComplete="username" />
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Row>
+                        <Col xs={6}>
+                            <Form.Control ref={password} type="password" placeholder="Password" autoComplete="current-password" />
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+                <Form.Group controlId="formBasicSubmit">
+                    <Form.Row>
+                        <Col xs={6}>
+                            <center>
+                                <Button variant="primary" type="submit" className="text-center" block onClick={signup}>
+                                    Submit
+                                    </Button>
+                            </center>
+                        </Col>
+                    </Form.Row>
+                </Form.Group>
+            </Form>
+        </Row>
+        
     );
 }
 

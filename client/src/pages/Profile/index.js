@@ -180,13 +180,18 @@ function Profile() {
                                     <Col className="col-lg-6 my-auto">
                                         <Row className="my-3">
                                             <Col className="my-auto">
+                                                <div>Holding for Brandon Metrics Container</div>
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col className="my-auto">
                                                 {testData.map((item, idx) => (
                                                     <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
                                                 ))}
                                             </Col>
                                         </Row>
                                         <Row className="my-3">
-                                            <Col>
+                                            <Col className="my-auto">
                                                 <div className="divvy-bg-title">Holding for Brandon icons container</div>
                                             </Col>
                                         </Row>

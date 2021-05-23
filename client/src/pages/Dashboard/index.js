@@ -311,23 +311,22 @@ function Dashboard() {
     };
 
     /* ------------ Check For Client User Role For Conditional Render ----------- */
-    function checkClient() {
-        if (currentUser.role != "Client") {
-            return (
-                <Col className="col-lg-4 align-items-center">
-                    <EmployeeCardContainer
-                        allUsers={users}
-                        handleClick={handleClick}
-                    />
-                </Col>
-            )
-        }
-        else {
-            return;
-        }
-    };
-
-    console.log('CURRENT USER ROLE', currentUser.role);
+        function checkClient() {
+            if (currentUser.role!="Client") {
+                return (
+                    <Col className="col-lg-4 align-items-center">
+                        <EmployeeCardContainer
+                            allUsers={users}
+                            activeTicketCount={countTicketActive}
+                            handleClick={handleClick}
+                        />
+                    </Col>  
+                )
+            }
+            else {
+                return;
+            }
+        };
 
     /* ---------------------------- Component Render ---------------------------- */
     return (

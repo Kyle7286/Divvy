@@ -41,7 +41,7 @@ function Navbar(props) {
                             <path fillRule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z" />
                         </svg>
                         <div>
-                            Org
+                            Organization
                 </div>
                     </NavLink>
                 </li>
@@ -156,11 +156,14 @@ function Navbar(props) {
 
             {/*This is what will render above mobile breakpoint for navbar*/}
             <Default>
-                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark pt-0  vh-100" data-component="Navbar">
+                <nav className="navbar flex-md-column bg-dark navbar-expand-lg navbar-dark pt-0 vh-100" data-component="Navbar">
                     <div>
                         <button className="navbar-toggler mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
+
+                        <div className="text-warning text-center fw-bold fst-italic fs-1 mt-2 divvy-font-logo">Divvy</div>
+                        
 
                         <div className="collapse navbar-collapse flex-column" id="navbarNav">
                             <ul className="navbar-nav flex-column">
@@ -258,8 +261,10 @@ function Navbar(props) {
                                 </div> </> :
                             <>
                                 <div>
-                                    <p className="pt-5 logStatusInfo text-center text-white">
-                                        Logged In As: {props.currentUser.first_name} {props.currentUser.last_name}
+                                    <p className="logStatusInfo text-center text-white pb-2">
+                                        Hello,
+                                        <br></br>
+                                        {props.currentUser.first_name} {props.currentUser.last_name}
                                     </p>
                                 </div>
                             </>

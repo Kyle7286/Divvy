@@ -7,6 +7,7 @@ const ticketRoutes = require("./ticket");
 const commentRoutes = require("./comment");
 const tagRoutes = require("./tag");
 const authRoutes = require("./auth");
+const emailRoutes = require("./email");
 const rewardRoutes = require("./reward");
 
 
@@ -20,6 +21,7 @@ router.use("/ticket", ticketRoutes);
 router.use("/comment", commentRoutes);
 router.use("/tag", tagRoutes);
 router.use("/auth", authRoutes);
+router.use("/email", emailRoutes);
 router.use("/reward", rewardRoutes);
 
 

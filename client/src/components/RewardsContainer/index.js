@@ -19,7 +19,9 @@ function RewardsContainer(props) {
     <Container >
       <Row className="row justify-content-center">
 
-        {props.rewards.map(reward => {
+        {props.rewards.map((reward, idx) => {
+          console.log(`${idx + 1} | ${props.rewards.length}`);
+          // console.log(props.rewards.length);
           return (
             <>
               {/* Column containing Gift Icon */}
@@ -34,7 +36,7 @@ function RewardsContainer(props) {
               </Col>
 
               {/* Ternary used to ensure an extra carrot (>) is not created at the end */}
-              {reward.id < props.rewards.length ?
+              {(idx + 1) < props.rewards.length ?
                 <Col className="col-1 text-center p-0 m-0">
                   <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
                 </Col>

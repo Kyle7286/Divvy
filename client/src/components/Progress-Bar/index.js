@@ -40,7 +40,6 @@ function ProgressBar(props) {
   // Calculate the percent left until the next reward
   function calculatePercentLeft() {
     for (let i = 0; i < props.rewards.length; i++) {
-
       // If the current index req points is great than, then use that as the next goal/threshold
       if (props.rewards[i].req_points > props.points.points) {
         console.log("NextReward", props.rewards[i].req_points);

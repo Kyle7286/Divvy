@@ -113,4 +113,8 @@ export default {
         return axios.get("/api/reward/points")
     },
 
+    /* ---------------------------------- email ---------------------------------- */
+    sendEmail: function (emailOptions) {
+        return axios.post("/api/email", emailOptions)
+    },
 };

@@ -40,19 +40,19 @@ function HomePageCard(props) {
                 <div className="card-header bg-dark text-white px-3 text-center fw-bold fs-3">
                     Welcome to Divvy!
                 </div>
-                <ul className="list-group list-group-flush text-center py-3">
-                    <li className="list-group-item">
+                <div className="text-center">
+                    <div className="my-3">
                         <button className="btn btn btn-outline-warning" variant="primary" onClick={loginClickHandle}>
                             Login
                         </button>
-                    </li>
-                    <li className="list-group-item">
+                    </div>
+                    <div className="my-3">
                         <a className="forgotPasswordLink divvy-link fs-5" href="/#">Forgot password</a>
-                    </li>
-                    <li className="list-group-item">
+                    </div>
+                    <div className="my-3">
                         <a className="signupLink divvy-link fs-5" href="/signup">Sign-Up</a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </>
     );

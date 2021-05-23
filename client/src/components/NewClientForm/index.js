@@ -83,7 +83,7 @@ function NewTeamForm(props) {
         <Row>
           <Col>
                 <div className="text-center text-center my-3">
-                  <button onClick={props.handleNewClientSubmit} type="submit" className="btn btn-warning">Submit</button>
+                  <button onClick={props.handleNewClientSubmit} type="submit" className="btn btn-warning">Create</button>
                 </div>
           </Col>
         </Row>

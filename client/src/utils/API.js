@@ -58,12 +58,32 @@ export default {
         return axios.put("/api/user/" + id, updatedTicket);
     },
 
+    // Create employee user
+    creatNewEmployee: function (newEmployee) {
+        console.log(newEmployee);
+        return axios.post("/api/user/newemp", newEmployee)
+    },
+
 
     /* ---------------------------------- clients ------------------------------ */
     // Get all clients
     getAllClients: function () {
         return axios.get("/api/client");
     },
+    // Create new client
+    createNewClient: function (newClient) {
+        return axios.post("/api/client", newClient);
+    },
+
+    /* ---------------------------------- team------------------------------ */
+    createNewTeam: function (newTeam) {
+        return axios.post("/api/team", newTeam);
+    },
+    getAllOrgTeams: function () {
+        return axios.get("/api/team");
+    },
+
+
     /* -------------------------------- authcheck ------------------------------- */
     checkAuth: function () {
         return axios.get("/api/auth/authcheck");
@@ -76,8 +96,12 @@ export default {
     logout: function () {
         return axios.post("/api/auth/logout");
     },
+
     /* ----------------------------------- orgs ---------------------------------- */
     newOrg: function (newOrg) {
         return axios.post("/api/org", newOrg);
+    },
+    getOrg: function () {
+        return axios.get("/api/org/current")
     }
 };

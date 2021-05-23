@@ -49,9 +49,49 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
+      console.log(req.session.user_id);
       console.log(req.body);
-      const clientData = await Client.create(req.body);
-      res.status(200).json(clientData);
+      // Find the user who did the request to get the appropriate details
+      const getUser = await User.findOne({
+        where: {
+          id: req.session.user_id
+        }
+      })
+
+      const org_id = getUser.org_id
+      const team_id = getUser.team_id
+
+      // Create the client user first
+      const newUser = await User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        org_id,
+        password: 'pass1234', //placeholder for now
+        role: 'Client',
+        is_manager: false,
+        profile_icon: ""
+      })
+
+        console.log(newUser);
+      // Create the Client second
+      if (newUser) {
+        const newClient = await Client.create({
+          name: req.body.name,
+          org_id: getUser.org_id,
+          contact_id: newUser.id,
+          address_1: req.body.add1,
+          address_2: req.body.add2,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip
+
+        })
+        res.status(200).json({ newUser, newClient });
+      }
+
+
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

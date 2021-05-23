@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 
+// Matches with "/api/user/newemp"
+router.route("/newemp")
+  .post(userController.creatNewEmployee);
+
 // Matches with "/api/user/current"
 router
   .route("/current")

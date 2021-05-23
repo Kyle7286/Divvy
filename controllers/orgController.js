@@ -15,17 +15,17 @@ module.exports = {
   findById: async function (req, res) {
     try {
       console.log(req.body);
-      console.log(`req.params.id: ${req.params.id}`);
-      const orgData = await Org.findOne({
-        where: { id: req.params.id },
+      console.log(`req.params.id: ${req.session.user_id}`);
+      const userData = await User.findOne({
+        where: { id: req.session.user_id },
         include: [
           {
-            model: User,
-            attributes: ['first_name', 'last_name'],
+            model: Org,
+            attributes: ['name'],
           },
         ],
       });
-      res.status(200).json(orgData);
+      res.status(200).json(userData);
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

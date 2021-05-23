@@ -126,5 +126,30 @@ module.exports = {
       console.log(err);
       res.status(422).json(err);
     }
+  },
+  creatNewEmployee: async function (req, res) {
+    console.log(req.body);
+    console.log(req.session.user_id);
+    try {
+      // Find the current user to get org id
+      const otherData = await User.findOne({
+        where: {
+          id: req.session.user_id
+        }
+      })
+
+      // Added the extra data needed to create employee to the body
+      req.body["org_id"] = otherData.org_id;
+      req.body["role"] = "Employee";
+      req.body["password"] = "pass1234";
+      req.body["profile_icon"] = "";
+
+      const empData = await User.create(req.body);
+      res.status(200).json(empData);
+
+    } catch (err) {
+      console.log(err);
+      res.status(422).json(err);
+    }
   }
 };

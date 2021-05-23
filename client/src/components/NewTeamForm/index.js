@@ -22,12 +22,12 @@ function NewTeamForm(props) {
           <Row>
             <Col className="col-lg-6 mx-auto">
               {/* Team */}
-                <div className="mb-3 text-center">
+                <div className=" text-center">
                   <label htmlFor="test" className="form-label">Team Name</label>
                   <input ref={props.refTeamName} type="text" className="form-control" id="test" aria-describedby="teamName" />
                 </div>
                 <div className="text-center">
-                  <button onClick={props.handleNewTeamSubmit} type="submit" className="btn btn-warning my-2">Create</button>
+                  <button onClick={props.handleNewTeamSubmit} type="submit" className="btn btn-warning my-3">Create</button>
                 </div>
             </Col>
           </Row>

@@ -71,16 +71,21 @@ function SignupCard() {
             newUser.phone_number != null ||
             newUser.email != null ||
             newUser.password != null
-            ) {
+        ) {
             // Make the API call to post a new org
             API.newUser(newUser)
                 .then(res => console.log('axio post response', res.data))
-                // .then(window.location.reload())
+                .then(res => {
+                    API.login({ email: email.current.value, password: password.current.value })
+                        .then(res => console.log('axio login post response', res.data))
+                        .then(res => window.location = '/org')
+                        .catch(err => console.log(err));
+                })
                 .catch(err => console.log(err));
         }
         else {
             // If no org name entered, alert them and do not make API call
-            alert("Please make sure you have entered add the required fields!")
+            alert("Please make sure you have entered all the required fields!")
         };
     }
 

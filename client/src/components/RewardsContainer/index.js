@@ -14,6 +14,7 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 /* -------------------------------------------------------------------------- */
 
 function RewardsContainer(props) {
+  console.log(props);
   return (
     <Container >
       <Row className="row justify-content-center">

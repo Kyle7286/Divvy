@@ -9,7 +9,10 @@ import React from "react";
 /* -------------------------------------------------------------------------- */
 
 function ProgressBar(props) {
-  const { bgcolor, completed,  } = props;
+  // const { bgcolor, completed,  } = props;
+  console.log(`====== PROPS ==========`);
+  console.log(props);
+  console.log(props.points.points);
 
 
   const containerStyles = {
@@ -22,8 +25,8 @@ function ProgressBar(props) {
 
   const fillerStyles = {
     height: '100%',
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
+    width: `${calculatePercentLeft()}%`,
+    backgroundColor: '#6a1b9a',
     borderRadius: 'inherit',
     textAlign: 'right'
   }
@@ -34,8 +37,18 @@ function ProgressBar(props) {
     fontWeight: 'bold'
   }
 
+  // Calculate the percent left until the next reward
   function calculatePercentLeft() {
-    return 71
+    for (let i = 0; i < props.rewards.length; i++) {
+
+      // If the current index req points is great than, then use that as the next goal/threshold
+      if (props.rewards[i].req_points > props.points.points) {
+        console.log("NextReward", props.rewards[i].req_points);
+        let x = Math.floor((props.points.points / props.rewards[i].req_points) * 100);
+        return x
+      }
+
+    }
   }
 
   return (

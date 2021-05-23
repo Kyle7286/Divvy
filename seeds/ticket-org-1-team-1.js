@@ -19,7 +19,7 @@ const ticketData = [
         date_completed: null,
         status: "In Progress",
         priority: 1,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -31,7 +31,7 @@ const ticketData = [
         date_completed: null,
         status: "Open",
         priority: 1,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -43,7 +43,7 @@ const ticketData = [
         date_completed: null,
         status: "Open",
         priority: 2,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -55,7 +55,7 @@ const ticketData = [
         date_completed: null,
         status: "Open",
         priority: 2,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -67,7 +67,7 @@ const ticketData = [
         date_completed: null,
         status: "Open",
         priority: 2,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -79,7 +79,7 @@ const ticketData = [
         date_completed: null,
         status: "Completed",
         priority: 2,
-        points: 10
+        points: 5
     },
     {
         client_id: 1,
@@ -91,7 +91,7 @@ const ticketData = [
         date_completed: null,
         status: "Open",
         priority: 1,
-        points: 10
+        points: 5
     },
 ];
 

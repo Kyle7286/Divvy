@@ -11,37 +11,49 @@ const { Reward } = require('../models')
 const rewardData = [
     {
         reward: 'Lunch',
-        req_points: 100,
+        req_points: 10,
         team_id: 1,
         round: 1
     },
     {
         reward: 'Lunch',
-        req_points: 200,
+        req_points: 25,
         team_id: 1,
         round: 1
     },
     {
         reward: 'Gift Card (25)',
-        req_points: 300,
+        req_points: 50,
         team_id: 1,
         round: 1
     },
     {
         reward: 'Gift Card (50)',
-        req_points: 500,
+        req_points: 75,
         team_id: 1,
         round: 1
     },
     {
         reward: 'Half-Day',
-        req_points: 500,
+        req_points: 100,
         team_id: 1,
         round: 1
     },
     {
         reward: 'Half-Day',
-        req_points: 600,
+        req_points: 125,
+        team_id: 1,
+        round: 1
+    },
+    {
+        reward: 'Coffee',
+        req_points: 65,
+        team_id: 1,
+        round: 1
+    },
+    {
+        reward: 'Candy',
+        req_points: 35,
         team_id: 1,
         round: 1
     },

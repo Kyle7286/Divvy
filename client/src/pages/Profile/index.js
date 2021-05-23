@@ -83,11 +83,8 @@ function Profile() {
 
         // Call to server to get user's total points, set the state
         API.getTotalUserPoints()
-            .then(res => {
-                console.log("POINTS", res.data)
-                setPoints(res.data)
-            })
-            .catch((err) => console.log(err))
+            .then(res => setPoints(res.data))
+            .catch((err) => console.log(err));
 
     }
 
@@ -202,21 +199,9 @@ function Profile() {
         updatePicture(false);
     }
 
-    const testData = [
-        {
-            bgcolor: "#6a1b9a",
-            completed: 60,
-            points: points.points,
-            nextPoints: 200
-        },
-
-    ];
-
-
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
-
             <Container className="mt-4 mb-4 mx-4">
                 <Row>
                     <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
@@ -233,7 +218,8 @@ function Profile() {
                                     <Col className="col-lg-6 my-auto">
                                         <Row className="my-3">
                                             <Col className="my-auto">
-                                                {/* <div>Holding for Brandon Metrics Container</div> */}
+
+                                                <div style={{ fontSize: "smaller" }}>Holding for Brandon Metrics Container</div>
 
                                             </Col>
                                         </Row>
@@ -241,7 +227,10 @@ function Profile() {
                                             <Col className="my-auto">
 
                                                 <span>Reward Progress</span>
-                                                <ProgressBar bgcolor={testData[0].bgcolor} completed={testData[0].completed} points={testData[0].points} nextPoints={testData[0].nextPoints} />
+                                                <ProgressBar
+                                                    points={points}
+                                                    rewards={rewards}
+                                                />
 
                                             </Col>
                                         </Row>

@@ -25,7 +25,12 @@ function EmployeeCardContainer(props) {
     // Declare a function to sort employees
     function filterTeamEmployees() {
         // Take all users and filter it to employees
-        allEmployees = props.allUsers.filter(user => user.role != "Client");
+        allEmployees = props.allUsers.filter(user => user.role != "Client");;
+        if (allEmployees.length > 1) {
+            allEmployees = allEmployees.map((element) => {
+                return {...element, ticketuser: element.ticketuser.filter((ticketuser) => ticketuser.status != "Completed")}
+              })
+        }
 
         // Sort employees by their ticket count (due to mounting, make sure its not blank first)
         if (allEmployees.length != 0) {
@@ -91,7 +96,7 @@ function EmployeeCardContainer(props) {
                             key={employee.id}
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
-                            className={employee.ticketuser ? (setBadgeColorByWeight(props.ticketsNotClosed.length, employee.ticketuser.length)) : ("badge alert-success")}
+                            className={employee.ticketuser ? (setBadgeColorByWeight(props.activeTicketCount, employee.ticketuser.length)) : ("badge alert-success")}
                             //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}
@@ -102,7 +107,7 @@ function EmployeeCardContainer(props) {
                             key={employee.id}
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
-                            className={employee.ticketuser ? (setBadgeColorByWeight(props.ticketsNotClosed.length, employee.ticketuser.length)) : ("badge alert-success")}
+                            className={employee.ticketuser ? (setBadgeColorByWeight(props.activeTicketCount, employee.ticketuser.length)) : ("badge alert-success")}
                             //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}

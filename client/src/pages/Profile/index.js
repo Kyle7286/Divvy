@@ -140,7 +140,6 @@ function Profile() {
     function handleFormSubmit(e) {
         // Allow page refresh if no error on save
         if (!error.visible) {
-            console.log("Refreshing page");
             e.preventDefault();
         }
 
@@ -151,7 +150,6 @@ function Profile() {
             phone_number: latestPhone.current.value,
             last_name: latestLastName.current.value,
         }
-
         callUpdateUser(updatedProfile);
     }
 
@@ -205,7 +203,12 @@ function Profile() {
     }
 
     const testData = [
-        { bgcolor: "#6a1b9a", completed: 60, points: 180, nextPoints: 200 },
+        {
+            bgcolor: "#6a1b9a",
+            completed: 60,
+            points: points.points,
+            nextPoints: 200
+        },
 
     ];
 

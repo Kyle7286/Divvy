@@ -14,16 +14,14 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 /* -------------------------------------------------------------------------- */
 
 function RewardsContainer(props) {
-  console.log(`======= PROPS REWARDS ===========`);
-  console.log(`PROPS`, props);
   return (
     <Container >
       <Row className="row justify-content-center">
 
         {props.rewards.map(reward => {
-          console.log(reward);
           return (
             <>
+              {/* Column containing Gift Icon */}
               <Col className="col-1 text-center p-0 m-0">
                 {
                   props.points.points < reward.req_points
@@ -32,7 +30,6 @@ function RewardsContainer(props) {
                     :
                     <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
                 }
-
               </Col>
 
               {/* Ternary used to ensure an extra carrot (>) is not created at the end */}
@@ -42,12 +39,9 @@ function RewardsContainer(props) {
                 </Col>
                 : <></>}
             </>
-
-
           )
         })}
       </Row>
-
     </Container >
   )
 }

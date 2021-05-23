@@ -9,11 +9,11 @@ import React from "react";
 /* -------------------------------------------------------------------------- */
 
 function ProgressBar(props) {
-  const { bgcolor, completed, points, nextPoints } = props;
+  const { bgcolor, completed,  } = props;
 
 
   const containerStyles = {
-    height: 20,
+    height: 30,
     width: '100%',
     backgroundColor: "#e0e0de",
     borderRadius: 50,
@@ -34,17 +34,16 @@ function ProgressBar(props) {
     fontWeight: 'bold'
   }
 
-
-
+  function calculatePercentLeft() {
+    return 71
+  }
 
   return (
     <>
       <div>
         <div className="" style={containerStyles}>
           <div style={fillerStyles}>
-            <span style={labelStyles}>{`${points}`}</span>
-            <span style={labelStyles}>{`${completed}%`}</span>
-            <span style={labelStyles}>{`${nextPoints}`}</span>
+            <span style={labelStyles}>{`${calculatePercentLeft()}%`}</span>
           </div>
         </div>
       </div>

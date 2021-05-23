@@ -21,8 +21,8 @@ function RewardsContainer(props) {
       <Row className="row justify-content-center">
 
         {props.rewards.map(reward => {
-         console.log(reward);
-         return (
+          console.log(reward);
+          return (
             <>
               <Col className="col-1 text-center p-0 m-0">
                 {
@@ -46,21 +46,6 @@ function RewardsContainer(props) {
 
           )
         })}
-
-
-        {/* {props.points.ticketData.map(tkt => {
-          console.log(tkt.id);
-        })} */}
-
-        {/* 
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-        </Col>
-
-        <Col className="col-1 text-center p-0 m-0">
-          <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-        </Col> */}
-
       </Row>
 
     </Container >

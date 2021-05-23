@@ -21,6 +21,9 @@ import API from "./utils/API";
 
 function App() {
 
+   // set current user
+   const [currentUser, setCurrentUser] = useState({})
+
   // Set login status
   const [loggedIn, setloggedIn] = useState({ loggedIn: false });
 
@@ -29,7 +32,7 @@ function App() {
     API.logout()
       .then(response => {
         console.log("logout API: ", response.data);
-          setloggedIn({ loggedIn: false });
+        setloggedIn({ loggedIn: false });
       })
       .catch(error => {
         console.log("check login error", error);
@@ -56,11 +59,27 @@ function App() {
   const { loggedIn: logStatus } = loggedIn;
   //console.log("App.js: ", logStatus);
 
+  // Call when components have loaded
+  useEffect(() => {
+    getCurrentUser();
+  }, [])
+
+  // Set current User State
+  function getCurrentUser() {
+    API.getCurrentUser()
+      .then(res => {
+        console.log("APP.js CURRENT USER", res.data);
+        setCurrentUser(res.data);
+      }
+      )
+  }
+
   return (
     <Router>
       <div data-component="DivInRouter">
         <Wrapper data-component="Wrapper"
           handleLogout={handleLogout}
+          currentUser={currentUser}
           loggedInStatus={loggedIn}
         >
           <Switch>

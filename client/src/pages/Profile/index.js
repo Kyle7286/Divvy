@@ -6,12 +6,14 @@ import API from "../../utils/API"
 import Col from "../../components/Column";
 import Row from "../../components/Row";
 import Container from "../../components/Container";
-import ProfileForm from "../../components/ProfileForm"
+import ProfileForm from "../../components/ProfileForm";
+import "../../index.css";
 
 // Styling Imports
 import './profile.css';
 import { FaLink, FaUpload } from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
+import SectionHeader from "../../components/SectionHeader";
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */
@@ -154,42 +156,46 @@ function Profile() {
     return (
         <>
 
-            <Container className="bg-light shadow mt-4 mb-4 mx-4">
+            <Container className="mt-4 mb-4 mx-4">
                 <Row>
-                    <Col />
-                        <Col>
-                            <div onClick={handleImageClick} className="profile-img my-3 text-center">
-                                <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="250px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
-                                <FaLink className="icon-button" />
-                            </div>
-                            <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
-                                <div>
-                                    <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                    <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
-                                    <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
-                                    <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
-                                </div>
-                            </form>
-                        </Col>
-                    <Col />
-                </Row>
-                <Row>
-                    <Col>
+                    <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
+                        <SectionHeader>Profile</SectionHeader>
+                        <Row>
+                            <Col/>
+                                    <div onClick={handleImageClick} className="profile-img my-3 text-center">
+                                        <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
+                                        <FaLink className="icon-button" />
+                                    </div>
+                                    <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                                        <div>
+                                            <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                            <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="me-1"></input>
+                                            <button onClick={handleUpdateURLClick} className="text-primary me-1"><FaUpload className="url-save-button" /></button>
+                                            <div onClick={handleCancleClick} className="text-danger d-inline"><GiCancel className="url-save-button" /></div>
+                                        </div>
+                                    </form>
+                            <Col />
+                        </Row>
                         <Row>
                             <Col>
-                                <ProfileForm
-                                    singleuser={user}
-                                    handleFormSubmit={handleFormSubmit}
-                                    latestFirstName={latestFirstName}
-                                    latestLastName={latestLastName}
-                                    latestEmail={latestEmail}
-                                    latestPhone={latestPhone}
-                                    error={error}
-                                />
+                                <Row>
+                                    <Col>
+                                        <ProfileForm
+                                            singleuser={user}
+                                            handleFormSubmit={handleFormSubmit}
+                                            latestFirstName={latestFirstName}
+                                            latestLastName={latestLastName}
+                                            latestEmail={latestEmail}
+                                            latestPhone={latestPhone}
+                                            error={error}
+                                        />
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
+               
             </Container>
         </>
     );

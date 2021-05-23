@@ -38,7 +38,7 @@ function ProfileForm(props) {
             <Container className="m-3 p-3">
                 <form>
                     <Row>
-                        <Col className="col-md-5 mx-auto">
+                        <Col className="mx-auto">
                             {/* First Name */}
                             <div className="mb-3">
                                 <label htmlFor="InputFirstName" className="form-label fw-bold">First Name</label>

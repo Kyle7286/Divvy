@@ -30,7 +30,7 @@ module.exports = {
   tallyAllPointsByUser: async function (req, res) {
     try {
 
-      console.log(`======== ROUTE HIT =========`);
+      console.log(`========SERVER: ROUTE HIT =========`);
       console.log("USER ID:", req.session.user_id);
 
       // Get Tickets by asignee_id
@@ -40,7 +40,7 @@ module.exports = {
           status: "Completed"
         }
       })
-      console.log(`======== TICKET DATA ==============`);
+      console.log(`========SERVER: TICKET DATA ==============`);
       console.log("ticketData:", ticketData);
 
       // Sum up the points of the user's completed tickets

@@ -8,6 +8,7 @@ import Row from "../../components/Row";
 import Container from "../../components/Container";
 import ProfileForm from "../../components/ProfileForm";
 import ProgressBar from "../../components/Progress-Bar";
+import RewardsContainer from "../../components/RewardsContainer";
 import "../../index.css";
 
 // Styling Imports
@@ -193,6 +194,8 @@ function Profile() {
                                     </div>
                                 </form>
                             </Col>
+                            <RewardsContainer />
+
                         </Row>
                         <Row>
                             <Col>

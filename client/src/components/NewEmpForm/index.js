@@ -18,6 +18,8 @@ import Container from "../Container";
 */
 
 function NewEmpForm(props) {
+
+  console.log(props.teams);
   return (
     <>
       <h4 className="text-center">New Employee Form</h4>
@@ -25,6 +27,21 @@ function NewEmpForm(props) {
         <Row>
           <Col></Col>
           <Col>
+
+            {/* Team Selection */}
+            <div className="mb-3">
+              <label htmlFor="InputEmpFirstName" className="form-label d-block">First Name</label>
+
+              <select ref={props.refTeamSelected} name="selectList" id="selectList">
+                {props.teams.map((team) => {
+                  return (
+                    <option value={team.id}>{team.name}</option>
+                  )
+                })}
+              </select>
+
+            </div>
+
 
             {/* Emp First Name */}
             <div className="mb-3">
@@ -44,7 +61,6 @@ function NewEmpForm(props) {
               <input ref={props.refEmpEmail} type="text" className="form-control" id="InputEmail" aria-describedby="email" />
             </div>
 
-
             <div className="mb-3">
               <label htmlFor="InputPhone" className="form-label">Phone</label>
               <input ref={props.refEmpPhone} type="text" className="form-control" id="InputPhone" aria-describedby="email" />
@@ -57,8 +73,6 @@ function NewEmpForm(props) {
       </form>
 
     </>
-
-
   )
 
 

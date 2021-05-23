@@ -46,12 +46,27 @@ function Org() {
         }
     );
     const [error, setError] = useState({});
+    const [teams, setTeams] = useState({});
 
     // Call when components have loaded
     useEffect(() => {
         getOrg();
+        getTeams();
         updateError("info", {});
     }, [])
+
+
+    function getTeams() {
+        API.getAllOrgTeams()
+            .then(res => {
+                console.log("==============");
+                console.log(res.data);
+                setTeams(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
+
+    }
 
     // Set the error state
     function updateError(type, error) {
@@ -117,6 +132,9 @@ function Org() {
 
         // Clear info div
         updateError("info", {});
+
+        // Grab Team Data
+        getTeams();
 
         // Make form visible
         setVisible(temp)
@@ -207,17 +225,21 @@ function Org() {
     let refEmpLastName = React.createRef();
     let refEmpPhone = React.createRef();
     let refEmpEmail = React.createRef();
+    let refTeamSelected = React.createRef();
 
     // Handle New Employee Form
     const handleNewEmpSubmit = (e) => {
         e.preventDefault();
+
+        console.log(refTeamSelected.current.value);
 
         const newEmployee = {
             first_name: refEmpFirstName.current.value,
             last_name: refEmpLastName.current.value,
             phone_number: refEmpPhone.current.value,
             email: refEmpEmail.current.value,
-            role: "Employee",
+            team_id: refTeamSelected.current.value,
+            role: "Employee"
         }
 
         if (refEmpFirstName.current.value
@@ -295,6 +317,8 @@ function Org() {
                                 refEmpLastName={refEmpLastName}
                                 refEmpEmail={refEmpEmail}
                                 refEmpPhone={refEmpPhone}
+                                teams={teams}
+                                refTeamSelected={refTeamSelected}
 
                             /> : null}
 

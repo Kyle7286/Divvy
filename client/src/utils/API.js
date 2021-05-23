@@ -79,6 +79,9 @@ export default {
     createNewTeam: function (newTeam) {
         return axios.post("/api/team", newTeam);
     },
+    getAllOrgTeams: function () {
+        return axios.get("/api/team");
+    },
 
 
     /* -------------------------------- authcheck ------------------------------- */

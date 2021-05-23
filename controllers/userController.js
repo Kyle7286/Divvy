@@ -144,7 +144,6 @@ module.exports = {
       req.body["password"] = "pass1234";
       req.body["is_manager"] = false;
       req.body["profile_icon"] = "";
-      req.body["team_id"] = 1; //This will need to be selected in a drop down box
 
       const empData = await User.create(req.body);
       res.status(200).json(empData);

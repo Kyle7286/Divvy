@@ -16,12 +16,7 @@ import "../../index.css";
 
 function Wrapper(props) {
 
-    const { loggedIn } = props.loggedInStatus;
-<<<<<<< HEAD
-=======
-    const tempLine = `Logged In: ` + loggedIn;
     console.log("Wrapper props: ", props);
->>>>>>> 11ebef44d4c493378a6bfeaa12e90a4d56526b42
     return (
         <main className="wrapper divvy-bg" data-component="Wrapper">
             <Row>

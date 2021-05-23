@@ -107,7 +107,7 @@ const userData = [
         password: 'pass1234',
         phone_number: '102-234-5111',
         email: 'employee5@email.com',
-        profile_icon: "https://randomuser.me/api/portraits/women/22.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/women/24.jpg"
     },
     // USER 7 - Employee
     {
@@ -128,14 +128,14 @@ const userData = [
         org_id: 1,
         team_id: 1,
         client_id: null,
-        first_name: "Jessica",
-        last_name: "Woods",
+        first_name: "Zaya",
+        last_name: "Stars",
         role: "Employee",
         is_manager: false,
         password: 'pass1234',
         phone_number: '102-235-5431',
         email: 'employee7@email.com',
-        profile_icon: "https://randomuser.me/api/portraits/women/23.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/women/68.jpg"
     },
     // USER 8 - Employee
     {

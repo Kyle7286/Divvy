@@ -8,6 +8,7 @@ import Row from "../../components/Row";
 import Container from "../../components/Container";
 import ProfileForm from "../../components/ProfileForm";
 import ProgressBar from "../../components/Progress-Bar";
+import RewardsContainer from "../../components/RewardsContainer";
 import "../../index.css";
 
 // Styling Imports
@@ -40,17 +41,64 @@ function Profile() {
 
     /* ---------------------------------- State --------------------------------- */
 
+    // Holds the user details/info
     const [user, setUser] = useState({});
+
+    // Holds the current info/error details
     const [error, setError] = useState({});
+
+    // Holds the upload div visibility
     const [picture, setPicture] = useState({});
 
+    // Holds the rewards of the team that the manager created
+    const [rewards, setRewards] = useState([{}]);
+
+    // Holds the rewards of the team that the manager created
+    const [points, setPoints] = useState({
+        ticketData: [{}]
+    });
 
     // Call when components have loaded
     useEffect(() => {
+        // Fechtes the user info/details
         getUser();
+
+        // Sets initial state of error to hidden so you dont see the div
         updateError(false, null);
+
+        // Sets initial state of pic upload div to hidden so you dont see the div
         updatePicture(false);
+
+        // Fetches the team rewards info/details
+        getRewards();
+
+        // Fetches the team rewards info/details
+        getPoints();
+
     }, [])
+
+
+    // Fetches the users total points and sets the state
+    function getPoints() {
+
+        // Call to server to get user's total points, set the state
+        API.getTotalUserPoints()
+            .then(res => setPoints(res.data))
+            .catch((err) => console.log(err));
+
+    }
+
+    // Fetches rewards and sets the rewardState
+    function getRewards() {
+
+        // Call to server to get rewards, set the state
+        API.getAllTeamRewards()
+            .then(res => {
+                setRewards(res.data)
+            })
+            .catch((err) => console.log(err))
+    }
+
 
 
     // Set the user state
@@ -89,7 +137,6 @@ function Profile() {
     function handleFormSubmit(e) {
         // Allow page refresh if no error on save
         if (!error.visible) {
-            console.log("Refreshing page");
             e.preventDefault();
         }
 
@@ -100,7 +147,6 @@ function Profile() {
             phone_number: latestPhone.current.value,
             last_name: latestLastName.current.value,
         }
-
         callUpdateUser(updatedProfile);
     }
 
@@ -108,7 +154,7 @@ function Profile() {
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
-            .then(res => console.log('axio put response', res))
+            .then(res => console.log('axios put response', res))
             .then(() => {
                 getUser();
                 updateError(false, null);
@@ -153,17 +199,9 @@ function Profile() {
         updatePicture(false);
     }
 
-    const testData = [
-        { bgcolor: "#6a1b9a", completed: 60 },
-        { bgcolor: "#00695c", completed: 30 },
-        { bgcolor: "#ef6c00", completed: 53 },
-    ];
-
-
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>
-
             <Container className="mt-4 mb-4 mx-4">
                 <Row>
                     <Col className="col-lg-6 divvy-bg-tile shadow mx-auto p-0">
@@ -180,40 +218,49 @@ function Profile() {
                                     <Col className="col-lg-6 my-auto">
                                         <Row className="my-3">
                                             <Col className="my-auto">
-                                                <div>Holding for Brandon Metrics Container</div>
+
+                                                <div style={{ fontSize: "smaller" }}>Holding for Brandon Metrics Container</div>
+
                                             </Col>
                                         </Row>
                                         <Row className="my-3">
                                             <Col className="my-auto">
-                                                {testData.map((item, idx) => (
-                                                    <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
-                                                ))}
+
+                                                <span>Reward Progress</span>
+                                                <ProgressBar
+                                                    points={points}
+                                                    rewards={rewards}
+                                                />
+
                                             </Col>
                                         </Row>
                                         <Row className="my-3">
                                             <Col className="my-auto">
-                                                <div className="divvy-bg-title">Holding for Brandon icons container</div>
+                                                {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
+                                                <RewardsContainer
+                                                    rewards={rewards}
+                                                    points={points}
+                                                />
                                             </Col>
                                         </Row>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col>
-                                    <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
-                                        <div>
-                                            <div className="my-1">
-                                                <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
-                                                <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="col-lg-5"></input>
-                                            </div>
-                                           <div className="my-2">
-                                                <div>
-                                                    <button onClick={handleUpdateURLClick} className="btn btn-sm btn-outline-success mx-1">Update</button>
-                                                    <div onClick={handleCancleClick} className="btn btn-sm btn-outline-secondary mx-1">Cancel</div>
+                                        <form className={picture.visible ? "text-center" : "text-center d-block d-none"}>
+                                            <div>
+                                                <div className="my-1">
+                                                    <label htmlFor="InputURL" className="form-label mt-5 d-block">Enter Profile Image URL</label>
+                                                    <input ref={latestURL} id="InputURL" defaultValue={user.profile_icon} className="col-lg-5"></input>
                                                 </div>
-                                           </div>
-                                           
-                                        </div>
-                                    </form>
+                                                <div className="my-2">
+                                                    <div>
+                                                        <button onClick={handleUpdateURLClick} className="btn btn-sm btn-outline-success mx-1">Update</button>
+                                                        <div onClick={handleCancleClick} className="btn btn-sm btn-outline-secondary mx-1">Cancel</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </Col>
                                 </Row>
                             </Col>

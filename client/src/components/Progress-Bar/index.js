@@ -8,18 +8,15 @@ import React from "react";
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
-/*
-    Here I specify a Row and give it some basic bootstrap classes, 
-    Then I pass props within that div (which is defined on my directory page
-    as the Column component
-*/
-
 function ProgressBar(props) {
-  const { bgcolor, completed } = props;
+  // const { bgcolor, completed,  } = props;
+  console.log(`====== PROPS ==========`);
+  console.log(props);
+  console.log(props.points.points);
 
 
   const containerStyles = {
-    height: 20,
+    height: 30,
     width: '100%',
     backgroundColor: "#e0e0de",
     borderRadius: 50,
@@ -28,8 +25,8 @@ function ProgressBar(props) {
 
   const fillerStyles = {
     height: '100%',
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
+    width: `${calculatePercentLeft()}%`,
+    backgroundColor: '#6a1b9a',
     borderRadius: 'inherit',
     textAlign: 'right'
   }
@@ -40,15 +37,25 @@ function ProgressBar(props) {
     fontWeight: 'bold'
   }
 
-
-
+  // Calculate the percent left until the next reward
+  function calculatePercentLeft() {
+    for (let i = 0; i < props.rewards.length; i++) {
+      // If the current index req points is great than, then use that as the next goal/threshold
+      if (props.rewards[i].req_points > props.points.points)
+        return Math.floor((props.points.points / props.rewards[i].req_points) * 100);
+    }
+  }
 
   return (
-    <div className="" style={containerStyles}>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
+    <>
+      <div>
+        <div className="" style={containerStyles}>
+          <div style={fillerStyles}>
+            <span style={labelStyles}>{`${calculatePercentLeft()}%`}</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

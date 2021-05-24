@@ -104,6 +104,15 @@ export default {
     getOrg: function () {
         return axios.get("/api/org/current")
     },
+
+    /* ----------------------------------- Reward System ---------------------------------- */
+    getAllTeamRewards: function () {
+        return axios.get("/api/reward")
+    },    
+    getTotalUserPoints: function () {
+        return axios.get("/api/reward/points")
+    },
+
     /* ---------------------------------- email ---------------------------------- */
     sendEmail: function (emailOptions) {
         return axios.post("/api/email", emailOptions)

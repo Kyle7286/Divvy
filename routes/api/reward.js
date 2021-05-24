@@ -10,12 +10,4 @@ router.route("/points")
   .get(rewardController.tallyAllPointsByUser)
 
 
-
-// // Matches with "/api/team/:id"
-// router
-//   .route("/:id")
-//   .get(rewardController.findById)
-//   .put(rewardController.update)
-//   .delete(rewardController.remove);
-
 module.exports = router;

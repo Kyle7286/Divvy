@@ -31,8 +31,6 @@ const Default = ({ children }) => {
 /* ------------- Define Main Nav Component (one mobile one not) ------------- */
 
 function ProfileForm(props) {
-    console.log(props.singleuser);
-
     return (
         <>
             <Container className="m-3 p-3">

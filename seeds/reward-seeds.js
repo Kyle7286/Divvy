@@ -22,19 +22,19 @@ const rewardData = [
         round: 1
     },
     {
-        reward: 'Gift Card (25)',
+        reward: 'Gift Card 25$',
         req_points: 50,
         team_id: 1,
         round: 1
     },
     {
-        reward: 'Gift Card (50)',
+        reward: 'Gift Card 50$',
         req_points: 75,
         team_id: 1,
         round: 1
     },
     {
-        reward: 'Half-Day',
+        reward: '2 Hour Lunch',
         req_points: 100,
         team_id: 1,
         round: 1

@@ -41,12 +41,8 @@ function ProgressBar(props) {
   function calculatePercentLeft() {
     for (let i = 0; i < props.rewards.length; i++) {
       // If the current index req points is great than, then use that as the next goal/threshold
-      if (props.rewards[i].req_points > props.points.points) {
-        console.log("NextReward", props.rewards[i].req_points);
-        let x = Math.floor((props.points.points / props.rewards[i].req_points) * 100);
-        return x
-      }
-
+      if (props.rewards[i].req_points > props.points.points)
+        return Math.floor((props.points.points / props.rewards[i].req_points) * 100);
     }
   }
 

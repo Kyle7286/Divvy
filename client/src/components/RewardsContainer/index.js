@@ -2,45 +2,72 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+import React, { useState } from "react";
 import Container from "../Container";
 import Col from "../Column";
 import Row from "../Row";
-import { FaPizzaSlice } from 'react-icons/fa';
-import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineGift, AiFillGift, AiOutlineRight } from 'react-icons/ai';
+import RewardModal from './RewardModal';
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
 
 function RewardsContainer(props) {
-  console.log(props);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
+
+  // Fill Reward Click
+  const handleFillRewardClick = (e) => {
+    e.preventDefault();
+
+    console.log("Clicked");
+  }
+
+  // Out Reward Click
+  const handleOutRewardClick = (e) => {
+    e.preventDefault();
+
+    console.log("Clicked");
+  }
+
+
   return (
     <Container >
       <Row className="row justify-content-start">
 
         {props.rewards.map((reward, idx) => {
-          console.log(`${idx + 1} | ${props.rewards.length}`);
-          // console.log(props.rewards.length);
           return (
             <>
               {/* Column containing Gift Icon */}
-              <Col className="col-1 text-center p-0 m-0">
+              <Col className="col-2 text-center p-0 m-0">
                 {
                   props.points.points < reward.req_points
-                    ?
-                    <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
-                    :
-                    <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                    ? <div><AiOutlineGift
+                      onClick={handleOutRewardClick}
+                      className="m-2"
+                      style={{ color: "#FEDE7D", fontSize: "30px" }}
+                    />
+                    </div> : [
+                      <AiFillGift
+                        onClick={handleFillRewardClick}
+                        className="m-2"
+                        style={{ color: "#FEDE7D", fontSize: "30px", margin: "0", padding: "0" }}
+                        onClick={openModal}
+                      />,
+                      <RewardModal
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        reward={reward}
+                      />
+                    ]
                 }
               </Col>
-
-              {/* Ternary used to ensure an extra carrot (>) is not created at the end */}
-              {(idx + 1) < props.rewards.length ?
-                <Col className="col-1 text-center p-0 m-0">
-                  <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-                </Col>
-                : <></>}
             </>
           )
         })}

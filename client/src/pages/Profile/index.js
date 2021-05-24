@@ -216,22 +216,20 @@ function Profile() {
                                         </div>
                                     </Col>
                                     <Col className="col-lg-6 my-auto">
-                                        <Row className="my-3">
+                                        {/* <Row className="my-3">
                                             <Col className="my-auto">
 
                                                 <div style={{ fontSize: "smaller" }}>Holding for Brandon Metrics Container</div>
 
                                             </Col>
-                                        </Row>
+                                        </Row> */}
                                         <Row className="my-3">
                                             <Col className="my-auto">
-
-                                                <span>Reward Progress</span>
+                                                <h4 className="text-center mb-3">Reward Progress</h4>
                                                 <ProgressBar
                                                     points={points}
                                                     rewards={rewards}
                                                 />
-
                                             </Col>
                                         </Row>
                                         <Row className="my-3">

@@ -17,7 +17,7 @@ function RewardsContainer(props) {
   console.log(props);
   return (
     <Container >
-      <Row className="row justify-content-center">
+      <Row className="row justify-content-start">
 
         {props.rewards.map((reward, idx) => {
           console.log(`${idx + 1} | ${props.rewards.length}`);

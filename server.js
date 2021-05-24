@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// KEEP THIS BELOW THE STATIC ASSETS!!!!!!!
+// KEEP THIS BELOW THE STATIC ASSETS!!!!!!!!
 app.use(routes);
 /* -------------------------------------------------------------------------- */
 /*                         Sync DB and Start Listning                         */

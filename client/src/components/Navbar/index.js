@@ -52,6 +52,26 @@ function Navbar(props) {
         }
     };
 
+    function checkRoleMobile() {
+        if (props.currentUser.role === "Admin" || props.currentUser.is_manager) {
+            return (
+                <li className=" nav-item my-2 me-2 text-center">
+                    <NavLink to="/org" className="nav-link ps-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z" />
+                        </svg>
+                        <div>
+                            Organization
+                </div>
+                    </NavLink>
+                </li>
+            )
+        }
+        else {
+            return;
+        }
+    };
+
     return (
         <>
             {/*This is what will render below mobile breakpoint for navbar*/}
@@ -90,7 +110,7 @@ function Navbar(props) {
                                         </li>
                                     </> :
                                     <>
-                                        <li className="nav-item px-0 my-2 text-center" href="/dasboard">
+                                        <li className="nav-item px-0 my-2 me-2 text-center" href="/dasboard">
                                             <NavLink to="/dashboard" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-speedometer" viewBox="0 0 16 16">
                                                     <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
@@ -101,7 +121,7 @@ function Navbar(props) {
                                             </div>
                                             </NavLink>
                                         </li>
-                                        {checkRole()}
+                                        {checkRoleMobile()}
                                         {/* <li className=" nav-item my-2 text-center">
                                             <NavLink to="/org" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-diagram-3-fill" viewBox="0 0 16 16">
@@ -124,7 +144,7 @@ function Navbar(props) {
                                             </div>
                                             </NavLink>
                                         </li> */}
-                                        <li className=" nav-item my-2 text-center mr-2">
+                                        <li className=" nav-item my-2 me-2 text-center mr-2">
                                             <NavLink to="/profile" className="nav-link ps-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />

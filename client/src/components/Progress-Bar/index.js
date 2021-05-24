@@ -50,8 +50,8 @@ function ProgressBar(props) {
     <>
       <div>
         <div className="" style={containerStyles}>
-          <div style={fillerStyles}>
-            <span style={labelStyles}>{`${calculatePercentLeft()}%`}</span>
+          <div className="p-1" style={fillerStyles}>
+            <span className="p-2" style={labelStyles}>{`${calculatePercentLeft()}%`}</span>
           </div>
         </div>
       </div>

@@ -168,7 +168,7 @@ function Dashboard() {
                         if (filterType === "Initial Load" && resUser.data.role === "Client") {
                             document.getElementById("Total Active").style.borderColor = "rgb(255,193,7)";
                         } else if (filterType === "Initial Load") {
-                            document.getElementById("Assigned To Me").style.borderColor = "rgb(255,193,7)";
+                            document.getElementById("My Tickets").style.borderColor = "rgb(255,193,7)";
                         }
                         setTickets(filteredTicketsFinal);
                     }
@@ -294,7 +294,7 @@ function Dashboard() {
                         break;
                     case "Open":
                         break;
-                    case "Assigned To Me":
+                    case "My Tickets":
                         filterType = "ID";
                         filterValue = currentUser.id;
                         break;

@@ -223,7 +223,7 @@ function Profile() {
 
                                             </Col>
                                         </Row> */}
-                                        <Row className="my-3">
+                                        <Row className="my-3 mx-3">
                                             <Col className="my-auto">
                                                 <h4 className="text-center mb-3">Reward Progress</h4>
                                                 <ProgressBar
@@ -232,7 +232,7 @@ function Profile() {
                                                 />
                                             </Col>
                                         </Row>
-                                        <Row className="my-3">
+                                        <Row className="my-3 mx-4">
                                             <Col className="my-auto">
                                                 {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
                                                 <RewardsContainer

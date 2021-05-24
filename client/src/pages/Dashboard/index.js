@@ -294,7 +294,7 @@ function Dashboard() {
                         break;
                     case "Open":
                         break;
-                    case "Assigned To Me":
+                    case "My Tickets":
                         filterType = "ID";
                         filterValue = currentUser.id;
                         break;

@@ -99,8 +99,6 @@ function Profile() {
             .catch((err) => console.log(err))
     }
 
-
-
     // Set the user state
     function getUser() {
         API.getCurrentUser()
@@ -150,7 +148,6 @@ function Profile() {
         callUpdateUser(updatedProfile);
     }
 
-
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
@@ -174,7 +171,6 @@ function Profile() {
             visible: true
         });
     }
-
 
     let latestURL = React.createRef();
     // Update the Profile Picture when you press upload button
@@ -205,39 +201,37 @@ function Profile() {
                         <Row>
                             <Col>
                                 <Row>
-                                    <Col className="col-lg-5" >
+                                    <Col className={user.role === "Employee" ? "col-lg-5" : "col"} >
                                         <div onClick={handleImageClick} className="profile-img my-3 text-center">
                                             <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
                                             <FaLink className="icon-button" />
                                         </div>
                                     </Col>
-                                    <Col className="col-lg-6 my-auto">
-                                        {/* <Row className="my-3">
-                                            <Col className="my-auto">
 
-                                                <div style={{ fontSize: "smaller" }}>Holding for Brandon Metrics Container</div>
+                                    {user.role === "Employee"
+                                        ?
+                                        <Col className="col-lg-6 my-auto">
+                                            <Row className="my-3 mx-3">
+                                                <Col className="my-auto">
+                                                    <h4 className="text-center mb-3">Reward Progress</h4>
+                                                    <ProgressBar
+                                                        points={points}
+                                                        rewards={rewards}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                            <Row className="my-3 mx-4 px-0" data-component="row below progress bar">
+                                                <Col className="my-auto" data-component="col in row below progress">
+                                                    <RewardsContainer
+                                                        rewards={rewards}
+                                                        points={points}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        :
+                                        null}
 
-                                            </Col>
-                                        </Row> */}
-                                        <Row className="my-3 mx-3">
-                                            <Col className="my-auto">
-                                                <h4 className="text-center mb-3">Reward Progress</h4>
-                                                <ProgressBar
-                                                    points={points}
-                                                    rewards={rewards}
-                                                />
-                                            </Col>
-                                        </Row>
-                                        <Row className="my-3 mx-4">
-                                            <Col className="my-auto">
-                                                {/* <div className="divvy-bg-title">Holding for Brandon icons container</div> */}
-                                                <RewardsContainer
-                                                    rewards={rewards}
-                                                    points={points}
-                                                />
-                                            </Col>
-                                        </Row>
-                                    </Col>
                                 </Row>
                                 <Row>
                                     <Col>

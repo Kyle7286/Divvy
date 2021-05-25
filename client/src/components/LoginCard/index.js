@@ -14,8 +14,8 @@ function LoginCard(props) {
         <>
             <div class="col-md-8 mx-auto mt-5">
                 <div class="card px-0 shadow">
-                    <h5 class="card-header bg-dark text-white text-center">Current User Login</h5>
-                    <div class="card-body">
+                    <h5 class="text-warning py-4 fw-bold fs-4 text-center">Current User Login</h5>
+                    <div class="card-body pt-0">
                         <form>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
@@ -30,7 +30,7 @@ function LoginCard(props) {
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button id="log-in-button" type="submit" onClick={props.handleFormSubmit} class="btn btn-warning">Login</button>
+                                <button id="log-in-button" type="submit" onClick={props.handleFormSubmit} class="btn btn-primary">Login</button>
                             </div>
                         </form>
                         <div className="text-center mt-2">

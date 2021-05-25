@@ -1,7 +1,6 @@
 // const { json } = require("sequelize/types"); 
 const { Reward, Ticket, Team, Org, User } = require("../models");
 
-// Defining methods for the booksController
 module.exports = {
   findAllByTeam: async function (req, res) {
     try {
@@ -18,7 +17,10 @@ module.exports = {
       const rewardData = await Reward.findAll({
         where: {
           team_id: userData.dataValues.team_id
-        }
+        },
+        order: [
+          ['req_points', 'ASC']
+        ]
       });
 
       res.status(200).json(rewardData);

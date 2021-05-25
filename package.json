@@ -1,5 +1,6 @@
 {
-  "name": "mern",
+  "name": "divvy",
+  "homepage": "https://safe-lake-16466.herokuapp.com/",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",

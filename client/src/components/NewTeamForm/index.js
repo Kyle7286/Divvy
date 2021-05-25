@@ -21,7 +21,7 @@ function NewTeamForm(props) {
           <Row>
             <Col className="col-lg-6 mx-auto">
               {/* Team */}
-                <div className=" text-center">
+                <div className=" text-center px-2">
                   <label htmlFor="test" className="form-label">Team Name</label>
                   <input ref={props.refTeamName} type="text" className="form-control" id="test" aria-describedby="teamName" />
                 </div>

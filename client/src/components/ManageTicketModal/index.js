@@ -171,7 +171,7 @@
                             <div className="col">{newCommentTextArea.current.value}</div> 
                         </div>
                         <div className="row text-right">
-                            <div className=" col fst-italic mt-2 mr-1 align-self-end">{dayjs().format('MMMM-DD-YYYY')}</div> 
+                            <div className=" col fst-italic mt-2 mr-1 align-self-end">{dayjs().format('MMMM-DD-YYYY [at] hh:mmA')}</div> 
                         </div>           
                     </div>
                 );

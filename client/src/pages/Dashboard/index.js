@@ -114,7 +114,7 @@ function Dashboard() {
 
                         const totalTickets = filteredTickets;
 
-                        let assignedTickets = totalTickets.filter(ticket => ticket.assigned_to === resUser.data.id);
+                        let assignedTickets = totalTickets.filter(ticket => (ticket.assigned_to === resUser.data.id && ticket.status != "Completed"));
                         assignedTicketCount = assignedTickets.length;
                         setCountTicketAssigned(assignedTicketCount);
 
@@ -141,7 +141,7 @@ function Dashboard() {
                                     filteredTicketsFinal = filteredTickets.filter(ticket => ticket.status != "Completed");
                                 } else {
                                     filteredTicketsFinal = filteredTickets.filter(ticketsData => {
-                                        return ticketsData.assigned_to === resUser.data.id;
+                                        return (ticketsData.assigned_to === resUser.data.id && ticketsData.status != "Completed");
                                     });
                                 }
                                 break;

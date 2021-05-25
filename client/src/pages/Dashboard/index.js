@@ -87,10 +87,12 @@ function Dashboard() {
 
     // Load All Tickets and Set Them to state
     function getTickets(filterType, filterValue) {
-        API.getAllTickets()
-            .then(resTickets => {
-                API.getCurrentUser()
-                    .then(resUser => {
+        API.getCurrentUser()
+            .then(resUser => {
+                console.log("resUser: ", resUser);
+                API.getAllTicketsByOrg(resUser.data.org_id)
+                    .then(resTickets => {
+                        console.log("TICKET_DATA: ", resTickets);
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
                             filteredTickets = resTickets.data.filter(ticketsData => {
@@ -166,7 +168,7 @@ function Dashboard() {
                         setTickets(filteredTicketsFinal);
                     }
                     )
-
+                    .catch(err => console.log(err));
 
             })
             .catch(err => console.log(err));
@@ -268,7 +270,7 @@ function Dashboard() {
         for (let index = 0; index < employeeCards.length; index++) {
             employeeCards[index].style.borderColor = "";
         };
-        
+
         switch (filterType) {
             case "Status":
                 document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";

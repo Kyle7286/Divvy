@@ -6,6 +6,11 @@ router.route("/")
   .get(ticketController.findAll)
   .post(ticketController.create);
 
+// Matches with "/api/ticket/org/:id"
+router
+  .route("/org/:id")
+  .get(ticketController.findAllByOrg)
+
 // Matches with "/api/ticket/:id"
 router
   .route("/:id")

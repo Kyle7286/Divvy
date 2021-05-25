@@ -27,7 +27,7 @@
         /* -------------------------- Define Data Formatter ------------------------- */
            
             function convertDate(date) {
-                return dayjs(date).format('MMMM-DD-YYYY')
+                return dayjs(date).format('MMMM-DD-YYYY [at] hh:mmA')
             };
 
         /* ---------------------------- Return Component ---------------------------- */

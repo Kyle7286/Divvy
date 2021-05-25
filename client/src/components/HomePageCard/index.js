@@ -40,8 +40,8 @@ function HomePageCard(props) {
         <div>
             <div className="divvy-bg-tile mt-5 col-lg-10 p-0 mx-auto">
                 <SectionHeader>Welcome! </SectionHeader>
-                <div className="justify-content-center py-2 px-3 text-center fs-6">
-                    <div>
+                <div className="justify-content-center py-2 text-center fs-6">
+                    <div className="col-lg-9 mx-auto">
                     Pleasing clients is hard. Doing it while not overstressing your team, or yourself is even harder. Divvy provides a simple, 
                     minimalisitc ticket-based system for teams and clients to collaborate within. 
                     </div> 
@@ -50,19 +50,19 @@ function HomePageCard(props) {
                     <div className="divvy-font-logo text-danger fs-3 text-center">Key Features</div>
                     <div className="px-0 col-10 text-left mx-auto">
                         <ul className="list-group">
-                            <li>
+                            <li className="py-1">
                                 <span className="text-danger fw-bold">Manage Dashboard - </span>
                                 Simple dashboard for ticket creation and management
                             </li>
-                            <li>
+                            <li className="py-1">
                                 <span className="text-danger fw-bold">Capacity Visulization - </span>
                                 Intelligent sorting of availible team members to help capacity distribution at all times
                             </li>
-                            <li>
+                            <li className="py-1">
                                 <span className="text-danger fw-bold">Multi-Tier Search and Filter - </span>
                                 Multi-tiered sorting and filtering for enabling the view YOU need to best manage the workload
                             </li>
-                            <li>
+                            <li className="py-1">
                                 <span className="text-danger fw-bold">Rewards - </span>
                                 Gamified rewards system to keep the working fun and the hard working recognized
                             </li>

@@ -68,8 +68,7 @@ function NewEmpForm(props) {
             <div className="text-center">
               <button onClick={props.handleNewEmpSubmit} type="submit" className="btn btn-warning my-3">Create</button>
             </div>
-            
-
+          
           </Col>
         </Row>
       </form>

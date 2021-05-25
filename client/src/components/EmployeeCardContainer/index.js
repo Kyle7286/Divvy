@@ -39,28 +39,6 @@ function EmployeeCardContainer(props) {
     // Invoke the function to sort and filter employees
     filterTeamEmployees()
 
-    
-    // Declare a functoin for setting ticket colors on the profile cards by index of map (position they are in the sort) - SAVING AS BACKUP
-        /*
-            function setBadgeColor (index) {
-                if (index <3) {
-                    return "badge alert-success"
-                } 
-                else if (index > 2 && index < 6) {
-                return "badge alert-info"
-                }
-                else if (index > 5 && index < 9) {
-                    return "badge alert-warning"
-                }
-                else if (index > 8) {
-                    return "badge alert-secondary"
-                }
-                else {
-                    return "badge alert-light"
-                }
-            };
-        */
-
     function setBadgeColorByWeight (ticketsNotClosed, employeeTickets ) {
 
         // Determine weight of total ticket count
@@ -96,7 +74,6 @@ function EmployeeCardContainer(props) {
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
                             className={employee.ticketuser ? (setBadgeColorByWeight(props.activeTicketCount, employee.ticketuser.length)) : ("badge alert-success")}
-                            //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}
                             handleClick={props.handleClick}
@@ -107,7 +84,6 @@ function EmployeeCardContainer(props) {
                             employeeName={`${employee.first_name} ${employee.last_name}`}
                             employeeTickets={employee.ticketuser ? (`Tickets (${employee.ticketuser.length})`) : ("Tickets (0)")}
                             className={employee.ticketuser ? (setBadgeColorByWeight(props.activeTicketCount, employee.ticketuser.length)) : ("badge alert-success")}
-                            //className={setBadgeColor(index)} - saving this as backup in case we want to use this sorter function
                             employeeID={employee.id}
                             profileIcon={employee.profile_icon}
                             handleClick={props.handleClick}
@@ -124,11 +100,3 @@ function EmployeeCardContainer(props) {
 /* -------------------------------------------------------------------------- */
 
 export default EmployeeCardContainer;
-
-//     {allEmployees.map(employee => (
-//         <EmployeeCard
-//            key = {employee.id}
-//            employeeName={`${employee.first_name} ${employee.last_name}`}
-//            employeeTickets={employee.ticketuser.length ? ("Tickets: " + employee.ticketuser.length) : ("Tickets: 0")}
-//         />
-//    ))}

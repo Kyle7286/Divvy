@@ -36,6 +36,8 @@
     "react-bootstrap": "^1.6.0",
     "react-icons": "^4.2.0",
     "react-responsive": "^8.2.0",
+    "react-tiny-popover": "^6.0.5",
+    "react-tooltip": "^4.2.19",
     "sequelize": "^6.6.2",
     "underscore": "^1.13.1"
   }

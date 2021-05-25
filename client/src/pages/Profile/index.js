@@ -211,13 +211,6 @@ function Profile() {
                                     {user.role === "Employee"
                                         ?
                                         <Col className="col-lg-6 my-auto">
-                                            {/* <Row className="my-3">
-                                            <Col className="my-auto">
-
-                                                <div style={{ fontSize: "smaller" }}>Holding for Brandon Metrics Container</div>
-
-                                            </Col>
-                                        </Row> */}
                                             <Row className="my-3 mx-3">
                                                 <Col className="my-auto">
                                                     <h4 className="text-center mb-3">Reward Progress</h4>
@@ -227,8 +220,8 @@ function Profile() {
                                                     />
                                                 </Col>
                                             </Row>
-                                            <Row className="my-3 mx-4">
-                                                <Col className="my-auto">
+                                            <Row className="my-3 mx-4 px-0" data-component="row below progress bar">
+                                                <Col className="my-auto" data-component="col in row below progress">
                                                     <RewardsContainer
                                                         rewards={rewards}
                                                         points={points}

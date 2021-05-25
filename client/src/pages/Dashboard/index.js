@@ -211,12 +211,19 @@ function Dashboard() {
     }
 
     // Set the user state
-    function getUserTeamid(x) {
+    function getUserTeamid(allUserData) {
         API.getCurrentUser()
-            .then(res => {
-                const teamEmployees = x.filter(user => {
-                    return user.team_id === res.data.team_id
-                });
+            .then(resCurrUser => {
+                let teamEmployees;
+                if (resCurrUser.data.role === "Admin") {
+                    teamEmployees = allUserData.filter(user => {
+                        return user.org_id === resCurrUser.data.org_id
+                    });
+                } else {
+                    teamEmployees = allUserData.filter(user => {
+                        return (user.team_id === resCurrUser.data.team_id && user.org_id === resCurrUser.data.org_id)
+                    });
+                }
                 setUsers(teamEmployees);
             })
             .catch(err => console.log(err));

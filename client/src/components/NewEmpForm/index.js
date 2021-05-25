@@ -13,7 +13,6 @@ import Row from "../Row";
 
 function NewEmpForm(props) {
 
-  console.log(props.teams);
   return (
     <>
       <h4 className="text-center my-3">New Employee Form</h4>

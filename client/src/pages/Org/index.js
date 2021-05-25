@@ -62,34 +62,32 @@ function Org() {
     const [isTeamShowing, setIsTeamShowing] = useState(false)
     const [isEmployeeShowing, setIsEmployeeShowing] = useState(false)
 
-     // Show Ticket Details
-     function makeClientActive () {
+    // Show Ticket Details
+    function makeClientActive() {
         setIsClientShowing(prevCheck => !prevCheck)
         setIsTeamShowing(false);
         setIsEmployeeShowing(false);
     }
 
     // Show Client Details
-    function makeTeamActive () {
+    function makeTeamActive() {
         setIsTeamShowing(prevCheck => !prevCheck)
         setIsClientShowing(false);
         setIsEmployeeShowing(false);
     }
 
     // Show Client Details
-    function makeEmployeeActive () {
+    function makeEmployeeActive() {
         setIsEmployeeShowing(prevCheck => !prevCheck)
         setIsClientShowing(false);
         setIsTeamShowing(false);
     }
-    
+
     /* ----------------------------- Component Logic ---------------------------- */
 
     function getTeams() {
         API.getAllOrgTeams()
             .then(res => {
-                console.log("==============");
-                console.log(res.data);
                 setTeams(res.data)
             }).catch((err) => {
                 console.log(err);
@@ -151,13 +149,13 @@ function Org() {
         e.preventDefault();
 
         // Handle Button Color
-        if (e.target.id==="client") {
+        if (e.target.id === "client") {
             makeClientActive();
         }
-        else if (e.target.id==="team") {
+        else if (e.target.id === "team") {
             makeTeamActive()
         }
-        else if (e.target.id==="emp") {
+        else if (e.target.id === "emp") {
             makeEmployeeActive();
         }
 
@@ -225,17 +223,14 @@ function Org() {
             // Send input data to server for creation
             API.createNewClient(newClient)
                 .then(res => {
-                    console.log(res.data);
                     updateError("info", { message: "New client successfully created!" })
                 })
                 .catch(err => {
-                    console.log(`========= HIT THE CATCH ============`);
                     updateError("error", JSON.parse(err.response.request.response).errors[0])
                     console.log(err)
                 });
         } else {
             updateError("error", { message: "Please enter info into all fields..." })
-            console.log("Clicked");
         }
 
     }
@@ -245,7 +240,6 @@ function Org() {
     // Handle new Team button
     const handleNewTeamSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
 
         if (refTeamName.current.value) {
 
@@ -273,8 +267,6 @@ function Org() {
     const handleNewEmpSubmit = (e) => {
         e.preventDefault();
 
-        console.log(refTeamSelected.current.value);
-
         const newEmployee = {
             first_name: refEmpFirstName.current.value,
             last_name: refEmpLastName.current.value,
@@ -292,7 +284,6 @@ function Org() {
         ) {
             API.creatNewEmployee(newEmployee)
                 .then(res => {
-                    // console.log(res.data);
                     updateError("info", { message: "Employee successfully created!" });
                 })
                 .catch((err) => {
@@ -316,7 +307,7 @@ function Org() {
                         <Row className="mb-3">
                             <Col className="p-0">
                                 <SectionHeader>{org.org.name}</SectionHeader>
-                                <div class="form-text text-center">Select an option</div>
+                                <div className="form-text text-center">Select an option</div>
                             </Col>
                         </Row>
                         <Row className="mb-3 d-flex justify-content-center">
@@ -353,25 +344,25 @@ function Org() {
                                 /> : null}
 
                                 {visible.team ? <NewTeamForm
-                                handleNewTeamSubmit={handleNewTeamSubmit}
-                                refTeamName={refTeamName}
+                                    handleNewTeamSubmit={handleNewTeamSubmit}
+                                    refTeamName={refTeamName}
                                 /> : null}
 
                                 {visible.emp ? <NewEmpForm
-                                handleNewEmpSubmit={handleNewEmpSubmit}
-                                refEmpFirstName={refEmpFirstName}
-                                refEmpLastName={refEmpLastName}
-                                refEmpEmail={refEmpEmail}
-                                refEmpPhone={refEmpPhone}
-                                teams={teams}
-                                refTeamSelected={refTeamSelected}
-                                refIsManager={refIsManager}
+                                    handleNewEmpSubmit={handleNewEmpSubmit}
+                                    refEmpFirstName={refEmpFirstName}
+                                    refEmpLastName={refEmpLastName}
+                                    refEmpEmail={refEmpEmail}
+                                    refEmpPhone={refEmpPhone}
+                                    teams={teams}
+                                    refTeamSelected={refTeamSelected}
+                                    refIsManager={refIsManager}
                                 /> : null}
                                 {error.visible ? <div className={`mb-2 text-center text-${error.color}`} >{error.message}</div> : <div className="mb-2 text-center"></div>}
                             </Col>
                         </Row>
                     </Col>
-                </Row>   
+                </Row>
             </Container>
         </>
     );

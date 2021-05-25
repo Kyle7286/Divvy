@@ -21,21 +21,19 @@ import API from "./utils/API";
 
 function App() {
 
-   // set current user
-   const [currentUser, setCurrentUser] = useState({})
+  // set current user
+  const [currentUser, setCurrentUser] = useState({})
 
   // Set login status
   const [loggedIn, setloggedIn] = useState({ loggedIn: false });
 
   function handleLogout() {
-    console.log("App.js (handleLogout: ");
     API.logout()
       .then(response => {
-        console.log("logout API: ", response.data);
         setloggedIn({ loggedIn: false });
       })
       .catch(error => {
-        console.log("check login error", error);
+        console.log(error);
       });
   }
 
@@ -47,17 +45,15 @@ function App() {
   function withAuth() {
     API.checkAuth()
       .then(response => {
-        console.log("front-end", response.data);
         if (response.data) {
           setloggedIn({ loggedIn: response.data });
         };
       })
       .catch(error => {
-        console.log("check login error", error);
+        console.log(error);
       });
   }
   const { loggedIn: logStatus } = loggedIn;
-  //console.log("App.js: ", logStatus);
 
   // Call when components have loaded
   useEffect(() => {
@@ -68,7 +64,6 @@ function App() {
   function getCurrentUser() {
     API.getCurrentUser()
       .then(res => {
-        console.log("APP.js CURRENT USER", res.data);
         setCurrentUser(res.data);
       }
       )

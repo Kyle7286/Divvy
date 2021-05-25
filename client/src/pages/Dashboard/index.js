@@ -93,14 +93,17 @@ function Dashboard() {
                     .then(resUser => {
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.client_id === resUser.data.client_id;
                             });
                         } else if (resUser.data.role === "Employee" && resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.team_id === resUser.data.team_id;
                             });
                         } else if (resUser.data.role === "Employee" && !resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 // return ((ticketsData.assigned_to === resUser.data.id || ticketsData.assigned_to === null) && ticketsData.team_id === resUser.data.team_id);
                                 return ticketsData.team_id === resUser.data.team_id;
@@ -212,9 +215,11 @@ function Dashboard() {
     function getUserTeamid(x) {
         API.getCurrentUser()
             .then(res => {
+
                 const teamEmployees = x.filter(user => {
                     return user.team_id === res.data.team_id
                 });
+
                 setUsers(teamEmployees);
             })
             .catch(err => console.log(err));
@@ -268,7 +273,7 @@ function Dashboard() {
         for (let index = 0; index < employeeCards.length; index++) {
             employeeCards[index].style.borderColor = "";
         };
-        
+
         switch (filterType) {
             case "Status":
                 document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";

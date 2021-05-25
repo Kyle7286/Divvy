@@ -11,17 +11,17 @@ import "../../index.css";
 /*                           Set Mobile BreakPoints                           */
 /* -------------------------------------------------------------------------- */
 
-    // Will render mobile friendly nav, horizontal with diff layout
-    const Mobile = ({ children }) => {
-        const isMobile = useMediaQuery({ maxWidth: 1025 })
-        return isMobile ? children : null
-    }
+// Will render mobile friendly nav, horizontal with diff layout
+const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 1025 })
+    return isMobile ? children : null
+}
 
-    // Will render desktop friendly nav, vertical nav
-    const Default = ({ children }) => {
-        const isNotMobile = useMediaQuery({ minWidth: 1026 })
-        return isNotMobile ? children : null
-    }
+// Will render desktop friendly nav, vertical nav
+const Default = ({ children }) => {
+    const isNotMobile = useMediaQuery({ minWidth: 1026 })
+    return isNotMobile ? children : null
+}
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -59,8 +59,7 @@ function StatCardContainer(props) {
         }
     };
 
-  
-    console.log("statCard: ", props);
+
     // Return the three primary status card components
     return (
         <>

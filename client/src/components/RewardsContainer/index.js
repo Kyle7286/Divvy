@@ -40,16 +40,16 @@ function RewardsContainer(props) {
                     :
                     <>
                       <ReactToolTip
-                        id="main"
+                        id="achieved"
                         place="top"
                         type="warning"
                         effect="float"
                         multiline={true}
                       />
                       <a
-                        data-for="main"
-                        data-tip={reward.reward}
-                        data-iscapture="true"
+                         data-for = "achieved"
+                         data-tip={reward.reward}
+                         data-iscapture="true"
                       >
                         <AiFillGift 
                           className="m-2" 

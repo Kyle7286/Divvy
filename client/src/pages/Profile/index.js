@@ -99,8 +99,6 @@ function Profile() {
             .catch((err) => console.log(err))
     }
 
-
-
     // Set the user state
     function getUser() {
         API.getCurrentUser()
@@ -150,7 +148,6 @@ function Profile() {
         callUpdateUser(updatedProfile);
     }
 
-
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
@@ -175,7 +172,6 @@ function Profile() {
         });
     }
 
-
     let latestURL = React.createRef();
     // Update the Profile Picture when you press upload button
     function handleUpdateURLClick(e) {
@@ -195,7 +191,6 @@ function Profile() {
         updatePicture(false);
     }
 
-    console.log(user);
     /* ---------------------------- Component Render ---------------------------- */
     return (
         <>

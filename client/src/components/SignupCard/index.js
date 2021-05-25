@@ -3,11 +3,12 @@
 /* -------------------------------------------------------------------------- */
 
 import React from "react";
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import API from "../../utils/API";
 import "../../index.css";
 import SectionHeader from "../SectionHeader";
-import Row from "../Row"
+import Row from "../Row";
+import Col from "../Column";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -110,8 +111,9 @@ function SignupCard() {
 
     return (
         <Row>
+            <div className="card col-lg-6 mx-auto px-0 shadow-lg mt-5">
             <Form className="text-center">
-                <Form.Group controlId="formOrgName">
+                <Form.Group className="mb-3 mx-2" controlId="formOrgName">
                     <Form.Row>
                         <Col xs={6}>
                             <SectionHeader>Signup</SectionHeader>
@@ -119,7 +121,7 @@ function SignupCard() {
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group controlId="formBasicName">
+                <Form.Group className="mb-3 mx-2" controlId="formBasicName">
                     <Form.Row>
                         <Col xs={3}>
                             <Form.Control ref={firstName} placeholder="First name" />
@@ -129,28 +131,28 @@ function SignupCard() {
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group controlId="formBasicPhone">
+                <Form.Group className="mb-3 mx-2" controlId="formBasicPhone">
                     <Form.Row>
                         <Col xs={6}>
                             <Form.Control ref={phoneNumber} placeholder="Phone Number" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group className="mb-3 mx-2" controlId="formBasicEmail">
                     <Form.Row>
                         <Col xs={6}>
                             <Form.Control ref={email} type="email" placeholder="Enter email" autoComplete="username" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group className="mb-3 mx-2" controlId="formBasicPassword">
                     <Form.Row>
                         <Col xs={6}>
                             <Form.Control ref={password} type="password" placeholder="Password" autoComplete="current-password" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group controlId="formBasicSubmit">
+                <Form.Group className="mb-3 mx-2" controlId="formBasicSubmit">
                     <Form.Row>
                         <Col xs={6}>
                             <center>
@@ -162,6 +164,7 @@ function SignupCard() {
                     </Form.Row>
                 </Form.Group>
             </Form>
+            </div>
         </Row>
         
     );

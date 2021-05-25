@@ -16,8 +16,6 @@ import ReactToolTip from 'react-tooltip';
 
 function RewardsContainer(props) {
 
-  const [{isPopoverOpen}, setIsPopoverOpen] = useState(false);
-
   return (
     <Container >
       <Row className="row justify-content-start">

@@ -17,17 +17,11 @@ import ReactToolTip from 'react-tooltip';
 function RewardsContainer(props) {
 
   return (
-    <Container >
-      <Row className="row justify-content-start">
-
-        {props.rewards.map((reward, idx) => {
-
-          console.log(reward);
+      <>
+        {props.rewards.map((reward) => {
 
           return (
             <>
-              {/* Column containing Gift Icon */}
-              <Col className="col-1 text-center p-0 m-0">
                 {
                   props.points.points < reward.req_points
                     ?
@@ -36,39 +30,31 @@ function RewardsContainer(props) {
                         style={{ color: "#FEDE7D", fontSize: "35px" }} 
                       /> 
                     :
-                    <>
-                      <ReactToolTip
-                        id="achieved"
-                        place="top"
-                        type="warning"
-                        effect="float"
-                        multiline={true}
-                      />
-                      <a
-                         data-for = "achieved"
-                         data-tip={reward.reward}
-                         data-iscapture="true"
-                      >
-                        <AiFillGift 
-                          className="m-2" 
-                          style={{ color: "#FEDE7D", fontSize: "35px" }} 
+                      <>
+                        <ReactToolTip
+                          id="achieved"
+                          place="top"
+                          type="warning"
+                          effect="float"
+                          multiline={true}
                         />
-                      </a>
-                    </>
+                        <a
+                          data-for = "achieved"
+                          data-tip={reward.reward}
+                          data-iscapture="true"
+                          className="mx-1"
+                        >
+                          <AiFillGift 
+                            className="m-1" 
+                            style={{ color: "#FEDE7D", fontSize: "35px" }} 
+                          />
+                        </a>
+                      </>
                 }
-              </Col>
-
-              {/* Ternary used to ensure an extra carrot (>) is not created at the end */}
-              {(idx + 1) < props.rewards.length ?
-                <Col className="col-1 text-center p-0 m-0">
-                  <AiOutlineRight className="m-3" style={{ color: "#FEDE7D", fontSize: "20px" }} />
-                </Col>
-                : <></>}
             </>
           )
         })}
-      </Row>
-    </Container >
+       </>
   )
 }
 

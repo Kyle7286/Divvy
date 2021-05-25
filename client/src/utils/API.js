@@ -13,6 +13,11 @@ export default {
         return axios.get("/api/ticket");
     },
 
+    // Get all tickets for org
+    getAllTicketsByOrg: function (id) {
+        return axios.get("/api/ticket/org/" + id);
+    },
+
     // New Tickets
     newTicket: function (newTicket) {
         return axios.post("/api/ticket", newTicket);

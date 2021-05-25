@@ -47,7 +47,7 @@ function ProfileForm(props) {
                                 <label htmlFor="InputLastName" className="form-label fw-bold">Last Name</label>
                                 <input ref={props.latestLastName} defaultValue={props.singleuser.last_name} type="text" className="form-control" id="InputLastName" aria-describedby="lastName" />
                             </div>
-                        
+
                             {/* Email */}
                             <div className="mb-3">
                                 <label htmlFor="InputEmail" className="form-label fw-bold">Email</label>
@@ -63,10 +63,10 @@ function ProfileForm(props) {
                                 <div className="mb-3">
                                     <label htmlFor="disabledSelect" className="form-label fw-bold">Role</label>
                                     <input defaultValue={props.singleuser.role} type="text" className="form-control" id="disabledSelect" aria-describedby="firstName" />
-                                    <div class="form-text text-center">Roles are only configurable by team managers</div>
+                                    <div className="form-text text-center">*Roles are configured by admins during employee creation</div>
                                 </div>
                             </fieldset>
-                        </Col>  
+                        </Col>
                     </Row>
                     {props.error.visible ? <div className="mb-2 text-center text-danger">{props.error.type}</div> : <div className="mb-2 text-center"></div>}
                     <Row className="mt-2">

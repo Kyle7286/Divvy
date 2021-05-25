@@ -41,7 +41,6 @@ function SignupCard() {
             // Make the API call to post a new org
             API.newOrg(newOrg)
                 .then(res => {
-                    console.log('axio post response', res.data.id);
                     orgID = res.data.id;
                     createUser(orgID);
                 })
@@ -77,10 +76,8 @@ function SignupCard() {
         ) {
             // Make the API call to post a new org
             API.newUser(newUser)
-                .then(res => console.log('axio post response', res.data))
                 .then(res => {
                     API.login({ email: email.current.value, password: password.current.value })
-                        .then(res => console.log('axio login post response', res.data))
                         .then(res => {
                             const emailOptions = 
                             {
@@ -103,7 +100,6 @@ function SignupCard() {
 
     function sendWelcomeEmail(emailOptions) {
         API.sendEmail(emailOptions)
-                .then(res => console.log('axio email post response', res.data))
                 .then(res => window.location = '/org')
                 .catch(err => console.log(err));
     }

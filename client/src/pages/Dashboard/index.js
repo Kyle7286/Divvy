@@ -89,22 +89,21 @@ function Dashboard() {
     function getTickets(filterType, filterValue) {
         API.getAllTickets()
             .then(resTickets => {
-                console.log("TICKETS", resTickets.data);
                 API.getCurrentUser()
                     .then(resUser => {
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
-                            console.log("client");
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.client_id === resUser.data.client_id;
                             });
                         } else if (resUser.data.role === "Employee" && resUser.data.is_manager) {
-                            console.log("employee & manager");
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.team_id === resUser.data.team_id;
                             });
                         } else if (resUser.data.role === "Employee" && !resUser.data.is_manager) {
-                            console.log("employee & not manager");
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 // return ((ticketsData.assigned_to === resUser.data.id || ticketsData.assigned_to === null) && ticketsData.team_id === resUser.data.team_id);
                                 return ticketsData.team_id === resUser.data.team_id;
@@ -112,8 +111,6 @@ function Dashboard() {
                         } else {
                             filteredTickets = resTickets.data;
                         }
-
-                        console.log("filteredTickets: ", filteredTickets);
 
                         const totalTickets = filteredTickets;
 
@@ -164,7 +161,6 @@ function Dashboard() {
                                 break;
                         }
 
-                        //console.log("filteredTickets: ", filteredTickets);
                         if (filterType === "Initial Load" && resUser.data.role === "Client") {
                             document.getElementById("Total Active").style.borderColor = "rgb(255,193,7)";
                         } else if (filterType === "Initial Load") {
@@ -190,7 +186,6 @@ function Dashboard() {
     function getCurrentUser() {
         API.getCurrentUser()
             .then(res => {
-                console.log("CURRENT USER", res.data);
                 setCurrentUser(res.data);
             }
             )
@@ -211,7 +206,6 @@ function Dashboard() {
     function getUsers() {
         API.getAllUsers()
             .then(res => {
-                //console.log("RES.DATA", res.data);
                 getUserTeamid(res.data)
             })
             .catch(err => console.log(err));
@@ -221,15 +215,10 @@ function Dashboard() {
     function getUserTeamid(x) {
         API.getCurrentUser()
             .then(res => {
-                // console.log("CURRENT USER", res.data);
-                // console.log("X", x);
 
                 const teamEmployees = x.filter(user => {
-                    // console.log("FILTERING");
                     return user.team_id === res.data.team_id
                 });
-
-                //console.log("TEAM EMPLOYEES", teamEmployees);
 
                 setUsers(teamEmployees);
             })
@@ -284,7 +273,7 @@ function Dashboard() {
         for (let index = 0; index < employeeCards.length; index++) {
             employeeCards[index].style.borderColor = "";
         };
-        
+
         switch (filterType) {
             case "Status":
                 document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";

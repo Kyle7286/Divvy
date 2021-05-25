@@ -16,7 +16,6 @@ function CreateTicketModal (props) {
 
     // Define Current user into a variable for use in conditional class setting
     const currentUser = props.currentUser;
-        console.log('CURRENT USER ON CREATE MODAL', currentUser);
 
     // Take all users and filter it to employees for rendering list
     const allEmployees = props.allUsers.filter(user=> user.role!="Client");
@@ -106,7 +105,6 @@ function CreateTicketModal (props) {
         if (newTicket.client_id !=null) {
             // Make the API call to update the ticket if client selected
             API.newTicket(newTicket)
-                .then(res=> console.log('axio post response', res))
                 .then(closeModal)
                 .then(window.location.reload())
                 .catch(err=>console.log(err));

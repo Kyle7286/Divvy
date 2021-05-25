@@ -95,14 +95,17 @@ function Dashboard() {
                         console.log("TICKET_DATA: ", resTickets);
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.client_id === resUser.data.client_id;
                             });
                         } else if (resUser.data.role === "Employee" && resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.team_id === resUser.data.team_id;
                             });
                         } else if (resUser.data.role === "Employee" && !resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 // return ((ticketsData.assigned_to === resUser.data.id || ticketsData.assigned_to === null) && ticketsData.team_id === resUser.data.team_id);
                                 return ticketsData.team_id === resUser.data.team_id;

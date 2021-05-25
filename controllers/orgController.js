@@ -4,7 +4,6 @@ const { Org, User } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      console.log(req.body);
       const orgData = await Org.findAll({})
       res.status(200).json(orgData);
     } catch (err) {
@@ -14,8 +13,6 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      console.log(req.body);
-      console.log(`req.params.id: ${req.session.user_id}`);
       const userData = await User.findOne({
         where: { id: req.session.user_id },
         include: [
@@ -33,7 +30,6 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      console.log(req.body);
       const orgData = await Org.create(req.body);
       res.status(200).json(orgData);
     } catch (err) {
@@ -43,8 +39,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log(req.body);
-      console.log(`req.params.id: ${req.params.id}`);
       const orgData = await Org.update(req.body, {
         where: {
           id: req.params.id
@@ -58,7 +52,6 @@ module.exports = {
   },
   remove: async function (req, res) {
     try {
-      console.log(req.body);
       const orgData = await Org.destroy({
         where: {
           id: req.params.id

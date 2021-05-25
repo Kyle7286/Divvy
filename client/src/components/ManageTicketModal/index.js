@@ -15,8 +15,6 @@
 
     function ManageTicketModal (props) {
 
-        // console.log('props in manage ticket modal is', props);
-
     /* ------------------------------ Props Filters ----------------------------- */
 
         // Take all users and filter it to employees for rendering list
@@ -24,7 +22,6 @@
 
         // Define Current user into a variable for use in conditional class setting
         const currentUser = props.currentUser;
-            //console.log('CURRENT USER ON MANAGE MODAL', currentUser);
 
     /* ---------------------------------- State --------------------------------- */
 
@@ -103,7 +100,6 @@
             
             // Make the API call to update the ticket
             API.updateTicket(props.ticketID, updatedTicket)
-                .then(res=> console.log('axio put response', res))
                 .then(closeModal)
                 .then(window.location.reload())
                 .catch(err=>console.log(err));
@@ -139,7 +135,6 @@
             function readyNewComment () {
                 // Set state to render new comment div
                 setisNewCommentShowing(true);
-                console.log(isNewCommentShowing);
             };
 
             // Cancel new comment if needed
@@ -153,7 +148,6 @@
             };
 
             function postNewComment (e) {
-                console.log('postNewComment called');
                 // Prevent Default
                 e.preventDefault();
 
@@ -166,7 +160,6 @@
                       date_modified:null
                       // NOTE that date_created is managed by sql automatically based on model updates
                     }
-                console.log('new comment object', newComment);
 
                 // update an array value that we will feed to state
                 recentComment = (
@@ -191,7 +184,6 @@
 
                 // Post the new comment to the server (TODO)
                 API.newComment(newComment)
-                    .then(res=> console.log('axio put response', res))
                     .catch(err=>console.log(err));
 
                 // Hide the new comments div and clear it (re run cancelNewComment)
@@ -317,7 +309,6 @@
                                         </div>
 
                                         {recentComments} {/* each time this renders, it is only having the previous comment. So somehow its stacking it twice or something*/}
-                                        {console.log('recentComments state in the modal return is', recentComments)}
 
                                     </CommentsContantainer>
 

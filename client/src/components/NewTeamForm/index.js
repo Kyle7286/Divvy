@@ -12,7 +12,6 @@ import Row from "../Row";
 
 
 function NewTeamForm(props) {
-  console.log(props.name);
   
   return (
     <>

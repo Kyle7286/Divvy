@@ -6,7 +6,6 @@ module.exports = {
   // returns all tickets in the db as an array of objects
   findAll: async function (req, res) {
     try {
-      console.log(req.body);
       const ticketData = await Ticket.findAll(
         {
           include: [
@@ -151,7 +150,6 @@ module.exports = {
   create: async function (req, res) {
     try {
       const ticketData = await Ticket.create(req.body);
-      console.log('client req received with req body', req.body)
       res.status(200).json(ticketData);
     } catch (err) {
       console.log(err);
@@ -165,7 +163,6 @@ module.exports = {
           id: req.params.id
         }
       });
-      console.log(req.body);
       res.status(200).json(ticketData);
     } catch (err) {
       console.log(err);

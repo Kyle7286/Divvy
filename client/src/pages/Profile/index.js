@@ -154,7 +154,6 @@ function Profile() {
     // Make the API call to update the user details
     function callUpdateUser(obj) {
         API.updateUser(user.id, obj)
-            .then(res => console.log('axios put response', res))
             .then(() => {
                 getUser();
                 updateError(false, null);
@@ -170,7 +169,6 @@ function Profile() {
     // Show the update profile picture element when you click the profile picture.
     function handleImageClick(e) {
         e.preventDefault();
-        console.log("clicked");
 
         setPicture({
             visible: true
@@ -182,8 +180,6 @@ function Profile() {
     // Update the Profile Picture when you press upload button
     function handleUpdateURLClick(e) {
         e.preventDefault();
-
-        console.log(latestURL.current.value);
 
         let obj = {
             profile_icon: latestURL.current.value

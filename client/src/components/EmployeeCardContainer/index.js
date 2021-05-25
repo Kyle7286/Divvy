@@ -17,8 +17,6 @@ import { Badge } from "react-bootstrap";
 
 function EmployeeCardContainer(props) {
 
-    console.log('PROPS in EMPLOYEE CARD CONTAINER', props);
-
     // Declare a global variable for this container all Employees
     let allEmployees;
 
@@ -67,7 +65,6 @@ function EmployeeCardContainer(props) {
 
         // Determine weight of total ticket count
         const weight = employeeTickets/ticketsNotClosed;
-            console.log('weight of tikets is showing as', weight);
         
         // Set badge color based on weights
         if (weight <0.15) {

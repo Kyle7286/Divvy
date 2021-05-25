@@ -3,11 +3,12 @@
 /* -------------------------------------------------------------------------- */
 
 import React from "react";
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import API from "../../utils/API";
 import "../../index.css";
 import SectionHeader from "../SectionHeader";
-import Row from "../Row"
+import Row from "../Row";
+import Col from "../Column";
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -110,6 +111,7 @@ function SignupCard() {
 
     return (
         <Row>
+            <div className="card col-lg-6 mx-auto px-0 shadow-lg mt-5">
             <Form className="text-center">
                 <Form.Group controlId="formOrgName">
                     <Form.Row>
@@ -162,6 +164,7 @@ function SignupCard() {
                     </Form.Row>
                 </Form.Group>
             </Form>
+            </div>
         </Row>
         
     );

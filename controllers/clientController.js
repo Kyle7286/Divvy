@@ -49,8 +49,6 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      console.log(req.session.user_id);
-      console.log(req.body);
       // Find the user who did the request to get the appropriate details
       const getUser = await User.findOne({
         where: {
@@ -59,7 +57,6 @@ module.exports = {
       })
 
       const org_id = getUser.org_id
-      const team_id = getUser.team_id
 
       // Create the client user first
       const newUser = await User.create({
@@ -74,7 +71,6 @@ module.exports = {
         profile_icon: ""
       })
 
-        console.log(newUser);
       // Create the Client second
       if (newUser) {
         const newClient = await Client.create({
@@ -90,8 +86,6 @@ module.exports = {
         })
         res.status(200).json({ newUser, newClient });
       }
-
-
     } catch (err) {
       console.log(err);
       res.status(422).json(err);
@@ -99,8 +93,6 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      console.log(req.body);
-      console.log(`req.params.id: ${req.params.id}`);
       const clientData = await Client.update(req.body, {
         where: {
           id: req.params.id
@@ -115,7 +107,6 @@ module.exports = {
   },
   remove: async function (req, res) {
     try {
-      console.log(req.body);
       const clientData = await Client.destroy({
         where: {
           id: req.params.id

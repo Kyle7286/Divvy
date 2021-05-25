@@ -62,27 +62,27 @@ function Org() {
     const [isTeamShowing, setIsTeamShowing] = useState(false)
     const [isEmployeeShowing, setIsEmployeeShowing] = useState(false)
 
-     // Show Ticket Details
-     function makeClientActive () {
+    // Show Ticket Details
+    function makeClientActive() {
         setIsClientShowing(prevCheck => !prevCheck)
         setIsTeamShowing(false);
         setIsEmployeeShowing(false);
     }
 
     // Show Client Details
-    function makeTeamActive () {
+    function makeTeamActive() {
         setIsTeamShowing(prevCheck => !prevCheck)
         setIsClientShowing(false);
         setIsEmployeeShowing(false);
     }
 
     // Show Client Details
-    function makeEmployeeActive () {
+    function makeEmployeeActive() {
         setIsEmployeeShowing(prevCheck => !prevCheck)
         setIsClientShowing(false);
         setIsTeamShowing(false);
     }
-    
+
     /* ----------------------------- Component Logic ---------------------------- */
 
     function getTeams() {
@@ -151,13 +151,13 @@ function Org() {
         e.preventDefault();
 
         // Handle Button Color
-        if (e.target.id==="client") {
+        if (e.target.id === "client") {
             makeClientActive();
         }
-        else if (e.target.id==="team") {
+        else if (e.target.id === "team") {
             makeTeamActive()
         }
-        else if (e.target.id==="emp") {
+        else if (e.target.id === "emp") {
             makeEmployeeActive();
         }
 
@@ -211,6 +211,10 @@ function Org() {
             zip: refZip.current.value
         }
 
+        const zipReg = new RegExp('^[0-9]+$');
+        const phoneReg = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
+        const emailReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
         // If you have filled out all the form fields...
         if (refFirm.current.value
             && refFirstName.current.value
@@ -221,21 +225,23 @@ function Org() {
             && refCity.current.value
             && refState.current.value
             && refZip.current.value
+            && zipReg.test(refZip.current.value)
+            && (refZip.current.value.length === 5)
+            && phoneReg.test(refPhone.current.value)
+            && emailReg.test(refEmail.current.value)
         ) {
+
             // Send input data to server for creation
             API.createNewClient(newClient)
                 .then(res => {
-                    console.log(res.data);
                     updateError("info", { message: "New client successfully created!" })
                 })
                 .catch(err => {
-                    console.log(`========= HIT THE CATCH ============`);
                     updateError("error", JSON.parse(err.response.request.response).errors[0])
                     console.log(err)
                 });
         } else {
-            updateError("error", { message: "Please enter info into all fields..." })
-            console.log("Clicked");
+            updateError("error", { message: "Please enter info into all fields and ensure proper formatting..." })
         }
 
     }
@@ -292,7 +298,6 @@ function Org() {
         ) {
             API.creatNewEmployee(newEmployee)
                 .then(res => {
-                    // console.log(res.data);
                     updateError("info", { message: "Employee successfully created!" });
                 })
                 .catch((err) => {
@@ -353,25 +358,25 @@ function Org() {
                                 /> : null}
 
                                 {visible.team ? <NewTeamForm
-                                handleNewTeamSubmit={handleNewTeamSubmit}
-                                refTeamName={refTeamName}
+                                    handleNewTeamSubmit={handleNewTeamSubmit}
+                                    refTeamName={refTeamName}
                                 /> : null}
 
                                 {visible.emp ? <NewEmpForm
-                                handleNewEmpSubmit={handleNewEmpSubmit}
-                                refEmpFirstName={refEmpFirstName}
-                                refEmpLastName={refEmpLastName}
-                                refEmpEmail={refEmpEmail}
-                                refEmpPhone={refEmpPhone}
-                                teams={teams}
-                                refTeamSelected={refTeamSelected}
-                                refIsManager={refIsManager}
+                                    handleNewEmpSubmit={handleNewEmpSubmit}
+                                    refEmpFirstName={refEmpFirstName}
+                                    refEmpLastName={refEmpLastName}
+                                    refEmpEmail={refEmpEmail}
+                                    refEmpPhone={refEmpPhone}
+                                    teams={teams}
+                                    refTeamSelected={refTeamSelected}
+                                    refIsManager={refIsManager}
                                 /> : null}
                                 {error.visible ? <div className={`mb-2 text-center text-${error.color}`} >{error.message}</div> : <div className="mb-2 text-center"></div>}
                             </Col>
                         </Row>
                     </Col>
-                </Row>   
+                </Row>
             </Container>
         </>
     );

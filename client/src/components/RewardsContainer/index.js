@@ -33,6 +33,11 @@ function RewardsContainer(props) {
                 {
                   props.points.points < reward.req_points
                     ?
+                      <AiOutlineGift 
+                        className="m-2" 
+                        style={{ color: "#FEDE7D", fontSize: "35px" }} 
+                      /> 
+                    :
                     <>
                       <ReactToolTip
                         id="main"
@@ -46,17 +51,12 @@ function RewardsContainer(props) {
                         data-tip={reward.reward}
                         data-iscapture="true"
                       >
-                        <AiOutlineGift 
+                        <AiFillGift 
                           className="m-2" 
                           style={{ color: "#FEDE7D", fontSize: "35px" }} 
-                        /> 
+                        />
                       </a>
                     </>
-                    :
-                    <AiFillGift 
-                    className="m-2" 
-                    style={{ color: "#FEDE7D", fontSize: "35px" }} 
-                    />
                 }
               </Col>
 

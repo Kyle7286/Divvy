@@ -4,7 +4,6 @@ const { User } = require("../models");
 module.exports = {
     signup: async function (req, res) {
         try {
-            console.log(req.body);
             const userData = await User.create(req.body);
 
             req.session.save(() => {
@@ -14,14 +13,12 @@ module.exports = {
                 res.status(200).json({ user: userData, message: 'Welcome, you are now logged in!' });
             });
         } catch (err) {
-            console.log(err);
             res.status(422).json(err);
         }
     },
 
     login: async function (req, res) {
         try {
-            console.log(req.body);
             const userData = await User.findOne({
                 where: { email: req.body.email },
             });
@@ -72,7 +69,6 @@ module.exports = {
     },
     authcheck: async function (req, res) {
         try {
-            console.log(req.session);
             res.json(req.session.logged_in)
         }
         catch (err) {

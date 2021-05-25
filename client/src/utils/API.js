@@ -60,7 +60,6 @@ export default {
 
     // Create employee user
     creatNewEmployee: function (newEmployee) {
-        console.log(newEmployee);
         return axios.post("/api/user/newemp", newEmployee)
     },
 

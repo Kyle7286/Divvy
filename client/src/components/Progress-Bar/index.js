@@ -9,11 +9,6 @@ import React from "react";
 /* -------------------------------------------------------------------------- */
 
 function ProgressBar(props) {
-  // const { bgcolor, completed,  } = props;
-  console.log(`====== PROPS ==========`);
-  console.log(props);
-  console.log(props.points.points);
-
 
   const containerStyles = {
     height: 30,

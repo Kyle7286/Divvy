@@ -4,7 +4,6 @@ const { Client, User, Org, Team } = require("../models");
 module.exports = {
   findAll: async function (req, res) {
     try {
-      console.log(req.body);
       const clientData = await Client.findAll({
         include: [
           {
@@ -26,7 +25,6 @@ module.exports = {
   },
   findById: async function (req, res) {
     try {
-      console.log(req.body);
       const clientData = await Client.findOne({
         where: { id: req.params.id },
         include: [

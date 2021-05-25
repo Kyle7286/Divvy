@@ -88,8 +88,6 @@ function Org() {
     function getTeams() {
         API.getAllOrgTeams()
             .then(res => {
-                console.log("==============");
-                console.log(res.data);
                 setTeams(res.data)
             }).catch((err) => {
                 console.log(err);
@@ -251,7 +249,6 @@ function Org() {
     // Handle new Team button
     const handleNewTeamSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
 
         if (refTeamName.current.value) {
 
@@ -278,8 +275,6 @@ function Org() {
     // Handle New Employee Form
     const handleNewEmpSubmit = (e) => {
         e.preventDefault();
-
-        console.log(refTeamSelected.current.value);
 
         const newEmployee = {
             first_name: refEmpFirstName.current.value,
@@ -321,7 +316,7 @@ function Org() {
                         <Row className="mb-3">
                             <Col className="p-0">
                                 <SectionHeader>{org.org.name}</SectionHeader>
-                                <div class="form-text text-center">Select an option</div>
+                                <div className="form-text text-center">Select an option</div>
                             </Col>
                         </Row>
                         <Row className="mb-3 d-flex justify-content-center">

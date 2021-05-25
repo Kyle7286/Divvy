@@ -2,12 +2,13 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
 
-import React from "react";
+import React, { useState, Component } from "react";
 import Container from "../Container";
 import Col from "../Column";
 import Row from "../Row";
 import { FaPizzaSlice } from 'react-icons/fa';
 import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } from 'react-icons/ai';
+import ReactToolTip from 'react-tooltip';
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
@@ -15,11 +16,15 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 
 function RewardsContainer(props) {
 
+  const [{isPopoverOpen}, setIsPopoverOpen] = useState(false);
+
   return (
     <Container >
       <Row className="row justify-content-start">
 
         {props.rewards.map((reward, idx) => {
+
+          console.log(reward);
 
           return (
             <>
@@ -28,9 +33,30 @@ function RewardsContainer(props) {
                 {
                   props.points.points < reward.req_points
                     ?
-                    <AiOutlineGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                    <>
+                      <ReactToolTip
+                        id="main"
+                        place="top"
+                        type="warning"
+                        effect="float"
+                        multiline={true}
+                      />
+                      <a
+                        data-for="main"
+                        data-tip={reward.reward}
+                        data-iscapture="true"
+                      >
+                        <AiOutlineGift 
+                          className="m-2" 
+                          style={{ color: "#FEDE7D", fontSize: "35px" }} 
+                        /> 
+                      </a>
+                    </>
                     :
-                    <AiFillGift className="m-2" style={{ color: "#FEDE7D", fontSize: "35px" }} />
+                    <AiFillGift 
+                    className="m-2" 
+                    style={{ color: "#FEDE7D", fontSize: "35px" }} 
+                    />
                 }
               </Col>
 

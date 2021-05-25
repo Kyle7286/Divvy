@@ -8,6 +8,7 @@ import Row from "../../components/Row";
 import Col from "../../components/Column";
 import HomePageCard from "../../components/HomePageCard";
 import { useMediaQuery } from 'react-responsive';
+import "../../index.css";
 
 /* -------------------------------------------------------------------------- */
 /*                           Set Mobile BreakPoints                           */

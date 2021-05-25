@@ -12,25 +12,23 @@ function LoginCard(props) {
 
     return (
         <>
-            <div className="col-md-8 mx-auto mt-5">
-                <div className="card px-0 shadow">
-                    <h5 className="card-header bg-dark text-white text-center">Current User Login</h5>
-                    <div className="card-body">
+            <div class="col-md-8 mx-auto mt-5">
+                <div class="card px-0 shadow">
+                    <h5 class="text-warning py-4 fw-bold fs-4 text-center">Current User Login</h5>
+                    <div class="card-body pt-0">
                         <form>
-                            <div className="row mb-3">
-                                <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-                                <div className="col-sm-10">
-                                    <input id="inputEmail" type="email" className="form-control" autoComplete="email" id="email-login"/>
+                            <div class="row mb-3">
+                                <div class="col-sm-10 mx-auto">
+                                    <input id="inputEmail" placeholder="email" type="email" class="form-control" autoComplete="email" id="email-login"/>
                                 </div>
                             </div>
-                            <div className="row mb-3">
-                                <label for="inputPassword3" className="col-sm-2 col-form-label">Password</label>
-                                <div className="col-sm-10">
-                                    <input id="inputPassword" type="password" className="form-control" autoComplete="current-password" id="password-login"/>
+                            <div class="row mb-3">
+                                <div class="col-sm-10 mx-auto">
+                                    <input id="inputPassword" placeholder="password" type="password" class="form-control" autoComplete="current-password" id="password-login"/>
                                 </div>
                             </div>
-                            <div className="text-center">
-                                <button id="log-in-button" type="submit" onClick={props.handleFormSubmit} className="btn btn-warning">Login</button>
+                            <div class="text-center">
+                                <button id="log-in-button" type="submit" onClick={props.handleFormSubmit} class="btn btn-primary">Login</button>
                             </div>
                         </form>
                         <div className="text-center mt-2">

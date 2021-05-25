@@ -89,10 +89,8 @@ function Dashboard() {
     function getTickets(filterType, filterValue) {
         API.getCurrentUser()
             .then(resUser => {
-                console.log("resUser: ", resUser);
                 API.getAllTicketsByOrg(resUser.data.org_id)
                     .then(resTickets => {
-                        console.log("TICKET_DATA: ", resTickets);
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
 

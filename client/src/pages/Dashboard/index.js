@@ -87,10 +87,12 @@ function Dashboard() {
 
     // Load All Tickets and Set Them to state
     function getTickets(filterType, filterValue) {
-        API.getAllTickets()
-            .then(resTickets => {
-                API.getCurrentUser()
-                    .then(resUser => {
+        API.getCurrentUser()
+            .then(resUser => {
+                console.log("resUser: ", resUser);
+                API.getAllTicketsByOrg(resUser.data.org_id)
+                    .then(resTickets => {
+                        console.log("TICKET_DATA: ", resTickets);
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
 
@@ -169,7 +171,7 @@ function Dashboard() {
                         setTickets(filteredTicketsFinal);
                     }
                     )
-
+                    .catch(err => console.log(err));
 
             })
             .catch(err => console.log(err));
@@ -212,14 +214,19 @@ function Dashboard() {
     }
 
     // Set the user state
-    function getUserTeamid(x) {
+    function getUserTeamid(allUserData) {
         API.getCurrentUser()
-            .then(res => {
-
-                const teamEmployees = x.filter(user => {
-                    return user.team_id === res.data.team_id
-                });
-
+            .then(resCurrUser => {
+                let teamEmployees;
+                if (resCurrUser.data.role === "Admin") {
+                    teamEmployees = allUserData.filter(user => {
+                        return user.org_id === resCurrUser.data.org_id
+                    });
+                } else {
+                    teamEmployees = allUserData.filter(user => {
+                        return (user.team_id === resCurrUser.data.team_id && user.org_id === resCurrUser.data.org_id)
+                    });
+                }
                 setUsers(teamEmployees);
             })
             .catch(err => console.log(err));

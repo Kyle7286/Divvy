@@ -18,15 +18,13 @@ function LoginCard(props) {
                     <div class="card-body pt-0">
                         <form>
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input id="inputEmail" type="email" class="form-control" autoComplete="email" id="email-login"/>
+                                <div class="col-sm-10 mx-auto">
+                                    <input id="inputEmail" placeholder="email" type="email" class="form-control" autoComplete="email" id="email-login"/>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input id="inputPassword" type="password" class="form-control" autoComplete="current-password" id="password-login"/>
+                                <div class="col-sm-10 mx-auto">
+                                    <input id="inputPassword" placeholder="password" type="password" class="form-control" autoComplete="current-password" id="password-login"/>
                                 </div>
                             </div>
                             <div class="text-center">

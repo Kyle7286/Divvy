@@ -4,7 +4,6 @@
 
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "./style.css";
 import "../../index.css";
 import Image from "./divvy-bg-img.PNG";
 import SectionHeader from "../SectionHeader";
@@ -39,7 +38,7 @@ function HomePageCard(props) {
 
     return (
         <div>
-            <div className="divvy-bg-tile mt-5 col-lg-8 p-0 mx-auto">
+            <div className="divvy-bg-tile mt-5 col-lg-10 p-0 mx-auto">
                 <SectionHeader>Welcome! </SectionHeader>
                 <div className="justify-content-center py-2 px-3 text-center fs-6">
                     <div>
@@ -48,14 +47,25 @@ function HomePageCard(props) {
                     </div> 
                 </div>
                 <div className="my-2">
-                    <div className="divvy-font-logo text-danger fs-3 text-center">Features</div>
-                    <div className="px-3 col-10 text-left mx-3 mx-auto">
+                    <div className="divvy-font-logo text-danger fs-3 text-center">Key Features</div>
+                    <div className="px-0 col-10 text-left mx-auto">
                         <ul className="list-group">
-                            <li>Simple dashboard for ticket creation and management</li>
-                            <li>Intelligent sorting of availible team members to help capacity distribution at all times</li>
-                            <li>Multi-tiered sorting and filtering for enabling the view YOU need to best manage the workload</li>
-                            <li>Gamified rewards system to keep the working fun and the hard working recognized</li>
-                            <li>More...</li>
+                            <li>
+                                <span className="text-danger fw-bold">Manage Dashboard - </span>
+                                Simple dashboard for ticket creation and management
+                            </li>
+                            <li>
+                                <span className="text-danger fw-bold">Capacity Visulization - </span>
+                                Intelligent sorting of availible team members to help capacity distribution at all times
+                            </li>
+                            <li>
+                                <span className="text-danger fw-bold">Multi-Tier Search and Filter - </span>
+                                Multi-tiered sorting and filtering for enabling the view YOU need to best manage the workload
+                            </li>
+                            <li>
+                                <span className="text-danger fw-bold">Rewards - </span>
+                                Gamified rewards system to keep the working fun and the hard working recognized
+                            </li>
                         </ul>
                     </div>
                 </div>

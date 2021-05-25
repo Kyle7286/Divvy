@@ -19,7 +19,8 @@ import SignupCard from "../../components/SignupCard";
 */
 function Signup() {
 
-        return (
+    return (
+        <div className="home-hero h-100">
             <div>
                 <Container>
                     <Row>
@@ -29,7 +30,8 @@ function Signup() {
                     </Row>
                 </Container>
             </div>
-        );
+        </div>
+    );
 }
 
 /* -------------------------------------------------------------------------- */

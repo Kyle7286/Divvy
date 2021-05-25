@@ -41,13 +41,15 @@ function Home() {
 
     /* ---------------------------- Component Render ---------------------------- */
     return (
-        <Container>
-            <Row>
-                <Col className="col-lg-12 align-items-center">
-                    <HomePageCard />
-                </Col>
-            </Row >
-        </Container >
+        <div className="home-hero h-100">
+            <Container>
+                <Row>
+                    <Col className="col-lg-12 align-items-center">
+                        <HomePageCard />
+                    </Col>
+                </Row >
+            </Container >
+        </div>
     );
 }
 

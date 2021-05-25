@@ -209,6 +209,10 @@ function Org() {
             zip: refZip.current.value
         }
 
+        const zipReg = new RegExp('^[0-9]+$');
+        const phoneReg = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
+        const emailReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
         // If you have filled out all the form fields...
         if (refFirm.current.value
             && refFirstName.current.value
@@ -219,7 +223,12 @@ function Org() {
             && refCity.current.value
             && refState.current.value
             && refZip.current.value
+            && zipReg.test(refZip.current.value)
+            && (refZip.current.value.length === 5)
+            && phoneReg.test(refPhone.current.value)
+            && emailReg.test(refEmail.current.value)
         ) {
+
             // Send input data to server for creation
             API.createNewClient(newClient)
                 .then(res => {
@@ -230,7 +239,7 @@ function Org() {
                     console.log(err)
                 });
         } else {
-            updateError("error", { message: "Please enter info into all fields..." })
+            updateError("error", { message: "Please enter info into all fields and ensure proper formatting..." })
         }
 
     }

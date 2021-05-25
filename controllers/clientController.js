@@ -55,7 +55,6 @@ module.exports = {
       })
 
       const org_id = getUser.org_id
-      const team_id = getUser.team_id
 
       // Create the client user first
       const newUser = await User.create({
@@ -85,8 +84,6 @@ module.exports = {
         })
         res.status(200).json({ newUser, newClient });
       }
-
-
     } catch (err) {
       console.log(err);
       res.status(422).json(err);

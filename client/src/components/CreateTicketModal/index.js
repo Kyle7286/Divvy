@@ -102,7 +102,7 @@ function CreateTicketModal (props) {
         checkClientTicketCreate();
 
         // Validate inputs and make API Call
-        if (newTicket.client_id !=null) {
+        if (newTicket.client_id !=null && newTicket.title !="") {
             // Make the API call to update the ticket if client selected
             API.newTicket(newTicket)
                 .then(closeModal)
@@ -111,7 +111,7 @@ function CreateTicketModal (props) {
         }
         else {
             // If no client, alert them and do not make API call
-            alert("Please make sure you have selected a client for this new ticket!")
+            alert("Please make sure you have entered the required ticket information (client and title)")
         };
     };
 

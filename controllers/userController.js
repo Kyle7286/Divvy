@@ -3,7 +3,6 @@ const { User, Org, Team, Ticket } = require("../models");
 // Defining methods for the user
 module.exports = {
   findAll: async function (req, res) {
-    console.log(req.session);
     try {
       const userData = await User.findAll({
         include: [
@@ -53,7 +52,6 @@ module.exports = {
   findCurrentUser: async function (req, res) {
     try {
 
-      console.log(`Fetching USER: ${req.session.user_id}`);
       const userData = await User.findOne({
         where: { id: req.session.user_id },
         include: [
@@ -77,7 +75,6 @@ module.exports = {
           },
         ],
       });
-      console.log(userData.dataValues);
       res.status(200).json(userData.dataValues);
     } catch (err) {
       console.log(err);
@@ -128,8 +125,6 @@ module.exports = {
     }
   },
   creatNewEmployee: async function (req, res) {
-    console.log(req.body);
-    console.log(req.session.user_id);
     try {
       // Find the current user to get org id
       const otherData = await User.findOne({

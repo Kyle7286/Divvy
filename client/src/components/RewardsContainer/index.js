@@ -14,14 +14,13 @@ import { AiOutlineGift, AiFillGift, AiOutlineCoffee, FiCoffee, AiOutlineRight } 
 /* -------------------------------------------------------------------------- */
 
 function RewardsContainer(props) {
-  console.log(props);
+
   return (
     <Container >
       <Row className="row justify-content-start">
 
         {props.rewards.map((reward, idx) => {
-          console.log(`${idx + 1} | ${props.rewards.length}`);
-          // console.log(props.rewards.length);
+
           return (
             <>
               {/* Column containing Gift Icon */}

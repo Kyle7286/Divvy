@@ -87,20 +87,25 @@ function Dashboard() {
 
     // Load All Tickets and Set Them to state
     function getTickets(filterType, filterValue) {
-        API.getAllTickets()
-            .then(resTickets => {
-                API.getCurrentUser()
-                    .then(resUser => {
+        API.getCurrentUser()
+            .then(resUser => {
+                console.log("resUser: ", resUser);
+                API.getAllTicketsByOrg(resUser.data.org_id)
+                    .then(resTickets => {
+                        console.log("TICKET_DATA: ", resTickets);
                         let filteredTickets;
                         if (resUser.data.role === "Client") {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.client_id === resUser.data.client_id;
                             });
                         } else if (resUser.data.role === "Employee" && resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 return ticketsData.team_id === resUser.data.team_id;
                             });
                         } else if (resUser.data.role === "Employee" && !resUser.data.is_manager) {
+
                             filteredTickets = resTickets.data.filter(ticketsData => {
                                 // return ((ticketsData.assigned_to === resUser.data.id || ticketsData.assigned_to === null) && ticketsData.team_id === resUser.data.team_id);
                                 return ticketsData.team_id === resUser.data.team_id;
@@ -166,7 +171,7 @@ function Dashboard() {
                         setTickets(filteredTicketsFinal);
                     }
                     )
-
+                    .catch(err => console.log(err));
 
             })
             .catch(err => console.log(err));
@@ -209,12 +214,19 @@ function Dashboard() {
     }
 
     // Set the user state
-    function getUserTeamid(x) {
+    function getUserTeamid(allUserData) {
         API.getCurrentUser()
-            .then(res => {
-                const teamEmployees = x.filter(user => {
-                    return user.team_id === res.data.team_id
-                });
+            .then(resCurrUser => {
+                let teamEmployees;
+                if (resCurrUser.data.role === "Admin") {
+                    teamEmployees = allUserData.filter(user => {
+                        return user.org_id === resCurrUser.data.org_id
+                    });
+                } else {
+                    teamEmployees = allUserData.filter(user => {
+                        return (user.team_id === resCurrUser.data.team_id && user.org_id === resCurrUser.data.org_id)
+                    });
+                }
                 setUsers(teamEmployees);
             })
             .catch(err => console.log(err));
@@ -268,7 +280,7 @@ function Dashboard() {
         for (let index = 0; index < employeeCards.length; index++) {
             employeeCards[index].style.borderColor = "";
         };
-        
+
         switch (filterType) {
             case "Status":
                 document.getElementById(filterValue).style.borderColor = "rgb(255,193,7)";

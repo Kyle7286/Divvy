@@ -367,7 +367,7 @@ function Dashboard() {
                 }
             </Row>
             <Row>
-                <div className="text-danger text-center divvy-font-logo fs-3 p-3">
+                <div className="divvy-accent text-center divvy-font-logo fs-3 p-3">
                     Let's Divvy
                     </div>
             </Row>

@@ -23,7 +23,7 @@ const userData = [
         phone_number: '313-355-5881',
         email: 'admin@email.com',
         team_id: null,
-        profile_icon: "https://randomuser.me/api/portraits/men/48.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/men/74.jpg"
     },
     // USER 2 - Manager
     {
@@ -51,7 +51,7 @@ const userData = [
         password: 'pass1234',
         phone_number: '404-245-6911',
         email: 'employee@email.com',
-        profile_icon: "https://randomuser.me/api/portraits/men/47.jpg"
+        profile_icon: "https://randomuser.me/api/portraits/men/75.jpg"
     },
     // USER 4 - Employee
     {

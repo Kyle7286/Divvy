@@ -21,8 +21,8 @@ const userClientData = [
         is_manager: false,
         password: 'pass1234',
         phone_number: '404-245-6912',
-        email: 'client1@email.com',
-        profile_icon: "https://randomuser.me/api/portraits/men/47.jpg"
+        email: 'client@email.com',
+        profile_icon: "https://randomuser.me/api/portraits/men/72.jpg"
     },
     // Client 2
     {

@@ -80,7 +80,7 @@ function HomePageCard(props) {
             <Row className="my-3">
                 <Col>
                     <div className="divvy-font-logo fs-1 divvy-accent text-center fs-5">
-                        ...Lets Divvy.
+                        ...Lets Divvy
                     </div>
                 </Col>
             </Row>

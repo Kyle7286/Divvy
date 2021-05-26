@@ -1,17 +1,19 @@
 
 img {
     position: relative;
+    cursor: pointer;
 }
 .icon-button {
     position: absolute;
-    left: 33%;
-    top: 50%;
+    left: 0;
+    top: 0;
     font-size: 35px;
-    color: white;
+    color: red;
     display: none;
 }
 .profile-img:hover .icon-button {
     display: block;
+
 }
 
 .profile-img:active .icon-button {

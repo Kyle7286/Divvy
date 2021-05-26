@@ -33,6 +33,14 @@ html, body{
     background-size: cover;
   }
 
+.home-row {
+    height: 125px;
+}
+
+.divvy-accent {
+    color: rgb(148, 16, 148)
+}
+
 
 
 

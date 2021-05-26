@@ -31,7 +31,6 @@ function CreateTicketModal (props) {
     );
 
    
-   
 /* ---------------------------------- State --------------------------------- */
 
     // Set modal visability state to false by default

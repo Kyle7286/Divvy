@@ -5,28 +5,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../../index.css";
-import Image from "./divvy-bg-img.PNG";
 import SectionHeader from "../SectionHeader";
+import Row from "../Row";
+import Col from "../Column";
+import Rewards from "./rewards.PNG";
+import Filter from "./filter.PNG";
+import Dash from "./dash.PNG";
+import Capacity from "./capacity.PNG"
+
 
 /* -------------------------------------------------------------------------- */
 /*                              Define Component                              */
 /* -------------------------------------------------------------------------- */
-
-   /* <div className="card col-3 m-1 text-center float-left px-0" data-component="employeecard">
-            <div className="card-header">
-                <p className="card-text"> Welcome to Divvy!</p>
-            </div>
-            <div className="card-body p-1">
-                <button className="btn btn-lg btn-outline-success" variant="primary" onClick={loginClickHandle}>
-                   Login
-                </button>
-                <p className="card-text align-middle">
-                    <a className="forgotPasswordLink" href="/#">Forgot password  </a>
-                    |
-                    <a className="signupLink" href="/signup">  Click here to Sign-Up</a>
-                </p>
-            </div>
-        </div> */
 
 function HomePageCard(props) {
 
@@ -37,48 +27,66 @@ function HomePageCard(props) {
     }
 
     return (
-        <div>
-            <div className="divvy-bg-tile mt-5 col-lg-10 p-0 mx-auto">
-                <SectionHeader>Welcome! </SectionHeader>
-                <div className="justify-content-center py-2 text-center fs-6">
-                    <div className="col-lg-9 mx-auto">
-                    Pleasing clients is hard. Doing it while not overstressing your team, or yourself is even harder. Divvy provides a simple, 
-                    minimalisitc ticket-based system for teams and clients to collaborate within. 
-                    </div> 
-                </div>
-                <div className="my-2">
-                    <div className="divvy-font-logo text-danger fs-3 text-center">Key Features</div>
-                    <div className="px-0 col-10 text-left mx-auto">
-                        <ul className="list-group">
-                            <li className="py-1">
-                                <span className="text-danger fw-bold">Manage Dashboard - </span>
-                                Simple dashboard for ticket creation and management
-                            </li>
-                            <li className="py-1">
-                                <span className="text-danger fw-bold">Capacity Visulization - </span>
-                                Intelligent sorting of availible team members to help capacity distribution at all times
-                            </li>
-                            <li className="py-1">
-                                <span className="text-danger fw-bold">Multi-Tier Search and Filter - </span>
-                                Multi-tiered sorting and filtering for enabling the view YOU need to best manage the workload
-                            </li>
-                            <li className="py-1">
-                                <span className="text-danger fw-bold">Rewards - </span>
-                                Gamified rewards system to keep the working fun and the hard working recognized
-                            </li>
-                        </ul>
+        
+        
+        <div className="container">
+           
+            <Row className="my-3">
+                <Col>
+                    <div className="divvy-font-logo fs-1 divvy-accent text-center">
+                        Don't Let The Busy Win ...
                     </div>
-                </div>
-                <div className="justify-content-center py-3 px-3 text-center">
-                    <div className="fw-bold py-2">
-                        Dont let the busy win. 
-                    </div> 
-                    <div className="divvy-font-logo fs-4 text-danger">
-                        Lets Divvy.
+                </Col>
+            </Row>
+
+            {/* Feature Tiles */}
+            <Row className="divvy-bg-tile my-4 p-3 d-flex my-auto fs-3">
+                <Col className="col-lg-4 text-center my-auto">
+                    <img src={Dash} class="img-thumbnail" alt="Dashboard"/>
+                </Col>
+                <Col className="col-lg-8 text-center my-auto">
+                    <div className="divvy-accent fw-bold">Manage Dashboard</div>
+                    <div>Simple dashboard for ticket creation and management</div>
+                </Col>
+            </Row>
+            <Row className="divvy-bg-tile my-8 my-4 p-3 d-flex fs-3">
+                <Col className="col-lg-8 text-center my-auto">
+                    <div className="divvy-accent fw-bold">Capacity Visulization</div>
+                    <div>Intelligent sorting of availible team members to help capacity distribution at all times</div>
+                </Col>
+                <Col className="col-lg-4 text-center my-auto">
+                <img src={Capacity} class="img-thumbnail" alt="Capacity"/>
+                </Col>
+            </Row>
+            <Row className="divvy-bg-tile my-8 my-4 p-3 d-flex fs-3">
+                <Col className="col-lg-4 my-auto text-center">
+                <img src={Filter} class="img-thumbnail" alt="Filter"/>
+                </Col>
+                <Col className="col-8 my-auto text-center">
+                    <div className="divvy-accent fw-bold">Multi-tier sort and function</div>
+                    <div>Multi-tiered sorting and filtering for enabling the view YOU need to best manage the workload</div>
+                </Col>
+            </Row>
+            <Row className="divvy-bg-tile my-8 my-4 p-3 d-flex fs-3">
+                <Col className="col-lg-8 my-auto">
+                    <div className="divvy-accent fw-bold text-center">Rewards</div>
+                    <div>Gamified rewards system to keep the working fun and the hard working recognized</div>
+                </Col>
+                <Col className="col-4 text-center my-auto">
+                    <img src={Rewards} class="img-thumbnail" alt="Rewards"/>
+                </Col>
+            </Row>
+
+            <Row className="my-3">
+                <Col>
+                    <div className="divvy-font-logo fs-1 divvy-accent text-center fs-5">
+                        ...Lets Divvy.
                     </div>
-                </div>
-            </div>
+                </Col>
+            </Row>
+           
         </div>
+       
     );
 }
 

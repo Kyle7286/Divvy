@@ -19,7 +19,7 @@ function Wrapper(props) {
     return (
         <main className="my-0 divvy-bg" data-component="Wrapper">
             <Row>
-                <Col className={props.loggedInStatus.loggedIn ? "col-lg-1" : "col-lg-1 p-0"}>
+                <Col className={props.loggedInStatus.loggedIn ? "col-lg-1" : "col-lg-1 p-0 bg-dark"}>
                     <Nav
                         loggedInStatus={props.loggedInStatus}
                         currentUser={props.currentUser}

@@ -108,6 +108,9 @@ export default {
     getOrg: function () {
         return axios.get("/api/org/current")
     },
+    deleteOrg: function (id) {
+        return axios.delete("/api/org/" + id)
+    },
 
     /* ----------------------------------- Reward System ---------------------------------- */
     getAllTeamRewards: function () {

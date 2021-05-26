@@ -23,6 +23,28 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  findAllByOrg: async function (req, res) {
+    try {
+      const clientData = await Client.findAll({
+        where: { org_id: req.params.id },
+        include: [
+          {
+            model: User,
+            attributes: ['first_name', 'last_name'],
+            as: 'contact'
+          },
+          {
+            model: Org,
+            attributes: ['name'],
+          },
+        ],
+      });
+      res.status(200).json(clientData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
   findById: async function (req, res) {
     try {
       const clientData = await Client.findOne({

@@ -64,16 +64,18 @@ class Login extends Component {
     render() {
 
         return (
-            <div>
-                <Container>
-                    <Row className="mb-4 d-flex flex-row justify-content-center">
-                        <Col>
-                            <LoginCard
-                                handleFormSubmit={this.handleFormSubmit}
-                            />
-                        </Col>
-                    </Row>
-                </Container>
+            <div className="home-hero h-100">
+                <div>
+                    <Container>
+                        <Row className="mb-4 d-flex flex-row justify-content-center">
+                            <Col>
+                                <LoginCard
+                                    handleFormSubmit={this.handleFormSubmit}
+                                />
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
             </div>
         );
     }

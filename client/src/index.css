@@ -16,15 +16,6 @@ html, body{
     background-image:linear-gradient(rgba(70, 69, 68, 0.179),rgba(255, 193, 7, 0.542),rgba(70, 69, 68, 0.179)); 
 }
 
-
-.divvy-hero {
-    background-image: url("https://www.vecteezy.com/free-vector/white-luxury-background");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 .divvy-header {
     color: #343a40;
 }
@@ -33,7 +24,14 @@ html, body{
     height: 100vh;
 }
 
-
+/* Background Image showing during ternary in Wrapper */
+.home-hero{
+    background: url(./hero3.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 
 
 

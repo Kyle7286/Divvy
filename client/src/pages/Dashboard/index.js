@@ -256,10 +256,14 @@ function Dashboard() {
 
     // Load all USERS
     function getClients() {
-        API.getAllClients()
-            .then(res =>
-                setClients(res.data)
-            )
+        API.getCurrentUser()
+            .then(resUser => {
+                API.getAllClientsByOrg(resUser.data.org_id)
+                    .then(res =>
+                        setClients(res.data)
+                    )
+                    .catch(err => console.log(err));
+            })
             .catch(err => console.log(err));
     };
 

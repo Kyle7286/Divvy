@@ -74,6 +74,10 @@ export default {
     getAllClients: function () {
         return axios.get("/api/client");
     },
+    // Get all clients
+    getAllClientsByOrg: function (id) {
+        return axios.get("/api/client/org/" + id);
+    },
     // Create new client
     createNewClient: function (newClient) {
         return axios.post("/api/client", newClient);

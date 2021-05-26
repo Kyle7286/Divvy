@@ -76,8 +76,7 @@ export default {
     },
     // Get all clients
     getAllClientsByOrg: function (id) {
-        return axios.get("/api/client");
-        // return axios.get("/api/client/org/" + id);
+        return axios.get("/api/client/org/" + id);
     },
     // Create new client
     createNewClient: function (newClient) {

@@ -204,7 +204,7 @@ function Profile() {
                                     <Col className={user.role === "Employee" ? "col-lg-5" : "col"} >
                                         <div onClick={handleImageClick} className="profile-img my-3 text-center">
                                             <img src={user.profile_icon ? user.profile_icon : "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"} width="200px" alt="profile picture" className=" border border-warning shadow-lg rounded-pill"></img>
-                                            <FaLink className="icon-button" />
+                                            {/* <FaLink className="icon-button" /> */}
                                         </div>
                                     </Col>
 

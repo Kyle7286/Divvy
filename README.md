@@ -65,10 +65,10 @@ Divvy is for...
 
 ## Screenshot(s) 📊
 ---
-![Image](./assets/readme/ss1.png)
-![Image](./assets/readme/ss2.png)
-![Image](./assets/readme/ss3.png)
-![Image](./assets/readme/ss4.png)
+![image](https://user-images.githubusercontent.com/72420733/120017240-a39da180-bfb3-11eb-9bbd-ecac384c8dd6.png)
+![image](https://user-images.githubusercontent.com/72420733/120017325-c3cd6080-bfb3-11eb-973d-7d69faf9feab.png)
+![image](https://user-images.githubusercontent.com/72420733/120017478-ebbcc400-bfb3-11eb-9ad0-d5fa002f664f.png)
+![image](https://user-images.githubusercontent.com/72420733/120017825-57069600-bfb4-11eb-9a47-bf6fe11b819f.png)
 
 ## Video
 ---
